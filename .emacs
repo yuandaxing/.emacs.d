@@ -1,0 +1,180 @@
+;(setenv "PATH" (concat "C:/Users/dayua/Documents/cgwin/bin;" (getenv "PATH")))
+;(setq exec-path (cons "C:/Users/dayua/Documents/cgwin/bin" exec-path))
+;(require 'cygwin-mount)
+;(cygwin-mount-activate)
+;(defun save-goto-next-window ()
+;  (interactive)
+;  (save-buffer 0)
+;  (other-window 1))
+;(global-set-key (kbd "C-.")
+;		'save-goto-next-window)
+
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize)
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+;(smart-tabs-insinuate 'c 'python)
+; (setq-default indent-tabs-mode nil)
+;(add-hook 'c-mode-common-hook
+;	  (lambda () (setq indent-tabs-mode t)))
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(blink-cursor-mode nil)
+ '(column-number-mode t)
+ '(custom-enabled-themes (quote (tango-dark)))
+ '(global-auto-complete-mode t)
+ '(ido-enable-flex-matching t)
+ '(ido-mode (quote both) nil (ido))
+ '(line-number-mode t)
+ '(menu-bar-mode nil)
+ '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("" . "") ("melpa" . "http://melpa.milkbox.net/packages/"))))
+ '(session-use-package t nil (session))
+ '(tool-bar-mode nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ac-candidate-face ((t (:family "DejaVu Sans Mono")))))
+;(windmove-default-keybindings)         ; shifted arrow keys
+(add-to-list 'load-path "~/.emacs.d/elpa/ace-jump-mode-20140207.530/")
+(add-to-list 'load-path "~/.emacs.d/user-plugin/")
+(add-to-list 'load-path "~/.emacs.d/elpa/web-mode-20140711.1339/")
+(autoload
+  'ace-jump-mode
+  "ace-jump-mode"
+  "Emacs quick move minor mode"
+  t)
+(define-key global-map (kbd "C-c C-SPC") 'ace-jump-mode)
+
+(autoload
+  'ace-jump-mode-pop-mark
+  "ace-jump-mode"
+  "Ace jump back:-)"
+  t)
+(eval-after-load "ace-jump-mode"
+  '(ace-jump-mode-enable-mark-sync))
+(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
+(require 'multiple-cursors)
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(add-to-list 'load-path "/home/dayua/.emacs.d/elpa/visual-regexp-20140311.724/") ;; if the files are not already in the load path
+(require 'visual-regexp)
+(define-key global-map (kbd "C-c r") 'vr/replace)
+(define-key global-map (kbd "C-c q") 'vr/query-replace)
+;; if you use multiple-cursors, this is for you:
+(define-key global-map (kbd "C-c m") 'vr/mc-mark)
+;(add-hook 'python-mode-hook 'jedi:setup)
+;(setq jedi:complete-on-dot t)
+
+(global-set-key (kbd "<f5>") 'redraw-display)
+
+;; automatically save buffers associated with files on buffer switch
+;; and on windows switch
+(defadvice switch-to-buffer (before save-buffer-now activate)
+  (when buffer-file-name (save-buffer)))
+(defadvice other-window (before other-window-now activate)
+  (when buffer-file-name (save-buffer)))
+(defadvice windmove-up (before other-window-now activate)
+  (when buffer-file-name (save-buffer)))
+(defadvice windmove-down (before other-window-now activate)
+  (when buffer-file-name (save-buffer)))
+(defadvice windmove-left (before other-window-now activate)
+  (when buffer-file-name (save-buffer)))
+(defadvice windmove-right (before other-window-now activate)
+  (when buffer-file-name (save-buffer)))
+(show-paren-mode t)
+;(linum-mode t)
+;(require 'tabkey2)
+;(tabkey2-mode t)
+;(require 'smart-tab)
+;(setq smart-tab-mode t)
+(global-linum-mode t)
+;(global-smart-tab-mode t)
+(setq indent-tabs-mode nil)
+(setq default-tab-width 4)
+(setq tab-width 4)
+(setq tab-stop-list ())
+(loop for x downfrom 40 to 1 do
+      (setq tab-stop-list (cons (* x 4) tab-stop-list)))
+(defun xah-cut-line-or-region ()
+  "Cut the current line, or current text selection."
+  (interactive)
+  (if (region-active-p)
+      (kill-region (region-beginning) (region-end))
+    (kill-region (line-beginning-position) (line-beginning-position 2)) ) )
+
+(defun xah-copy-line-or-region ()
+  "Copy current line, or current text selection."
+  (interactive)
+  (if (region-active-p)
+      (kill-ring-save (region-beginning) (region-end))
+    (kill-ring-save (line-beginning-position) (line-beginning-position 2)) ) )
+(global-set-key (kbd "<f2>") 'xah-cut-line-or-region) ; cut
+(global-set-key (kbd "<f3>") 'xah-copy-line-or-region) ; copy
+(global-set-key (kbd "<f4>") 'yank) ; paste
+(global-set-key (kbd "M-s") 'other-window) ; cursor to other pane
+(require 'session)
+(add-hook 'after-init-hook 'session-initialize)
+(global-unset-key (kbd "C-z"))
+(global-set-key (kbd "C-z") 'undo)
+; repeat last command, C-x Esc Esc
+;ace jump multiple then jump back C-x space
+;C-S <BackSpace> kill-whole-line
+;C-<UP>|<DOWN>  move by paragraph
+(setq frame-title-format
+      (list (format "%s %%S: %%j " (system-name))
+        '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
+
+; add yasnippet configuations
+(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-20140617.1640")
+(require 'yasnippet)
+(yas-global-mode 1)
+(defface ac-yasnippet-candidate-face
+  '((t (:background "sandybrown" :foreground "black")))
+  "Face for yasnippet candidate.")
+ 
+(defface ac-yasnippet-selection-face
+  '((t (:background "coral3" :foreground "white")))
+  "Face for the yasnippet selected candidate.")
+ 
+(defvar ac-source-yasnippet
+  '((candidates . ac-yasnippet-candidate)
+    (action . yas/expand)
+    (candidate-face . ac-yasnippet-candidate-face)
+    (selection-face . ac-yasnippet-selection-face))
+  "Source for Yasnippet.")
+;setting for html
+(add-hook 'html-mode-hook 
+		  '(lambda () 
+			 (auto-complete-mode t)))
+(add-hook 'org-mode-hook 
+		  '(lambda () 
+			 (auto-complete-mode t)))				   
+(setq ido-separator "\n")
+
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[gj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(set-face-attribute 'default nil :height 120)
+(add-to-list 'load-path "~/.emacs.d/elpa/magit-20140720.358")
+(eval-after-load 'info
+  '(progn (info-initialize)
+          (add-to-list 'Info-directory-list  "~/.emacs.d/elpa/magit-20140720.358")))
+(require 'magit)
