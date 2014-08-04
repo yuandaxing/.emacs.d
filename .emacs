@@ -34,6 +34,7 @@
  '(ido-enable-flex-matching t)
  '(ido-mode (quote both) nil (ido))
  '(line-number-mode t)
+ '(magit-git-executable "/usr/bin/git.exe")
  '(menu-bar-mode nil)
  '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("" . "") ("melpa" . "http://melpa.milkbox.net/packages/"))))
  '(session-use-package t nil (session))
@@ -161,6 +162,13 @@
 (add-hook 'org-mode-hook 
 		  '(lambda () 
 			 (auto-complete-mode t)))				   
+(add-hook 'web-mode-hook 
+		  '(lambda () 
+			 (auto-complete-mode t)))
+(add-hook 'shell-mode-hook 
+		  '(lambda () 
+			 (auto-complete-mode t)))
+
 (setq ido-separator "\n")
 
 (require 'web-mode)
@@ -178,3 +186,12 @@
   '(progn (info-initialize)
           (add-to-list 'Info-directory-list  "~/.emacs.d/elpa/magit-20140720.358")))
 (require 'magit)
+
+;set uniquify to make buffer name uniq 
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+;(setenv "GIT_ASKPASS" "git-gui--askpass")
+(setq magit-process-connection-type t)
+;; (autoload 'auto-make-header "header2")
+;; (add-hook 'python-mode-hook 'auto-make-header)
+;; (add-hook 'c-mode-common-hook 'auto-make-header)
