@@ -1,14 +1,3 @@
-;(setenv "PATH" (concat "C:/Users/dayua/Documents/cgwin/bin;" (getenv "PATH")))
-;(setq exec-path (cons "C:/Users/dayua/Documents/cgwin/bin" exec-path))
-;(require 'cygwin-mount)
-;(cygwin-mount-activate)
-;(defun save-goto-next-window ()
-;  (interactive)
-;  (save-buffer 0)
-;  (other-window 1))
-;(global-set-key (kbd "C-.")
-;		'save-goto-next-window)
-
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
@@ -21,6 +10,28 @@
 ; (setq-default indent-tabs-mode nil)
 ;(add-hook 'c-mode-common-hook
 ;	  (lambda () (setq indent-tabs-mode t)))
+
+; add yasnippet configuations
+(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-20140617.1640")
+(require 'yasnippet)
+(yas-global-mode 1)
+(defface ac-yasnippet-candidate-face
+  '((t (:background "sandybrown" :foreground "black")))
+  "Face for yasnippet candidate.")
+ 
+(defface ac-yasnippet-selection-face
+  '((t (:background "coral3" :foreground "white")))
+  "Face for the yasnippet selected candidate.")
+ 
+(defvar ac-source-yasnippet
+  '((candidates . ac-yasnippet-candidate)
+    (action . yas-expand)
+    (candidate-face . ac-yasnippet-candidate-face)
+    (selection-face . ac-yasnippet-selection-face))
+  "Source for Yasnippet.")
+(global-set-key (kbd "C-c ; p") 'yas-expand)
+;; default hotkey `C-c & C-s` is still valid
+(global-set-key (kbd "C-c ; i") 'yas-insert-snippet)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -55,7 +66,8 @@
   "Emacs quick move minor mode"
   t)
 (define-key global-map (kbd "C-c C-SPC") 'ace-jump-mode)
-
+;could not work with auto complete
+;(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode)) ; 
 (autoload
   'ace-jump-mode-pop-mark
   "ace-jump-mode"
@@ -137,24 +149,6 @@
       (list (format "%s %%S: %%j " (system-name))
         '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 
-; add yasnippet configuations
-(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-20140617.1640")
-(require 'yasnippet)
-(yas-global-mode 1)
-(defface ac-yasnippet-candidate-face
-  '((t (:background "sandybrown" :foreground "black")))
-  "Face for yasnippet candidate.")
- 
-(defface ac-yasnippet-selection-face
-  '((t (:background "coral3" :foreground "white")))
-  "Face for the yasnippet selected candidate.")
- 
-(defvar ac-source-yasnippet
-  '((candidates . ac-yasnippet-candidate)
-    (action . yas/expand)
-    (candidate-face . ac-yasnippet-candidate-face)
-    (selection-face . ac-yasnippet-selection-face))
-  "Source for Yasnippet.")
 ;setting for html
 (add-hook 'html-mode-hook 
 		  '(lambda () 
@@ -170,16 +164,6 @@
 			 (auto-complete-mode t)))
 
 (setq ido-separator "\n")
-
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.[gj]sp\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (set-face-attribute 'default nil :height 120)
 (add-to-list 'load-path "~/.emacs.d/elpa/magit-20140720.358")
 (eval-after-load 'info
@@ -195,3 +179,10 @@
 ;; (autoload 'auto-make-header "header2")
 ;; (add-hook 'python-mode-hook 'auto-make-header)
 ;; (add-hook 'c-mode-common-hook 'auto-make-header)
+
+(set-fontset-font "fontset-default"
+				  'gb18030 '("Microsoft YaHei" .
+							 "unicode-bmp"))
+;这是微软雅黑字体，如果没有乱码，设置成功^-^
+;(require 'flycheck)
+(setq ac-disable-faces nil)
