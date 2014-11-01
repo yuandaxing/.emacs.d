@@ -45,7 +45,6 @@
  '(ido-enable-flex-matching t)
  '(ido-mode (quote both) nil (ido))
  '(line-number-mode t)
- '(magit-git-executable "/usr/bin/git.exe")
  '(menu-bar-mode nil)
  '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("" . "") ("melpa" . "http://melpa.milkbox.net/packages/"))))
  '(session-use-package t nil (session))
@@ -136,7 +135,7 @@
 (global-set-key (kbd "<f2>") 'xah-cut-line-or-region) ; cut
 (global-set-key (kbd "<f3>") 'xah-copy-line-or-region) ; copy
 (global-set-key (kbd "<f4>") 'yank) ; paste
-(global-set-key (kbd "M-s") 'other-window) ; cursor to other pane
+(global-set-key (kbd "M-n") 'other-window) ; cursor to other pane
 (require 'session)
 (add-hook 'after-init-hook 'session-initialize)
 (global-unset-key (kbd "C-z"))
@@ -175,7 +174,6 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 ;(setenv "GIT_ASKPASS" "git-gui--askpass")
-(setq magit-process-connection-type t)
 ;; (autoload 'auto-make-header "header2")
 ;; (add-hook 'python-mode-hook 'auto-make-header)
 ;; (add-hook 'c-mode-common-hook 'auto-make-header)
@@ -186,3 +184,4 @@
 ;这是微软雅黑字体，如果没有乱码，设置成功^-^
 ;(require 'flycheck)
 (setq ac-disable-faces nil)
+(put 'set-goal-column 'disabled nil)
