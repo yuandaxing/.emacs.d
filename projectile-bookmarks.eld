@@ -1,0 +1,1 @@
+("~/code/algorithm/" "~/code/django/opendri/" "~/code/django/openduty/")

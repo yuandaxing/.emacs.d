@@ -135,7 +135,6 @@
 (global-set-key (kbd "<f2>") 'xah-cut-line-or-region) ; cut
 (global-set-key (kbd "<f3>") 'xah-copy-line-or-region) ; copy
 (global-set-key (kbd "<f4>") 'yank) ; paste
-(global-set-key (kbd "M-n") 'other-window) ; cursor to other pane
 (require 'session)
 (add-hook 'after-init-hook 'session-initialize)
 (global-unset-key (kbd "C-z"))
@@ -185,3 +184,7 @@
 ;(require 'flycheck)
 (setq ac-disable-faces nil)
 (put 'set-goal-column 'disabled nil)
+(require 'smex)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(projectile-global-mode)
