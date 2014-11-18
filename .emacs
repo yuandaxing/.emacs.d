@@ -172,10 +172,6 @@
 ;set uniquify to make buffer name uniq 
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
-;(setenv "GIT_ASKPASS" "git-gui--askpass")
-;; (autoload 'auto-make-header "header2")
-;; (add-hook 'python-mode-hook 'auto-make-header)
-;; (add-hook 'c-mode-common-hook 'auto-make-header)
 
 (set-fontset-font "fontset-default"
 				  'gb18030 '("Microsoft YaHei" .
@@ -188,3 +184,8 @@
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (projectile-global-mode)
+(add-hook 'erc-mode-hook
+		  '(lambda ()
+			 (erc :server "irc.freenode.net" :port 6667 :full-name "Daxing Yuan" :nick "dayua")
+			 (setq erc-hide-list '("JOIN" "PART" "QUIT"))))
+
