@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 (defun describe-function-primitive (name)   
   (interactive "sInput Function name:")
   (flet ((first-line (text)
@@ -18,4 +16,3 @@
 	  (with-output-to-temp-buffer "output"
 		(dolist (item (sort funclist 'string<))
 		  (print item))))))
->>>>>>> refs/remotes/origin/master
