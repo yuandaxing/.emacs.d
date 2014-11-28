@@ -1,0 +1,1 @@
+("~/note-org/" "~/cygwin-config/" "~/code/leetcode/" "~/code/django/DataManag/" "~/code/utils/" "~/code/django/restcelery/" "~/code/django/opendri/" "~/code/algorithm/" "~/code/django/openduty/")
