@@ -8,6 +8,7 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 (add-to-list 'load-path "~/.emacs.d/lisp")
 ;(require 'init-elpa)
+(require 'init-auto-complete)
 ;(package-require 'yasnippet)
 (require 'yasnippet)
 (yas-global-mode 1)
@@ -23,7 +24,6 @@
  '(blink-cursor-mode nil)
  '(column-number-mode t)
  '(custom-enabled-themes (quote (tango-dark)))
- '(global-auto-complete-mode t)
  '(ido-enable-flex-matching t)
  '(ido-mode (quote both) nil (ido))
  '(line-number-mode t)
@@ -125,18 +125,6 @@
 ;C-S <BackSpace> kill-whole-line
 ;C-<UP>|<DOWN>  move by paragraph
 ;setting for html
-(add-hook 'html-mode-hook 
-		  '(lambda () 
-			 (auto-complete-mode t)))
-(add-hook 'org-mode-hook 
-		  '(lambda () 
-			 (auto-complete-mode t)))				   
-(add-hook 'web-mode-hook 
-		  '(lambda () 
-			 (auto-complete-mode t)))
-(add-hook 'shell-mode-hook 
-		  '(lambda () 
-			 (auto-complete-mode t)))
 
 (setq ido-separator "\n")
 (set-face-attribute 'default nil :height 120)
