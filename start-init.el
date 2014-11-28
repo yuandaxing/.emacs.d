@@ -6,10 +6,36 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+<<<<<<< HEAD
 (add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-20140617.1640")
 (require 'yasnippet)
 (yas-global-mode 1)
 "Source for Yasnippet.")
+=======
+;(smart-tabs-insinuate 'c 'python)
+; (setq-default indent-tabs-mode nil)
+;(add-hook 'c-mode-common-hook
+;	  (lambda () (setq indent-tabs-mode t)))
+
+; add yasnippet configuations
+(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-20140617.1640")
+(require 'yasnippet)
+(yas-global-mode 1)
+(defface ac-yasnippet-candidate-face
+  '((t (:background "sandybrown" :foreground "black")))
+  "Face for yasnippet candidate.")
+ 
+(defface ac-yasnippet-selection-face
+  '((t (:background "coral3" :foreground "white")))
+  "Face for the yasnippet selected candidate.")
+ 
+(defvar ac-source-yasnippet
+  '((candidates . ac-yasnippet-candidate)
+    (action . yas-expand)
+    (candidate-face . ac-yasnippet-candidate-face)
+    (selection-face . ac-yasnippet-selection-face))
+  "Source for Yasnippet.")
+>>>>>>> 115f75d036f71ce85b60d996b8dbc33ab66d0088
 (global-set-key (kbd "C-c ; p") 'yas-expand)
 ;; default hotkey `C-c & C-s` is still valid
 (global-set-key (kbd "C-c ; i") 'yas-insert-snippet)
@@ -22,6 +48,10 @@
  '(blink-cursor-mode nil)
  '(column-number-mode t)
  '(custom-enabled-themes (quote (tango-dark)))
+<<<<<<< HEAD
+=======
+ '(global-auto-complete-mode t)
+>>>>>>> 115f75d036f71ce85b60d996b8dbc33ab66d0088
  '(ido-enable-flex-matching t)
  '(ido-mode (quote both) nil (ido))
  '(line-number-mode t)
@@ -29,10 +59,18 @@
  '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("" . "") ("melpa" . "http://melpa.milkbox.net/packages/"))))
  '(session-use-package t nil (session))
  '(tool-bar-mode nil))
+<<<<<<< HEAD
+=======
+(custom-set-faces
+>>>>>>> 115f75d036f71ce85b60d996b8dbc33ab66d0088
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+<<<<<<< HEAD
+=======
+ '(ac-candidate-face ((t (:family "DejaVu Sans Mono")))))
+>>>>>>> 115f75d036f71ce85b60d996b8dbc33ab66d0088
 ;(windmove-default-keybindings)         ; shifted arrow keys
 (add-to-list 'load-path "~/.emacs.d/elpa/ace-jump-mode-20140207.530/")
 (add-to-list 'load-path "~/.emacs.d/user-plugin/")
@@ -64,6 +102,11 @@
 (define-key global-map (kbd "C-c q") 'vr/query-replace)
 ;; if you use multiple-cursors, this is for you:
 (define-key global-map (kbd "C-c m") 'vr/mc-mark)
+<<<<<<< HEAD
+=======
+;(add-hook 'python-mode-hook 'jedi:setup)
+;(setq jedi:complete-on-dot t)
+>>>>>>> 115f75d036f71ce85b60d996b8dbc33ab66d0088
 
 (global-set-key (kbd "<f5>") 'redraw-display)
 
@@ -82,7 +125,17 @@
 (defadvice windmove-right (before other-window-now activate)
   (when buffer-file-name (save-buffer)))
 (show-paren-mode t)
+<<<<<<< HEAD
 (global-linum-mode t)
+=======
+;(linum-mode t)
+;(require 'tabkey2)
+;(tabkey2-mode t)
+;(require 'smart-tab)
+;(setq smart-tab-mode t)
+(global-linum-mode t)
+;(global-smart-tab-mode t)
+>>>>>>> 115f75d036f71ce85b60d996b8dbc33ab66d0088
 (setq indent-tabs-mode nil)
 (setq default-tab-width 4)
 (setq tab-width 4)
@@ -115,7 +168,26 @@
 ;C-<UP>|<DOWN>  move by paragraph
 (setq frame-title-format
       (list (format "%s %%S: %%j " (system-name))
+<<<<<<< HEAD
             '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
+=======
+        '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
+
+;setting for html
+(add-hook 'html-mode-hook 
+		  '(lambda () 
+			 (auto-complete-mode t)))
+(add-hook 'org-mode-hook 
+		  '(lambda () 
+			 (auto-complete-mode t)))				   
+(add-hook 'web-mode-hook 
+		  '(lambda () 
+			 (auto-complete-mode t)))
+(add-hook 'shell-mode-hook 
+		  '(lambda () 
+			 (auto-complete-mode t)))
+
+>>>>>>> 115f75d036f71ce85b60d996b8dbc33ab66d0088
 (setq ido-separator "\n")
 (set-face-attribute 'default nil :height 120)
 (add-to-list 'load-path "~/.emacs.d/elpa/magit-20140720.358")
