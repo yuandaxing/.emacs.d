@@ -2,7 +2,7 @@
 
 (when (fboundp 'electric-pair-mode)
   (electric-pair-mode))
-(when (fboundp 'electric-indent-mode)
+(when (eval-when-compile (version< "24.4" emacs-version))
   (electric-indent-mode))
 
 ;;----------------------------------------------------------------------------
@@ -23,7 +23,7 @@
  save-interprogram-paste-before-kill t
  scroll-preserve-screen-position 'always
  set-mark-command-repeat-pop t
- show-trailing-whitespace t
+; show-trailing-whitespace t
  tooltip-delay 1.5
  truncate-lines nil
  truncate-partial-width-windows nil
