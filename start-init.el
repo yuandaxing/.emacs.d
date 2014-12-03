@@ -6,7 +6,7 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
-(add-to-list 'load-path "~/.emacs.d/lisp")
+
 ;(require 'init-elpa)
 ;(package-require 'yasnippet)
 (require 'yasnippet)
@@ -163,9 +163,11 @@
 (autoload 'markdown-mode "markdown-mode"
     "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'load-path "~/.emacs.d/lisp")
 (provide 'start-init)
 (require 'init-utils)
 (require 'init-elpa)
 (require 'init-auto-complete)
 (require-package 'diminish)
 (require 'init-editing-utils)
+(require 'init-hippie)
