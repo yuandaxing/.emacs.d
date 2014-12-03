@@ -119,8 +119,10 @@
 ;;----------------------------------------------------------------------------
 ;; Expand region
 ;;----------------------------------------------------------------------------
-(require-package 'expand-region)
-(global-set-key (kbd "C-=") 'er/expand-region)
+(when (eval-when-compile (not (string= "cygwin" system-type)))
+  (require-package 'expand-region)
+  (global-set-key (kbd "C-=") 'er/expand-region)
+  )
 
 
 ;;----------------------------------------------------------------------------
@@ -338,10 +340,12 @@ With arg N, insert N newlines."
 (hes-mode)
 
 
-(require-package 'guide-key)
-(setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x 5" "C-c ;" "C-c ; f" "C-c ' f" "C-x n"))
-(guide-key-mode 1)
-(diminish 'guide-key-mode)
+(when (eval-when-compile (not (string= "cygwin" system-type)))
+  (require-package 'guide-key)
+  (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x 5" "C-c ;" "C-c ; f" "C-c ' f" "C-x n"))
+  (guide-key-mode 1)
+  (diminish 'guide-key-mode)
+  )
 
 
 (provide 'init-editing-utils)
