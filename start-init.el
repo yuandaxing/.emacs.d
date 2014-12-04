@@ -163,6 +163,7 @@
 (autoload 'markdown-mode "markdown-mode"
     "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(defconst *is-a-mac* (eq system-type 'darwin))
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (provide 'start-init)
 (require 'init-utils)
