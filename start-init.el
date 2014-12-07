@@ -173,3 +173,4 @@
 (require 'init-editing-utils)
 (require 'init-hippie)
 (require 'init-grep)
+(require 'init-org)
