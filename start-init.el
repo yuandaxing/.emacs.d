@@ -174,3 +174,5 @@
 (require 'init-hippie)
 (require 'init-grep)
 (require 'init-org)
+(require 'init-cpp)
+(require 'init-makefile)

@@ -143,5 +143,7 @@
     (insert "#+END_SRC\n")
     (previous-line 2)
     (org-edit-src-code)))
-
+(setq org-agenda-files (list "~/note-org/os/linux.org"
+                     "~/note-org/os/windows.org"
+                     "~/note-org/edit/emacs.org"))
 (provide 'init-org)
