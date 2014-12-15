@@ -143,7 +143,13 @@
     (insert "#+END_SRC\n")
     (previous-line 2)
     (org-edit-src-code)))
-(setq org-agenda-files (list "~/note-org/os/linux.org"
-                     "~/note-org/os/windows.org"
-                     "~/note-org/edit/emacs.org"))
+;all the files matched by org-agenda-file-regexp will be the agenda filelist
+(setq org-agenda-files (list "~/note-org/os/"
+                             "~/note-org/edit/"
+                             "~/note-org/other/"
+                             "~/note-org/algorithm/"
+                             "~/note-org/web/"))
+
+(setq org-refile-targets (quote ((nil :maxlevel . 9)
+                                 (org-agenda-files :maxlevel . 9))))
 (provide 'init-org)
