@@ -347,5 +347,9 @@ With arg N, insert N newlines."
   (diminish 'guide-key-mode)
   )
 
+
+; bind C-x to kill-word-backward
+(global-set-key (kbd "C-w") 'backward-kill-word)
+
 
 (provide 'init-editing-utils)

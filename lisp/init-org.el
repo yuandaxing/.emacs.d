@@ -148,7 +148,8 @@
                              "~/note-org/edit/"
                              "~/note-org/other/"
                              "~/note-org/algorithm/"
-                             "~/note-org/web/"))
+                             "~/note-org/web/"
+                             "~/note-org/GTD/"))
 
 (setq org-refile-targets (quote ((nil :maxlevel . 9)
                                  (org-agenda-files :maxlevel . 9))))
