@@ -346,6 +346,13 @@ With arg N, insert N newlines."
   (guide-key-mode 1)
   (diminish 'guide-key-mode)
   )
-
+
+;bind some key according to effective emacs
+(global-set-key (kbd "C-w") 'backward-kill-word)
+(global-set-key (kbd "C-x C-k") 'kill-region)
+
+; set frame name 
+(setq frame-title-format "Emacs - %f")
+
 
 (provide 'init-editing-utils)
