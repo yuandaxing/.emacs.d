@@ -1,12 +1,15 @@
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(when (< emacs-major-version 24)
-  ;; For important compatibility libraries like cl-lib
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
-(package-initialize)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
-
+(defconst *is-a-mac* (eq system-type 'darwin))
+(add-to-list 'load-path "~/.emacs.d/lisp")
+(require 'init-elpa)
+(require 'init-utils)
+(require 'init-auto-complete)
+(require-package 'diminish)
+(require 'init-editing-utils)
+(require 'init-hippie)
+(require 'init-grep)
+(require 'init-org)
+(require 'init-cpp)
+(require 'init-makefile)
 (require 'yasnippet)
 (yas-global-mode 1)
 ;; (global-set-key (kbd "C-c ; p") 'yas-expand)
@@ -52,12 +55,14 @@
 ;; (eval-after-load "ace-jump-mode"
 ;;   '(ace-jump-mode-enable-mark-sync))
 ;; (define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
+(require-package 'multiple-cursors)
 (require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 (add-to-list 'load-path "/home/dayua/.emacs.d/elpa/visual-regexp-20140311.724/") ;; if the files are not already in the load path
+(require-package 'visual-regexp)
 (require 'visual-regexp)
 (define-key global-map (kbd "C-c r") 'vr/replace)
 (define-key global-map (kbd "C-c q") 'vr/query-replace)
@@ -106,6 +111,7 @@
 (global-set-key (kbd "<f2>") 'xah-cut-line-or-region) ; cut
 (global-set-key (kbd "<f3>") 'xah-copy-line-or-region) ; copy
 (global-set-key (kbd "<f4>") 'yank) ; paste
+(require-package 'session)
 (require 'session)
 (add-hook 'after-init-hook 'session-initialize)
 (global-unset-key (kbd "C-z"))
@@ -122,9 +128,11 @@
 (eval-after-load 'info
   '(progn (info-initialize)
           (add-to-list 'Info-directory-list  "~/.emacs.d/elpa/magit-20140720.358")))
+(require-package 'magit)
 (require 'magit)
 
 ;set uniquify to make buffer name uniq 
+(require-package 'uniquify)
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
@@ -135,9 +143,11 @@
 ;(require 'flycheck)
 (setq ac-disable-faces nil)
 (put 'set-goal-column 'disabled nil)
+(require-package 'smex)
 (require 'smex)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(require-package 'projectile)
 (require 'projectile)
 (setq projectile-indexing-method 'native)
 (projectile-global-mode)
@@ -150,16 +160,4 @@
 (autoload 'markdown-mode "markdown-mode"
     "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
-(defconst *is-a-mac* (eq system-type 'darwin))
-(add-to-list 'load-path "~/.emacs.d/lisp")
 (provide 'start-init)
-(require 'init-utils)
-(require 'init-elpa)
-(require 'init-auto-complete)
-(require-package 'diminish)
-(require 'init-editing-utils)
-(require 'init-hippie)
-(require 'init-grep)
-(require 'init-org)
-(require 'init-cpp)
-(require 'init-makefile)
