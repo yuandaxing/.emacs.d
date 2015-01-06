@@ -1,7 +1,7 @@
 (defconst *is-a-mac* (eq system-type 'darwin))
 (add-to-list 'load-path "~/.emacs.d/lisp")
-(require 'init-elpa)
 (require 'init-utils)
+(require 'init-elpa)
 (require 'init-auto-complete)
 (require-package 'diminish)
 (require 'init-editing-utils)
@@ -61,7 +61,6 @@
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-(add-to-list 'load-path "/home/dayua/.emacs.d/elpa/visual-regexp-20140311.724/") ;; if the files are not already in the load path
 (require-package 'visual-regexp)
 (require 'visual-regexp)
 (define-key global-map (kbd "C-c r") 'vr/replace)
@@ -132,7 +131,7 @@
 (require 'magit)
 
 ;set uniquify to make buffer name uniq 
-(require-package 'uniquify)
+;(require-package 'uniquify)
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
