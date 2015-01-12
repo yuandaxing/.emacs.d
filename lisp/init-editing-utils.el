@@ -334,35 +334,35 @@ With arg N, insert N newlines."
                    (lambda (s1 s2) (eq (random 2) 0)))))))
 
 
-
+;
 
 (require-package 'highlight-escape-sequences)
 (hes-mode)
 
-
+;
 (when (eval-when-compile (not (string= "cygwin" system-type)))
   (require-package 'guide-key)
   (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x 5" "C-c ;" "C-c ; f" "C-c ' f" "C-x n"))
   (guide-key-mode 1)
   (diminish 'guide-key-mode)
   )
-
+;
 ;bind some key according to effective emacs
 (global-set-key (kbd "C-w") 'backward-kill-word)
 (global-set-key (kbd "C-x C-k") 'kill-region)
-
+;
 ; set frame name 
 (setq frame-title-format "Emacs - %f")
-
+;
 
-
+;
 ; smex fast find history command 
 (require-package 'smex)
 (require 'smex)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
-
+;
 ;projectile fast find project file
 ; 1. create a file name .projectile
 ; 2. 
@@ -373,6 +373,6 @@ With arg N, insert N newlines."
 (setq projectile-enable-caching t)
 (global-set-key [f5] 'projectile-find-file)
 
-
+;
 
 (provide 'init-editing-utils)
