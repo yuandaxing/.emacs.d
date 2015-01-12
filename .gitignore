@@ -1,6 +1,8 @@
 *~
 /*
 !.gitignore
+!.projectile
+!README.md
 !start-init.el
 !/lisp/
 /lisp/*
