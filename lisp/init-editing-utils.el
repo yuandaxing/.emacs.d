@@ -365,7 +365,9 @@ With arg N, insert N newlines."
 ;
 ;projectile fast find project file
 ; 1. create a file name .projectile
-; 2. 
+; 2. remove all the unused files
+;    - pattern1
+;    - pattern2
 (require-package 'projectile)
 (require 'projectile)
 (setq projectile-indexing-method 'native)
