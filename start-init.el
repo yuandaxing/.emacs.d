@@ -71,7 +71,7 @@
 ;(add-hook 'python-mode-hook 'jedi:setup)
 ;(setq jedi:complete-on-dot t)
 
-(global-set-key (kbd "<f5>") 'redraw-display)
+;(global-set-key (kbd "<f5>") 'redraw-display)
 
 ;; automatically save buffers associated with files on buffer switch
 ;; and on windows switch
@@ -143,16 +143,7 @@
 ;(require 'flycheck)
 (setq ac-disable-faces nil)
 (put 'set-goal-column 'disabled nil)
-(require-package 'smex)
-(require 'smex)
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-(require-package 'projectile)
-(require 'projectile)
-(setq projectile-indexing-method 'native)
-(projectile-global-mode)
-(setq projectile-enable-caching t)
-(global-set-key [f5] 'projectile-find-file)
+
 (add-hook 'erc-mode-hook
 		  '(lambda ()
 ;			 (erc :server "irc.freenode.net" :port 6667 :full-name "Daxing Yuan" :nick "dayua")

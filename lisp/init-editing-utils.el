@@ -355,4 +355,24 @@ With arg N, insert N newlines."
 (setq frame-title-format "Emacs - %f")
 
 
+
+; smex fast find history command 
+(require-package 'smex)
+(require 'smex)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+
+
+;projectile fast find project file
+; 1. create a file name .projectile
+; 2. 
+(require-package 'projectile)
+(require 'projectile)
+(setq projectile-indexing-method 'native)
+(projectile-global-mode)
+(setq projectile-enable-caching t)
+(global-set-key [f5] 'projectile-find-file)
+
+
+
 (provide 'init-editing-utils)
