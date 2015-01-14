@@ -144,7 +144,7 @@
     (previous-line 2)
     (org-edit-src-code)))
 ;all the files matched by org-agenda-file-regexp will be the agenda filelist
-(setq org-agenda-files (list "~/skillset/os/"
+(setq-default org-agenda-files (list "~/skillset/os/"
                              "~/skillset/edit/"
                              "~/skillset/other/"
                              "~/skillset/algorithm/"
