@@ -13,6 +13,7 @@
 (require-package 'yasnippet)
 (require 'yasnippet)
 (yas-global-mode 1)
+(require 'init-windows)
 ;; (global-set-key (kbd "C-c ; p") 'yas-expand)
 ;; ;; default hotkey `C-c & C-s` is still valid
 ;; (global-set-key (kbd "C-c ; i") 'yas-insert-snippet)
