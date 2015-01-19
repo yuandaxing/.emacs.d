@@ -149,7 +149,8 @@
                              "~/skillset/other/"
                              "~/skillset/algorithm/"
                              "~/skillset/web/"
-                             "~/skillset/GTD/"))
+                             "~/skillset/GTD/"
+                             "~/skillset/language/"))
 
 (setq org-refile-targets (quote ((nil :maxlevel . 9)
                                  (org-agenda-files :maxlevel . 9))))
