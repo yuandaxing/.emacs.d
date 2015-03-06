@@ -144,13 +144,13 @@
     (previous-line 2)
     (org-edit-src-code)))
 ;all the files matched by org-agenda-file-regexp will be the agenda filelist
-(setq-default org-agenda-files (list "~/skillset/os/"
-                             "~/skillset/edit/"
-                             "~/skillset/other/"
-                             "~/skillset/algorithm/"
-                             "~/skillset/web/"
-                             "~/skillset/GTD/"
-                             "~/skillset/language/"))
+(setq-default org-agenda-files (list "~/code/skillset/os/"
+                             "~/code/skillset/edit/"
+                             "~/code/skillset/other/"
+                             "~/code/skillset/algorithm/"
+                             "~/code/skillset/web/"
+                             "~/code/skillset/GTD/"
+                             "~/code/skillset/language/"))
 
 (setq org-refile-targets (quote ((nil :maxlevel . 9)
                                  (org-agenda-files :maxlevel . 9))))
