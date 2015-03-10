@@ -1,4 +1,5 @@
 (require 'compile)
+
 (add-hook 'c-mode-hook
 		  (lambda ()
 			(unless (file-exists-p "Makefile")
@@ -14,9 +15,12 @@
 							 (or (getenv "CPPFLAGS") "-DDEBUG=9")
 							 (or (getenv "CFLAGS") "-ansi -pedantic -Wall -g")
 							 file))))))
+
 (defun c++-mode-hook-setting()
   (c-set-offset 'substatement-open 0)
   (set-default 'c-default-style "linux"
                'c-basic-offset 2))
+
 (add-hook 'c++-mode-hook 'c++-mode-hook-setting)
+
 (provide 'init-cpp)
