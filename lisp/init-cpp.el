@@ -21,7 +21,7 @@
   (set-default 'c-default-style "linux"
                'c-basic-offset 2))
 
-;test
+;test test2
 (add-hook 'c++-mode-hook 'c++-mode-hook-setting)
 
 (provide 'init-cpp)
