@@ -19,7 +19,8 @@
 (defun c++-mode-hook-setting()
   (c-set-offset 'substatement-open 0)
   (set-default 'c-default-style "linux"
-               'c-basic-offset 2))
+               'c-basic-offset 2)
+  )
 
 ;test test2
 (add-hook 'c++-mode-hook 'c++-mode-hook-setting)
