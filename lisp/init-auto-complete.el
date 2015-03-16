@@ -1,6 +1,8 @@
 (require-package 'auto-complete)
 (require 'auto-complete-config)
+
 (global-auto-complete-mode t)
+;test2
 (setq-default ac-expand-on-auto-complete nil)
 
 ;(setq-default ac-auto-start nil)
