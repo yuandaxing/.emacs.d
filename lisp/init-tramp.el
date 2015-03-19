@@ -6,6 +6,9 @@
 
 (defun s1()
   (interactive)
-  (find-file "/yuandx@10.0.2.140:~/mv_code/trunk/"))
+  (find-file "/yuandx@10.0.2.140:~/mv_code/"))
+
+;; (add-to-list 'tramp-default-proxies-alist
+;;              '(nil "ambition" "/ssh:%h:/home/ambition/"))
 
 (provide 'init-tramp)
