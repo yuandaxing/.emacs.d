@@ -20,6 +20,7 @@
   (c-set-offset 'substatement-open 0)
   (set-default 'c-default-style "linux")
   (set-default 'c-basic-offset 2)
+  (add-to-list 'c-offsets-alist '(innamespace . 0))
   )
 
 (add-hook 'c++-mode-hook 'c++-mode-hook-setting)
