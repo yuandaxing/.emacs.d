@@ -10,5 +10,12 @@
   (setq-default ag-highlight-search t)
   (global-set-key (kbd "M-?") 'ag-project))
 
+(add-hook 'after-init-hook
+          (lambda ()
+            (add-to-list 'grep-files-aliases '("h" . "*.cpp *.h *.cc *.c *.hpp"))
+            (add-to-list 'grep-files-aliases '("cc" . "*.cpp *.h *.cc *.c *.hpp" ))
+            (add-to-list 'grep-files-aliases '("cpp" . "*.cpp *.h *.cc *.hpp"))
+            ))
+
 
 (provide 'init-grep)

@@ -24,5 +24,6 @@
 
 ;test test2
 (add-hook 'c++-mode-hook 'c++-mode-hook-setting)
-
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+(message "hello")
 (provide 'init-cpp)
