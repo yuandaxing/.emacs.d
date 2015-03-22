@@ -12,10 +12,8 @@
 
 (add-hook 'after-init-hook
           (lambda ()
-            (add-to-list 'grep-files-aliases '("h" . "*.cpp *.h *.cc *.c *.hpp"))
-            (add-to-list 'grep-files-aliases '("cc" . "*.cpp *.h *.cc *.c *.hpp" ))
-            (add-to-list 'grep-files-aliases '("cpp" . "*.cpp *.h *.cc *.hpp"))
-            ))
-
-
+            (progn
+              (add-to-list 'grep-files-aliases '("h" . "*.[ch] *.cpp *hpp"))
+              (add-to-list 'grep-files-aliases '("cc" . "*.h *.cc *.cpp *.hpp *.cpp"))
+              (add-to-list 'grep-files-aliases '("cpp" . "*.h *.cc *.cpp *.hpp *.cpp")))))
 (provide 'init-grep)
