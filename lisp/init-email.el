@@ -1,5 +1,4 @@
 (require-package 'mew)
-
 (autoload 'mew "mew" nil t)
 (autoload 'mew-send "mew" nil t)
 (if (boundp 'read-mail-command)
@@ -17,21 +16,28 @@
 (setq mew-pop-size 0)
 (setq toolbar-mail-reader 'Mew)
 (set-default 'mew-decode-quoted 't)
-(setq mew-prog-pgp "gpg")
-(setq mew-name "yuandaxing")
-(setq mew-user "yuandaxing")
-(setq mew-smtp-user "yuandx@smtp.mvad.com")
-;(setq mew-mail-domain "smtp.server.com")
-;(setq mew-smtp-auth-list nil)
-;(setq mew-smtp-auth-list "LOGIN")
-(setq mew-smtp-mail-from "yuandx@smtp.mvad.com")
-(setq mew-smtp-server "smtp.mvad.com")
-(setq mew-pop-server "pop3.mvad.com")
-(setq mew-pop-user "yuandx")
-(setq mew-pop-auth 'pass) ;;认证方式
-(setq mew-use-cached-passwd t)
-;(setq mew-nntp-server "")
-;(setq mew-icon-directory (expand-file-name "mew/etc" dtsite-dir))
+
+(setq mew-config-alist
+      '(
+        ;; ("default"
+        ;;  ("pop-server"           . "pop.gmail.com")
+        ;;  ("name"                 . "yuandaxing")
+        ;;  ("user"                 . "mryuan0")
+        ;;  ("mail-domain"          . "gmail.com")
+        ;;  ("pop-user"             . "mryuan0@gmail.com")
+        ;;  ("smtp-user"            . "mryuan0@gmail.com")
+        ;;  ("smtp-server"          . "smtp.gmail.com")
+        ;; )
+        ("MVAD"
+         ("pop-server"           . "pop.mvad.com")
+         ("name"                 . "yuandaxing")
+         ("user"                 . "yuandx")
+         ("mail-domain"          . "mvad.com")
+         ("pop-user"             . "popuser@mvad.com")
+         ("smtp-user"            . "smtpuser@mvad.com")
+         ("smtp-server"          . "smtp.mvad.com")
+        )
+        ))
 (when (boundp 'utf-translate-cjk)
       (setq utf-translate-cjk t)
       (custom-set-variables
