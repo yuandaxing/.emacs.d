@@ -381,5 +381,6 @@ With arg N, insert N newlines."
   (interactive "sBuffer name: ")
   (switch-to-buffer
    (get-buffer-create (concat "*" buf "*"))))
+(global-set-key (kbd "C-i") 'delete-backward-char)
 
 (provide 'init-editing-utils)
