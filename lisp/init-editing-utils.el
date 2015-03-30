@@ -98,7 +98,7 @@
 ;;----------------------------------------------------------------------------
 (autoload 'zap-up-to-char "misc" "Kill up to, but not including ARGth occurrence of CHAR.")
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
-
+(global-set-key (kbd "C-t") 'transpose-chars)
 
 
 (require-package 'browse-kill-ring)
@@ -376,5 +376,10 @@ With arg N, insert N newlines."
 (global-set-key [f5] 'projectile-find-file)
 
 ;
+(defun new-scrath (buf)
+  "open a buffer, if it doesn't exist, open a new one"
+  (interactive "sBuffer name: ")
+  (switch-to-buffer
+   (get-buffer-create (concat "*" buf "*"))))
 
 (provide 'init-editing-utils)
