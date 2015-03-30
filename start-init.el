@@ -15,6 +15,7 @@
 (yas-global-mode 1)
 (require 'init-windows)
 (require 'init-tramp)
+(require 'init-email)
 ;; (global-set-key (kbd "C-c ; p") 'yas-expand)
 ;; ;; default hotkey `C-c & C-s` is still valid
 ;; (global-set-key (kbd "C-c ; i") 'yas-insert-snippet)
