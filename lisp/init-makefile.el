@@ -7,4 +7,5 @@
 
 (add-hook 'makefile-mode-hook 'blank-mode)
 (add-hook 'makefile-mode-hook 'sanityinc/makefile)
+(add-hook 'makefile-mode-hook 'key-bind-hook)
 (provide 'init-makefile)

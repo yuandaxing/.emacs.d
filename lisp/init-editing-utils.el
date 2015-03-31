@@ -382,14 +382,18 @@ With arg N, insert N newlines."
   (switch-to-buffer
    (get-buffer-create (concat "*" buf "*"))))
 
+(defvar keys-bind-minor-mode-map (make-keymap) "my-keys-minor-mode keymap.")
+(define-key keys-bind-minor-mode-map (kbd "C-'") 'delete-backward-char)
+(define-key keys-bind-minor-mode-map (kbd "C-w") 'backward-kill-word)
+(define-key keys-bind-minor-mode-map (kbd "C-x C-k") 'kill-region)
+
+(define-minor-mode keys-bind-minor-mode
+  "A minor mode so that my key settings override annoying major modes."
+  t " my-keys" 'keys-bind-minor-mode-map)
+;(keys-bind-minor-mode 1)
 (defun key-bind-hook()
-  (progn
-    (local-unset-key (kdb "C-i"))
-    (global-unset-key (kdb "C-i"))
-    (global-set-key (kbd "C-i") 'delete-backward-char)
-    (global-set-key (kbd "C-w") 'backward-kill-word)
-    (global-set-key (kbd "C-x C-k") 'kill-region)
-    )
-  )
+  (progn 
+  (keys-bind-minor-mode 1)
+))
 
 (provide 'init-editing-utils)
