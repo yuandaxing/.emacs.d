@@ -37,9 +37,10 @@
  )
 (require 'helm-gtags)
 ;; Enable helm-gtags-mode
-(add-hook 'c-mode-hook 'helm-gtags-mode)
-(add-hook 'c++-mode-hook 'helm-gtags-mode)
 (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
 (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
+(add-hook 'c++-mode-hook 'key-bind-hook )
+(add-hook 'c++-mode-hook 'helm-gtags-mode)
+
 
 (provide 'init-cpp)

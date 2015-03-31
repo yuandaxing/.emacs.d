@@ -151,6 +151,7 @@
                              "~/code/skillset/web/"
                              "~/code/skillset/GTD/"
                              "~/code/skillset/language/"))
+(add-hook 'org-mode-hook 'key-bind-hook)
 
 (setq org-refile-targets (quote ((nil :maxlevel . 9)
                                  (org-agenda-files :maxlevel . 9))))
