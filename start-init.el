@@ -16,6 +16,9 @@
 (require 'init-windows)
 (require 'init-tramp)
 (require 'init-email)
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+(set-default 'tramp-shell-prompt-pattern "\\(?:^\\|\r\\)[^]#$%>\n]*#?[]#$%>].* *\\(^[\\[[0-9;]*[a-zA-Z] *\\)*")
+;(add-to-list 'comint-output-filter-functions 'ansi-color-process-output)
 ;; (global-set-key (kbd "C-c ; p") 'yas-expand)
 ;; ;; default hotkey `C-c & C-s` is still valid
 ;; (global-set-key (kbd "C-c ; i") 'yas-insert-snippet)
