@@ -122,18 +122,10 @@
 (add-hook 'after-init-hook 'session-initialize)
 (global-unset-key (kbd "C-z"))
 (global-set-key (kbd "C-z") 'undo)
-; repeat last command, C-x Esc Esc
-;ace jump multiple then jump back C-x space
-;C-S <BackSpace> kill-whole-line
-;C-<UP>|<DOWN>  move by paragraph
-;setting for html
+
 
 (setq ido-separator "\n")
 (set-face-attribute 'default nil :height 120)
-(add-to-list 'load-path "~/.emacs.d/elpa/magit-20140720.358")
-(eval-after-load 'info
-  '(progn (info-initialize)
-          (add-to-list 'Info-directory-list  "~/.emacs.d/elpa/magit-20140720.358")))
 (require-package 'magit)
 (require 'magit)
 
