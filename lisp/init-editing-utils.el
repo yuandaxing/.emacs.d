@@ -395,5 +395,5 @@ With arg N, insert N newlines."
   (progn 
   (keys-bind-minor-mode 1)
 ))
-
+(scroll-bar-mode -1)
 (provide 'init-editing-utils)
