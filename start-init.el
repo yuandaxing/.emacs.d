@@ -17,7 +17,7 @@
 (require 'init-tramp)
 (require 'init-email)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-(set-default 'tramp-shell-prompt-pattern "\\(?:^\\|\r\\)[^]#$%>\n]*#?[]#$%>].* *\\(^[\\[[0-9;]*[a-zA-Z] *\\)*")
+
 ;(add-to-list 'comint-output-filter-functions 'ansi-color-process-output)
 ;; (global-set-key (kbd "C-c ; p") 'yas-expand)
 ;; ;; default hotkey `C-c & C-s` is still valid
@@ -74,9 +74,6 @@
 (define-key global-map (kbd "C-c q") 'vr/query-replace)
 ;; if you use multiple-cursors, this is for you:
 (define-key global-map (kbd "C-c m") 'vr/mc-mark)
-;(add-hook 'python-mode-hook 'jedi:setup)
-;(setq jedi:complete-on-dot t)
-
 ;(global-set-key (kbd "<f5>") 'redraw-display)
 
 ;; automatically save buffers associated with files on buffer switch
@@ -149,4 +146,10 @@
 (autoload 'markdown-mode "markdown-mode"
     "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(load-theme 'tsdh-light)
+(setq inhibit-startup-screen t)
+(setq inhibit-startup-message t)
+(setq-default initial-scratch-message 
+              (concat ";; Happy hacking " (or user-login-name "") " - Emacs ♥ you!\n\n"))
+
 (provide 'start-init)
