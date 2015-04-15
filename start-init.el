@@ -16,6 +16,7 @@
 (require 'init-windows)
 (require 'init-tramp)
 (require 'init-email)
+(require 'init-theme)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 ;(add-to-list 'comint-output-filter-functions 'ansi-color-process-output)
@@ -30,7 +31,6 @@
  ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
  '(column-number-mode t)
- '(custom-enabled-themes (quote (tango-dark)))
  '(ido-enable-flex-matching t)
  '(ido-mode (quote both) nil (ido))
  '(line-number-mode t)
@@ -146,7 +146,6 @@
 (autoload 'markdown-mode "markdown-mode"
     "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
-(load-theme 'tsdh-light)
 (setq inhibit-startup-screen t)
 (setq inhibit-startup-message t)
 (setq-default initial-scratch-message 
