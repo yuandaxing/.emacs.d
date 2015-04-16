@@ -17,9 +17,6 @@
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 ;(add-to-list 'comint-output-filter-functions 'ansi-color-process-output)
-;; (global-set-key (kbd "C-c ; p") 'yas-expand)
-;; ;; default hotkey `C-c & C-s` is still valid
-;; (global-set-key (kbd "C-c ; i") 'yas-insert-snippet)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -34,31 +31,8 @@
  '(menu-bar-mode nil)
  '(tool-bar-mode nil))
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(ac-candidate-face ((t (:family "DejaVu Sans Mono")))))
-;(windmove-default-keybindings)         ; shifted arrow keys
-;; (add-to-list 'load-path "~/.emacs.d/elpa/ace-jump-mode-20140207.530/")
-;; (add-to-list 'load-path "~/.emacs.d/user-plugin/")
-;; (add-to-list 'load-path "~/.emacs.d/elpa/web-mode-20140711.1339/")
-;; (autoload
-;;   'ace-jump-mode
-;;   "ace-jump-mode"
-;;   "Emacs quick move minor mode"
-;;   t)
-;; (define-key global-map (kbd "C-c C-SPC") 'ace-jump-mode)
-;; ;could not work with auto complete
-;; ;(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode)) ; 
-;; (autoload
-;;   'ace-jump-mode-pop-mark
-;;   "ace-jump-mode"
-;;   "Ace jump back:-)"
-;;   t)
-;; (eval-after-load "ace-jump-mode"
-;;   '(ace-jump-mode-enable-mark-sync))
-;; (define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
+
 (require-package 'multiple-cursors)
 (require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)

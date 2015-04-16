@@ -5,7 +5,7 @@
 (require 'auto-complete-config)
 
 (global-auto-complete-mode t)
-;test2
+
 (setq-default ac-expand-on-auto-complete nil)
 
 ;(setq-default ac-auto-start nil)
@@ -18,8 +18,6 @@
 (add-to-list 'completion-styles 'initials t)
 ;; Stop completion-at-point from popping up completion buffers so eagerly
 (setq completion-cycle-threshold 5)
-
-;; TODO: find solution for php, haskell and other modes where TAB always does something
 
 (setq c-tab-always-indent nil
       c-insert-tab-function 'indent-for-tab-command)
@@ -40,7 +38,6 @@
               (remove 'sanityinc/auto-complete-at-point completion-at-point-functions))))
 
 (add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
-
 
 (set-default 'ac-sources
              '(ac-source-imenu
