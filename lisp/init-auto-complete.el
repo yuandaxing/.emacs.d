@@ -1,3 +1,6 @@
+(require-package 'yasnippet)
+(require 'yasnippet)
+(yas-global-mode 1)
 (require-package 'auto-complete)
 (require 'auto-complete-config)
 
@@ -42,6 +45,7 @@
 (set-default 'ac-sources
              '(ac-source-imenu
                ac-source-dictionary
+               ac-source-yasnippet
                ac-source-words-in-buffer
                ac-source-words-in-same-mode-buffers
                ac-source-words-in-all-buffer))
