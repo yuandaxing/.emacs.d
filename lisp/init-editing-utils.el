@@ -376,6 +376,7 @@ With arg N, insert N newlines."
 (global-set-key [f5] 'projectile-find-file)
 
 ;
+;setting for buffer delete key bindings
 (defun new-scrath (buf)
   "open a buffer, if it doesn't exist, open a new one"
   (interactive "sBuffer name: ")
@@ -396,4 +397,12 @@ With arg N, insert N newlines."
   (keys-bind-minor-mode 1)
 ))
 (scroll-bar-mode -1)
+
+(setq backup-directory-alist
+          `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+          `((".*" ,temporary-file-directory t)))
+
+;
+
 (provide 'init-editing-utils)
