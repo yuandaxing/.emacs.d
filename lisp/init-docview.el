@@ -3,5 +3,4 @@
   (lambda ()
     (linum-mode -1)
   ))
-
 (provide 'init-docview)
