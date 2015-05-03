@@ -20,6 +20,7 @@
   (c-set-offset 'substatement-open 0)
   (c-set-offset 'innamespace 0)
   (set-default 'c-basic-offset 2)
+  (setq ff-search-directories '("../include/*" "../src" "." "../../src" "../../include/*"))
   )
 
 (add-hook 'c++-mode-hook 'c++-mode-hook-setting)
