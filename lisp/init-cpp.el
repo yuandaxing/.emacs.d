@@ -41,6 +41,7 @@
 (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
 (add-hook 'c++-mode-hook 'key-bind-hook )
 (add-hook 'c++-mode-hook 'helm-gtags-mode)
-
+(eval-after-load 'helm-grep
+  '(setq helm-grep-default-command helm-grep-default-recurse-command))
 
 (provide 'init-cpp)
