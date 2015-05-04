@@ -1,5 +1,4 @@
 (require 'compile)
-
 (add-hook 'c-mode-hook
           (lambda ()
             (unless (file-exists-p "Makefile")
@@ -15,11 +14,11 @@
                              (or (getenv "CPPFLAGS") "-DDEBUG=9")
                              (or (getenv "CFLAGS") "-ansi -pedantic -Wall -g")
                              file))))))
-
 (defun c++-mode-hook-setting()
   (c-set-offset 'substatement-open 0)
   (c-set-offset 'innamespace 0)
   (set-default 'c-basic-offset 2)
+  (setq ff-search-directories '("../include/*" "../src" "." "../../src" "../../include/*"))
   )
 
 (add-hook 'c++-mode-hook 'c++-mode-hook-setting)
