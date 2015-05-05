@@ -19,6 +19,7 @@
   (c-set-offset 'innamespace 0)
   (set-default 'c-basic-offset 2)
   (setq ff-search-directories '("../include/*" "../src" "." "../../src" "../../include/*"))
+  (setq helm-zgrep-file-extension-regexp ".*\\(\\.h\\|\\.cpp\\|\\.cc\\|\\.hpp\\)$")
   )
 
 (add-hook 'c++-mode-hook 'c++-mode-hook-setting)
