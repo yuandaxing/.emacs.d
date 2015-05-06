@@ -42,10 +42,6 @@
 (add-hook 'c++-mode-hook 'key-bind-hook )
 (add-hook 'c++-mode-hook 'helm-gtags-mode)
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(ac-candidate-face ((t (:family "DejaVu Sans Mono"))))
  '(helm-selection ((t (:background "tan" :underline (:color "dark orange" :style wave)))))
  '(helm-selection-line ((t (:background "cornsilk" :foreground "dark orange" :underline nil)))))
