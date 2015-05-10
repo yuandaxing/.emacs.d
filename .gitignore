@@ -7,3 +7,4 @@
 !/lisp/
 /lisp/*
 !/lisp/*.el
+!/snippets/*
