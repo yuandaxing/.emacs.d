@@ -1,5 +1,6 @@
 *~
 /*
+!/snippets*
 !.gitignore
 !.projectile
 !README.md
@@ -7,4 +8,3 @@
 !/lisp/
 /lisp/*
 !/lisp/*.el
-!/snippets/*
