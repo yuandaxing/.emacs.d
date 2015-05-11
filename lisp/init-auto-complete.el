@@ -39,6 +39,9 @@
 
 (add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
 
+(setq yas-snippet-dirs (append yas-snippet-dirs
+                               '("~/.emacs.d/snippets/")))
+
 (set-default 'ac-sources
              '(ac-source-imenu
                ac-source-dictionary
@@ -64,6 +67,5 @@
   (< (buffer-size other-buffer) (* 1 1024 1024)))
 
 (setq dabbrev-friend-buffer-function 'sanityinc/dabbrev-friend-buffer)
-
 
 (provide 'init-auto-complete)

@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: author
+# key: aut
+# --
+/*
+ * author: yuandx
+ * create: `(format-time-string "%Y-%m-%d")`
+ * email: yuandx@mvad.com
+ */
