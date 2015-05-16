@@ -49,6 +49,7 @@
   '(setq helm-grep-default-command helm-grep-default-recurse-command))
 
 (require-package 'helm-swoop)
+(require 'helm-swoop)
 
 ;; Change the keybinds to whatever you like :)
 (global-set-key (kbd "M-i") 'helm-swoop)
@@ -61,7 +62,7 @@
 ;; From helm-swoop to helm-multi-swoop-all
 (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
 ;; When doing evil-search, hand the word over to helm-swoop
-;; (define-key evil-motion-state-map (kbd "M-i") 'helm-swoop-from-evil-search)
+; (define-key evil-motion-state-map (kbd "M-i") 'helm-swoop-from-evil-search)
 
 ;; Move up and down like isearch
 (define-key helm-swoop-map (kbd "C-r") 'helm-previous-line)
