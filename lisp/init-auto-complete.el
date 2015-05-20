@@ -40,7 +40,7 @@
 (add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
 
 (setq yas-snippet-dirs (append yas-snippet-dirs
-                               '("~/.emacs.d/snippets/")))
+                               (expand-file-name "snippets" user-emacs-directory)))
 
 (set-default 'ac-sources
              '(ac-source-imenu
