@@ -385,7 +385,7 @@ With arg N, insert N newlines."
    (get-buffer-create (concat "*" buf "*"))))
 
 (defvar keys-bind-minor-mode-map (make-keymap) "my-keys-minor-mode keymap.")
-(define-key keys-bind-minor-mode-map (kbd "C-'") 'delete-backward-char)
+(define-key keys-bind-minor-mode-map (kbd "C-h") 'delete-backward-char)
 (define-key keys-bind-minor-mode-map (kbd "C-w") 'backward-kill-word)
 (define-key keys-bind-minor-mode-map (kbd "C-x C-k") 'kill-region)
 
