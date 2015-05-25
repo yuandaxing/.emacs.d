@@ -1,0 +1,7 @@
+(defadvice term-line-mode (after term-line-mode-fixes ())
+  (set (make-local-variable 'cua-mode) t)
+  (set (make-local-variable 'transient-mark-mode) t))
+(ad-activate 'term-line-mode)
+(defadvice ansi-term (after advice-term-line-mode activate)
+  (term-line-mode))
+(provide 'init-term)
