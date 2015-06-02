@@ -388,6 +388,9 @@ With arg N, insert N newlines."
 (define-key keys-bind-minor-mode-map (kbd "C-h") 'delete-backward-char)
 (define-key keys-bind-minor-mode-map (kbd "C-w") 'backward-kill-word)
 (define-key keys-bind-minor-mode-map (kbd "C-x C-k") 'kill-region)
+(define-key keys-bind-minor-mode-map (kbd "C-x j") 'ido-switch-buffer)
+(define-key keys-bind-minor-mode-map (kbd "C-x C-j") 'list-buffers)
+(define-key keys-bind-minor-mode-map (kbd "C-z") 'keyboard-quit)
 
 (define-minor-mode keys-bind-minor-mode
   "A minor mode so that my key settings override annoying major modes."
