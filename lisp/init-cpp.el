@@ -26,7 +26,7 @@
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (require-package 'helm)
 (require-package 'helm-gtags)
-
+(add-to-list 'grep-find-ignored-files ".git*")
 (setq
  helm-gtags-ignore-case t
  helm-gtags-auto-update t
