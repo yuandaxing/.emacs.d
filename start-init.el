@@ -13,12 +13,13 @@
 (require 'init-windows)
 (require 'init-tramp)
 (require 'init-email)
-(require 'init-theme)
 (require 'init-docview)
 (require 'init-desktop)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 (require 'init-term)
 (require 'init-keychord)
+(require 'init-theme)
+
 ;(add-to-list 'comint-output-filter-functions 'ansi-color-process-output)
 
 (custom-set-variables
