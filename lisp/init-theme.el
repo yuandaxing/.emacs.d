@@ -1,5 +1,5 @@
 (require-package 'solarized-theme)
 (require 'solarized-theme)
-(load-theme 'solarized-dark t)
-(setq solarized-default-background-mode 'dark)
+(load-theme 'solarized-light t)
+;(setq solarized-default-background-mode 'dark)
 (provide 'init-theme)
