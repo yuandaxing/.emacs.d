@@ -19,7 +19,7 @@
 (require 'init-term)
 (require 'init-keychord)
 (require 'init-theme)
-
+(require 'init-macro)
 ;(add-to-list 'comint-output-filter-functions 'ansi-color-process-output)
 
 (custom-set-variables
