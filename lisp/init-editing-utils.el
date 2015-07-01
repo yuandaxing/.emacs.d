@@ -151,11 +151,6 @@
 (global-set-key (kbd "C-.") 'set-mark-command)
 (global-set-key (kbd "C-x C-.") 'pop-global-mark)
 
-(require-package 'ace-jump-mode)
-(global-set-key (kbd "C-;") 'ace-jump-mode)
-(global-set-key (kbd "C-x C-;") 'ace-jump-line-mode)
-(global-set-key (kbd "C-:") 'ace-jump-word-mode)
-
 
 (require-package 'multiple-cursors)
 ;; multiple-cursors
