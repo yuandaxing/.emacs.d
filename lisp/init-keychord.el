@@ -4,10 +4,11 @@
 (key-chord-define-global "jj" 'ace-jump-word-mode)
 (key-chord-define-global "jl" 'ace-jump-line-mode)
 (key-chord-define-global "jk" 'ace-jump-char-mode)
-(key-chord-define-global "JJ" 'prelude-switch-to-previous-buffer)
+(key-chord-define-global "oo" 'ido-switch-buffer)
 (key-chord-define-global "uu" 'undo-tree-visualize)
 (key-chord-define-global "xx" 'smex)
 (key-chord-define-global "yy" 'browse-kill-ring)
+(key-chord-define-global "ff" 'projectile-find-file)
 
 ;; (defvar key-chord-tips '("Press <jj> quickly to jump to the beginning of a visible word."
 ;;                          "Press <jl> quickly to jump to a visible line."
