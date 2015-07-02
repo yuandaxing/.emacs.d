@@ -26,6 +26,7 @@
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (require-package 'helm)
 (require-package 'helm-gtags)
+(require-package 'helm-projectile)
 (setq
  helm-gtags-ignore-case t
  helm-gtags-auto-update t
