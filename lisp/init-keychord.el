@@ -8,7 +8,7 @@
 (key-chord-define-global "uu" 'undo-tree-visualize)
 (key-chord-define-global "xx" 'smex)
 (key-chord-define-global "yy" 'browse-kill-ring)
-(key-chord-define-global ".." 'projectile-find-file)
+(key-chord-define-global ",." 'projectile-find-file)
 
 ;; (defvar key-chord-tips '("Press <jj> quickly to jump to the beginning of a visible word."
 ;;                          "Press <jl> quickly to jump to a visible line."
