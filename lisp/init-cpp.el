@@ -27,6 +27,8 @@
 (require-package 'helm)
 (require-package 'helm-gtags)
 (require-package 'helm-projectile)
+(setq projectile-globally-ignored-files (append projectile-globally-ignored-files '("GTAGS" "GPATH" "GSYMS" "GRTAGS" "makefile")))
+
 (setq
  helm-gtags-ignore-case t
  helm-gtags-auto-update t
