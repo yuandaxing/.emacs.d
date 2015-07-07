@@ -1,6 +1,10 @@
 (require-package 'key-chord)
 (key-chord-mode 1)
 (require-package 'ace-jump-mode)
+(require-package 'helm-projectile)
+(setq projectile-globally-ignored-files (append projectile-globally-ignored-files
+                                                '("GTAGS" "GPATH" "GSYMS" "GRTAGS" "makefile" "*.pyc")))
+(require 'helm-projectile)
 (key-chord-define-global "jj" 'ace-jump-word-mode)
 (key-chord-define-global "jl" 'ace-jump-line-mode)
 (key-chord-define-global "jk" 'ace-jump-char-mode)
@@ -8,7 +12,7 @@
 (key-chord-define-global "uu" 'undo-tree-visualize)
 (key-chord-define-global "xx" 'smex)
 (key-chord-define-global "yy" 'browse-kill-ring)
-(key-chord-define-global ",." 'projectile-find-file)
+(key-chord-define-global ",." 'helm-projectile-find-file)
 
 ;; (defvar key-chord-tips '("Press <jj> quickly to jump to the beginning of a visible word."
 ;;                          "Press <jl> quickly to jump to a visible line."

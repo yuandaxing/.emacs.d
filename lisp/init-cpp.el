@@ -26,9 +26,6 @@
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (require-package 'helm)
 (require-package 'helm-gtags)
-(require-package 'helm-projectile)
-(setq projectile-globally-ignored-files (append projectile-globally-ignored-files
-                                                '("GTAGS" "GPATH" "GSYMS" "GRTAGS" "makefile" "*.pyc")))
 
 (setq
  helm-gtags-ignore-case t
@@ -44,6 +41,7 @@
 (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
 (add-hook 'c++-mode-hook 'key-bind-hook )
 (add-hook 'c++-mode-hook 'helm-gtags-mode)
+
 (custom-set-faces
  '(ac-candidate-face ((t (:family "DejaVu Sans Mono"))))
  '(helm-selection ((t (:background "tan" :underline (:color "dark orange" :style wave)))))
