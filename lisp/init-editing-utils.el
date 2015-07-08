@@ -60,13 +60,8 @@
 ;;; Newline behaviour
 
 (global-set-key (kbd "RET") 'newline-and-indent)
-(defun sanityinc/newline-at-end-of-line ()
-  "Move to end of line, enter a newline, and reindent."
-  (interactive)
-  (move-end-of-line 1)
-  (newline-and-indent))
 
-(global-set-key (kbd "S-<return>") 'sanityinc/newline-at-end-of-line)
+
 
 
 
@@ -311,6 +306,7 @@ With arg N, insert N newlines."
     (end-of-line)
     (indent-according-to-mode)))
 
+
 (global-set-key (kbd "C-o") 'sanityinc/open-line-with-reindent)
 
 
@@ -437,5 +433,30 @@ point reaches the beginning or end of the buffer, stop there."
   scroll-step 1
   scroll-conservatively 10000
   scroll-preserve-screen-position 1)
-;----------------------------------------------------------------------------
+;
+(defun prelude-smart-open-line-above ()
+  "Insert an empty line above the current line.
+Position the cursor at it's beginning, according to the current mode."
+  (interactive)
+  (move-beginning-of-line nil)
+  (newline-and-indent)
+  (forward-line -1)
+  (indent-according-to-mode))
+
+(defun prelude-smart-open-line (arg)
+  "Insert an empty line after the current line.
+Position the cursor at its beginning, according to the current mode.
+
+With a prefix ARG open line above the current line."
+  (interactive "P")
+  (if arg
+      (prelude-smart-open-line-above)
+    (progn
+      (move-end-of-line nil)
+      (newline-and-indent))))
+
+
+(global-set-key (kbd "S-<return>") 'prelude-smart-open-line)
+
+;
 (provide 'init-editing-utils)
