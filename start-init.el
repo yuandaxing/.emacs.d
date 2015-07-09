@@ -20,7 +20,7 @@
 (require 'init-keychord)
 (require 'init-theme)
 (require 'init-macro)
-;(add-to-list 'comint-output-filter-functions 'ansi-color-process-output)
+(require 'init-fly)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -125,5 +125,10 @@
 (setq inhibit-startup-message t)
 (setq-default initial-scratch-message 
               (concat ";; Happy hacking " (or user-login-name "") " - Emacs ♥ you!\n\n"))
+(require-package 'diminish)
+(require 'diminish)
+(diminish 'keys-bind-minor-mode "M")
 
 (provide 'start-init)
+;;;start-init.el ends here
+
