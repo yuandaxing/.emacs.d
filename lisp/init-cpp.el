@@ -21,11 +21,17 @@
   (setq ff-search-directories '("../include/*" "../src" "." "../../src" "../../include/*"))
   (setq helm-zgrep-file-extension-regexp ".*\\(\\.h\\|\\.cpp\\|\\.cc\\|\\.hpp\\)$")
   )
-
 (add-hook 'c++-mode-hook 'c++-mode-hook-setting)
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (require-package 'helm)
 (require-package 'helm-gtags)
+
+(setq-default scroll-margin 1
+      scroll-conservatively 100000
+      scroll-up-aggressively 0.01
+      scroll-down-aggressively 0.01)
+(setq-default auto-window-vscroll nil)
+(setq-default scroll-step 1)
 
 (setq
  helm-gtags-ignore-case t
