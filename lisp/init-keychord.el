@@ -3,7 +3,7 @@
 (require-package 'ace-jump-mode)
 (require-package 'helm-projectile)
 (setq projectile-globally-ignored-files (append projectile-globally-ignored-files
-                                                '("GTAGS" "GPATH" "GSYMS" "GRTAGS" "makefile" "*.pyc")))
+                                                '("GTAGS" "GPATH" "GSYMS" "GRTAGS" "makefile" "*\\.pyc")))
 (require 'helm-projectile)
 (key-chord-define-global "jj" 'ace-jump-word-mode)
 (key-chord-define-global "jl" 'ace-jump-line-mode)
