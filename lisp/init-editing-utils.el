@@ -453,6 +453,10 @@ With a prefix ARG open line above the current line."
 
 
 (global-set-key (kbd "S-<return>") 'prelude-smart-open-line)
+(defun comint-clear-buffer ()
+  (interactive)
+  (let ((comint-buffer-maximum-size 0))
+    (comint-truncate-buffer)))
 
 ;
 (provide 'init-editing-utils)
