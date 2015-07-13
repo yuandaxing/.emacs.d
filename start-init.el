@@ -110,10 +110,8 @@
 				  'gb18030 '("Microsoft YaHei" .
 							 "unicode-bmp"))
 ;这是微软雅黑字体，如果没有乱码，设置成功^-^
-;(require 'flycheck)
 (setq ac-disable-faces nil)
 (put 'set-goal-column 'disabled nil)
-
 (add-hook 'erc-mode-hook
 		  '(lambda ()
 ;			 (erc :server "irc.freenode.net" :port 6667 :full-name "Daxing Yuan" :nick "dayua")
