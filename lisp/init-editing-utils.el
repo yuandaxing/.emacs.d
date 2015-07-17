@@ -477,7 +477,8 @@ With a prefix ARG open line above the current line."
    mode-line-modes
    mode-line-misc-info
    mode-line-end-spaces))
-                                        ;
+
+;
 (defun prelude-copy-file-name-to-clipboard ()
   "Copy the current buffer file name to the clipboard."
   (interactive)
