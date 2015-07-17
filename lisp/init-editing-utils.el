@@ -23,7 +23,7 @@
  save-interprogram-paste-before-kill t
  scroll-preserve-screen-position 'always
  set-mark-command-repeat-pop t
-; show-trailing-whitespace t
+                                        ; show-trailing-whitespace t
  tooltip-delay 1.5
  truncate-lines nil
  truncate-partial-width-windows nil
@@ -253,10 +253,10 @@
 ;;----------------------------------------------------------------------------
 ;; Cut/copy the current line if no region is active
 ;;----------------------------------------------------------------------------
-;(require-package 'whole-line-or-region)
-;(whole-line-or-region-mode t)
-;(diminish 'whole-line-or-region-mode)
-;(make-variable-buffer-local 'whole-line-or-region-mode)
+                                        ;(require-package 'whole-line-or-region)
+                                        ;(whole-line-or-region-mode t)
+                                        ;(diminish 'whole-line-or-region-mode)
+                                        ;(make-variable-buffer-local 'whole-line-or-region-mode)
 
 (defun suspend-mode-during-cua-rect-selection (mode-name)
   "Add an advice to suspend `MODE-NAME' while selecting a CUA rectangle."
@@ -274,7 +274,7 @@
            (when ,flagvar
              (,mode-name 1)))))))
 
-;(suspend-mode-during-cua-rect-selection 'whole-line-or-region-mode)
+                                        ;(suspend-mode-during-cua-rect-selection 'whole-line-or-region-mode)
 
 
 
@@ -286,10 +286,10 @@ on the new line if the line would have been blank.
 With arg N, insert N newlines."
   (interactive "*p")
   (let* ((do-fill-prefix (and fill-prefix (bolp)))
-	 (do-left-margin (and (bolp) (> (current-left-margin) 0)))
-	 (loc (point-marker))
-	 ;; Don't expand an abbrev before point.
-	 (abbrev-mode nil))
+         (do-left-margin (and (bolp) (> (current-left-margin) 0)))
+         (loc (point-marker))
+         ;; Don't expand an abbrev before point.
+         (abbrev-mode nil))
     (delete-horizontal-space t)
     (newline n)
     (indent-according-to-mode)
@@ -298,8 +298,8 @@ With arg N, insert N newlines."
     (goto-char loc)
     (while (> n 0)
       (cond ((bolp)
-	     (if do-left-margin (indent-to (current-left-margin)))
-	     (if do-fill-prefix (insert-and-inherit fill-prefix))))
+             (if do-left-margin (indent-to (current-left-margin)))
+             (if do-fill-prefix (insert-and-inherit fill-prefix))))
       (forward-line 1)
       (setq n (1- n)))
     (goto-char loc)
@@ -326,40 +326,40 @@ With arg N, insert N newlines."
                    (lambda (s1 s2) (eq (random 2) 0)))))))
 
 
-;
+                                        ;
 
 (require-package 'highlight-escape-sequences)
 (hes-mode)
 
-;
+                                        ;
 (when (eval-when-compile (not (string= "cygwin" system-type)))
   (require-package 'guide-key)
   (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x 5" "C-c" "C-x n"))
   (guide-key-mode 1)
   (diminish 'guide-key-mode)
   )
-;
-;bind some key according to effective emacs
+                                        ;
+                                        ;bind some key according to effective emacs
 (global-set-key (kbd "C-w") 'backward-kill-word)
 (global-set-key (kbd "C-x C-k") 'kill-region)
-;
-; set frame name 
+                                        ;
+                                        ; set frame name 
 (setq frame-title-format "Emacs - %f")
-;
+                                        ;
 
-;
-; smex fast find history command 
+                                        ;
+                                        ; smex fast find history command 
 (require-package 'smex)
 (require 'smex)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
-;
-;projectile fast find project file
-; 1. create a file name .projectile
-; 2. remove all the unused files
-;    - pattern1
-;    - pattern2
+                                        ;
+                                        ;projectile fast find project file
+                                        ; 1. create a file name .projectile
+                                        ; 2. remove all the unused files
+                                        ;    - pattern1
+                                        ;    - pattern2
 (require-package 'projectile)
 (require 'projectile)
 (setq projectile-indexing-method 'native)
@@ -367,8 +367,8 @@ With arg N, insert N newlines."
 (setq projectile-enable-caching t)
 (global-set-key [f5] 'projectile-find-file)
 
-;
-;setting for buffer delete key bindings
+                                        ;
+                                        ;setting for buffer delete key bindings
 (defun new-scrath (buf)
   "open a buffer, if it doesn't exist, open a new one"
   (interactive "sBuffer name: ")
@@ -386,19 +386,19 @@ With arg N, insert N newlines."
 (define-minor-mode keys-bind-minor-mode
   "A minor mode so that my key settings override annoying major modes."
   t " my-keys" 'keys-bind-minor-mode-map)
-;(keys-bind-minor-mode 1)
+                                        ;(keys-bind-minor-mode 1)
 (defun key-bind-hook()
   (progn 
-  (keys-bind-minor-mode 1)
-))
+    (keys-bind-minor-mode 1)
+    ))
 (scroll-bar-mode -1)
 
 (setq backup-directory-alist
-          `((".*" . ,temporary-file-directory)))
+      `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
-          `((".*" ,temporary-file-directory t)))
+      `((".*" ,temporary-file-directory t)))
 
-;
+                                        ;
 
 (defun smarter-move-beginning-of-line (arg)
   "Move point back to indentation of beginning of line.
@@ -425,11 +425,11 @@ point reaches the beginning or end of the buffer, stop there."
 (global-set-key [remap move-beginning-of-line]
                 'smarter-move-beginning-of-line)
 
-;
+                                        ;
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;
+                                        ;
 (defun prelude-smart-open-line-above ()
   "Insert an empty line above the current line.
 Position the cursor at it's beginning, according to the current mode."
@@ -458,26 +458,26 @@ With a prefix ARG open line above the current line."
   (let ((comint-buffer-maximum-size 0))
     (comint-truncate-buffer)))
 
-;
+                                        ;
 (require-package 'smart-mode-line)
 (setq-default
-   mode-line-format
-   '("%e"
-     mode-line-front-space
-     mode-line-mule-info
-     mode-line-client
-     mode-line-modified
-     mode-line-remote
-     mode-line-frame-identification
-     mode-line-buffer-identification
-     "   "
-     mode-line-position
-     (vc-mode vc-mode)
-     "  "
-     mode-line-modes
-     mode-line-misc-info
-     mode-line-end-spaces))
-;
+ mode-line-format
+ '("%e"
+   mode-line-front-space
+   mode-line-mule-info
+   mode-line-client
+   mode-line-modified
+   mode-line-remote
+   mode-line-frame-identification
+   mode-line-buffer-identification
+   "   "
+   mode-line-position
+   (vc-mode vc-mode)
+   "  "
+   mode-line-modes
+   mode-line-misc-info
+   mode-line-end-spaces))
+                                        ;
 (defun prelude-copy-file-name-to-clipboard ()
   "Copy the current buffer file name to the clipboard."
   (interactive)
@@ -488,5 +488,6 @@ With a prefix ARG open line above the current line."
       (kill-new filename)
       (message "Copied buffer file name '%s' to the clipboard." filename))))
 ;
+
 
 (provide 'init-editing-utils)
