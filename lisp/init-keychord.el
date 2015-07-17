@@ -13,16 +13,49 @@
 (key-chord-define-global "xx" 'smex)
 (key-chord-define-global "yy" 'browse-kill-ring)
 (key-chord-define-global ",." 'helm-projectile-find-file)
+(require-package 'hydra)
+(key-chord-define-global "yy"
+                         (defhydra my/window-movement ()
+                           ("<left>" windmove-left)
+                           ("<right>" windmove-right)
+                           ("<down>" windmove-down)
+                           ("<up>" windmove-up)
+                           ("y" other-window "other")
+                           ("h" ace-window "ace")
+                           ("f" find-file "file")
+                           ("F" find-file-other-window "other file")
+                           ("v" (progn (split-window-right) (windmove-right)))
+                           ("x" (progn (split-window-below) (windmove-down)))
+                           ("o" delete-other-windows :color blue)
+                           ("a" ace-window)
+                           ("s" ace-swap-window)
+                           ("d" delete-window)
+                           ("D" ace-delete-window)
+                           ("i" ace-maximize-window)
+                           ("b" helm-buffers-list)
+                           ("q" nil)))
 
-;; (defvar key-chord-tips '("Press <jj> quickly to jump to the beginning of a visible word."
-;;                          "Press <jl> quickly to jump to a visible line."
-;;                          "Press <jk> quickly to jump to a visible character."
-;;                          "Press <JJ> quickly to switch to previous buffer."
-;;                          "Press <uu> quickly to visualize the undo tree."
-;;                          "Press <xx> quickly to execute extended command."
-;;                          "Press <yy> quickly to browse the kill ring."))
-
-;; (setq prelude-tips (append prelude-tips key-chord-tips))
+(key-chord-define-global "j."
+                         (defhydra join-lines ()
+                           ("<up>" join-line)
+                           ("<down>" (join-line 1))
+                           ("t" join-line)
+                           ("n" (join-line 1))))
+(key-chord-define-global "hh"
+                             (defhydra my/key-chord-commands ()
+                               ("k" kill-sexp)
+                               ("h" emms-pause :color blue)
+                               ("b" helm-buffers-list :color blue)
+                               ("f" find-file :color blue)
+                               ("a" my/org-check-agenda :color blue)
+                               ("." repeat)
+                               ("o" my/org-off-my-computer :color blue)
+                               ("t" emms-seek-backward)
+                               ("s" emms-seek-to :color blue)
+                               ("i" imenu :color blue)
+                               ("+" text-scale-increase)
+                               ("q" nil)
+                               ("-" text-scale-decrease)))
 
 (key-chord-mode +1)
 

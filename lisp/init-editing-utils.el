@@ -334,7 +334,7 @@ With arg N, insert N newlines."
 ;
 (when (eval-when-compile (not (string= "cygwin" system-type)))
   (require-package 'guide-key)
-  (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x 5" "C-c ;" "C-c ; f" "C-c ' f" "C-x n"))
+  (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x 5" "C-c" "C-x n"))
   (guide-key-mode 1)
   (diminish 'guide-key-mode)
   )
@@ -459,4 +459,34 @@ With a prefix ARG open line above the current line."
     (comint-truncate-buffer)))
 
 ;
+(require-package 'smart-mode-line)
+(setq-default
+   mode-line-format
+   '("%e"
+     mode-line-front-space
+     mode-line-mule-info
+     mode-line-client
+     mode-line-modified
+     mode-line-remote
+     mode-line-frame-identification
+     mode-line-buffer-identification
+     "   "
+     mode-line-position
+     (vc-mode vc-mode)
+     "  "
+     mode-line-modes
+     mode-line-misc-info
+     mode-line-end-spaces))
+;
+(defun prelude-copy-file-name-to-clipboard ()
+  "Copy the current buffer file name to the clipboard."
+  (interactive)
+  (let ((filename (if (equal major-mode 'dired-mode)
+                      default-directory
+                    (buffer-file-name))))
+    (when filename
+      (kill-new filename)
+      (message "Copied buffer file name '%s' to the clipboard." filename))))
+;
+
 (provide 'init-editing-utils)
