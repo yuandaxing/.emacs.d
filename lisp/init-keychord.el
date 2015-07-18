@@ -14,8 +14,6 @@
 (key-chord-define-global "yy" 'browse-kill-ring)
 (key-chord-define-global ",." 'helm-projectile-find-file)
 (require-package 'hydra)
-(require-package 'ace-window)
-(require-package 'avy)
 (key-chord-define-global "yy"
                          (defhydra my/window-movement ()
                            ("<left>" windmove-left)
@@ -28,7 +26,7 @@
                            ("F" find-file-other-window "other file")
                            ("v" (progn (split-window-right) (windmove-right)))
                            ("x" (progn (split-window-below) (windmove-down)))
-                           ("o" delete-other-windows :color blue)
+                           ("o" delete-other-windows "delete-other")
                            ("a" switch-window)
                            ("s" helm-swap-window)
                            ("d" delete-window) ("D" delete-window) ("i" maximize-window) ("b" helm-buffers-list) ("q" nil)))
@@ -39,6 +37,7 @@
                            ("<down>" (join-line 1))
                            ("t" join-line)
                            ("n" (join-line 1))))
+
 (key-chord-define-global "hh"
                              (defhydra my/key-chord-commands ()
                                ("k" kill-sexp)
