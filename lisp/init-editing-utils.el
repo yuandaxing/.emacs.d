@@ -324,37 +324,35 @@ With arg N, insert N newlines."
           ((inhibit-field-text-motion t))
         (sort-subr nil 'forward-line 'end-of-line nil nil
                    (lambda (s1 s2) (eq (random 2) 0)))))))
-
-
-                                        ;
+;
 
 (require-package 'highlight-escape-sequences)
 (hes-mode)
 
-                                        ;
+;
 (when (eval-when-compile (not (string= "cygwin" system-type)))
   (require-package 'guide-key)
   (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x 5" "C-c" "C-x n"))
   (guide-key-mode 1)
   (diminish 'guide-key-mode)
   )
-                                        ;
+;
                                         ;bind some key according to effective emacs
 (global-set-key (kbd "C-w") 'backward-kill-word)
 (global-set-key (kbd "C-x C-k") 'kill-region)
-                                        ;
+;
                                         ; set frame name 
 (setq frame-title-format "Emacs - %f")
-                                        ;
+;
 
-                                        ;
+;
                                         ; smex fast find history command 
 (require-package 'smex)
 (require 'smex)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
-                                        ;
+;
                                         ;projectile fast find project file
                                         ; 1. create a file name .projectile
                                         ; 2. remove all the unused files
@@ -367,7 +365,7 @@ With arg N, insert N newlines."
 (setq projectile-enable-caching t)
 (global-set-key [f5] 'projectile-find-file)
 
-                                        ;
+;
                                         ;setting for buffer delete key bindings
 (defun new-scrath (buf)
   "open a buffer, if it doesn't exist, open a new one"
@@ -398,7 +396,7 @@ With arg N, insert N newlines."
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
-                                        ;
+;
 
 (defun smarter-move-beginning-of-line (arg)
   "Move point back to indentation of beginning of line.
@@ -425,11 +423,11 @@ point reaches the beginning or end of the buffer, stop there."
 (global-set-key [remap move-beginning-of-line]
                 'smarter-move-beginning-of-line)
 
-                                        ;
+;
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
-                                        ;
+;
 (defun prelude-smart-open-line-above ()
   "Insert an empty line above the current line.
 Position the cursor at it's beginning, according to the current mode."
@@ -458,7 +456,7 @@ With a prefix ARG open line above the current line."
   (let ((comint-buffer-maximum-size 0))
     (comint-truncate-buffer)))
 
-                                        ;
+;
 (require-package 'smart-mode-line)
 (setq-default
  mode-line-format
