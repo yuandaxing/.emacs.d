@@ -22,6 +22,7 @@
 (require 'init-macro)
 (require 'init-fly)
 (require 'init-easy)
+(require 'init-history)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -120,6 +121,8 @@
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (setq inhibit-startup-screen t)
 (setq inhibit-startup-message t)
+(setq user-full-name "yuandaxing"
+      user-email-address "yuandx@mvad.com")
 (setq-default initial-scratch-message 
               (concat ";; Happy hacking " (or user-login-name "") " - Emacs ♥ you!\n\n"))
 (require-package 'diminish)
