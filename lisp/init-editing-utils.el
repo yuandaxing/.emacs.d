@@ -18,7 +18,6 @@
  ediff-split-window-function 'split-window-horizontally
  ediff-window-setup-function 'ediff-setup-windows-plain
  indent-tabs-mode nil
- make-backup-files nil
  mouse-yank-at-point t
  save-interprogram-paste-before-kill t
  scroll-preserve-screen-position 'always
@@ -457,6 +456,7 @@ With a prefix ARG open line above the current line."
     (comint-truncate-buffer)))
 
 ;
+(setq sml/no-confirm-load-theme t)
 (require-package 'smart-mode-line)
 (setq-default
  mode-line-format
@@ -475,7 +475,7 @@ With a prefix ARG open line above the current line."
    mode-line-modes
    mode-line-misc-info
    mode-line-end-spaces))
-
+(smart-mode-line-enable)
 ;
 (defun prelude-copy-file-name-to-clipboard ()
   "Copy the current buffer file name to the clipboard."
