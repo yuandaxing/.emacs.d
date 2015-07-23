@@ -155,4 +155,14 @@
 
 (setq org-refile-targets (quote ((nil :maxlevel . 9)
                                  (org-agenda-files :maxlevel . 9))))
+(defun my/org-check-agenda ()
+  "Peek at agenda."
+  (interactive)
+  (cond
+   ((derived-mode-p 'org-agenda-mode)
+    (if (window-parent) (delete-window) (bury-buffer)))
+   ((get-buffer "*Org Agenda*")
+    (switch-to-buffer-other-window "*Org Agenda*"))
+   (t (org-agenda nil "a"))))
+
 (provide 'init-org)

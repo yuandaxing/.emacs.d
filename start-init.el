@@ -99,8 +99,8 @@
 
 (setq ido-separator "\n")
 (set-face-attribute 'default nil :height 120)
-(require-package 'magit)
-(require 'magit)
+;; (require-package 'magit)
+;; (require 'magit)
 
 ;set uniquify to make buffer name uniq 
 ;(require-package 'uniquify)
@@ -114,7 +114,7 @@
 (put 'set-goal-column 'disabled nil)
 (add-hook 'erc-mode-hook
 		  '(lambda ()
-;			 (erc :server "irc.freenode.net" :port 6667 :full-name "Daxing Yuan" :nick "dayua")
+			 (erc :server "irc.freenode.net" :port 6667 :full-name "Daxing Yuan" :nick "dayua")
 			 (setq erc-hide-list '("JOIN" "PART" "QUIT"))))
 (autoload 'markdown-mode "markdown-mode"
     "Major mode for editing Markdown files" t)
