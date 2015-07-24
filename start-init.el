@@ -99,9 +99,8 @@
 
 (setq ido-separator "\n")
 (set-face-attribute 'default nil :height 120)
-;(require-package 'magit)
-;(add-to-list 'load-path (expand-file-name "elpa/magit-20150116.517" user-emacs-directory))
-;(require 'magit)
+(require-package 'magit)
+(require 'magit)
 
 ;set uniquify to make buffer name uniq 
 ;(require-package 'uniquify)
