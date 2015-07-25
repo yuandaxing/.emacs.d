@@ -481,6 +481,4 @@ With a prefix ARG open line above the current line."
   (shell (concat "*" name "*")))
 
 ;
-
-
 (provide 'init-editing-utils)
