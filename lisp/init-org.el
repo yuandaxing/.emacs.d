@@ -1,10 +1,6 @@
 (when (< emacs-major-version 24)
   (require-package 'org))
 (require-package 'org-fstree)
-(when *is-a-mac*
-  (require-package 'org-mac-link)
-  (autoload 'org-mac-grab-link "org-mac-link" nil t)
-  (require-package 'org-mac-iCal))
 
 (define-key global-map (kbd "C-c l") 'org-store-link)
 (define-key global-map (kbd "C-c a") 'org-agenda)
@@ -101,11 +97,7 @@
 
 (after-load 'org
   (define-key org-mode-map (kbd "C-M-<up>") 'org-up-element)
-  (when *is-a-mac*
-    (define-key org-mode-map (kbd "M-h") nil))
-  (define-key org-mode-map (kbd "C-M-<up>") 'org-up-element)
-  (when *is-a-mac*
-    (define-key org-mode-map (kbd "C-c g") 'org-mac-grab-link)))
+  (define-key org-mode-map (kbd "C-M-<up>") 'org-up-element))
 
 (after-load 'org
   (org-babel-do-load-languages

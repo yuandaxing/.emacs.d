@@ -1,4 +1,3 @@
-(defconst *is-a-mac* (eq system-type 'darwin))
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'init-utils)
 (require 'init-elpa)
@@ -15,7 +14,6 @@
 (require 'init-email)
 (require 'init-docview)
 (require 'init-desktop)
-(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 (require 'init-term)
 (require 'init-keychord)
 (require 'init-theme)
