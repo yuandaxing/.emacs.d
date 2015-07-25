@@ -45,6 +45,9 @@
 ;; Enable helm-gtags-mode
 (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
 (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
+(define-key helm-map (kbd "C-h") 'helm-ff-delete-char-backward)
+(define-key helm-find-files-map (kbd "C-h") 'helm-ff-delete-char-backward)
+
 (add-hook 'c++-mode-hook 'key-bind-hook )
 (add-hook 'c++-mode-hook 'helm-gtags-mode)
 

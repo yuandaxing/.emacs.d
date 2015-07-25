@@ -350,17 +350,12 @@ With arg N, insert N newlines."
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
 ;
-                                        ;projectile fast find project file
-                                        ; 1. create a file name .projectile
-                                        ; 2. remove all the unused files
-                                        ;    - pattern1
-                                        ;    - pattern2
+
 (require-package 'projectile)
 (require 'projectile)
 (setq projectile-indexing-method 'native)
 (projectile-global-mode)
 (setq projectile-enable-caching t)
-(global-set-key [f5] 'projectile-find-file)
 
 ;
                                         ;setting for buffer delete key bindings
@@ -374,14 +369,11 @@ With arg N, insert N newlines."
 (define-key keys-bind-minor-mode-map (kbd "C-h") 'delete-backward-char)
 (define-key keys-bind-minor-mode-map (kbd "C-w") 'backward-kill-word)
 (define-key keys-bind-minor-mode-map (kbd "C-x C-k") 'kill-region)
-;; (define-key keys-bind-minor-mode-map (kbd "C-x j") 'ido-switch-buffer)
-;; (define-key keys-bind-minor-mode-map (kbd "C-x C-j") 'list-buffers)
-;; (define-key keys-bind-minor-mode-map (kbd "C-z") 'keyboard-escape-quit)
 
 (define-minor-mode keys-bind-minor-mode
   "A minor mode so that my key settings override annoying major modes."
   t " my-keys" 'keys-bind-minor-mode-map)
-                                        ;(keys-bind-minor-mode 1)
+
 (defun key-bind-hook()
   (progn 
     (keys-bind-minor-mode 1)
@@ -484,6 +476,11 @@ With a prefix ARG open line above the current line."
     (when filename
       (kill-new filename)
       (message "Copied buffer file name '%s' to the clipboard." filename))))
+(defun name-shell (name)
+  (interactive "shell name:")
+  (shell name)
+  )
+
 ;
 
 

@@ -97,7 +97,7 @@
 
 (setq ido-separator "\n")
 (set-face-attribute 'default nil :height 120)
-(require-package 'magit)
+(require-package 'magit) ;;
 (require 'magit)
 
 ;set uniquify to make buffer name uniq 
