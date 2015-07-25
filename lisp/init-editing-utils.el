@@ -477,9 +477,8 @@ With a prefix ARG open line above the current line."
       (kill-new filename)
       (message "Copied buffer file name '%s' to the clipboard." filename))))
 (defun name-shell (name)
-  (interactive "shell name:")
-  (shell name)
-  )
+  (interactive "sshell name:")
+  (shell (concat "*" name "*")))
 
 ;
 
