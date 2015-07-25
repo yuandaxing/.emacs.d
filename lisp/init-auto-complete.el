@@ -1,3 +1,4 @@
+;;;code 
 (require-package 'yasnippet)
 (require 'yasnippet)
 (yas-global-mode 1)
@@ -60,7 +61,6 @@
                 sql-interactive-mode
                 inferior-emacs-lisp-mode))
   (add-to-list 'ac-modes mode))
-
 
 ;; Exclude very large buffers from dabbrev
 (defun sanityinc/dabbrev-friend-buffer (other-buffer)
