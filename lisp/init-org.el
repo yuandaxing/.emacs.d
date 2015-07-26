@@ -157,9 +157,10 @@
     (switch-to-buffer-other-window "*Org Agenda*"))
    (t (org-agenda nil "a"))))
 
+(grep-compute-defaults)
 (defun search-snippet (regex-arg)
   (interactive "sRegex: ")
-  (rgrep regex-arg "*" "~/Dropbox/code-snippet/emacs-search/" nil))
+  (rgrep regex-arg "*" "~/Dropbox/code-snippet/emacs-search/"))
 
 
 (provide 'init-org)
