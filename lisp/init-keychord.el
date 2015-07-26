@@ -30,6 +30,10 @@
                            ("k" kill-sexp)
                            ("a" my/org-check-agenda :color blue)
                            ("." repeat)
+                           ("n" next-line)
+                           ("p" previous-line)
+                           ("v" cua-scroll-up)
+                           ("V" cua-scroll-down)
                            ("q" nil)))
 
 (key-chord-mode +1)

@@ -127,7 +127,7 @@
               (concat ";; Happy hacking " (or user-login-name "") " - Emacs ♥ you!\n\n"))
 (require-package 'diminish)
 (require 'diminish)
-(diminish 'keys-bind-minor-mode "M")
+(diminish 'keys-bind-minor-mode)
 
 (provide 'start-init)
 ;;;start-init.el ends here
