@@ -16,7 +16,6 @@
 (require-package 'hydra)
 (key-chord-define-global "yy"
                          (defhydra my/window-movement ()
-                           ("h" switch-window "switch-window")
                            ("f" find-file "file")
                            ("3" (progn (split-window-right) (windmove-right)))
                            ("2" (progn (split-window-below) (windmove-down)))
@@ -28,7 +27,7 @@
                            ("+" text-scale-increase)
                            ("-" text-scale-decrease)
                            ("k" kill-sexp)
-                           ("a" my/org-check-agenda :color blue)
+                           ("a" my/org-check-agenda)
                            ("." repeat)
                            ("n" next-line)
                            ("p" previous-line)
