@@ -10,12 +10,12 @@
 (key-chord-define-global "jk" 'ace-jump-char-mode)
 (key-chord-define-global ",," 'ido-switch-buffer)
 (key-chord-define-global "uu" 'undo-tree-visualize)
-(key-chord-define-global "xx" 'smex)
+(key-chord-define-global "xx" 'execute-extended-command)
 (key-chord-define-global "yy" 'browse-kill-ring)
 (key-chord-define-global ",." 'helm-projectile-find-file)
 (require-package 'hydra)
 (key-chord-define-global "yy"
-                         (defhydra my/window-movement ()
+                         (defhydra handy ()
                            ("f" find-file "file")
                            ("3" (progn (split-window-right) (windmove-right)))
                            ("2" (progn (split-window-below) (windmove-down)))
@@ -33,6 +33,7 @@
                            ("p" previous-line)
                            ("v" cua-scroll-up)
                            ("V" cua-scroll-down)
+                           ("x" execute-extended-command)
                            ("q" nil)))
 
 (key-chord-mode +1)

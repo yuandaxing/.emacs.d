@@ -1,5 +1,4 @@
 (require-package 'unfill)
-
 (when (fboundp 'electric-pair-mode)
   (electric-pair-mode))
 (when (eval-when-compile (version< "24.4" emacs-version))
@@ -8,6 +7,7 @@
 ;;----------------------------------------------------------------------------
 ;; Some basic preferences
 ;;----------------------------------------------------------------------------
+
 (setq-default
  blink-cursor-interval 0.4
  bookmark-default-file (expand-file-name ".bookmarks.el" user-emacs-directory)
@@ -51,7 +51,6 @@
                 minibuffer-setup-hook))
   (add-hook hook #'sanityinc/no-trailing-whitespace))
 
-
 (require-package 'whitespace-cleanup-mode)
 (global-whitespace-cleanup-mode t)
 
@@ -59,8 +58,6 @@
 ;;; Newline behaviour
 
 (global-set-key (kbd "RET") 'newline-and-indent)
-
-
 
 
 
@@ -118,19 +115,17 @@
   (global-set-key (kbd "C-=") 'er/expand-region)
   )
 
-
 ;;----------------------------------------------------------------------------
 ;; Don't disable case-change functions
 ;;----------------------------------------------------------------------------
+
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
-
 
 ;;----------------------------------------------------------------------------
 ;; Rectangle selections, and overwrite text when the selection is active
 ;;----------------------------------------------------------------------------
 (cua-selection-mode t)                  ; for rectangles, CUA is nice
-
 
 ;;----------------------------------------------------------------------------
 ;; Handy key bindings
@@ -138,6 +133,7 @@
 ;; To be able to M-x without meta
 (global-set-key (kbd "C-x C-m") 'smex)
 (global-set-key (kbd "C-c C-m") 'smex)
+(global-set-key [remap execute-extended-command] 'smex)
 ;; Vimmy alternatives to M-^ and C-u M-^
 
 (global-set-key (kbd "C-.") 'set-mark-command)
@@ -160,8 +156,6 @@
 ;; Train myself to use M-f and M-b instead
 (global-unset-key [M-left])
 (global-unset-key [M-right])
-
-
 
 (defun kill-back-to-indentation ()
   "Kill from point back to the first non-whitespace character on the line."
@@ -246,14 +240,9 @@
 
 (global-set-key [remap backward-up-list] 'backward-up-sexp) ; C-M-u, C-M-up
 
-
 ;;----------------------------------------------------------------------------
 ;; Cut/copy the current line if no region is active
 ;;----------------------------------------------------------------------------
-                                        ;(require-package 'whole-line-or-region)
-                                        ;(whole-line-or-region-mode t)
-                                        ;(diminish 'whole-line-or-region-mode)
-                                        ;(make-variable-buffer-local 'whole-line-or-region-mode)
 
 (defun suspend-mode-during-cua-rect-selection (mode-name)
   "Add an advice to suspend `MODE-NAME' while selecting a CUA rectangle."
@@ -270,9 +259,6 @@
          (defadvice cua--deactivate-rectangle (after ,advice-name activate)
            (when ,flagvar
              (,mode-name 1)))))))
-
-                                        ;(suspend-mode-during-cua-rect-selection 'whole-line-or-region-mode)
-
 
 
 
