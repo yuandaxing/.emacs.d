@@ -33,7 +33,7 @@
                            ("p" previous-line)
                            ("v" cua-scroll-up)
                            ("V" cua-scroll-down)
-                           ("x" execute-extended-command)
+                           ("x" smex)
                            ("q" nil)))
 
 (key-chord-mode +1)
