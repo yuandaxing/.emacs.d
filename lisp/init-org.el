@@ -139,7 +139,6 @@
 (setq-default org-agenda-files (list "~/code/skillset/os/"
                              "~/code/skillset/edit/"
                              "~/code/skillset/other/"
-                             "~/code/skillset/algorithm/"
                              "~/code/skillset/web/"
                              "~/code/skillset/GTD/"
                              "~/code/skillset/language/"))
