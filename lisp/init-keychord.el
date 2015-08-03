@@ -11,11 +11,12 @@
 (key-chord-define-global ",," 'ido-switch-buffer)
 (key-chord-define-global "uu" 'undo-tree-visualize)
 (key-chord-define-global "xx" 'smex)
-(key-chord-define-global "yy" 'browse-kill-ring)
+;(key-chord-define-global "yy" 'browse-kill-ring)
 (key-chord-define-global ",." 'helm-projectile-find-file)
 (require-package 'hydra)
 (key-chord-define-global "yy"
-                         (defhydra handy ()
+                         (defhydra handy(nil)
+                           "easy"
                            ("f" find-file "file")
                            ("3" (progn (split-window-right) (windmove-right)))
                            ("2" (progn (split-window-below) (windmove-down)))
