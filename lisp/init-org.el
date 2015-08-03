@@ -60,10 +60,13 @@
 (defun sanityinc/hide-org-clock-from-header-line ()
   (setq-default header-line-format nil))
 
+(defun nolinum ()
+  (linum-mode -1))
+
 (add-hook 'org-clock-in-hook 'sanityinc/show-org-clock-in-header-line)
 (add-hook 'org-clock-out-hook 'sanityinc/hide-org-clock-from-header-line)
 (add-hook 'org-clock-cancel-hook 'sanityinc/hide-org-clock-from-header-line)
-
+(add-hook 'org-mode-hook 'nolinum)
 (after-load 'org-clock
   (define-key org-clock-mode-line-map [header-line mouse-2] 'org-clock-goto)
   (define-key org-clock-mode-line-map [header-line mouse-1] 'org-clock-menu))
@@ -139,7 +142,6 @@
 (setq-default org-agenda-files (list "~/code/skillset/os/"
                              "~/code/skillset/edit/"
                              "~/code/skillset/other/"
-                             "~/code/skillset/algorithm/"
                              "~/code/skillset/web/"
                              "~/code/skillset/GTD/"
                              "~/code/skillset/language/"))
