@@ -50,7 +50,6 @@
 (define-key global-map (kbd "C-c q") 'vr/query-replace)
 ;; if you use multiple-cursors, this is for you:
 (define-key global-map (kbd "C-c m") 'vr/mc-mark)
-;(global-set-key (kbd "<f5>") 'redraw-display)
 
 ;; automatically save buffers associated with files on buffer switch
 ;; and on windows switch
@@ -66,6 +65,7 @@
   (when buffer-file-name (save-buffer)))
 (defadvice windmove-right (before other-window-now activate)
   (when buffer-file-name (save-buffer)))
+
 (show-paren-mode t)
 (global-linum-mode t)
 (setq indent-tabs-mode nil)

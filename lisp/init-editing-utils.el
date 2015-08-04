@@ -1,9 +1,8 @@
 (require-package 'unfill)
 (when (fboundp 'electric-pair-mode)
   (electric-pair-mode))
-(when (eval-when-compile (version< "24.4" emacs-version))
-  (electric-indent-mode 1))
-
+(global-set-key (kbd "<RET>") 'electric-indent-just-newline)
+(global-set-key (kbd "C-j") 'newline-and-indent)
 ;;----------------------------------------------------------------------------
 ;; Some basic preferences
 ;;----------------------------------------------------------------------------
