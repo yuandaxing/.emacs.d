@@ -1,4 +1,5 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(require 'better-defaults)
 (require 'init-utils)
 (require 'init-elpa)
 (require 'init-auto-complete)
@@ -30,11 +31,7 @@
  ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
  '(column-number-mode t)
- '(ido-enable-flex-matching t)
- '(ido-mode (quote both) nil (ido))
- '(line-number-mode t)
- '(menu-bar-mode nil)
- '(tool-bar-mode nil))
+ '(line-number-mode t))
 (custom-set-faces
  '(ac-candidate-face ((t (:family "DejaVu Sans Mono")))))
 
@@ -66,9 +63,6 @@
 (defadvice windmove-right (before other-window-now activate)
   (when buffer-file-name (save-buffer)))
 
-(show-paren-mode t)
-(global-linum-mode t)
-(setq indent-tabs-mode nil)
 (setq default-tab-width 4)
 (setq tab-width 4)
 (setq tab-stop-list ())
@@ -87,29 +81,15 @@
   (if (region-active-p)
       (kill-ring-save (region-beginning) (region-end))
     (kill-ring-save (line-beginning-position) (line-beginning-position 2)) ) )
-(global-set-key (kbd "<f2>") 'xah-cut-line-or-region) ; cut
-(global-set-key (kbd "<f3>") 'xah-copy-line-or-region) ; copy
-(global-set-key (kbd "<f4>") 'yank) ; paste
 (require-package 'session)
 (require 'session)
 (add-hook 'after-init-hook 'session-initialize)
-(global-unset-key (kbd "C-z"))
-(global-set-key (kbd "C-z") 'undo)
-
 
 (setq ido-separator "\n")
 (set-face-attribute 'default nil :height 120)
 (require-package 'magit) ;;
 (require 'magit)
 
-;set uniquify to make buffer name uniq 
-;(require-package 'uniquify)
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'forward)
-
-;; (set-fontset-font "fontset-default"
-;; 				  'gb18030 '("Microsoft YaHei" .
-;; 							 "unicode-bmp"))
 (setq ac-disable-faces nil)
 (put 'set-goal-column 'disabled nil)
 (add-hook 'erc-mode-hook
