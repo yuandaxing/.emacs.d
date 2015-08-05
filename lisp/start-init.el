@@ -48,9 +48,8 @@
 (require 'visual-regexp)
 (define-key global-map (kbd "C-c r") 'vr/replace)
 (define-key global-map (kbd "C-c q") 'vr/query-replace)
-;; if you use multiple-cursors, this is for you:
 (define-key global-map (kbd "C-c m") 'vr/mc-mark)
-;(global-set-key (kbd "<f5>") 'redraw-display)
+
 
 ;; automatically save buffers associated with files on buffer switch
 ;; and on windows switch
