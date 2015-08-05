@@ -23,7 +23,7 @@
 (require 'init-easy)
 (require 'init-history)
 (require 'init-engine)
-
+(require-package 'paredit)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -108,7 +108,6 @@
 (require-package 'diminish)
 (require 'diminish)
 (diminish 'keys-bind-minor-mode)
-
 (provide 'start-init)
 ;;;start-init.el ends here
 
