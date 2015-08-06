@@ -1,5 +1,5 @@
-(require-package 'flycheck)
-(require 'flycheck)
-(add-hook 'after-init-hook #'global-flycheck-mode)
-
+(use-package flycheck
+  :ensure t
+  :config
+  (add-hook 'after-init-hook #'global-flycheck-mode))
 (provide 'init-fly)
