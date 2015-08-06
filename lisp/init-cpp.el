@@ -14,6 +14,7 @@
                              (or (getenv "CPPFLAGS") "-DDEBUG=9")
                              (or (getenv "CFLAGS") "-ansi -pedantic -Wall -g")
                              file))))))
+
 (defun c++-mode-hook-setting()
   (c-set-offset 'substatement-open 0)
   (c-set-offset 'innamespace 0)
@@ -45,6 +46,7 @@
 ;; Enable helm-gtags-mode
 (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
 (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
+;; make C-h consistent
 (define-key helm-map (kbd "C-h") 'helm-ff-delete-char-backward)
 (define-key helm-find-files-map (kbd "C-h") 'helm-ff-delete-char-backward)
 

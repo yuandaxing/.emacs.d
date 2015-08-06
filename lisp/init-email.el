@@ -43,5 +43,4 @@
 (if (fboundp 'utf-translate-cjk-mode)
     (utf-translate-cjk-mode 1))
 (require 'flyspell) ;;
-
 (provide 'init-email)
