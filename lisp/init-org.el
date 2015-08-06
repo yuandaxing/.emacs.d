@@ -1,6 +1,5 @@
-(when (< emacs-major-version 24)
-  (require-package 'org))
-(require-package 'org-fstree)
+(use-package org-fstree
+  :ensure t)
 
 (define-key global-map (kbd "C-c l") 'org-store-link)
 (define-key global-map (kbd "C-c a") 'org-agenda)
@@ -74,28 +73,6 @@
 (after-load 'org-agenda
   (define-key org-agenda-mode-map (kbd "P") 'org-pomodoro))
 
-
-;; ;; Show iCal calendars in the org agenda
-;; (when (and *is-a-mac* (require 'org-mac-iCal nil t))
-;;   (setq org-agenda-include-diary t
-;;         org-agenda-custom-commands
-;;         '(("I" "Import diary from iCal" agenda ""
-;;            ((org-agenda-mode-hook #'org-mac-iCal)))))
-
-;;   (add-hook 'org-agenda-cleanup-fancy-diary-hook
-;;             (lambda ()
-;;               (goto-char (point-min))
-;;               (save-excursion
-;;                 (while (re-search-forward "^[a-z]" nil t)
-;;                   (goto-char (match-beginning 0))
-;;                   (insert "0:00-24:00 ")))
-;;               (while (re-search-forward "^ [a-z]" nil t)
-;;                 (goto-char (match-beginning 0))
-;;                 (save-excursion
-;;                   (re-search-backward "^[0-9]+:[0-9]+-[0-9]+:[0-9]+ " nil t))
-;;                 (insert (match-string 0))))))
-
-
 (after-load 'org
   (define-key org-mode-map (kbd "C-M-<up>") 'org-up-element)
   (define-key org-mode-map (kbd "C-M-<up>") 'org-up-element))
@@ -144,10 +121,9 @@
                              "~/code/skillset/GTD/"
                              "~/code/skillset/language/"))
 (add-hook 'org-mode-hook 'key-bind-hook)
-
 (setq org-refile-targets (quote ((nil :maxlevel . 9)
                                  (org-agenda-files :maxlevel . 9))))
-(defun my/org-check-agenda ()
+(defun hh-org-check-agenda ()
   "Peek at agenda."
   (interactive)
   (cond
@@ -161,6 +137,5 @@
 (defun search-snippet (regex-arg)
   (interactive "sRegex: ")
   (rgrep regex-arg "*" "~/Dropbox/code-snippet/emacs-search/"))
-
 
 (provide 'init-org)

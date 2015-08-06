@@ -1,5 +1,7 @@
-(require-package 'solarized-theme)
-(require 'solarized-theme)
-(load-theme 'solarized-light t)
-;(setq solarized-default-background-mode 'dark)
+(use-package solarized-theme
+  :ensure t
+  :config
+  (progn
+    (require 'solarized-theme)
+    (load-theme 'solarized-light t)))
 (provide 'init-theme)

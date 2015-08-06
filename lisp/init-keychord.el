@@ -2,7 +2,6 @@
   :ensure t
   :config
   (key-chord-mode 1))
-
 (use-package helm-projectile
   :ensure t
   :config
