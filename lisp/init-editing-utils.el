@@ -35,7 +35,7 @@
 
 ;;; Whitespace
 
-(defun sanityinc/no-trailing-whitespace ()
+(defun hh-no-trailing-whitespace ()
   "Turn off display of trailing whitespace in this buffer."
   (setq show-trailing-whitespace nil))
 
@@ -47,7 +47,7 @@
                 compilation-mode-hook
                 twittering-mode-hook
                 minibuffer-setup-hook))
-  (add-hook hook #'sanityinc/no-trailing-whitespace))
+  (add-hook hook #'hh-no-trailing-whitespace))
 
 (require-package 'whitespace-cleanup-mode)
 (global-whitespace-cleanup-mode t)
@@ -172,36 +172,36 @@
 ;;----------------------------------------------------------------------------
 (when (eval-when-compile (> emacs-major-version 23))
   (require-package 'fill-column-indicator)
-  (defun sanityinc/prog-mode-fci-settings ()
+  (defun hh-prog-mode-fci-settings ()
     (turn-on-fci-mode)
     (when show-trailing-whitespace
       (set (make-local-variable 'whitespace-style) '(face trailing))
       (whitespace-mode 1)))
 
-  ;;(add-hook 'prog-mode-hook 'sanityinc/prog-mode-fci-settings)
+  ;;(add-hook 'prog-mode-hook 'hh-prog-mode-fci-settings)
 
-  (defun sanityinc/fci-enabled-p ()
+  (defun hh-fci-enabled-p ()
     (and (boundp 'fci-mode) fci-mode))
 
-  (defvar sanityinc/fci-mode-suppressed nil)
+  (defvar hh-fci-mode-suppressed nil)
   (defadvice popup-create (before suppress-fci-mode activate)
     "Suspend fci-mode while popups are visible"
-    (let ((fci-enabled (sanityinc/fci-enabled-p)))
+    (let ((fci-enabled (hh-fci-enabled-p)))
       (when fci-enabled
-        (set (make-local-variable 'sanityinc/fci-mode-suppressed) fci-enabled)
+        (set (make-local-variable 'hh-fci-mode-suppressed) fci-enabled)
         (turn-off-fci-mode))))
   (defadvice popup-delete (after restore-fci-mode activate)
     "Restore fci-mode when all popups have closed"
-    (when (and sanityinc/fci-mode-suppressed
+    (when (and hh-fci-mode-suppressed
                (null popup-instances))
-      (setq sanityinc/fci-mode-suppressed nil)
+      (setq hh-fci-mode-suppressed nil)
       (turn-on-fci-mode)))
 
   ;; Regenerate fci-mode line images after switching themes
   (defadvice enable-theme (after recompute-fci-face activate)
     (dolist (buffer (buffer-list))
       (with-current-buffer buffer
-        (when (sanityinc/fci-enabled-p)
+        (when (hh-fci-enabled-p)
           (turn-on-fci-mode))))))
 
 
@@ -237,7 +237,7 @@
 
 
 
-(defun sanityinc/open-line-with-reindent (n)
+(defun hh-open-line-with-reindent (n)
   "A version of `open-line' which reindents the start and end positions.
 If there is a fill prefix and/or a `left-margin', insert them
 on the new line if the line would have been blank.
@@ -265,8 +265,7 @@ With arg N, insert N newlines."
     (indent-according-to-mode)))
 
 
-(global-set-key (kbd "C-o") 'sanityinc/open-line-with-reindent)
-
+(global-set-key (kbd "C-o") 'hh-open-line-with-reindent)
 
 ;;----------------------------------------------------------------------------
 ;; Random line sorting
@@ -378,7 +377,7 @@ point reaches the beginning or end of the buffer, stop there."
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;
-(defun prelude-smart-open-line-above ()
+(defun hh-smart-open-line-above ()
   "Insert an empty line above the current line.
 Position the cursor at it's beginning, according to the current mode."
   (interactive)
@@ -387,21 +386,21 @@ Position the cursor at it's beginning, according to the current mode."
   (forward-line -1)
   (indent-according-to-mode))
 
-(defun prelude-smart-open-line (arg)
+(defun hh-smart-open-line (arg)
   "Insert an empty line after the current line.
 Position the cursor at its beginning, according to the current mode.
 
 With a prefix ARG open line above the current line."
   (interactive "P")
   (if arg
-      (prelude-smart-open-line-above)
+      (hh-smart-open-line-above)
     (progn
       (move-end-of-line nil)
       (newline-and-indent))))
 
 
-(global-set-key (kbd "S-<return>") 'prelude-smart-open-line)
-(defun comint-clear-buffer ()
+(global-set-key (kbd "S-<return>") 'hh-smart-open-line)
+(defun hh-comint-clear-buffer ()
   (interactive)
   (let ((comint-buffer-maximum-size 0))
     (comint-truncate-buffer)))
@@ -428,7 +427,7 @@ With a prefix ARG open line above the current line."
    mode-line-end-spaces))
 (smart-mode-line-enable)
 ;
-(defun prelude-copy-file-name-to-clipboard ()
+(defun hh-copy-file-name-to-clipboard ()
   "Copy the current buffer file name to the clipboard."
   (interactive)
   (let ((filename (if (equal major-mode 'dired-mode)
@@ -437,15 +436,15 @@ With a prefix ARG open line above the current line."
     (when filename
       (kill-new filename)
       (message "Copied buffer file name '%s' to the clipboard." filename))))
-(defun name-shell (name)
+(defun hh-name-shell (name)
   (interactive "sshell name: ")
   (shell (concat "*" name "*")))
 
 ;
-(defun yank-pop-forwards (arg)
+(defun hh-yank-pop-forwards (arg)
   (interactive "p")
   (yank-pop (- arg)))
-(global-set-key (kbd "M-Y") 'yank-pop-forwards) ; M-Y (Meta-Shift-Y)
+(global-set-key (kbd "M-Y") 'hh-yank-pop-forwards) ; M-Y (Meta-Shift-Y)
 
 ;
 (provide 'init-editing-utils)

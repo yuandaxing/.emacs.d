@@ -1,3 +1,4 @@
+;;;happy hackiing emacs
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'better-defaults)
 (require 'init-utils)
@@ -24,6 +25,7 @@
 (require 'init-history)
 (require 'init-engine)
 (require-package 'paredit)
+(paredit-mode 1)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -67,14 +69,14 @@
 (setq tab-stop-list ())
 (loop for x downfrom 40 to 1 do
       (setq tab-stop-list (cons (* x 4) tab-stop-list)))
-(defun xah-cut-line-or-region ()
+(defun hh-cut-line-or-region ()
   "Cut the current line, or current text selection."
   (interactive)
   (if (region-active-p)
       (kill-region (region-beginning) (region-end))
     (kill-region (line-beginning-position) (line-beginning-position 2)) ) )
 
-(defun xah-copy-line-or-region ()
+(defun hh-copy-line-or-region ()
   "Copy current line, or current text selection."
   (interactive)
   (if (region-active-p)
