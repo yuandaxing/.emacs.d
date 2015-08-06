@@ -1,4 +1,6 @@
+;;;happy hackiing emacs
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(require 'better-defaults)
 (require 'init-utils)
 (require 'init-elpa)
 (require 'init-auto-complete)
@@ -22,7 +24,8 @@
 (require 'init-easy)
 (require 'init-history)
 (require 'init-engine)
-
+(require-package 'paredit)
+(paredit-mode 1)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -30,11 +33,7 @@
  ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
  '(column-number-mode t)
- '(ido-enable-flex-matching t)
- '(ido-mode (quote both) nil (ido))
- '(line-number-mode t)
- '(menu-bar-mode nil)
- '(tool-bar-mode nil))
+ '(line-number-mode t))
 (custom-set-faces
  '(ac-candidate-face ((t (:family "DejaVu Sans Mono")))))
 
@@ -48,9 +47,7 @@
 (require 'visual-regexp)
 (define-key global-map (kbd "C-c r") 'vr/replace)
 (define-key global-map (kbd "C-c q") 'vr/query-replace)
-;; if you use multiple-cursors, this is for you:
 (define-key global-map (kbd "C-c m") 'vr/mc-mark)
-;(global-set-key (kbd "<f5>") 'redraw-display)
 
 ;; automatically save buffers associated with files on buffer switch
 ;; and on windows switch
@@ -66,50 +63,34 @@
   (when buffer-file-name (save-buffer)))
 (defadvice windmove-right (before other-window-now activate)
   (when buffer-file-name (save-buffer)))
-(show-paren-mode t)
-(global-linum-mode t)
-(setq indent-tabs-mode nil)
+
 (setq default-tab-width 4)
 (setq tab-width 4)
 (setq tab-stop-list ())
 (loop for x downfrom 40 to 1 do
       (setq tab-stop-list (cons (* x 4) tab-stop-list)))
-(defun xah-cut-line-or-region ()
+(defun hh-cut-line-or-region ()
   "Cut the current line, or current text selection."
   (interactive)
   (if (region-active-p)
       (kill-region (region-beginning) (region-end))
     (kill-region (line-beginning-position) (line-beginning-position 2)) ) )
 
-(defun xah-copy-line-or-region ()
+(defun hh-copy-line-or-region ()
   "Copy current line, or current text selection."
   (interactive)
   (if (region-active-p)
       (kill-ring-save (region-beginning) (region-end))
     (kill-ring-save (line-beginning-position) (line-beginning-position 2)) ) )
-(global-set-key (kbd "<f2>") 'xah-cut-line-or-region) ; cut
-(global-set-key (kbd "<f3>") 'xah-copy-line-or-region) ; copy
-(global-set-key (kbd "<f4>") 'yank) ; paste
 (require-package 'session)
 (require 'session)
 (add-hook 'after-init-hook 'session-initialize)
-(global-unset-key (kbd "C-z"))
-(global-set-key (kbd "C-z") 'undo)
-
 
 (setq ido-separator "\n")
 (set-face-attribute 'default nil :height 120)
 (require-package 'magit) ;;
 (require 'magit)
 
-;set uniquify to make buffer name uniq 
-;(require-package 'uniquify)
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'forward)
-
-;; (set-fontset-font "fontset-default"
-;; 				  'gb18030 '("Microsoft YaHei" .
-;; 							 "unicode-bmp"))
 (setq ac-disable-faces nil)
 (put 'set-goal-column 'disabled nil)
 (add-hook 'erc-mode-hook
@@ -128,7 +109,6 @@
 (require-package 'diminish)
 (require 'diminish)
 (diminish 'keys-bind-minor-mode)
-
 (provide 'start-init)
 ;;;start-init.el ends here
 

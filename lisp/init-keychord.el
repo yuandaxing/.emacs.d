@@ -32,7 +32,7 @@
                            ("." repeat)
                            ("n" next-line)
                            ("p" previous-line)
-                           ("v" cua-scroll-up) ("V" cua-scroll-down) ("x" smex)
+                           ("v" scroll-up) ("V" scroll-down) ("x" smex)
                            ("q" nil)))
 
 (key-chord-mode +1)
