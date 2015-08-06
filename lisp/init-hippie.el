@@ -1,5 +1,4 @@
 (global-set-key (kbd "M-/") 'hippie-expand)
-
 (setq hippie-expand-try-functions-list
       '(try-complete-file-name-partially
         try-complete-file-name

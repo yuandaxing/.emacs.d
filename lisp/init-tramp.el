@@ -1,10 +1,8 @@
-(require-package 'tramp)
-
-(require 'tramp)
-
-(set-default 'tramp-default-method "scpx")
-(set-default 'tramp-shell-prompt-pattern "\\(?:^\\|\r\\)[^]#$%>\n]*#?[]#$%>].* *\\(^[\\[[0-9;]*[a-zA-Z] *\\)*")
-;; (add-to-list 'tramp-default-proxies-alist
-;;              '(nil "ambition" "/ssh:%h:/home/ambition/"))
-
+(use-package tramp
+  :ensure t
+  :config
+  (progn
+    (set-default 'tramp-default-method "scpx")
+    (set-default 'tramp-shell-prompt-pattern "\\(?:^\\|\r\\)[^]#$%>\n]*#?[]#$%>].* *\\(^[\\[[0-9;]*[a-zA-Z] *\\)*")
+    ))
 (provide 'init-tramp)
