@@ -337,8 +337,6 @@ With arg N, insert N newlines."
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
-                                        ;
-
 (defun smarter-move-beginning-of-line (arg)
   "Move point back to indentation of beginning of line.
 Move point to the first non-whitespace character on this line.
@@ -426,11 +424,9 @@ With a prefix ARG open line above the current line."
     (when filename
       (kill-new filename)
       (message "Copied buffer file name '%s' to the clipboard." filename))))
-
 (defun hh-name-shell (name)
   (interactive "sshell name: ")
   (shell (concat "*" name "*")))
-
 (defun hh-yank-pop-forwards (arg)
   (interactive "p")
   (yank-pop (- arg)))
@@ -438,4 +434,12 @@ With a prefix ARG open line above the current line."
 (defun hh-indent-buffer ()
   (interactive)
   (indent-region (point-min) (point-max)))
+(defun hh-insert-date ()
+  "Insert a time-stamp according to locale's date and time format."
+  (interactive)
+  (insert (format-time-string "%c" (current-time))))
+(defun hh-untabify-buffer ()
+  (interactive)
+  (untabify (point-min) (point-max)))
+
 (provide 'init-editing-utils)
