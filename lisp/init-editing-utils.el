@@ -337,8 +337,6 @@ With arg N, insert N newlines."
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
-;
-
 (defun smarter-move-beginning-of-line (arg)
   "Move point back to indentation of beginning of line.
 Move point to the first non-whitespace character on this line.
