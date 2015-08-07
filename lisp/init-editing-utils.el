@@ -1,7 +1,7 @@
 (require-package 'unfill)
 (when (fboundp 'electric-pair-mode)
   (electric-pair-mode))
-;(global-set-key (kbd "<return>") 'electric-indent-just-newline)
+                                        ;(global-set-key (kbd "<return>") 'electric-indent-just-newline)
 (global-set-key (kbd "C-j") 'newline-and-indent)
 ;;----------------------------------------------------------------------------
 ;; Some basic preferences
@@ -66,8 +66,8 @@
   :ensure t
   :config
   (progn
-  (global-undo-tree-mode)
-  (diminish 'undo-tree-mode)))
+    (global-undo-tree-mode)
+    (diminish 'undo-tree-mode)))
 
 (use-package highlight-symbol
   :ensure t
@@ -111,10 +111,10 @@
 ;; Handy key bindings
 ;;----------------------------------------------------------------------------
 (progn
-(global-set-key (kbd "C-x C-m") 'smex)
-(global-set-key (kbd "C-c C-m") 'smex)
-(global-set-key (kbd "C-.") 'set-mark-command)
-(global-set-key (kbd "C-x C-.") 'pop-global-mark))
+  (global-set-key (kbd "C-x C-m") 'smex)
+  (global-set-key (kbd "C-c C-m") 'smex)
+  (global-set-key (kbd "C-.") 'set-mark-command)
+  (global-set-key (kbd "C-x C-.") 'pop-global-mark))
 
 
 (use-package multiple-cursors
@@ -266,21 +266,21 @@ With arg N, insert N newlines."
           ((inhibit-field-text-motion t))
         (sort-subr nil 'forward-line 'end-of-line nil nil
                    (lambda (s1 s2) (eq (random 2) 0)))))))
-;
+                                        ;
 
 (require-package 'highlight-escape-sequences)
 (hes-mode)
 
-;
+                                        ;
 (use-package guide-key
   :ensure t
   :config
   (progn 
-  (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x 5" "C-c" "C-x n"))
-  (guide-key-mode 1)
-  (diminish 'guide-key-mode)))
- 
-;
+    (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x 5" "C-c" "C-x n"))
+    (guide-key-mode 1)
+    (diminish 'guide-key-mode)))
+
+                                        ;
                                         ;bind some key according to effective emacs
 (global-set-key (kbd "C-w") 'backward-kill-word)
 (global-set-key (kbd "C-x C-k") 'kill-region)
@@ -322,22 +322,22 @@ With arg N, insert N newlines."
     (keys-bind-minor-mode 1)
     ))
 (dolist (hook '(magit-log-edit-mode-hook
-                    log-edit-mode-hook org-mode-hook text-mode-hook haml-mode-hook
-                    git-commit-mode-hook
-                    sass-mode-hook yaml-mode-hook csv-mode-hook espresso-mode-hook haskell-mode-hook
-                    html-mode-hook nxml-mode-hook sh-mode-hook smarty-mode-hook clojure-mode-hook
-                    lisp-mode-hook textile-mode-hook markdown-mode-hook tuareg-mode-hook
-                    js3-mode-hook css-mode-hook less-css-mode-hook sql-mode-hook
-                    sql-interactive-mode-hook c++-mode-hook org-mode-hook
-                    inferior-emacs-lisp-mode-hook))
-      (add-hook hook 'key-bind-hook))
+                log-edit-mode-hook org-mode-hook text-mode-hook haml-mode-hook
+                git-commit-mode-hook
+                sass-mode-hook yaml-mode-hook csv-mode-hook espresso-mode-hook haskell-mode-hook
+                html-mode-hook nxml-mode-hook sh-mode-hook smarty-mode-hook clojure-mode-hook
+                lisp-mode-hook textile-mode-hook markdown-mode-hook tuareg-mode-hook
+                js3-mode-hook css-mode-hook less-css-mode-hook sql-mode-hook
+                sql-interactive-mode-hook c++-mode-hook org-mode-hook
+                inferior-emacs-lisp-mode-hook))
+  (add-hook hook 'key-bind-hook))
 
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
-;
+                                        ;
 
 (defun smarter-move-beginning-of-line (arg)
   "Move point back to indentation of beginning of line.
@@ -435,5 +435,7 @@ With a prefix ARG open line above the current line."
   (interactive "p")
   (yank-pop (- arg)))
 (global-set-key (kbd "M-Y") 'hh-yank-pop-forwards) ; M-Y (Meta-Shift-Y)
-
+(defun hh-indent-buffer ()
+  (interactive)
+  (indent-region (point-min) (point-max)))
 (provide 'init-editing-utils)
