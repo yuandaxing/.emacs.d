@@ -20,7 +20,6 @@
  save-interprogram-paste-before-kill t
  scroll-preserve-screen-position 'always
  set-mark-command-repeat-pop t
-                                        ; show-trailing-whitespace t
  tooltip-delay 1.5
  truncate-lines nil
  truncate-partial-width-windows nil
@@ -29,11 +28,8 @@
 (global-auto-revert-mode)
 (setq global-auto-revert-non-file-buffers t
       auto-revert-verbose nil)
-
 (transient-mark-mode t)
 
-
-;;; Whitespace
 
 (defun hh-no-trailing-whitespace ()
   "Turn off display of trailing whitespace in this buffer."
@@ -48,11 +44,12 @@
                 twittering-mode-hook
                 minibuffer-setup-hook))
   (add-hook hook #'hh-no-trailing-whitespace))
-
-(require-package 'whitespace-cleanup-mode)
-(global-whitespace-cleanup-mode t)
-
-
+(use-package whitespace-cleanup-mode
+  :ensure t
+  :config
+  (progn
+    (global-whitespace-cleanup-mode t)
+    (diminish 'whitespace-cleanup-mode)))
 
 (when (eval-when-compile (string< "24.3.1" emacs-version))
   ;; https://github.com/purcell/emacs.d/issues/138
@@ -64,22 +61,24 @@
 (when (fboundp 'global-prettify-symbols-mode)
   (global-prettify-symbols-mode))
 
-
-(require-package 'undo-tree)
-(global-undo-tree-mode)
-(diminish 'undo-tree-mode)
 
-
-(require-package 'highlight-symbol)
-(dolist (hook '(prog-mode-hook html-mode-hook css-mode-hook))
-  (add-hook hook 'highlight-symbol-mode)
-  (add-hook hook 'highlight-symbol-nav-mode))
-(eval-after-load 'highlight-symbol
-  '(diminish 'highlight-symbol-mode))
+(use-package undo-tree
+  :ensure t
+  :config
+  (progn
+  (global-undo-tree-mode)
+  (diminish 'undo-tree-mode)))
 
-;;----------------------------------------------------------------------------
-;; Zap *up* to char is a handy pair for zap-to-char
-;;----------------------------------------------------------------------------
+(use-package highlight-symbol
+  :ensure t
+  :config
+  (progn
+    (dolist (hook '(prog-mode-hook html-mode-hook css-mode-hook))
+      (add-hook hook 'highlight-symbol-mode)
+      (add-hook hook 'highlight-symbol-nav-mode))
+    (diminish 'highlight-symbol-mode)))
+
+
 (autoload 'zap-up-to-char "misc" "Kill up to, but not including ARGth occurrence of CHAR.")
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
 (global-set-key (kbd "C-t") 'transpose-chars)
@@ -96,21 +95,13 @@
 (put 'narrow-to-defun 'disabled nil)
 
 ;;----------------------------------------------------------------------------
-;; Show matching parens
-;;----------------------------------------------------------------------------
-(show-paren-mode 1)
-
-;;----------------------------------------------------------------------------
 ;; Expand region
 ;;----------------------------------------------------------------------------
-(when (eval-when-compile (not (string= "cygwin" system-type)))
-  (require-package 'expand-region)
+(use-package expand-region
+  :ensure t
+  :config
   (global-set-key (kbd "C-=") 'er/expand-region)
   )
-
-;;----------------------------------------------------------------------------
-;; Don't disable case-change functions
-;;----------------------------------------------------------------------------
 
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
@@ -119,29 +110,28 @@
 ;;----------------------------------------------------------------------------
 ;; Handy key bindings
 ;;----------------------------------------------------------------------------
-;; To be able to M-x without meta
+(progn
 (global-set-key (kbd "C-x C-m") 'smex)
 (global-set-key (kbd "C-c C-m") 'smex)
-;; Vimmy alternatives to M-^ and C-u M-^
-
 (global-set-key (kbd "C-.") 'set-mark-command)
-(global-set-key (kbd "C-x C-.") 'pop-global-mark)
+(global-set-key (kbd "C-x C-.") 'pop-global-mark))
 
 
-(require-package 'multiple-cursors)
-;; multiple-cursors
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-+") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-;; From active region to multiple cursors:
-(global-set-key (kbd "C-c c r") 'set-rectangular-region-anchor)
-(global-set-key (kbd "C-c c c") 'mc/edit-lines)
-(global-set-key (kbd "C-c c e") 'mc/edit-ends-of-lines)
-(global-set-key (kbd "C-c c a") 'mc/edit-beginnings-of-lines)
+(use-package multiple-cursors
+  :ensure t
+  :config
+  (progn
+    (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+    (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+    (global-set-key (kbd "C-+") 'mc/mark-next-like-this)
+    (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+    ;; From active region to multiple cursors:
+    (global-set-key (kbd "C-c c r") 'set-rectangular-region-anchor)
+    (global-set-key (kbd "C-c c c") 'mc/edit-lines)
+    (global-set-key (kbd "C-c c e") 'mc/edit-ends-of-lines)
+    (global-set-key (kbd "C-c c a") 'mc/edit-beginnings-of-lines)))
 
 
-;; Train myself to use M-f and M-b instead
 (global-unset-key [M-left])
 (global-unset-key [M-right])
 
@@ -156,7 +146,7 @@
 
 
 ;;----------------------------------------------------------------------------
-;; Page break lines
+
 ;;----------------------------------------------------------------------------
 (require-package 'page-break-lines)
 (global-page-break-lines-mode)
@@ -282,38 +272,36 @@ With arg N, insert N newlines."
 (hes-mode)
 
 ;
-(when (eval-when-compile (not (string= "cygwin" system-type)))
-  (require-package 'guide-key)
+(use-package guide-key
+  :ensure t
+  :config
+  (progn 
   (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x 5" "C-c" "C-x n"))
   (guide-key-mode 1)
-  (diminish 'guide-key-mode)
-  )
+  (diminish 'guide-key-mode)))
+ 
 ;
                                         ;bind some key according to effective emacs
 (global-set-key (kbd "C-w") 'backward-kill-word)
 (global-set-key (kbd "C-x C-k") 'kill-region)
-;
-                                        ; set frame name 
 (setq frame-title-format "Emacs - %f")
-;
+(use-package smex
+  :ensure t
+  :config
+  (progn
+    (require 'smex)
+    (global-set-key (kbd "M-x") 'smex)
+    (global-set-key (kbd "M-X") 'smex-major-mode-commands)))
 
-;
-                                        ; smex fast find history command 
-(require-package 'smex)
-(require 'smex)
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(use-package projectile
+  :ensure t
+  :config
+  (progn 
+    (require 'projectile)
+    (setq projectile-indexing-method 'native)
+    (projectile-global-mode)
+    (setq projectile-enable-caching t)))
 
-;
-
-(require-package 'projectile)
-(require 'projectile)
-(setq projectile-indexing-method 'native)
-(projectile-global-mode)
-(setq projectile-enable-caching t)
-
-;
-                                        ;setting for buffer delete key bindings
 (defun new-scrath (buf)
   "open a buffer, if it doesn't exist, open a new one"
   (interactive "sBuffer name: ")
@@ -333,7 +321,16 @@ With arg N, insert N newlines."
   (progn 
     (keys-bind-minor-mode 1)
     ))
-(scroll-bar-mode -1)
+(dolist (hook '(magit-log-edit-mode-hook
+                    log-edit-mode-hook org-mode-hook text-mode-hook haml-mode-hook
+                    git-commit-mode-hook
+                    sass-mode-hook yaml-mode-hook csv-mode-hook espresso-mode-hook haskell-mode-hook
+                    html-mode-hook nxml-mode-hook sh-mode-hook smarty-mode-hook clojure-mode-hook
+                    lisp-mode-hook textile-mode-hook markdown-mode-hook tuareg-mode-hook
+                    js3-mode-hook css-mode-hook less-css-mode-hook sql-mode-hook
+                    sql-interactive-mode-hook c++-mode-hook org-mode-hook
+                    inferior-emacs-lisp-mode-hook))
+      (add-hook hook 'key-bind-hook))
 
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
@@ -363,15 +360,11 @@ point reaches the beginning or end of the buffer, stop there."
     (when (= orig-point (point))
       (move-beginning-of-line 1))))
 
-;; remap C-a to `smarter-move-beginning-of-line'
 (global-set-key [remap move-beginning-of-line]
                 'smarter-move-beginning-of-line)
 
-;
-
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;
 (defun hh-smart-open-line-above ()
   "Insert an empty line above the current line.
 Position the cursor at it's beginning, according to the current mode."
@@ -400,28 +393,30 @@ With a prefix ARG open line above the current line."
   (let ((comint-buffer-maximum-size 0))
     (comint-truncate-buffer)))
 
-;
-(setq sml/no-confirm-load-theme t)
-(require-package 'smart-mode-line)
-(setq-default
- mode-line-format
- '("%e"
-   mode-line-front-space
-   mode-line-mule-info
-   mode-line-client
-   mode-line-modified
-   mode-line-remote
-   mode-line-frame-identification
-   mode-line-buffer-identification
-   "   "
-   mode-line-position
-   (vc-mode vc-mode)
-   "  "
-   mode-line-modes
-   mode-line-misc-info
-   mode-line-end-spaces))
-(smart-mode-line-enable)
-;
+(use-package smart-mode-line
+  :ensure t
+  :config
+  (progn
+    (setq sml/no-confirm-load-theme t)
+    (setq-default
+     mode-line-format
+     '("%e"
+       mode-line-front-space
+       mode-line-mule-info
+       mode-line-client
+       mode-line-modified
+       mode-line-remote
+       mode-line-frame-identification
+       mode-line-buffer-identification
+       "   "
+       mode-line-position
+       (vc-mode vc-mode)
+       "  "
+       mode-line-modes
+       mode-line-misc-info
+       mode-line-end-spaces))
+    (smart-mode-line-enable)))
+
 (defun hh-copy-file-name-to-clipboard ()
   "Copy the current buffer file name to the clipboard."
   (interactive)
@@ -431,15 +426,14 @@ With a prefix ARG open line above the current line."
     (when filename
       (kill-new filename)
       (message "Copied buffer file name '%s' to the clipboard." filename))))
+
 (defun hh-name-shell (name)
   (interactive "sshell name: ")
   (shell (concat "*" name "*")))
 
-;
 (defun hh-yank-pop-forwards (arg)
   (interactive "p")
   (yank-pop (- arg)))
 (global-set-key (kbd "M-Y") 'hh-yank-pop-forwards) ; M-Y (Meta-Shift-Y)
 
-;
 (provide 'init-editing-utils)
