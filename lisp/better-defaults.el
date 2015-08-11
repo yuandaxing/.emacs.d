@@ -45,7 +45,6 @@
 (progn
   (ido-mode t)
   (setq ido-enable-flex-matching t)
-
   (menu-bar-mode -1)
   (when (fboundp 'tool-bar-mode)
     (tool-bar-mode -1))
@@ -62,7 +61,7 @@
   (setq-default save-place t)
 
   (global-set-key (kbd "M-/") 'hippie-expand)
-  (global-set-key (kbd "C-x C-b") 'ibuffer)
+;  (global-set-key (kbd "C-x C-b") 'ibuffer)
   (global-set-key (kbd "M-z") 'zap-up-to-char)
 
   (global-set-key (kbd "C-s") 'isearch-forward-regexp)
