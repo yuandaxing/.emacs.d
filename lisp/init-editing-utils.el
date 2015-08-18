@@ -93,7 +93,6 @@
 (put 'narrow-to-region 'disabled nil)
 (put 'narrow-to-page 'disabled nil)
 (put 'narrow-to-defun 'disabled nil)
-
 ;;----------------------------------------------------------------------------
 ;; Expand region
 ;;----------------------------------------------------------------------------
@@ -302,7 +301,7 @@ With arg N, insert N newlines."
     (projectile-global-mode)
     (setq projectile-enable-caching t)))
 
-(defun new-scrath (buf)
+(defun hh-new-scrath (buf)
   "open a buffer, if it doesn't exist, open a new one"
   (interactive "sBuffer name: ")
   (switch-to-buffer

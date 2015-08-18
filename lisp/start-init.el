@@ -37,38 +37,44 @@
 (custom-set-faces
  '(ac-candidate-face ((t (:family "DejaVu Sans Mono")))))
 
-(require-package 'multiple-cursors)
-(require 'multiple-cursors)
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-(require-package 'visual-regexp)
-(require 'visual-regexp)
-(define-key global-map (kbd "C-c r") 'vr/replace)
-(define-key global-map (kbd "C-c q") 'vr/query-replace)
-(define-key global-map (kbd "C-c m") 'vr/mc-mark)
+(use-package multiple-cursors
+  :ensure t
+  :config
+  (progn 
+    (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+    (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+    (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+    (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)))
 
-;; automatically save buffers associated with files on buffer switch
-;; and on windows switch
-(defadvice switch-to-buffer (before save-buffer-now activate)
-  (when buffer-file-name (save-buffer)))
-(defadvice other-window (before other-window-now activate)
-  (when buffer-file-name (save-buffer)))
-(defadvice windmove-up (before other-window-now activate)
-  (when buffer-file-name (save-buffer)))
-(defadvice windmove-down (before other-window-now activate)
-  (when buffer-file-name (save-buffer)))
-(defadvice windmove-left (before other-window-now activate)
-  (when buffer-file-name (save-buffer)))
-(defadvice windmove-right (before other-window-now activate)
-  (when buffer-file-name (save-buffer)))
+(use-package visual-regexp
+  :ensure t
+  :config
+  (progn 
+    (define-key global-map (kbd "C-c r") 'vr/replace)
+    (define-key global-map (kbd "C-c q") 'vr/query-replace)
+    (define-key global-map (kbd "C-c m") 'vr/mc-mark)))
 
-(setq default-tab-width 4)
-(setq tab-width 4)
-(setq tab-stop-list ())
-(loop for x downfrom 40 to 1 do
-      (setq tab-stop-list (cons (* x 4) tab-stop-list)))
+(progn
+  ;; automatically save buffers associated with files on buffer switch
+  ;; and on windows switch
+  (defadvice switch-to-buffer (before save-buffer-now activate)
+    (when buffer-file-name (save-buffer)))
+  (defadvice other-window (before other-window-now activate)
+    (when buffer-file-name (save-buffer)))
+  (defadvice windmove-up (before other-window-now activate)
+    (when buffer-file-name (save-buffer)))
+  (defadvice windmove-down (before other-window-now activate)
+    (when buffer-file-name (save-buffer)))
+  (defadvice windmove-left (before other-window-now activate)
+    (when buffer-file-name (save-buffer)))
+  (defadvice windmove-right (before other-window-now activate)
+    (when buffer-file-name (save-buffer)))
+  (setq default-tab-width 4)
+  (setq tab-width 4)
+  (setq tab-stop-list ())
+  (loop for x downfrom 40 to 1 do
+        (setq tab-stop-list (cons (* x 4) tab-stop-list))))
+
 (defun hh-cut-line-or-region ()
   "Cut the current line, or current text selection."
   (interactive)
@@ -82,9 +88,11 @@
   (if (region-active-p)
       (kill-ring-save (region-beginning) (region-end))
     (kill-ring-save (line-beginning-position) (line-beginning-position 2)) ) )
-(require-package 'session)
-(require 'session)
-(add-hook 'after-init-hook 'session-initialize)
+
+(use-package session
+  :ensure t
+  :config
+  (add-hook 'after-init-hook 'session-initialize))
 
 (setq ido-separator "\n")
 (set-face-attribute 'default nil :height 120)
