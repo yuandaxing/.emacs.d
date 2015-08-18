@@ -24,6 +24,7 @@
 (require 'init-easy)
 (require 'init-history)
 (require 'init-engine)
+(require 'init-ido)
 (require-package 'paredit)
 (paredit-mode 1)
 (custom-set-variables
