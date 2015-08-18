@@ -25,18 +25,11 @@
 (require 'init-history)
 (require 'init-engine)
 (require 'init-ido)
-(require-package 'paredit)
-(paredit-mode 1)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(blink-cursor-mode nil)
- '(column-number-mode t)
- '(line-number-mode t))
-(custom-set-faces
- '(ac-candidate-face ((t (:family "DejaVu Sans Mono")))))
+
+(use-package paredit
+  :ensure t
+  :config
+  (paredit-mode 1))
 
 (use-package multiple-cursors
   :ensure t
@@ -76,32 +69,17 @@
   (loop for x downfrom 40 to 1 do
         (setq tab-stop-list (cons (* x 4) tab-stop-list))))
 
-(defun hh-cut-line-or-region ()
-  "Cut the current line, or current text selection."
-  (interactive)
-  (if (region-active-p)
-      (kill-region (region-beginning) (region-end))
-    (kill-region (line-beginning-position) (line-beginning-position 2)) ) )
-
-(defun hh-copy-line-or-region ()
-  "Copy current line, or current text selection."
-  (interactive)
-  (if (region-active-p)
-      (kill-ring-save (region-beginning) (region-end))
-    (kill-ring-save (line-beginning-position) (line-beginning-position 2)) ) )
-
 (use-package session
   :ensure t
   :config
   (add-hook 'after-init-hook 'session-initialize))
 
-(setq ido-separator "\n")
-(set-face-attribute 'default nil :height 120)
-(require-package 'magit) ;;
-(require 'magit)
+(use-package magit
+  :ensure t
+  :config
+  (require 'magit)
+  )
 
-(setq ac-disable-faces nil)
-(put 'set-goal-column 'disabled nil)
 (add-hook 'erc-mode-hook
 		  '(lambda ()
 			 (erc :server "irc.freenode.net" :port 6667 :full-name "Daxing Yuan" :nick "dayua")
@@ -115,8 +93,7 @@
       user-email-address "yuandx@mvad.com")
 (setq-default initial-scratch-message 
               (concat ";; Happy hacking " (or user-login-name "") " - Emacs ♥ you!\n\n"))
-(require-package 'diminish)
-(require 'diminish)
+
 (diminish 'keys-bind-minor-mode)
 (provide 'start-init)
 ;;;start-init.el ends here
