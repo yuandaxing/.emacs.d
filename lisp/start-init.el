@@ -29,8 +29,10 @@
 (use-package paredit
   :ensure t
   :config
-  (paredit-mode 1))
-
+  (progn
+    (paredit-mode 1)
+    (diminish 'paredit-mode)))
+(cua-mode 1)
 (use-package multiple-cursors
   :ensure t
   :config
