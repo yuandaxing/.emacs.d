@@ -32,7 +32,7 @@
   (progn
     (paredit-mode 1)
     (diminish 'paredit-mode)))
-(cua-mode 1)
+(cua-selection-mode t)                  ; for rectangles, CUA is nice
 (use-package multiple-cursors
   :ensure t
   :config
