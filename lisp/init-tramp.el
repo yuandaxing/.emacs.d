@@ -3,6 +3,7 @@
   :config
   (progn
     (set-default 'tramp-default-method "sshx")
+    (set-default 'tramp-default-user "yuandx")
     (set-default 'tramp-shell-prompt-pattern "\\(?:^\\|\r\\)[^]#$%>\n]*#?[]#$%>].* *\\(^[\\[[0-9;]*[a-zA-Z] *\\)*")
     (setq tramp-ssh-controlmaster-options
           (concat
@@ -10,6 +11,7 @@
            " -o ControlMaster=auto -o ControlPersist=yes"
            ))
     ))
+
 (defun hh-find-alternative-file-with-sudo ()
   (interactive)
   (let ((fname (or buffer-file-name
