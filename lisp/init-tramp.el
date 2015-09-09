@@ -10,6 +10,7 @@
            " -o ControlMaster=auto -o ControlPersist=yes"
            ))
     ))
+
 (defun hh-find-alternative-file-with-sudo ()
   (interactive)
   (let ((fname (or buffer-file-name
@@ -21,5 +22,5 @@
                        fname))
         (setq fname (concat "/sudo:root@localhost:" fname)))
       (find-alternate-file fname))))
-(eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
+
 (provide 'init-tramp)
