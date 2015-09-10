@@ -4,6 +4,7 @@
   (progn
     (set-default 'tramp-default-method "sshx")
     (set-default 'tramp-default-user "yuandx")
+    (set-default 'tramp-verbose 3) ;default settings
     (set-default 'tramp-shell-prompt-pattern "\\(?:^\\|\r\\)[^]#$%>\n]*#?[]#$%>].* *\\(^[\\[[0-9;]*[a-zA-Z] *\\)*")
     (setq tramp-ssh-controlmaster-options
           (concat

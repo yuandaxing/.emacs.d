@@ -82,6 +82,7 @@
   (require 'magit)
   )
 
+(require 'erc)
 (add-hook 'erc-mode-hook
 		  '(lambda ()
 			 (erc :server "irc.freenode.net" :port 6667 :full-name "Daxing Yuan" :nick "dayua")
