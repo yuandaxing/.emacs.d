@@ -95,7 +95,8 @@
 (setq user-full-name "yuandaxing"
       user-email-address "yuandx@mvad.com")
 (setq-default initial-scratch-message 
-              (concat ";; Happy hacking " (or user-login-name "") " - Emacs ♥ you!\n\n"))
+              (concat ";; Happy hacking " (or user-login-name "")
+                      " - enjoy!\n\n"))
 
 (diminish 'keys-bind-minor-mode)
 (provide 'start-init)
