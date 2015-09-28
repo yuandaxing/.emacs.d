@@ -1,0 +1,31 @@
+# -*- mode: snippet -*-
+# name: algo
+# key: algo
+# --
+/*
+ * author: yuandx
+ * create: `(format-time-string "%Y-%m-%d")`
+ * email: yuandx@mvad.com
+ */
+
+#include <iostream>
+#include <vector>
+#include <map>
+#include <set>
+#include <utility>
+#include <functional>
+#include <algorithm>
+using std::cout;
+using std::cin;
+using std::endl;
+using std::vector;
+using std::map;
+using std::set;
+using std::pair;
+using std::sort;
+
+int main()
+{
+  $0
+  return 0;
+}
