@@ -12,6 +12,7 @@
 #include <vector>
 #include <map>
 #include <set>
+#include <climits>
 #include <string>
 #include <utility>
 #include <functional>
