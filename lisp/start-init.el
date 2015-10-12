@@ -25,7 +25,8 @@
 (require 'init-history)
 (require 'init-engine)
 (require 'init-ido)
-
+(require 'init-web)
+(require 'init-python)
 (use-package paredit
   :ensure t
   :config
