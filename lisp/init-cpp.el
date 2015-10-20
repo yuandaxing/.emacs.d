@@ -29,10 +29,9 @@
 
 (use-package helm
   :ensure t
-  :config t
   :diminish helm-mode
   :config
-  (
+  (progn
    (require 'helm-config)
    (setq helm-candidate-number-limit 100)
    (setq helm-input-idle-delay 0.01
