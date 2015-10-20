@@ -20,7 +20,6 @@
 
 (add-hook 'c++-mode-hook 'c++-mode-hook-setting)
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
-(require-package 'helm)
 (setq-default scroll-margin 1
       scroll-conservatively 100000
       scroll-up-aggressively 0.01
@@ -28,6 +27,21 @@
 (setq-default auto-window-vscroll nil)
 (setq-default scroll-step 1)
 
+(use-package helm
+  :ensure t
+  :config t
+  :diminish helm-mode
+  :config
+  (
+   (require 'helm-config)
+   (setq helm-candidate-number-limit 100)
+   (setq helm-input-idle-delay 0.01
+         helm-yas-display-key-on-candidate t
+         helm-quick-update t
+         helm-M-x-requires-pattern nil
+         helm-ff-skip-boring-files t)
+   (helm-mode))
+  )
 (use-package helm-gtags
   :ensure t
   :config
@@ -45,6 +59,7 @@
      helm-gtags-prefix-key "\C-cg"
      helm-gtags-suggested-key-mapping t
      )
+
     ))
 
 (add-hook 'c++-mode-hook 'key-bind-hook )
