@@ -41,7 +41,16 @@
          helm-M-x-requires-pattern nil
          helm-ff-skip-boring-files t)
    (helm-mode))
-  )
+  :bind
+  (("C-c h m" . helm-mini)
+   ("C-c h b" . helm-buffers-list)
+   ("C-c h s" . helm-swoop)
+   ("C-c h y" . helm-yas-complete)
+   ("M-y" . helm-show-kill-ring)
+   ))
+(use-package helm-descbinds
+  :defer t
+  :bind (("C-c h d" . helm-descbinds)))
 (use-package helm-gtags
   :ensure t
   :config
@@ -59,7 +68,6 @@
      helm-gtags-prefix-key "\C-cg"
      helm-gtags-suggested-key-mapping t
      )
-
     ))
 
 (add-hook 'c++-mode-hook 'key-bind-hook )
