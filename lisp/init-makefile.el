@@ -6,7 +6,7 @@
   :ensure t
   :config
   (progn
-    (add-hook 'makefile-mode-hook 'blank-mode)
-    (add-hook 'makefile-mode-hook 'hh-makefile)
-    (add-hook 'makefile-mode-hook 'key-bind-hook)))
+    (add-hook 'makefile-gmake-mode-hook 'blank-mode)
+    (add-hook 'makefile-gmake-mode-hook 'hh-makefile)
+    (add-hook 'makefile-gmake-mode-hook 'key-bind-hook)))
 (provide 'init-makefile)
