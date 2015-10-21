@@ -31,8 +31,10 @@
   :ensure t
   :config
   (progn
-    (paredit-mode 1)
-    (diminish 'paredit-mode)))
+    (add-hook 'emacs-lisp-mode-hook
+              (lambda ()
+                (paredit-mode 1)
+                (diminish 'paredit-mode)))))
 (cua-selection-mode t)                  ; for rectangles, CUA is nice
 (use-package multiple-cursors
   :ensure t
