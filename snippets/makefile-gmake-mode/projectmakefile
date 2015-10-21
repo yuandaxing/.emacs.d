@@ -34,3 +34,6 @@ INCLUDE_PATH = $(addprefix -I,$(INCLUDE_DIR))
 
 all:  $(OBJECT)
 	$(CXX) -o $(RELEASE) $(OBJECT) $(LINK_PATH) $(LINK_LIB)
+
+clean:
+	$(RM) $(OBJECT) $(RELEASE)
