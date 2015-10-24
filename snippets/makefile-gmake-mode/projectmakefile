@@ -27,13 +27,15 @@ OBJECT = $(OBJECT_CPP) $(OBJECT_CC)
 LINK_LIB = $(addprefix -l, $(LIB_NAME))
 LINK_PATH = $(addprefix -L, $(LIB_DIR))
 INCLUDE_PATH = $(addprefix -I,$(INCLUDE_DIR))
+
 %.o : %.cc
 	$(CXX) $(CPPFLAGS) $(INCLUDE_PATH) -c $< -o $@
+
 %.o : %.cpp
 	$(CXX) $(CPPFLAGS) $(INCLUDE_PATH) -c $< -o $@
 
 all:  $(OBJECT)
 	$(CXX) -o $(RELEASE) $(OBJECT) $(LINK_PATH) $(LINK_LIB)
 
-clean:
+clean:	
 	$(RM) $(OBJECT) $(RELEASE)
