@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: head
+# key: head
+# --
+
+/*
+ * author: yuandx
+ * create: `(format-time-string "%Y-%m-%d")`
+ * email: yuandx@mvad.com
+ */
+
+#ifndef ${1:MACRO}
+#define $1
+$0
+
+#endif // $1
