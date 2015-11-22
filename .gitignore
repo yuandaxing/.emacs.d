@@ -1,6 +1,7 @@
 *~
 /*
 !/snippets*
+!/abbrev*
 !.gitignore
 !.projectile
 !README.md
