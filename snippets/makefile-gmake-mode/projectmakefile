@@ -1,4 +1,5 @@
 # -*- mode: snippet -*-
+# expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 'nil))
 # name: project
 # key: project
 # --
@@ -10,7 +11,7 @@ MAKEDIR = mkdir -p
 COPY	= cp
 AR		= ar
 CPPFLAGS = -O3
-RELEASE = project 
+RELEASE = project
 
 DIRS := ./
 SOURCE_FILES_CPP := $(foreach d, $(DIRS), $(wildcard $(d)*.cpp) )
@@ -37,5 +38,5 @@ INCLUDE_PATH = $(addprefix -I,$(INCLUDE_DIR))
 all:  $(OBJECT)
 	$(CXX) -o $(RELEASE) $(OBJECT) $(LINK_PATH) $(LINK_LIB)
 
-clean:	
+clean:
 	$(RM) $(OBJECT) $(RELEASE)

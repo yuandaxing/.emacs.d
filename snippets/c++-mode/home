@@ -1,0 +1,14 @@
+# name: ASCII home
+# expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 'nil))
+# key: home
+# --
+        welcome to my
+        X      humble
+       / \      home,
+      /   \      $0
+     /     \
+    /-------\
+    |       |
+    |  +-+  |
+    |  | |  |
+    +--+-+--+
