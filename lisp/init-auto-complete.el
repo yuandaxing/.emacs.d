@@ -5,7 +5,8 @@
     (require 'yasnippet)
     (yas-global-mode 1)
     (add-to-list 'yas-snippet-dirs
-             (expand-file-name "snippets" user-emacs-directory))
+                 (expand-file-name "snippets" user-emacs-directory))
+    (setq yas-wrap-around-region t)
     (diminish 'yas-minor-mode)))
 
 (use-package auto-complete

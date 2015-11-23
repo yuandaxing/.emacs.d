@@ -1,0 +1,7 @@
+# name: <p>...</p>
+# binding: C-c C-c C-i
+# key: myfor
+# --
+for ($1;$2;$3) {
+  `yas-selected-text`$0
+}
