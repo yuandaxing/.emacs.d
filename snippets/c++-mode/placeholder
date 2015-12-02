@@ -1,0 +1,5 @@
+# name: ASCII neee
+# expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 'nil))
+# key: neee
+# --
+<div${1: id="${2:some_id}"}>$0</div>

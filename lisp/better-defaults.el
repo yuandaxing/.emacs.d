@@ -84,5 +84,16 @@
         backup-directory-alist `(("." . ,(concat user-emacs-directory
                                                  "backups")))))
 
+(progn
+  (setq kill-ring-max 500)
+  (setq extended-command-history-max 50)
+  (setq query-replace-history-max 50)
+  (setq replace-string-history-max 50)
+  (setq file-name-history-max 50)
+  (setq replace-regex-history-max 50)
+  (setq minibuffer-history-max 1000)
+  (setq shell-command-history-max 1000)
+  (setq find-file-history-max 1000)
+  )
 (provide 'better-defaults)
 ;;; better-defaults.el ends here

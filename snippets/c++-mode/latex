@@ -1,0 +1,8 @@
+# name: ASCII aaaa
+# expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 'nil))
+# key: aaaa
+# --
+\section{${1:"Titel der Tour"}}%
+\index{$1}%
+\label{{2:"waiting for reftex-label call..."$(unless yas-modified-p (reftex-label nil 'dont-
+insert))}}%
