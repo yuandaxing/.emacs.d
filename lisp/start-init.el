@@ -27,6 +27,7 @@
 (require 'init-ido)
 (require 'init-web)
 (require 'init-python)
+(require 'init-recentf)
 (use-package paredit
   :ensure t
   :config

@@ -39,6 +39,7 @@
          helm-yas-display-key-on-candidate t
          helm-quick-update t
          helm-M-x-requires-pattern nil
+         helm-recentf-fuzzy-match t
          helm-ff-skip-boring-files t)
    (helm-mode))
   :bind
@@ -60,6 +61,7 @@
     (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
     (define-key helm-map (kbd "C-h") 'helm-ff-delete-char-backward)
     (define-key helm-find-files-map (kbd "C-h") 'helm-ff-delete-char-backward)
+    (global-set-key (kbd "C-x C-r") 'helm-recentf)
     (setq
      helm-gtags-ignore-case t
      helm-gtags-auto-update t
