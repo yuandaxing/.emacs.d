@@ -7,7 +7,9 @@
   :config
   (progn
     (setq projectile-globally-ignored-files (append projectile-globally-ignored-files
-                                                    '("GTAGS" "GPATH" "GSYMS" "GRTAGS" "makefile" "*\\.pyc")))))
+                                                    '("GTAGS" "GPATH" "GSYMS" "GRTAGS" "makefile" "*\\.pyc"))))
+  :bind (
+         ("C-c h g" . helm-projectile-grep)))
 (use-package hydra
   :ensure t)
 
