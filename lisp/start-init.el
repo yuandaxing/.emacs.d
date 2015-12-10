@@ -37,6 +37,7 @@
                 (paredit-mode 1)
                 (diminish 'paredit-mode)))))
 (cua-selection-mode t)                  ; for rectangles, CUA is nice
+(require 'init-calendar)
 (use-package multiple-cursors
   :ensure t
   :config
