@@ -6,6 +6,7 @@
   :ensure t
   :config
   (progn
+    (require 'helm-projectile)
     (setq projectile-globally-ignored-files (append projectile-globally-ignored-files
                                                     '("GTAGS" "GPATH" "GSYMS" "GRTAGS" "makefile" "*\\.pyc"))))
   :bind (
