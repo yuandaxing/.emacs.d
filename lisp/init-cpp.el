@@ -45,7 +45,6 @@
   :bind
   (("C-c h m" . helm-mini)
    ("C-c h b" . helm-buffers-list)
-   ("C-c h s" . helm-swoop)
    ("C-c h y" . helm-yas-complete)
    ("M-y" . helm-show-kill-ring)
    ))
@@ -99,6 +98,7 @@
     (setq helm-swoop-split-direction 'split-window-vertically)
     (setq helm-swoop-speed-or-color nil)
     (setq helm-swoop-move-to-line-cycle t)
-    (setq helm-swoop-use-line-number-face t)
-    (global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)))
+    (setq helm-swoop-use-line-number-face t))
+  :bind
+    (("C-c h s" . helm-multi-swoop-all)))
 (provide 'init-cpp)
