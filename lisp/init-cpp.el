@@ -82,6 +82,10 @@
 
 (use-package helm-swoop
   :ensure t
+  :init
+  (progn
+    (require 'helm)
+    (require 'helm-swoop))
   :config
   (progn
     (global-set-key (kbd "M-i") 'helm-swoop)
@@ -100,5 +104,6 @@
     (setq helm-swoop-move-to-line-cycle t)
     (setq helm-swoop-use-line-number-face t))
   :bind
-    (("C-c h s" . helm-multi-swoop-all)))
+  (("C-c h s" . helm-multi-swoop-all)))
+
 (provide 'init-cpp)
