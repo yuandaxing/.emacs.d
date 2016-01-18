@@ -414,18 +414,20 @@ With a prefix ARG open line above the current line."
        mode-line-end-spaces))
     (smart-mode-line-enable)))
 
-(defun hh-copy-file-name-to-clipboard ()
+(defun hh-copy-file-name-to-clipboard (arg)
   "Copy the current buffer file name to the clipboard."
-  (interactive)
+  (interactive "P")
   (let ((filename (if (equal major-mode 'dired-mode)
                       default-directory
                     (buffer-file-name))))
-    (when filename
-      (kill-new filename)
-      (message "Copied buffer file name '%s' to the clipboard." filename))))
-(defun hh-name-shell (name)
-  (interactive "sshell name: ")
-  (shell (concat "*" name "*")))
+    (let ((text (if arg
+                    filename
+                  (file-name-nondirectory filename)
+                  )))
+      (when text
+        (kill-new text)
+        (message "Copied buffer file name '%s' to the clipboard." text)))))
+
 (defun hh-yank-pop-forwards (arg)
   (interactive "p")
   (yank-pop (- arg)))
