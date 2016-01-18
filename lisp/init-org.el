@@ -138,4 +138,5 @@
   (interactive "sRegex: ")
   (rgrep regex-arg "*" "~/Dropbox/code-snippet/emacs-search/"))
 
+(global-set-key (kbd "C-c h c") 'search-snippet)
 (provide 'init-org)
