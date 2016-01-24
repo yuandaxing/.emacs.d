@@ -20,3 +20,4 @@ start()
 
 start 
 
+# add source  ~/.emacs.d/personal.sh to .bashrc
