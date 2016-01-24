@@ -4,6 +4,7 @@
 !/abbrev*
 !.gitignore
 !.projectile
+!personal.sh
 !README.md
 !start-init.el
 !/lisp/
