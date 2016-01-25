@@ -4,9 +4,10 @@
   (key-chord-mode 1))
 (use-package helm-projectile
   :ensure t
+  :init
+  (require 'helm-projectile)
   :config
   (progn
-    (require 'helm-projectile)
     (setq projectile-globally-ignored-files (append projectile-globally-ignored-files
                                                     '("GTAGS" "GPATH" "GSYMS" "GRTAGS" "makefile" "*\\.pyc"))))
   :bind (
