@@ -15,7 +15,7 @@ start()
     else
         xflux -l 31.19 -g 121.76 -k 5500
     fi
-    setxkbmap -option ctrl:swapcaps
+    setxkbmap -option ctrl:nocaps
 }
 
 start 
