@@ -383,7 +383,6 @@ With a prefix ARG open line above the current line."
       (move-end-of-line nil)
       (newline-and-indent))))
 
-
 (global-set-key (kbd "S-<return>") 'hh-smart-open-line)
 (defun hh-comint-clear-buffer ()
   (interactive)
