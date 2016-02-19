@@ -43,9 +43,7 @@
          helm-ff-skip-boring-files t)
    (helm-mode))
   :bind
-  (("C-c h m" . man)
-   ("C-c h b" . helm-buffers-list)
-   ("C-c h y" . helm-yas-complete)
+  (("C-c h y" . helm-yas-complete)
    ("M-y" . helm-show-kill-ring)
    ))
 (use-package helm-descbinds

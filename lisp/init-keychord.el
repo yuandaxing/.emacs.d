@@ -36,6 +36,7 @@
                                ("-" text-scale-decrease "decrease text size")
                                ("k" describe-key "describe-key")
                                ("f" describe-function "describe-function")
+                               ("m" man "man")
                                ("." repeat)
                                ("n" next-line)
                                ("p" previous-line)
