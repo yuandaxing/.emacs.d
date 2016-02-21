@@ -37,6 +37,7 @@
                                ("-" text-scale-decrease "decrease text size")
                                ("k" describe-key "describe-key")
                                ("f" describe-function "describe-function")
+                               ("c" compile "compile c or c++ code")
                                ("m" man "man")
                                ("." repeat)
                                ("n" next-line)
