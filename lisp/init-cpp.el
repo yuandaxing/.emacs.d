@@ -1,7 +1,8 @@
 (require 'compile)
 (add-hook 'c++-mode-hook
           (lambda ()
-            (unless (file-exists-p "Makefile")
+            (unless (or (file-exists-p "makefile")
+                        (file-exists-p "Makefile"))
               (set (make-local-variable 'compile-command)
                    (let ((file (file-name-nondirectory buffer-file-name)))
                      (format "%s  -o %s.exe %s %s"
@@ -10,6 +11,20 @@
                              file
                              "-std=c++11 -fdiagnostics-color=auto"
                              ))))))
+(add-hook 'c-mode-hook
+          (lambda ()
+            (unless (or (file-exists-p "makefile")
+                        (file-exists-p "Makefile"))
+              (set (make-local-variable 'compile-command)
+                   (let ((file (file-name-nondirectory buffer-file-name)))
+                     (format "%s  -o %s.exe %s %s"
+                             "gcc"
+                             (file-name-sans-extension file)
+                             file
+                             "-fdiagnostics-color=auto"
+                             ))))))
+
+
 
 (defun c++-mode-hook-setting()
   (c-set-offset 'substatement-open 0)
@@ -47,8 +62,7 @@
    ("M-y" . helm-show-kill-ring)
    ))
 (use-package helm-descbinds
-  :defer t
-  :bind (("C-c h d" . helm-descbinds)))
+  :defer t)
 (use-package helm-gtags
   :ensure t
   :config

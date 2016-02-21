@@ -11,7 +11,8 @@
     (setq projectile-globally-ignored-files (append projectile-globally-ignored-files
                                                     '("GTAGS" "GPATH" "GSYMS" "GRTAGS" "makefile" "*\\.pyc"))))
   :bind (
-         ("C-c h g" . helm-projectile-grep)))
+           ("C-c h g" . helm-projectile-grep)
+           ("C-c h p" . helm-projectile-switch-project)))
 (use-package hydra
   :ensure t)
 
