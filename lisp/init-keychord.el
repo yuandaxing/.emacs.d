@@ -39,10 +39,8 @@
                                ("f" describe-function "describe-function")
                                ("c" compile "compile c or c++ code")
                                ("m" man "man")
-                               ("." repeat)
-                               ("n" next-line)
-                               ("p" previous-line)
-                               ("v" scroll-up) ("V" scroll-down) ("x" smex)
+                               ("o" other-window "other windows")
+                               ("x" smex)
                                ("q" nil)))
     ))
 
