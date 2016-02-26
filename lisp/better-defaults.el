@@ -85,7 +85,7 @@
                                                  "backups")))))
 
 (progn
-  (setq kill-ring-max 500)
+  (setq kill-ring-max 1000)
   (setq extended-command-history-max 50)
   (setq query-replace-history-max 50)
   (setq replace-string-history-max 50)
