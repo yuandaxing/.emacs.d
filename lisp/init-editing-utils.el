@@ -275,7 +275,7 @@ With arg N, insert N newlines."
   :ensure t
   :config
   (progn 
-    (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x 5" "C-c" "C-x n" "C-c h"))
+    (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x 5" "C-c" "C-x n" "C-c h" "C-c p"))
     (guide-key-mode 1)
     (diminish 'guide-key-mode)))
 
