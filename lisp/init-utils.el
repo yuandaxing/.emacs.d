@@ -46,7 +46,7 @@
 ;;----------------------------------------------------------------------------
 ;; Delete the current file
 ;;----------------------------------------------------------------------------
-(defun delete-this-file ()
+(defun hh-delete-this-file ()
   "Delete the current file, and kill the buffer."
   (interactive)
   (or (buffer-file-name) (error "No file is currently being edited"))
@@ -59,7 +59,7 @@
 ;;----------------------------------------------------------------------------
 ;; Rename the current file
 ;;----------------------------------------------------------------------------
-(defun rename-this-file-and-buffer (new-name)
+(defun hh-rename-this-file-and-buffer (new-name)
   "Renames both current buffer and file it's visiting to NEW-NAME."
   (interactive "sNew name: ")
   (let ((name (buffer-name))
@@ -77,7 +77,7 @@
 ;;----------------------------------------------------------------------------
 ;; Browse current HTML file
 ;;----------------------------------------------------------------------------
-(defun browse-current-file ()
+(defun hh-browse-current-file ()
   "Open the current file as a URL using `browse-url'."
   (interactive)
   (let ((file-name (buffer-file-name)))
