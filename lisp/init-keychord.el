@@ -12,7 +12,7 @@
                                                     '("GTAGS" "GPATH" "GSYMS" "GRTAGS" "makefile" "*\\.pyc"))))
   :bind (
            ("C-c h g" . helm-projectile-grep)
-           ("C-c h p" . helm-projectile-switch-project)))
+     ))
 (use-package hydra
   :ensure t)
 
@@ -33,15 +33,16 @@
                                "easy"
                                ("a" org-agenda "agenda")
                                ("s" search-snippet "search snippet")
-                               ("+" text-scale-increase "increase text size")
-                               ("-" text-scale-decrease "decrease text size")
                                ("k" describe-key "describe-key")
                                ("f" describe-function "describe-function")
                                ("c" compile "compile c or c++ code")
+                               ("," ido-switch-buffer "switch buffer")
                                ("m" man "man")
                                ("o" other-window "other windows")
-                               ("x" smex)
-                               ("q" nil)))
+                               ("x" smex "smex")
+                               ("+" text-scale-increase "increase text size")
+                               ("-" text-scale-decrease "decrease text size")
+                               ("q" nil "quit")))
     ))
 
 (provide 'init-keychord)

@@ -1,4 +1,3 @@
-;;;happy hackiing emacs
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'better-defaults)
 (require 'init-utils)
