@@ -9,7 +9,7 @@
                              "g++"
                              (file-name-sans-extension file)
                              file
-                             "-std=c++11 -fdiagnostics-color=auto"
+                             "-std=c++11 -fdiagnostics-color=auto -lpthread"
                              ))))))
 (add-hook 'c-mode-hook
           (lambda ()
@@ -21,7 +21,7 @@
                              "gcc"
                              (file-name-sans-extension file)
                              file
-                             "-fdiagnostics-color=auto"
+                             "-fdiagnostics-color=auto -lpthread"
                              ))))))
 
 
