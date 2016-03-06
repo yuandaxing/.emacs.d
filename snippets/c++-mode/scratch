@@ -1,0 +1,51 @@
+# -*- mode: snippet -*-
+# name: scratch
+# key: scratch
+# --
+/*
+ * author: yuandx
+ * create: `(format-time-string "%Y-%m-%d")`
+ * email: yuandx@mvad.com
+ */
+
+#include <iostream>
+#include <vector>
+#include <map>
+#include <set>
+#include <climits>
+#include <string>
+#include <utility>
+#include <functional>
+#include <algorithm>
+#include <stdio.h>
+#include <sstream>
+#include <atomic>
+#include <future>
+#include <thread>
+#include <mutex>
+#include <chrono>
+#include <promise>
+using std::ostringstream;
+using std::istringstream;
+using std::stringstream;
+using std::cout;
+using std::cin;
+using std::endl;
+using std::vector;
+using std::map;
+using std::set;
+using std::pair;
+using std::sort;
+using std::string;
+using std::for_each;
+using std::atomic;
+using std::thread;
+using std::future;
+using std::promise;
+
+
+int main()
+{
+  $0
+  return 0;
+}
