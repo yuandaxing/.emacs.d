@@ -61,7 +61,7 @@
   (("C-c h y" . helm-yas-complete)
    ("M-y" . helm-show-kill-ring)
    ))
-(-key isearch-mode-map (kbd "M-y") 'helm-show-kill-ring)
+(define-key isearch-mode-map (kbd "M-y") 'helm-show-kill-ring)
 (use-package helm-descbinds
   :defer t)
 (use-package helm-gtags
