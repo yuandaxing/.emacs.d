@@ -1,7 +1,7 @@
 ;;; Find and load the correct package.el
 
 ;; When switching between Emacs 23 and 24, we always use the bundled package.el in Emacs 24
-(set-default 'package-user-dir "~/Dropbox/emacs/elpa/")
+;(set-default 'package-user-dir "~/Dropbox/emacs/elpa/")
 (let ((package-el-site-lisp-dir
        (expand-file-name "site-lisp/package" user-emacs-directory)))
   (when (and (file-directory-p package-el-site-lisp-dir)
@@ -16,7 +16,6 @@
 ;;; Standard package repositories
 
 ;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-
 ;; We include the org repository for completeness, but don't normally
 ;; use it.
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
