@@ -138,5 +138,9 @@
   (interactive "sRegex: ")
   (rgrep regex-arg "*" "~/Dropbox/code-snippet/emacs-search/"))
 
+(defun search-ambition (regex-arg)
+  (interactive "sRegex: ")
+  (rgrep regex-arg "*" "/home/yuandx/code/trunk/common"))
+
 (global-set-key (kbd "C-c h c") 'search-snippet)
 (provide 'init-org)
