@@ -34,7 +34,7 @@
                                "easy"
                                ("a" org-agenda "agenda")
                                ("s" search-snippet "search snippet")
-                               ("m" search-ambition "search ambition")
+                               ("b" search-ambition "search ambition")
                                ("k" describe-key "describe-key")
                                ("f" describe-function "describe-function")
                                ("c" compile "compile c or c++ code")
