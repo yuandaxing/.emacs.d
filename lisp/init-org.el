@@ -133,10 +133,15 @@
     (switch-to-buffer-other-window "*Org Agenda*"))
    (t (org-agenda nil "a"))))
 
-(grep-compute-defaults)
 (defun search-snippet ()
   (interactive)
   (helm-do-grep-1 (list "~/Dropbox/code-snippet/emacs-search/")))
+(defun search-test ()
+  (interactive)
+  (helm-do-grep-1 (list "~/Dropbox/code-snippet/C++/test/")))
+(defun search-effective ()
+  (interactive)
+  (helm-do-grep-1 (list "~/Dropbox/code-snippet/C++/modern-effective-c++/")))
 
 (global-set-key (kbd "C-c h c") 'search-snippet)
 (provide 'init-org)
