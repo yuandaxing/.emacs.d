@@ -143,5 +143,9 @@
   (interactive)
   (helm-do-grep-1 (list "~/Dropbox/code-snippet/C++/modern-effective-c++/")))
 
+(defun search-ambition (regex-arg)
+  (interactive "sRegex: ")
+  (rgrep regex-arg "*" "/home/yuandx/code/trunk/common"))
+
 (global-set-key (kbd "C-c h c") 'search-snippet)
 (provide 'init-org)
