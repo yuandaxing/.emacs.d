@@ -48,15 +48,20 @@
   :diminish helm-mode
   :config
   (progn
-   (require 'helm-config)
-   (setq helm-candidate-number-limit 100)
-   (setq helm-input-idle-delay 0.01
+    (require 'helm-config)
+    (require 'helm)
+    (helm-mode)
+    (setq helm-candidate-number-limit 100)
+    (setq helm-input-idle-delay 0.01
          helm-yas-display-key-on-candidate t
          helm-quick-update t
          helm-M-x-requires-pattern nil
          helm-recentf-fuzzy-match t
+         helm-M-x-fuzzy-match t
+         helm-mode-fuzzy-match t
          helm-ff-skip-boring-files t)
-   (helm-mode))
+    (global-set-key (kbd "M-x") 'helm-M-x)
+    )
   :bind
   (("C-c h y" . helm-yas-complete)
    ("M-y" . helm-show-kill-ring)

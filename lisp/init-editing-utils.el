@@ -110,10 +110,11 @@
 ;; Handy key bindings
 ;;----------------------------------------------------------------------------
 (progn
-  (global-set-key (kbd "C-x C-m") 'helm-M-x)
-  (global-set-key (kbd "C-c C-m") 'helm-M-x)
+ ; (global-set-key (kbd "C-x C-m") 'helm-M-x)
+ ; (global-set-key (kbd "C-c C-m") 'helm-M-x)
   (global-set-key (kbd "C-.") 'set-mark-command)
-  (global-set-key (kbd "C-x C-.") 'pop-global-mark))
+                                        ;(global-set-key (kbd "C-x C-.") 'pop-global-mark)
+  )
 
 
 (use-package multiple-cursors
@@ -291,7 +292,6 @@ With arg N, insert N newlines."
 ;;     (require 'smex)
 ;;     (global-set-key (kbd "M-x") 'smex)
 ;;     (global-set-key (kbd "M-X") 'smex-major-mode-commands)))
-(global-set-key (kbd "M-x") 'helm-M-x)
 (use-package projectile
   :ensure t
   :config
