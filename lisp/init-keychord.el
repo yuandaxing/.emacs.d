@@ -25,7 +25,7 @@
     (key-chord-define-global "jj" 'ace-jump-word-mode)
     (key-chord-define-global "jl" 'ace-jump-line-mode)
     (key-chord-define-global "jk" 'ace-jump-char-mode)
-    (key-chord-define-global ",," 'ido-switch-buffer)
+    (key-chord-define-global ",," 'helm-buffers-list)
     (key-chord-define-global ",." 'helm-projectile-find-file)
     (key-chord-define-global "uu" 'undo-tree-visualize)
     (key-chord-define-global "xx" 'helm-M-x)
