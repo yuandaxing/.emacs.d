@@ -28,7 +28,7 @@
     (key-chord-define-global ",," 'ido-switch-buffer)
     (key-chord-define-global ",." 'helm-projectile-find-file)
     (key-chord-define-global "uu" 'undo-tree-visualize)
-    (key-chord-define-global "xx" 'smex)
+    (key-chord-define-global "xx" 'helm-M-x)
     (key-chord-define-global "yy"
                              (defhydra handy(nil)
                                "easy"
@@ -41,7 +41,7 @@
                                ("," ido-switch-buffer "switch buffer")
                                ("m" man "man")
                                ("o" other-window "other windows")
-                               ("x" smex "smex")
+                               ("x" helm-M-x "helm-M-x")
                                ("+" text-scale-increase "increase text size")
                                ("-" text-scale-decrease "decrease text size")
                                ("q" nil "quit")))

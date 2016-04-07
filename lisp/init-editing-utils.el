@@ -110,8 +110,8 @@
 ;; Handy key bindings
 ;;----------------------------------------------------------------------------
 (progn
-  (global-set-key (kbd "C-x C-m") 'smex)
-  (global-set-key (kbd "C-c C-m") 'smex)
+  (global-set-key (kbd "C-x C-m") 'helm-M-x)
+  (global-set-key (kbd "C-c C-m") 'helm-M-x)
   (global-set-key (kbd "C-.") 'set-mark-command)
   (global-set-key (kbd "C-x C-.") 'pop-global-mark))
 
@@ -284,14 +284,14 @@ With arg N, insert N newlines."
 (global-set-key (kbd "C-w") 'backward-kill-word)
 (global-set-key (kbd "C-x C-k") 'kill-region)
 (setq frame-title-format "Emacs - %f")
-(use-package smex
-  :ensure t
-  :config
-  (progn
-    (require 'smex)
-    (global-set-key (kbd "M-x") 'smex)
-    (global-set-key (kbd "M-X") 'smex-major-mode-commands)))
-
+;; (use-package smex
+;;   :ensure t
+;;   :config
+;;   (progn
+;;     (require 'smex)
+;;     (global-set-key (kbd "M-x") 'smex)
+;;     (global-set-key (kbd "M-X") 'smex-major-mode-commands)))
+(global-set-key (kbd "M-x") 'helm-M-x)
 (use-package projectile
   :ensure t
   :config
