@@ -61,6 +61,7 @@
          helm-mode-fuzzy-match t
          helm-split-window-default-side 'below
          helm-split-window-in-side-p t
+         helm-buffer-max-length nil
          helm-ff-skip-boring-files t)
     (global-set-key (kbd "M-x") 'helm-M-x)
     (global-set-key (kbd "C-x b") 'helm-buffers-list)

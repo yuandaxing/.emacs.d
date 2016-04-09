@@ -147,6 +147,6 @@
   (helm-do-grep-1 (list "~/Dropbox/code-snippet/C++/modern-effective-c++/")))
 (defun search-ambition ()
   (interactive)
-  (helm-do-grep-1 "/home/yuandx/code/trunk/common"))
+  (helm-do-grep-1 (list "/home/yuandx/code/trunk/common/")))
 (global-set-key (kbd "C-c h c") 'search-snippet)
 (provide 'init-org)
