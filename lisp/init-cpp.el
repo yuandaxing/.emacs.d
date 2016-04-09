@@ -63,11 +63,14 @@
          helm-split-window-in-side-p t
          helm-ff-skip-boring-files t)
     (global-set-key (kbd "M-x") 'helm-M-x)
+    (global-set-key (kbd "C-x b") 'helm-buffers-list)
     )
   :bind
   (("C-c h y" . helm-yas-complete)
    ("M-y" . helm-show-kill-ring)
    ))
+
+
 (define-key isearch-mode-map (kbd "M-y") 'helm-show-kill-ring)
 (use-package helm-descbinds
   :defer t)
