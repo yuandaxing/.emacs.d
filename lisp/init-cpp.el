@@ -55,8 +55,6 @@
           helm-yas-display-key-on-candidate t
           helm-quick-update t
           helm-M-x-requires-pattern nil
-          helm-recentf-fuzzy-match t
-          helm-M-x-fuzzy-match t
           helm-mode-fuzzy-match t
           helm-split-window-default-side 'below
           helm-split-window-in-side-p t
@@ -64,6 +62,7 @@
           helm-ff-skip-boring-files t)
     (global-set-key (kbd "M-x") 'helm-M-x)
     (global-set-key (kbd "C-x b") 'helm-buffers-list)
+    (global-set-key (kbd "C-x C-r") 'helm-recentf)
     )
   :bind
   (("C-c h y" . helm-yas-complete)
@@ -87,7 +86,6 @@
     (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
     (define-key helm-map (kbd "C-h") 'helm-ff-delete-char-backward)
     (define-key helm-find-files-map (kbd "C-h") 'helm-ff-delete-char-backward)
-    (global-set-key (kbd "C-x C-r") 'helm-recentf)
     (setq
      helm-gtags-ignore-case t
      helm-gtags-auto-update t
