@@ -75,16 +75,16 @@
 (use-package helm-descbinds
   :defer t)
 
-(custom-set-variable
- '(helm-gtags-suggested-key-mapping t))
 (use-package helm-gtags
   :ensure t
   :config
   (progn
     (add-hook 'c++-mode-hook 'helm-gtags-mode)
-    (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-find-tag)
-    (define-key helm-gtags-mode-map (kbd "M-;") 'helm-gtags-find-rtag)
-    (define-key helm-gtags-mode-map (kbd "M-:") 'helm-gtags-find-symbol)
+    (define-key helm-gtags-mode-map (kbd "C-c g t") 'helm-gtags-find-tag)
+    (define-key helm-gtags-mode-map (kbd "C-c g r") 'helm-gtags-find-rtag)
+    (define-key helm-gtags-mode-map (kbd "C-c g s") 'helm-gtags-find-symbol)
+    (define-key helm-gtags-mode-map (kbd "C-c g p") 'helm-gtags-parse-file)
+    (define-key helm-gtags-mode-map (kbd "C-c g n") 'helm-gtags-next-history)
     (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
     (define-key helm-map (kbd "C-h") 'helm-ff-delete-char-backward)
     (define-key helm-find-files-map (kbd "C-h") 'helm-ff-delete-char-backward)
