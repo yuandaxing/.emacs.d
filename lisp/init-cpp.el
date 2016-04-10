@@ -75,6 +75,8 @@
 (use-package helm-descbinds
   :defer t)
 
+(custom-set-variable
+ '(helm-gtags-suggested-key-mapping t))
 (use-package helm-gtags
   :ensure t
   :config
