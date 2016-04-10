@@ -37,12 +37,11 @@
 (add-hook 'c++-mode-hook 'c++-mode-hook-setting)
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (setq-default scroll-margin 1
-      scroll-conservatively 100000
-      scroll-up-aggressively 0.01
-      scroll-down-aggressively 0.01)
+              scroll-conservatively 100000
+              scroll-up-aggressively 0.01
+              scroll-down-aggressively 0.01)
 (setq-default auto-window-vscroll nil)
 (setq-default scroll-step 1)
-
 (use-package helm
   :ensure t
   :diminish helm-mode
@@ -53,16 +52,16 @@
     (helm-mode)
     (setq helm-candidate-number-limit 100)
     (setq helm-input-idle-delay 0.01
-         helm-yas-display-key-on-candidate t
-         helm-quick-update t
-         helm-M-x-requires-pattern nil
-         helm-recentf-fuzzy-match t
-         helm-M-x-fuzzy-match t
-         helm-mode-fuzzy-match t
-         helm-split-window-default-side 'below
-         helm-split-window-in-side-p t
-         helm-buffer-max-length nil
-         helm-ff-skip-boring-files t)
+          helm-yas-display-key-on-candidate t
+          helm-quick-update t
+          helm-M-x-requires-pattern nil
+          helm-recentf-fuzzy-match t
+          helm-M-x-fuzzy-match t
+          helm-mode-fuzzy-match t
+          helm-split-window-default-side 'below
+          helm-split-window-in-side-p t
+          helm-buffer-max-length nil
+          helm-ff-skip-boring-files t)
     (global-set-key (kbd "M-x") 'helm-M-x)
     (global-set-key (kbd "C-x b") 'helm-buffers-list)
     )
@@ -72,9 +71,11 @@
    ))
 
 
+
 (define-key isearch-mode-map (kbd "M-y") 'helm-show-kill-ring)
 (use-package helm-descbinds
   :defer t)
+
 (use-package helm-gtags
   :ensure t
   :config
@@ -90,8 +91,6 @@
      helm-gtags-auto-update t
      helm-gtags-use-input-at-cursor t
      helm-gtags-pulse-at-cursor t
-     helm-gtags-prefix-key "\C-cg"
-     helm-gtags-suggested-key-mapping t
      helm-gtags-path-style 'relative
      )
     ))
