@@ -89,6 +89,7 @@
     (define-key helm-gtags-mode-map (kbd "C-c g c") 'helm-gtags-create-tags)
     (define-key helm-gtags-mode-map (kbd "C-c g p") 'helm-gtags-parse-file)
     (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
+    (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
     (define-key helm-map (kbd "C-h") 'helm-ff-delete-char-backward)
     (define-key helm-find-files-map (kbd "C-h") 'helm-ff-delete-char-backward)
     (setq
