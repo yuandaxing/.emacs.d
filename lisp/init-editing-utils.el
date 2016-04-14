@@ -285,13 +285,13 @@ With arg N, insert N newlines."
 (global-set-key (kbd "C-w") 'backward-kill-word)
 (global-set-key (kbd "C-x C-k") 'kill-region)
 (setq frame-title-format "Emacs - %f")
-;; (use-package smex
-;;   :ensure t
-;;   :config
-;;   (progn
-;;     (require 'smex)
-;;     (global-set-key (kbd "M-x") 'smex)
-;;     (global-set-key (kbd "M-X") 'smex-major-mode-commands)))
+(use-package smex
+  :ensure t
+  :config
+  (progn
+    (require 'smex)
+    (global-set-key (kbd "M-x") 'smex)
+    (global-set-key (kbd "M-X") 'smex-major-mode-commands)))
 (use-package projectile
   :ensure t
   :config
