@@ -132,6 +132,7 @@
    ((get-buffer "*Org Agenda*")
     (switch-to-buffer-other-window "*Org Agenda*"))
    (t (org-agenda nil "a"))))
+(setq helm-grep-ignored-files (append helm-grep-ignored-files (list "*.pyc" "*.exe" "GTAGS"  "GPATH" "GSYMS" "GRTAGS")))
 
 (defun search-snippet ()
   (interactive)
