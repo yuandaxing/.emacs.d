@@ -20,7 +20,7 @@
   :ensure t
   :config
   (progn
-    (setq key-chord-two-keys-delay 0.3)
+    (setq key-chord-two-keys-delay 0.5)
     (key-chord-mode 1)
     (key-chord-define-global "jj" 'ace-jump-word-mode)
     (key-chord-define-global "jl" 'ace-jump-line-mode)
