@@ -1,4 +1,3 @@
-;;;
 (setq savehist-file (expand-file-name "savehist" user-emacs-directory))
 (savehist-mode +1)
 (setq savehist-save-minibuffer-history +1)
