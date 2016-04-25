@@ -37,6 +37,7 @@
                                ("b" search-ambition "search ambition")
                                ("k" describe-key "describe-key")
                                ("f" describe-function "describe-function")
+                               ("p" async-make "make project")
                                ("c" compile "compile c or c++ code")
                                ("," ido-switch-buffer "switch buffer")
                                ("m" man "man")

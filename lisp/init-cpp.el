@@ -137,8 +137,12 @@
 (defun async-make (project)
   (interactive
    (let ((projects
-          '("all_others" "ileaf" "ileafnew" "adselector")))
-     (list (ido-completing-read "project name:" projects))))
+          '("all_others" "ileaf" "ileafnew" "adselector" "all_others clean"
+            "ileaf clean" "ileafnew clean" "adselector clean")))
+     (list (helm :sources (helm-build-sync-source "test"
+                          :candidates projects
+                          :fuzzy-match t)
+               :buffer "*helm test*"))))
   (async-shell-command
    (concatenate 'string "source /home/yuandx/rsa_keys/work_shortcut.sh; commit_syn " project)))
 
