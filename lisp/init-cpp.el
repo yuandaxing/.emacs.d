@@ -133,4 +133,13 @@
     (setq helm-swoop-use-line-number-face t))
   :bind
   (("C-c h s" . helm-multi-swoop-all)))
+
+(defun async-make (project)
+  (interactive
+   (let ((projects
+          '("all_others" "ileaf" "ileafnew" "adselector")))
+     (list (ido-completing-read "project name:" projects))))
+  (async-shell-command
+   (concatenate 'string "source /home/yuandx/rsa_keys/work_shortcut.sh; commit_syn " project)))
+
 (provide 'init-cpp)

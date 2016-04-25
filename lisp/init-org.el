@@ -151,4 +151,5 @@
 (defun search-ambition ()
   (interactive)
   (helm-do-grep-1 (list "/home/yuandx/code/trunk/common/")))
+
 (provide 'init-org)
