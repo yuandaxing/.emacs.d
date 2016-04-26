@@ -138,7 +138,7 @@
   (interactive
    (let ((projects
           '("all_others" "ileaf" "ileafnew" "adselector" "all_others clean"
-            "ileaf clean" "ileafnew clean" "adselector clean" "adselector test")))
+            "ileaf clean" "ileafnew clean" "ileafnew test" "adselector clean" "adselector test")))
      (list (helm :sources (helm-build-sync-source "test"
                           :candidates projects
                           :fuzzy-match t)
