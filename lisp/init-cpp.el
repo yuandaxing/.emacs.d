@@ -56,6 +56,16 @@
           helm-quick-update t
           helm-M-x-requires-pattern nil
           helm-mode-fuzzy-match t
+          helm-recentf-fuzzy-match t
+          helm-buffers-fuzzy-matching t
+          helm-recentf-fuzzy-match t
+          helm-locate-fuzzy-match t
+          helm-M-x-fuzzy-match t
+          helm-semantic-fuzzy-match t
+          helm-imenu-fuzzy-match t
+          helm-apropos-fuzzy-match t
+          helm-lisp-fuzzy-completion t
+          helm-completion-in-region-fuzzy-match t
           helm-split-window-default-side 'below
           helm-split-window-in-side-p t
           helm-buffer-max-length nil
@@ -157,4 +167,6 @@
         (system-time-locale "zh_CN"))
     (insert (format-time-string format))))
 (global-set-key (kbd "C-c h d") 'hh-insert-date)
+(require 'find-dired)
+(setq find-ls-option '("-print0 | xargs -0 ls -ldh" . "-ldh"))
 (provide 'init-cpp)
