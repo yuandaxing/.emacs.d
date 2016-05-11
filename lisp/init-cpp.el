@@ -74,6 +74,10 @@
     (setq helm-grep-ignored-directories (append helm-grep-ignored-directories (list ".git" "elpa")))
     (global-set-key (kbd "C-x b") 'helm-buffers-list)
     (global-set-key (kbd "C-x C-r") 'helm-recentf)
+    (add-hook 'eshell-mode-hook
+          #'(lambda ()
+              (define-key eshell-mode-map (kbd "TAB")     #'helm-esh-pcomplete)
+              (define-key eshell-mode-map (kbd "C-c C-l") #'helm-eshell-history)))
     )
   :bind
   (("C-c h y" . helm-yas-complete)
