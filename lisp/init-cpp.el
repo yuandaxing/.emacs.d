@@ -68,8 +68,7 @@
           helm-completion-in-region-fuzzy-match t
           helm-split-window-default-side 'below
           helm-split-window-in-side-p t
-          helm-buffer-max-length nil
-          helm-ff-skip-boring-files t)
+          helm-buffer-max-length nil)
     (setq helm-grep-ignored-files (append helm-grep-ignored-files (list "*.pyc" "*.exe" "GTAGS"  "GPATH" "GSYMS" "GRTAGS")))
     (setq helm-grep-ignored-directories (append helm-grep-ignored-directories (list ".git" "elpa")))
     (global-set-key (kbd "C-x b") 'helm-buffers-list)
