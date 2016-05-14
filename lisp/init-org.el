@@ -133,23 +133,24 @@
     (switch-to-buffer-other-window "*Org Agenda*"))
    (t (org-agenda nil "a"))))
 
-(defun search-snippet ()
-  (interactive)
-  (helm-do-grep-1 (list "~/Dropbox/code-snippet/emacs-search/")))
-(defun search-org ()
-  (interactive)
-  (helm-do-grep-1 (list "/home/yuandx/code/skillset/")))
-(defun search-algorithm ()
-  (interactive)
-  (helm-do-grep-1 (list "~/Dropbox/code-snippet/emacs-search/algorithm")))
-(defun search-test ()
-  (interactive)
-  (helm-do-grep-1 (list "~/Dropbox/code-snippet/C++/test/") ))
-(defun search-effective ()
-  (interactive)
-  (helm-do-grep-1 (list "~/Dropbox/code-snippet/C++/modern-effective-c++/")))
-(defun search-ambition ()
-  (interactive)
-  (helm-do-grep-1 (list "/home/yuandx/code/trunk/common/")))
+(defvar key-path-alist
+        '(
+    ("trunk" . "/home/yuandx/code/trunk/common/")
+    ("effective" . "~/Dropbox/code-snippet/C++/modern-effective-c++/")
+    ("test" . "~/Dropbox/code-snippet/C++/test/")
+    ("algorithm" . "~/Dropbox/code-snippet/emacs-search/algorithm")
+    ("skillset" . "/home/yuandx/code/skillset/")
+    ("snippet" . "~/Dropbox/code-snippet/emacs-search/")
+    ))
+(defun search-snippet (snippet)
+  (interactive
+   (let ((snippets
+          '("trunk" "effective" "test" "algorithm" "skillset"
+            "snippet")))
+     (list (helm :sources (helm-build-sync-source "snippet"
+                          :candidates snippets
+                          :fuzzy-match t)
+                 :buffer "*helm test*"))))
+  (helm-do-grep-1 (list (cdr (assoc snippet key-path-alist)))))
 
 (provide 'init-org)
