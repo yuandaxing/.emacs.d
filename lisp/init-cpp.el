@@ -42,6 +42,7 @@
               scroll-down-aggressively 0.01)
 (setq-default auto-window-vscroll nil)
 (setq-default scroll-step 1)
+
 (use-package helm
   :ensure t
   :diminish helm-mode
@@ -55,11 +56,9 @@
           helm-yas-display-key-on-candidate t
           helm-quick-update t
           helm-M-x-requires-pattern nil
-          helm-mode-fuzzy-match t
           helm-recentf-fuzzy-match t
           helm-buffers-fuzzy-matching t
           helm-recentf-fuzzy-match t
-          helm-locate-fuzzy-match t
           helm-M-x-fuzzy-match t
           helm-semantic-fuzzy-match t
           helm-imenu-fuzzy-match t
@@ -73,6 +72,7 @@
     (setq helm-grep-ignored-directories (append helm-grep-ignored-directories (list ".git" "elpa")))
     (global-set-key (kbd "C-x b") 'helm-buffers-list)
     (global-set-key (kbd "C-x C-r") 'helm-recentf)
+    (define-key isearch-mode-map (kbd "M-y") 'helm-show-kill-ring)
     (add-hook 'eshell-mode-hook
           #'(lambda ()
               (define-key eshell-mode-map (kbd "TAB")     #'helm-esh-pcomplete)
@@ -82,7 +82,6 @@
   (("C-c h y" . helm-yas-complete)
    ("M-y" . helm-show-kill-ring)
    ))
-(define-key isearch-mode-map (kbd "M-y") 'helm-show-kill-ring)
 
 (use-package helm-descbinds
   :defer t)
