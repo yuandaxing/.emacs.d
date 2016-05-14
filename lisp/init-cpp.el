@@ -43,6 +43,9 @@
 (setq-default auto-window-vscroll nil)
 (setq-default scroll-step 1)
 
+(setq grep-find-ignored-files (append grep-find-ignored-files (list "*.pyc" "*.exe" "GTAGS"  "GPATH" "GSYMS" "GRTAGS")))
+(setq grep-find-ignored-directories (append grep-find-ignored-directories (list ".git" "elpa")))
+
 (use-package helm
   :ensure t
   :diminish helm-mode
@@ -68,15 +71,13 @@
           helm-split-window-default-side 'below
           helm-split-window-in-side-p t
           helm-buffer-max-length nil)
-    (setq helm-grep-ignored-files (append helm-grep-ignored-files (list "*.pyc" "*.exe" "GTAGS"  "GPATH" "GSYMS" "GRTAGS")))
-    (setq helm-grep-ignored-directories (append helm-grep-ignored-directories (list ".git" "elpa")))
     (global-set-key (kbd "C-x b") 'helm-buffers-list)
     (global-set-key (kbd "C-x C-r") 'helm-recentf)
     (define-key isearch-mode-map (kbd "M-y") 'helm-show-kill-ring)
     (add-hook 'eshell-mode-hook
-          #'(lambda ()
-              (define-key eshell-mode-map (kbd "TAB")     #'helm-esh-pcomplete)
-              (define-key eshell-mode-map (kbd "C-c C-l") #'helm-eshell-history)))
+              #'(lambda ()
+                  (define-key eshell-mode-map (kbd "TAB")     #'helm-esh-pcomplete)
+                  (define-key eshell-mode-map (kbd "C-c C-l") #'helm-eshell-history)))
     )
   :bind
   (("C-c h y" . helm-yas-complete)
