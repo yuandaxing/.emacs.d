@@ -139,7 +139,7 @@
     ("effective" . "~/Dropbox/code-snippet/C++/modern-effective-c++/")
     ("test" . "~/Dropbox/code-snippet/C++/test/")
     ("algorithm" . "~/Dropbox/code-snippet/emacs-search/algorithm")
-    ("skillset" . "/home/yuandx/code/skillset/")
+    ("skillset" . "~/code/skillset/")
     ("snippet" . "~/Dropbox/code-snippet/emacs-search/")
     ))
 (defun search-snippet (snippet)
@@ -150,7 +150,7 @@
      (list (helm :sources (helm-build-sync-source "snippet"
                           :candidates snippets
                           :fuzzy-match t)
-                 :buffer "*helm test*"))))
+                 :buffer "*helm snippets*"))))
   (helm-do-grep-1 (list (cdr (assoc snippet key-path-alist)))))
 
 (provide 'init-org)
