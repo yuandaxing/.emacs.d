@@ -158,6 +158,26 @@
   (async-shell-command
    (concatenate 'string "source /home/yuandx/rsa_keys/work_shortcut.sh; commit_syn " project)))
 
+(defvar key-path-alist
+        '(
+    ("trunk" . "/home/yuandx/code/trunk/common/")
+    ("effective" . "~/Dropbox/code-snippet/C++/modern-effective-c++/")
+    ("test" . "~/Dropbox/code-snippet/C++/test/")
+    ("algorithm" . "~/Dropbox/code-snippet/emacs-search/algorithm")
+    ("skillset" . "~/code/skillset/")
+    ("snippet" . "~/Dropbox/code-snippet/emacs-search/")
+    ))
+(defun search-snippet (snippet)
+  (interactive
+   (let ((snippets
+          '("trunk" "effective" "test" "algorithm" "skillset"
+            "snippet")))
+     (list (helm :sources (helm-build-sync-source "snippet"
+                          :candidates snippets
+                          :fuzzy-match t)
+                 :buffer "*helm snippets*"))))
+  (helm-do-grep-1 (list (cdr (assoc snippet key-path-alist)))))
+
 (defun hh-insert-date (prefix)
   "Insert the current date. With prefix-argument, use ISO format. With
    two prefix arguments, write out the day and month name."
