@@ -56,11 +56,9 @@
           helm-yas-display-key-on-candidate t
           helm-quick-update t
           helm-M-x-requires-pattern nil
-          helm-mode-fuzzy-match t
           helm-recentf-fuzzy-match t
           helm-buffers-fuzzy-matching t
           helm-recentf-fuzzy-match t
-          helm-locate-fuzzy-match t
           helm-M-x-fuzzy-match t
           helm-semantic-fuzzy-match t
           helm-imenu-fuzzy-match t
@@ -84,7 +82,6 @@
   (("C-c h y" . helm-yas-complete)
    ("M-y" . helm-show-kill-ring)
    ))
-
 
 (use-package helm-descbinds
   :defer t)
