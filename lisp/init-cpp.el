@@ -162,8 +162,7 @@
    (concatenate 'string "source /home/yuandx/rsa_keys/work_shortcut.sh ; commit_syn " project)))
 
 (defvar key-path-alist
-        '(
-    ("trunk" . "/home/yuandx/code/trunk/common/")
+        '(("trunk" . "~/code/trunk/common/")
     ("effective" . "~/Dropbox/code-snippet/C++/modern-effective-c++/")
     ("test" . "~/Dropbox/code-snippet/C++/test/")
     ("algorithm" . "~/Dropbox/code-snippet/emacs-search/algorithm")
