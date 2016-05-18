@@ -180,8 +180,7 @@
                           :fuzzy-match t)
                  :buffer "*helm snippets*"))))
   (helm-do-grep-1 (list (cdr (assoc snippet key-path-alist))) t nil
-                  '("*.org" "*.cpp" "*.cc" "*.h" "makefile" "Makefile"
-                    "*.py" "*.hpp" "*.scratch" "*.el" ".c")))
+                  '("*.org" "*.cpp" "*.cc" "*.h" "makefile" "Makefile" "*.py" "*.hpp" "*.scratch" "*.el" ".c")))
 
 (defun grep-snippet (snippet)
   (interactive
