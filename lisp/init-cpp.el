@@ -43,8 +43,6 @@
 (setq-default auto-window-vscroll nil)
 (setq-default scroll-step 1)
 
-(setq grep-find-ignored-files (append grep-find-ignored-files (list "*.pyc" "*.exe" "GTAGS"  "GPATH" "GSYMS" "GRTAGS")))
-(setq grep-find-ignored-directories (append grep-find-ignored-directories (list ".git" "elpa")))
 
 (use-package helm
   :ensure t
@@ -71,14 +69,18 @@
           helm-split-window-default-side 'below
           helm-split-window-in-side-p t
           helm-buffer-max-length nil)
+    (setq helm-grep-ignored-files (append helm-grep-ignored-files (list "*.pyc" "*.exe" "GTAGS"  "GPATH" "GSYMS" "GRTAGS")))
+    (setq helm-grep-ignored-directories (append helm-grep-ignored-directories (list ".git" "elpa")))
     (global-set-key (kbd "C-x b") 'helm-buffers-list)
     (global-set-key (kbd "C-x C-r") 'helm-recentf)
     (define-key isearch-mode-map (kbd "M-y") 'helm-show-kill-ring)
+    ;; (setq helm-grep-default-command "ack-grep -Hn --color --smart-case --no-group %e %p %f"
+    ;;       helm-grep-default-recurse-command "ack-grep -H --color --smart-case --no-group %e %p %f")
     (add-hook 'eshell-mode-hook
               #'(lambda ()
                   (define-key eshell-mode-map (kbd "TAB")     #'helm-esh-pcomplete)
-                  (define-key eshell-mode-map (kbd "C-c C-l") #'helm-eshell-history)))
-    )
+                  (define-key eshell-mode-map (kbd "C-c C-l") #'helm-eshell-history))))
+
   :bind
   (("C-c h y" . helm-yas-complete)
    ("M-y" . helm-show-kill-ring)
@@ -157,7 +159,7 @@
                           :fuzzy-match t)
                :buffer "*helm test*"))))
   (async-shell-command
-   (concatenate 'string "source /home/yuandx/rsa_keys/work_shortcut.sh; commit_syn " project)))
+   (concatenate 'string "source /home/yuandx/rsa_keys/work_shortcut.sh ; commit_syn " project)))
 
 (defvar key-path-alist
         '(
@@ -177,7 +179,21 @@
                           :candidates snippets
                           :fuzzy-match t)
                  :buffer "*helm snippets*"))))
-  (helm-do-grep-1 (list (cdr (assoc snippet key-path-alist)))))
+  (helm-do-grep-1 (list (cdr (assoc snippet key-path-alist))) t nil
+                  '("*.org" "*.cpp" "*.cc" "*.h" "makefile" "Makefile"
+                    "*.py" "*.hpp" "*.scratch" "*.el" ".c")))
+
+(defun grep-snippet (snippet)
+  (interactive
+   (let ((snippets
+          '("trunk" "effective" "test" "algorithm" "skillset"
+            "snippet")))
+     (list (helm :sources (helm-build-sync-source "snippet"
+                          :candidates snippets
+                          :fuzzy-match t)
+                 :buffer "*helm snippets*"))))
+  (find-grep (list (cdr (assoc snippet key-path-alist)))))
+
 
 (defun hh-insert-date (prefix)
   "Insert the current date. With prefix-argument, use ISO format. With
