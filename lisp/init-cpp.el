@@ -74,11 +74,13 @@
     (global-set-key (kbd "C-x b") 'helm-buffers-list)
     (global-set-key (kbd "C-x C-r") 'helm-recentf)
     (define-key isearch-mode-map (kbd "M-y") 'helm-show-kill-ring)
+    ;; (setq helm-grep-default-command "ack-grep -Hn --color --smart-case --no-group %e %p %f"
+    ;;       helm-grep-default-recurse-command "ack-grep -H --color --smart-case --no-group %e %p %f")
     (add-hook 'eshell-mode-hook
               #'(lambda ()
                   (define-key eshell-mode-map (kbd "TAB")     #'helm-esh-pcomplete)
-                  (define-key eshell-mode-map (kbd "C-c C-l") #'helm-eshell-history)))
-    )
+                  (define-key eshell-mode-map (kbd "C-c C-l") #'helm-eshell-history))))
+
   :bind
   (("C-c h y" . helm-yas-complete)
    ("M-y" . helm-show-kill-ring)
@@ -157,7 +159,7 @@
                           :fuzzy-match t)
                :buffer "*helm test*"))))
   (async-shell-command
-   (concatenate 'string "source /home/yuandx/rsa_keys/work_shortcut.sh; commit_syn " project)))
+   (concatenate 'string "source /home/yuandx/rsa_keys/work_shortcut.sh ; commit_syn " project)))
 
 (defvar key-path-alist
         '(
@@ -177,7 +179,9 @@
                           :candidates snippets
                           :fuzzy-match t)
                  :buffer "*helm snippets*"))))
-  (helm-do-grep-1 (list (cdr (assoc snippet key-path-alist))) t nil '("*")))
+  (helm-do-grep-1 (list (cdr (assoc snippet key-path-alist))) t nil
+                  '("*.org" "*.cpp" "*.cc" "*.h" "makefile" "Makefile"
+                    "*.py" "*.hpp" "*.scratch" "*.el" ".c")))
 
 (defun grep-snippet (snippet)
   (interactive
