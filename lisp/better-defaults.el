@@ -86,14 +86,14 @@
 
 (progn
   (setq kill-ring-max 1000)
-  (setq extended-command-history-max 50)
-  (setq query-replace-history-max 50)
-  (setq replace-string-history-max 50)
-  (setq file-name-history-max 50)
-  (setq replace-regex-history-max 50)
-  (setq minibuffer-history-max 1000)
-  (setq shell-command-history-max 1000)
-  (setq find-file-history-max 1000)
+  (setq extended-command-history-max 10000)
+  (setq query-replace-history-max 100)
+  (setq replace-string-history-max 1000)
+  (setq file-name-history-max 100)
+  (setq replace-regex-history-max 5000)
+  (setq minibuffer-history-max 10000)
+  (setq shell-command-history-max 10000)
+  (setq find-file-history-max 10000)
   )
 (provide 'better-defaults)
 ;;; better-defaults.el ends here
