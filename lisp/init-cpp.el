@@ -181,16 +181,17 @@
   (helm-do-grep-1 (list (cdr (assoc snippet key-path-alist))) t nil
                   '("*.org" "*.cpp" "*.cc" "*.h" "makefile" "Makefile" "*.py" "*.hpp" "*.scratch" "*.el" ".c")))
 
-(defun grep-snippet (snippet)
-  (interactive
-   (let ((snippets
-          '("trunk" "effective" "test" "algorithm" "skillset"
-            "snippet")))
-     (list (helm :sources (helm-build-sync-source "snippet"
-                          :candidates snippets
-                          :fuzzy-match t)
-                 :buffer "*helm snippets*"))))
-  (find-grep (list (cdr (assoc snippet key-path-alist)))))
+;; (defun grep-snippet (snippet)
+;;   (interactive
+;;    (let ((snippets
+;;           '("trunk" "effective" "test" "algorithm" "skillset"
+;;             "snippet")))
+;;      (list (helm :sources (helm-build-sync-source "snippet"
+;;                           :candidates snippets
+;;                           :fuzzy-match t)
+;;                  :buffer "*helm snippets*"))))
+;;   (helm-do-grep-1 (list (cdr (assoc snippet key-path-alist))) t nil '()))
+; C-enter to enter empty input
 
 
 (defun hh-insert-date (prefix)
