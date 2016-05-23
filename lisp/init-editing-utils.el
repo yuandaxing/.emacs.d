@@ -282,8 +282,13 @@ With arg N, insert N newlines."
 
                                         ;
                                         ;bind some key according to effective emacs
-(global-set-key (kbd "C-w") 'backward-kill-word)
-(global-set-key (kbd "C-x C-k") 'kill-region)
+(defun kill-region-or-backward-word ()
+      "If the region is active and non-empty, call `kill-region'.
+     Otherwise, call `backward-kill-word'."
+    (interactive)
+    (call-interactively
+     (if (use-region-p) 'kill-region 'backward-kill-word)))
+(global-set-key (kbd "C-w") 'kill-region-or-backward-word)
 (setq frame-title-format "Emacs - %f")
 (use-package smex
   :ensure t
@@ -309,7 +314,7 @@ With arg N, insert N newlines."
 
 (defvar keys-bind-minor-mode-map (make-keymap) "my-keys-minor-mode keymap.")
 (define-key keys-bind-minor-mode-map (kbd "C-h") 'delete-backward-char)
-(define-key keys-bind-minor-mode-map (kbd "C-w") 'backward-kill-word)
+(define-key keys-bind-minor-mode-map (kbd "C-w") 'kill-region-or-backward-word)
 (define-key keys-bind-minor-mode-map (kbd "C-x C-k") 'kill-region)
 
 (define-minor-mode keys-bind-minor-mode

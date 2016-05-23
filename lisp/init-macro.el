@@ -24,3 +24,6 @@
 
 (fset 'put-curly-bracket-down
    (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([19 123 return 2 10 14 1 1] 0 "%d")) arg)))
+
+(fset 'hh-format-sql
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("()," 0 "%d")) arg)))
