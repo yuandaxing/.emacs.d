@@ -70,7 +70,8 @@
           helm-split-window-in-side-p t
           helm-buffer-max-length nil)
     (setq helm-grep-ignored-files (append helm-grep-ignored-files (list "*.pyc" "*.exe" "GTAGS"  "GPATH" "GSYMS" "GRTAGS")))
-    (setq helm-grep-ignored-directories (append helm-grep-ignored-directories (list ".git" "elpa")))
+    (setq helm-grep-ignored-directories (append helm-grep-ignored-directories
+                                                (list ".git" "elpa" "/home/yuandx/build/trunk/AdSelectionNew/data")))
     (global-set-key (kbd "C-x b") 'helm-buffers-list)
     (global-set-key (kbd "C-x C-r") 'helm-recentf)
     (define-key isearch-mode-map (kbd "M-y") 'helm-show-kill-ring)
@@ -153,7 +154,8 @@
   (interactive
    (let ((projects
           '("all_others" "ileaf" "ileafnew" "adselector" "all_others clean"
-            "ileaf clean" "ileafnew clean" "ileafnew test" "adselector clean" "adselector test")))
+            "ileaf clean" "ileafnew clean" "ileafnew test" "adselector clean" "adselector test"
+            "clean")))
      (list (helm :sources (helm-build-sync-source "test"
                           :candidates projects
                           :fuzzy-match t)
@@ -168,12 +170,13 @@
     ("algorithm" . "~/Dropbox/code-snippet/emacs-search/algorithm")
     ("skillset" . "~/code/skillset/")
     ("snippet" . "~/Dropbox/code-snippet/emacs-search/")
+    ("ambition" . "~/code/trunk/common/")
     ))
 (defun search-snippet (snippet)
   (interactive
    (let ((snippets
           '("trunk" "effective" "test" "algorithm" "skillset"
-            "snippet")))
+            "snippet" "ambition")))
      (list (helm :sources (helm-build-sync-source "snippet"
                           :candidates snippets
                           :fuzzy-match t)
@@ -181,18 +184,8 @@
   (helm-do-grep-1 (list (cdr (assoc snippet key-path-alist))) t nil
                   '("*.org" "*.cpp" "*.cc" "*.h" "makefile" "Makefile" "*.py" "*.hpp" "*.scratch" "*.el" ".c")))
 
-;; (defun grep-snippet (snippet)
-;;   (interactive
-;;    (let ((snippets
-;;           '("trunk" "effective" "test" "algorithm" "skillset"
-;;             "snippet")))
-;;      (list (helm :sources (helm-build-sync-source "snippet"
-;;                           :candidates snippets
-;;                           :fuzzy-match t)
-;;                  :buffer "*helm snippets*"))))
-;;   (helm-do-grep-1 (list (cdr (assoc snippet key-path-alist))) t nil '()))
-; C-enter to enter empty input
-
+(global-set-key (kbd "C-c h p") 'search-snippet)
+(global-set-key (kbd "C-c h m") 'async-make)
 
 (defun hh-insert-date (prefix)
   "Insert the current date. With prefix-argument, use ISO format. With

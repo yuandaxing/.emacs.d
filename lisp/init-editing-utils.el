@@ -314,7 +314,7 @@ With arg N, insert N newlines."
 
 (defvar keys-bind-minor-mode-map (make-keymap) "my-keys-minor-mode keymap.")
 (define-key keys-bind-minor-mode-map (kbd "C-h") 'delete-backward-char)
-(define-key keys-bind-minor-mode-map (kbd "C-w") 'kill-region-or-backward-word)
+(define-key keys-bind-minor-mode-map (kbd "C-w") 'backward-kill-word)
 (define-key keys-bind-minor-mode-map (kbd "C-x C-k") 'kill-region)
 
 (define-minor-mode keys-bind-minor-mode
@@ -333,8 +333,11 @@ With arg N, insert N newlines."
                 lisp-mode-hook textile-mode-hook markdown-mode-hook tuareg-mode-hook
                 js3-mode-hook css-mode-hook less-css-mode-hook sql-mode-hook
                 sql-interactive-mode-hook c++-mode-hook org-mode-hook
-                inferior-emacs-lisp-mode-hook))
+                inferior-emacs-lisp-mode-hook
+                ido-setup-hook minibuffer-setup-hook helm-minibuffer-set-up-hook))
   (add-hook hook 'key-bind-hook))
+
+(define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)
 
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
