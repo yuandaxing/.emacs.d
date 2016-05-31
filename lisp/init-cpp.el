@@ -158,9 +158,11 @@
      (list (helm :sources (helm-build-sync-source "test"
                           :candidates projects
                           :fuzzy-match t)
-               :buffer "*helm test*"))))
-  (async-shell-command
-   (concatenate 'string "source /home/yuandx/rsa_keys/work_shortcut.sh ; commit_syn " project)))
+                 :buffer "*helm test*"))))
+  (progn
+    (when buffer-file-name (save-buffer))
+    (async-shell-command
+     (concatenate 'string "source /home/yuandx/rsa_keys/work_shortcut.sh ; commit_syn " project))))
 
 (defvar key-path-alist
         '(("trunk" . "~/code/trunk/common/")
