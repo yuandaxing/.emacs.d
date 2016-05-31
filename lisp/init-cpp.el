@@ -75,8 +75,6 @@
     (global-set-key (kbd "C-x b") 'helm-buffers-list)
     (global-set-key (kbd "C-x C-r") 'helm-recentf)
     (define-key isearch-mode-map (kbd "M-y") 'helm-show-kill-ring)
-    ;; (setq helm-grep-default-command "ack-grep -Hn --color --smart-case --no-group %e %p %f"
-    ;;       helm-grep-default-recurse-command "ack-grep -H --color --smart-case --no-group %e %p %f")
     (add-hook 'eshell-mode-hook
               #'(lambda ()
                   (define-key eshell-mode-map (kbd "TAB")     #'helm-esh-pcomplete)
@@ -85,6 +83,7 @@
   :bind
   (("C-c h y" . helm-yas-complete)
    ("M-y" . helm-show-kill-ring)
+   ("C-c h r" . helm-register)
    ))
 
 (use-package helm-descbinds
