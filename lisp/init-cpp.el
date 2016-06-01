@@ -11,6 +11,7 @@
                              file
                              "-std=c++11 -fdiagnostics-color=auto -lpthread"
                              ))))))
+
 (add-hook 'c-mode-hook
           (lambda ()
             (unless (or (file-exists-p "makefile")
@@ -23,8 +24,6 @@
                              file
                              "-fdiagnostics-color=auto -lpthread"
                              ))))))
-
-
 
 (defun c++-mode-hook-setting()
   (c-set-offset 'substatement-open 0)
