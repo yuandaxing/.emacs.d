@@ -76,13 +76,13 @@
   (loop for x downfrom 40 to 1 do
         (setq tab-stop-list (cons (* x 4) tab-stop-list))))
 
-;; (use-package session
-;;   :ensure t
-;;   :config
-;;   (progn
-;;     (require 'session)
-;;     (setq session-save-print-spec '(t nil 40000))
-;;     (add-hook 'after-init-hook 'session-initialize)))
+(use-package session
+  :ensure t
+  :config
+  (progn
+    (require 'session)
+    (setq session-save-print-spec '(t nil 40000))
+    (add-hook 'after-init-hook 'session-initialize)))
 
 
 (use-package magit
@@ -91,10 +91,10 @@
   (require 'magit)
   )
 
-;; (add-hook 'erc-mode-hook
-;; 		  '(lambda ()
-;; 			 (erc :server "irc.freenode.net" :port 6665 :full-name "Daxing Yuan" :nick "dayua" :password "e215758")
-;; 			 (setq erc-hide-list '("JOIN" "PART" "QUIT"))))
+(add-hook 'erc-mode-hook
+		  '(lambda ()
+			 (erc :server "irc.freenode.net" :port 6665 :full-name "Daxing Yuan" :nick "dayua" :password "e215758")
+			 (setq erc-hide-list '("JOIN" "PART" "QUIT"))))
 
 (autoload 'markdown-mode "markdown-mode"
     "Major mode for editing Markdown files" t)

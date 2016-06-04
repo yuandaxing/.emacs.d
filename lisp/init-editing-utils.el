@@ -280,8 +280,7 @@ With arg N, insert N newlines."
     (guide-key-mode 1)
     (diminish 'guide-key-mode)))
 
-                                        ;
-                                        ;bind some key according to effective emacs
+;bind some key according to effective emacs
 (defun kill-region-or-backward-word ()
       "If the region is active and non-empty, call `kill-region'.
      Otherwise, call `backward-kill-word'."
@@ -324,6 +323,7 @@ With arg N, insert N newlines."
 (defun key-bind-hook()
   (progn 
     (keys-bind-minor-mode 1)
+    (subword-mode 1)
     ))
 (dolist (hook '(magit-log-edit-mode-hook
                 log-edit-mode-hook org-mode-hook text-mode-hook haml-mode-hook

@@ -83,6 +83,7 @@
   (("C-c h y" . helm-yas-complete)
    ("M-y" . helm-show-kill-ring)
    ("C-c h r" . helm-register)
+   ("C-c h k" . helm-all-mark-rings)
    ))
 
 (use-package helm-descbinds
@@ -184,8 +185,16 @@
   (helm-do-grep-1 (list (cdr (assoc snippet key-path-alist))) t nil
                   '("*.org" "*.cpp" "*.cc" "*.h" "makefile" "Makefile" "*.py" "*.hpp" "*.scratch" "*.el" ".c")))
 
+(defun run-exe ()
+  (interactive
+   (let ((exe (format "%s.exe" (file-name-sans-extension buffer-file-name))))
+         (shell-command
+          exe)
+         )))
+
 (global-set-key (kbd "C-c h p") 'search-snippet)
 (global-set-key (kbd "C-c h m") 'async-make)
+(global-set-key (kbd "C-c h u") 'run-exe)
 
 (defun hh-insert-date (prefix)
   "Insert the current date. With prefix-argument, use ISO format. With
