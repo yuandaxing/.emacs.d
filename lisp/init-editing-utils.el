@@ -3,9 +3,9 @@
   (electric-pair-mode))
                                         ;(global-set-key (kbd "<return>") 'electric-indent-just-newline)
 (global-set-key (kbd "C-j") 'newline-and-indent)
-;;----------------------------------------------------------------------------
+
 ;; Some basic preferences
-;;----------------------------------------------------------------------------
+
 (setq-default
  blink-cursor-interval 0.4
  bookmark-default-file (expand-file-name ".bookmarks.el" user-emacs-directory)
@@ -87,15 +87,15 @@
 (require-package 'browse-kill-ring)
 
 
-;;----------------------------------------------------------------------------
+
 ;; Don't disable narrowing commands
-;;----------------------------------------------------------------------------
+
 (put 'narrow-to-region 'disabled nil)
 (put 'narrow-to-page 'disabled nil)
 (put 'narrow-to-defun 'disabled nil)
-;;----------------------------------------------------------------------------
+
 ;; Expand region
-;;----------------------------------------------------------------------------
+
 (use-package expand-region
   :ensure t
   :config
@@ -106,9 +106,9 @@
 (put 'downcase-region 'disabled nil)
 
 
-;;----------------------------------------------------------------------------
+
 ;; Handy key bindings
-;;----------------------------------------------------------------------------
+
 (progn
  ; (global-set-key (kbd "C-x C-m") 'helm-M-x)
  ; (global-set-key (kbd "C-c C-m") 'helm-M-x)
@@ -145,16 +145,16 @@
 (global-set-key (kbd "C-M-<backspace>") 'kill-back-to-indentation)
 
 
-;;----------------------------------------------------------------------------
 
-;;----------------------------------------------------------------------------
+
+
 (require-package 'page-break-lines)
 (global-page-break-lines-mode)
 (diminish 'page-break-lines-mode)
 
-;;----------------------------------------------------------------------------
+
 ;; Fill column indicator
-;;----------------------------------------------------------------------------
+
 (when (eval-when-compile (> emacs-major-version 23))
   (require-package 'fill-column-indicator)
   (defun hh-prog-mode-fci-settings ()
@@ -190,11 +190,11 @@
           (turn-on-fci-mode))))))
 
 
-;;----------------------------------------------------------------------------
+
 ;; Shift lines up and down with M-up and M-down. When paredit is enabled,
 ;; it will use those keybindings. For this reason, you might prefer to
 ;; use M-S-up and M-S-down, which will work even in lisp modes.
-;;----------------------------------------------------------------------------
+
 (require-package 'move-dup)
 (global-set-key [M-up] 'md/move-lines-up)
 (global-set-key [M-down] 'md/move-lines-down)
@@ -204,9 +204,9 @@
 (global-set-key (kbd "C-c p") 'md/duplicate-down)
 (global-set-key (kbd "C-c P") 'md/duplicate-up)
 
-;;----------------------------------------------------------------------------
+
 ;; Fix backward-up-list to understand quotes, see http://bit.ly/h7mdIL
-;;----------------------------------------------------------------------------
+
 (defun backward-up-sexp (arg)
   "Jump up to the start of the ARG'th enclosing sexp."
   (interactive "p")
@@ -252,9 +252,9 @@ With arg N, insert N newlines."
 
 (global-set-key (kbd "C-o") 'hh-open-line-with-reindent)
 
-;;----------------------------------------------------------------------------
+
 ;; Random line sorting
-;;----------------------------------------------------------------------------
+
 (defun sort-lines-random (beg end)
   "Sort lines in region randomly."
   (interactive "r")
@@ -276,7 +276,7 @@ With arg N, insert N newlines."
   :ensure t
   :config
   (progn 
-    (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x 5" "C-c" "C-x n" "C-c h" "C-c p" "C-c !" "C-c g"))
+    (setq guide-key/guide-key-sequence '("C-x r" "C-x c" "C-x 4" "C-x 5" "C-c" "C-x n" "C-c h" "C-c p" "C-c !" "C-c g"))
     (guide-key-mode 1)
     (diminish 'guide-key-mode)))
 
@@ -287,7 +287,7 @@ With arg N, insert N newlines."
     (interactive)
     (call-interactively
      (if (use-region-p) 'kill-region 'backward-kill-word)))
-(global-set-key (kbd "C-w") 'kill-region-or-backward-word)
+(global-set-key (kbd "C-w") 'kill-backward-word)
 (setq frame-title-format "Emacs - %f")
 (use-package smex
   :ensure t
@@ -328,16 +328,16 @@ With arg N, insert N newlines."
 (dolist (hook '(magit-log-edit-mode-hook
                 log-edit-mode-hook org-mode-hook text-mode-hook haml-mode-hook
                 git-commit-mode-hook
-                sass-mode-hook yaml-mode-hook csv-mode-hook espresso-mode-hook haskell-mode-hook
+                ido-minibuffer-setup-hook sass-mode-hook yaml-mode-hook csv-mode-hook espresso-mode-hook haskell-mode-hook
                 html-mode-hook nxml-mode-hook sh-mode-hook smarty-mode-hook clojure-mode-hook
                 lisp-mode-hook textile-mode-hook markdown-mode-hook tuareg-mode-hook
                 js3-mode-hook css-mode-hook less-css-mode-hook sql-mode-hook
                 sql-interactive-mode-hook c++-mode-hook org-mode-hook
                 inferior-emacs-lisp-mode-hook
-                ido-setup-hook minibuffer-setup-hook helm-minibuffer-set-up-hook))
+                helm-mode-hook ido-setup-hook minibuffer-setup-hook helm-minibuffer-set-up-hook))
   (add-hook hook 'key-bind-hook))
+;(define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)
 
-(define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)
 
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))

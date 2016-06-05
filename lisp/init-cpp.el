@@ -78,7 +78,7 @@
               #'(lambda ()
                   (define-key eshell-mode-map (kbd "TAB")     #'helm-esh-pcomplete)
                   (define-key eshell-mode-map (kbd "C-c C-l") #'helm-eshell-history))))
-
+  (define-key helm-map (kbd "C-w") 'backward-kill-word)
   :bind
   (("C-c h y" . helm-yas-complete)
    ("M-y" . helm-show-kill-ring)
@@ -140,6 +140,7 @@
     (define-key helm-swoop-map (kbd "C-s") 'helm-next-line)
     (define-key helm-multi-swoop-map (kbd "C-r") 'helm-previous-line)
     (define-key helm-multi-swoop-map (kbd "C-s") 'helm-next-line)
+    (define-key helm-swoop-map (kbd "C-w") 'backward-kill-word)
     (setq helm-multi-swoop-edit-save t)
     (setq helm-swoop-split-with-multiple-windows nil)
     (setq helm-swoop-split-direction 'split-window-vertically)

@@ -76,13 +76,13 @@
   (loop for x downfrom 40 to 1 do
         (setq tab-stop-list (cons (* x 4) tab-stop-list))))
 
-(use-package session
-  :ensure t
-  :config
-  (progn
-    (require 'session)
-    (setq session-save-print-spec '(t nil 40000))
-    (add-hook 'after-init-hook 'session-initialize)))
+;; (use-package session
+;;   :ensure t
+;;   :config
+;;   (progn
+;;     (require 'session)
+;;     (setq session-save-print-spec '(t nil 40000))
+;;     (add-hook 'after-init-hook 'session-initialize)))
 
 
 (use-package magit
