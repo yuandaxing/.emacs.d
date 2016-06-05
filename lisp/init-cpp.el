@@ -70,20 +70,23 @@
           helm-buffer-max-length nil)
     (setq helm-grep-ignored-files (append helm-grep-ignored-files (list "*.pyc" "*.exe" "GTAGS"  "GPATH" "GSYMS" "GRTAGS")))
     (setq helm-grep-ignored-directories (append helm-grep-ignored-directories
-                                                (list ".git" "elpa" "/home/yuandx/build/trunk/AdSelectionNew/data")))
-    (global-set-key (kbd "C-x b") 'helm-buffers-list)
-    (global-set-key (kbd "C-x C-r") 'helm-recentf)
+                                                (list ".git" "elpa" "data")))
     (define-key isearch-mode-map (kbd "M-y") 'helm-show-kill-ring)
     (add-hook 'eshell-mode-hook
               #'(lambda ()
                   (define-key eshell-mode-map (kbd "TAB")     #'helm-esh-pcomplete)
                   (define-key eshell-mode-map (kbd "C-c C-l") #'helm-eshell-history))))
   (define-key helm-map (kbd "C-w") 'backward-kill-word)
+  (define-key helm-grep-map (kbd "C-w") 'backward-kill-word)
+  (define-key helm-generic-files-map (kbd "C-w") 'backward-kill-word)
   :bind
   (("C-c h y" . helm-yas-complete)
    ("M-y" . helm-show-kill-ring)
    ("C-c h r" . helm-register)
    ("C-c h k" . helm-all-mark-rings)
+   ("C-x b" . helm-buffers-list)
+   ("C-x C-f" . helm-find-files)
+   ("C-x C-r" . helm-recentf)
    ))
 
 (use-package helm-descbinds
