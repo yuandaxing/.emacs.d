@@ -10,23 +10,21 @@
     (diminish 'yas-minor-mode)))
 (use-package company-c-headers
   :ensure t)
-;; (use-package com
-;;   :ensure t)
 (use-package company
   :ensure t
   :config
   (progn
     (add-hook 'after-init-hook 'global-company-mode)
-    (eval-after-load 'company
-  '(progn
-     (define-key company-mode-map (kbd "C-:") 'helm-company)
-     (define-key company-active-map (kbd "C-:") 'helm-company)))(setq company-backends (delete 'company-semantic company-backends))
-     (define-key c-mode-map  [(tab)] 'company-complete)
-     (define-key c++-mode-map  [(tab)] 'company-complete)
-     (add-to-list 'company-backends 'company-c-headers)
-     (add-to-list 'company-c-headers-path-system "/usr/include/c++/4.9/")
-    ))
-
+    (setq company-backends (delete 'company-semantic company-backends))
+    (add-to-list 'company-backends 'company-c-headers)
+    (define-key company-active-map (kbd "C-o") 'company-show-doc-buffer)
+    (define-key company-active-map (kbd "C-l") 'company-show-location)
+    (define-key company-active-map (kbd "C-w") nil)
+    (define-key company-active-map (kbd "C-h") nil)
+    (add-to-list 'company-c-headers-path-system "/usr/include/c++/4.9/")
+    (require 'cc-mode)
+    (define-key c-mode-map  [(tab)] 'company-complete)
+    (define-key c++-mode-map  [(tab)] 'company-complete)))
 
 ;; (use-package auto-complete
 ;;   :ensure t
