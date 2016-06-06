@@ -42,7 +42,6 @@
 (setq-default auto-window-vscroll nil)
 (setq-default scroll-step 1)
 
-
 (use-package helm
   :ensure t
   :diminish helm-mode
