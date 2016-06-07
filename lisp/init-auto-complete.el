@@ -19,12 +19,25 @@
     (add-to-list 'company-backends 'company-c-headers)
     (define-key company-active-map (kbd "C-o") 'company-show-doc-buffer)
     (define-key company-active-map (kbd "C-l") 'company-show-location)
+    (define-key company-active-map (kbd "M-m") 'company-complete-selection)
     (define-key company-active-map (kbd "C-w") nil)
     (define-key company-active-map (kbd "C-h") nil)
     (add-to-list 'company-c-headers-path-system "/usr/include/c++/4.9/")
     (require 'cc-mode)
     (define-key c-mode-map  [(tab)] 'company-complete)
     (define-key c++-mode-map  [(tab)] 'company-complete)))
+
+(defun tab-indent-or-complete ()
+  (interactive)
+  (if (minibufferp)
+      (minibuffer-complete)
+    (if (or (not yas-minor-mode)
+            (null (do-yas-expand)))
+        (if (check-expansion)
+            (company-complete-common)
+          (indent-for-tab-command)))))
+
+(global-set-key [tab] 'tab-indent-or-complete)
 
 ;; (use-package auto-complete
 ;;   :ensure t
