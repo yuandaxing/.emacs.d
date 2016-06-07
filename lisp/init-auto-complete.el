@@ -8,6 +8,17 @@
                  (expand-file-name "snippets" user-emacs-directory))
     (setq yas-wrap-around-region t)
     (diminish 'yas-minor-mode)))
+  (defun check-expansion ()
+    (save-excursion
+      (if (looking-at "\\_>") t
+        (backward-char 1)
+        (if (looking-at "\\.") t
+          (backward-char 1)
+          (if (looking-at "->") t nil)))))
+
+  (defun do-yas-expand ()
+    (let ((yas-expand 'return-nil))
+      (yas-expand)))
 (use-package company-c-headers
   :ensure t)
 (use-package company
@@ -17,16 +28,20 @@
     (add-hook 'after-init-hook 'global-company-mode)
     (setq company-backends (delete 'company-semantic company-backends))
     (add-to-list 'company-backends 'company-c-headers)
+        (add-to-list 'company-backends 'company-abbrev)
     (define-key company-active-map (kbd "C-o") 'company-show-doc-buffer)
     (define-key company-active-map (kbd "C-l") 'company-show-location)
+    (define-key company-active-map (kbd "M-o") 'company-show-doc-buffer)
+    (define-key company-active-map (kbd "M-l") 'company-show-location)
     (define-key company-active-map (kbd "M-m") 'company-complete-selection)
     (define-key company-active-map (kbd "C-w") nil)
     (define-key company-active-map (kbd "C-h") nil)
     (add-to-list 'company-c-headers-path-system "/usr/include/c++/4.9/")
     (require 'cc-mode)
-    (define-key c-mode-map  [(tab)] 'company-complete)
-    (define-key c++-mode-map  [(tab)] 'company-complete)))
+    ))
 
+
+(global-set-key (kbd  "C-:")  'company-complete)
 (defun tab-indent-or-complete ()
   (interactive)
   (if (minibufferp)
