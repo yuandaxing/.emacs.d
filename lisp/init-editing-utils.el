@@ -266,19 +266,10 @@ With arg N, insert N newlines."
           ((inhibit-field-text-motion t))
         (sort-subr nil 'forward-line 'end-of-line nil nil
                    (lambda (s1 s2) (eq (random 2) 0)))))))
-                                        ;
 
 (require-package 'highlight-escape-sequences)
 (hes-mode)
 
-                                        ;
-;; (use-package guide-key
-;;   :ensure t
-;;   :config
-;;   (progn 
-;;     (setq guide-key/guide-key-sequence '("C-x r" "C-x c" "C-x 4" "C-x 5" "C-c" "C-x n" "C-c h" "C-c p" "C-c !" "C-c g"))
-;;     (guide-key-mode 1)
-;;     (diminish 'guide-key-mode)))
 
 (use-package which-key
   :ensure t
