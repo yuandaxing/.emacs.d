@@ -2,6 +2,8 @@
   :ensure t
   :config
   (add-hook 'after-init-hook #'global-flycheck-mode)
-  (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
+  (add-hook 'c++-mode-hook (lambda ()
+                             (progn (setq flycheck-gcc-language-standard "c++11")
+                                    (setq flycheck-clang-language-standard "c++11" ))))
   (diminish 'flycheck-mode))
 (provide 'init-fly)
