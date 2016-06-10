@@ -8,5 +8,10 @@
       :keybinding "g")
     (defengine github
       "https://github.com/search?ref=simplesearch&q=%s"
-      :keybinding "t")))
+      :keybinding "t")
+    (defengine bing
+      "http://cn.bing.com/search?q=%s"
+      :keybinding "b")
+    )
+  )
 (provide 'init-engine)

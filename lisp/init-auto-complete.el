@@ -19,15 +19,22 @@
   (let ((yas-expand 'return-nil))
     (yas-expand)))
 (use-package company-c-headers
+  :ensure t
+  :config
+  (progn
+    (add-to-list 'company-c-headers-path-system "/usr/include/c++/4.9/")
+    ))
+(use-package company-irony
+  :ensure t)
+(use-package company-irony-c-headers
   :ensure t)
 (use-package company
   :ensure t
   :config
   (progn
-    (add-hook 'after-init-hook 'global-company-mode)
-    (setq company-backends (delete 'company-semantic company-backends))
     (add-to-list 'company-backends 'company-c-headers)
     (add-to-list 'company-backends 'company-abbrev)
+    (add-to-list 'company-backends '(company-irony-c-headers company-irony))
     (define-key company-active-map (kbd "C-o") 'company-show-doc-buffer)
     (define-key company-active-map (kbd "C-l") 'company-show-location)
     (define-key company-active-map (kbd "M-o") 'company-show-doc-buffer)
@@ -35,10 +42,9 @@
     (define-key company-active-map (kbd "M-m") 'company-complete-selection)
     (define-key company-active-map (kbd "C-w") nil)
     (define-key company-active-map (kbd "C-h") nil)
-    (add-to-list 'company-c-headers-path-system "/usr/include/c++/4.9/")
     (require 'cc-mode)
-    ))
-(global-set-key (kbd  "C-:")  'company-complete)
+    (add-hook 'after-init-hook 'global-company-mode))
+  (global-set-key (kbd  "C-:")  'company-complete))
 (defun tab-indent-or-complete ()
   (interactive)
   (if (minibufferp)
@@ -48,16 +54,11 @@
         (if (check-expansion)
             (company-complete-common)
           (indent-for-tab-command)))))
-
 (global-set-key [tab] 'tab-indent-or-complete)
-
-
 ;; Exclude very large buffers from dabbrev
 (defun hh-dabbrev-friend-buffer (other-buffer)
   (< (buffer-size other-buffer) (* 1 1024 1024)))
-
 (setq dabbrev-friend-buffer-function 'hh-dabbrev-friend-buffer)
-
 (setq abbrev-file-name  (expand-file-name "abbrev/defs.el" user-emacs-directory))
 (setq-default abbrev-mode t)
 (setq save-abbrevs t)
