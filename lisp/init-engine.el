@@ -12,6 +12,9 @@
     (defengine bing
       "http://cn.bing.com/search?q=%s"
       :keybinding "b")
+   (defengine stackoverflow
+     "http://stackoverflow.com/search?q=%s"
+      :keybinding "s")
     )
   )
 (provide 'init-engine)

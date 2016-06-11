@@ -21,6 +21,8 @@
     (setq tab-always-indent 'complete)  ;; use 't when auto-complete is disabled
     (add-to-list 'completion-styles 'initials t)
     (setq completion-cycle-threshold 5)
+    (setq ac-use-quick-help t)
+    (setq ac-quick-help-delay 0.5)
     (setq c-tab-always-indent nil
           c-insert-tab-function 'indent-for-tab-command)
     (set-default 'ac-sources
