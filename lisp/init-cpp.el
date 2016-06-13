@@ -49,14 +49,12 @@
   (progn
     (require 'helm-config)
     (require 'helm)
-    (require 'helm-files)
     (helm-mode)
     (setq helm-candidate-number-limit 100)
     (setq helm-input-idle-delay 0.01
           helm-M-x-requires-pattern nil
           helm-recentf-fuzzy-match t
           helm-buffers-fuzzy-matching t
-          helm-recentf-fuzzy-match t
           helm-M-x-fuzzy-match t
           helm-semantic-fuzzy-match t
           helm-imenu-fuzzy-match t
