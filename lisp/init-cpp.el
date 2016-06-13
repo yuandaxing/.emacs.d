@@ -49,11 +49,10 @@
   (progn
     (require 'helm-config)
     (require 'helm)
+    (require 'helm-files)
     (helm-mode)
     (setq helm-candidate-number-limit 100)
     (setq helm-input-idle-delay 0.01
-          helm-yas-display-key-on-candidate t
-          helm-quick-update t
           helm-M-x-requires-pattern nil
           helm-recentf-fuzzy-match t
           helm-buffers-fuzzy-matching t
