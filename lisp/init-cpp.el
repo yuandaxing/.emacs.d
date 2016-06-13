@@ -49,7 +49,9 @@
   (progn
     (require 'helm-config)
     (require 'helm)
-    (helm-mode)
+    (helm-mode))
+  :init
+  (progn
     (setq helm-candidate-number-limit 100)
     (setq helm-input-idle-delay 0.01
           helm-M-x-requires-pattern nil
@@ -71,10 +73,10 @@
     (add-hook 'eshell-mode-hook
               #'(lambda ()
                   (define-key eshell-mode-map (kbd "TAB")     #'helm-esh-pcomplete)
-                  (define-key eshell-mode-map (kbd "C-c C-l") #'helm-eshell-history))))
-  (define-key helm-map (kbd "C-w") 'backward-kill-word)
-  (define-key helm-grep-map (kbd "C-w") 'backward-kill-word)
-  (define-key helm-generic-files-map (kbd "C-w") 'backward-kill-word)
+                  (define-key eshell-mode-map (kbd "C-c C-l") #'helm-eshell-history)))
+    (define-key helm-map (kbd "C-w") 'backward-kill-word)
+    (define-key helm-grep-map (kbd "C-w") 'backward-kill-word)
+    (define-key helm-generic-files-map (kbd "C-w") 'backward-kill-word))
   :bind
   (("C-c h y" . helm-yas-complete)
    ("M-y" . helm-show-kill-ring)
@@ -156,8 +158,8 @@
             "ileaf clean" "ileafnew clean" "ileafnew test" "adselector clean" "adselector test"
             "clean" "dsp")))
      (list (helm :sources (helm-build-sync-source "test"
-                          :candidates projects
-                          :fuzzy-match t)
+                            :candidates projects
+                            :fuzzy-match t)
                  :buffer "*helm test*"))))
   (progn
     (when buffer-file-name (save-buffer))
@@ -165,7 +167,7 @@
      (concatenate 'string "source /home/yuandx/rsa_keys/work_shortcut.sh ; commit_syn " project))))
 
 (defvar key-path-alist
-        '(("trunk" . "~/code/trunk/common/")
+  '(("trunk" . "~/code/trunk/common/")
     ("effective" . "~/Dropbox/code-snippet/C++/modern-effective-c++/")
     ("test" . "~/Dropbox/code-snippet/C++/test/")
     ("algorithm" . "~/Dropbox/code-snippet/emacs-search/algorithm")
@@ -179,8 +181,8 @@
           '("trunk" "effective" "test" "algorithm" "skillset"
             "snippet" "ambition")))
      (list (helm :sources (helm-build-sync-source "snippet"
-                          :candidates snippets
-                          :fuzzy-match t)
+                            :candidates snippets
+                            :fuzzy-match t)
                  :buffer "*helm snippets*"))))
   (helm-do-grep-1 (list (cdr (assoc snippet key-path-alist))) t nil
                   '("*.org" "*.cpp" "*.cc" "*.h" "makefile" "Makefile" "*.py" "*.hpp" "*.scratch" "*.el" ".c")))
@@ -188,9 +190,9 @@
 (defun run-exe ()
   (interactive
    (let ((exe (format "%s.exe" (file-name-sans-extension buffer-file-name))))
-         (shell-command
-          exe)
-         )))
+     (shell-command
+      exe)
+     )))
 
 (global-set-key (kbd "C-c h p") 'search-snippet)
 (global-set-key (kbd "C-c h m") 'async-make)
