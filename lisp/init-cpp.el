@@ -49,9 +49,13 @@
   (progn
     (require 'helm-config)
     (require 'helm)
-    (helm-mode))
-  :init
-  (progn
+    (helm-mode)
+    (eval-after-load "helm-grep"
+      '(progn
+        (setq helm-grep-ignored-files (append helm-grep-ignored-files (list "*.pyc" "*.exe" "GTAGS"  "GPATH" "GSYMS" "GRTAGS")))
+        (setq helm-grep-ignored-directories (append helm-grep-ignored-directories
+                                                    (list ".git" "elpa" "data")))))
+
     (setq helm-candidate-number-limit 100)
     (setq helm-input-idle-delay 0.01
           helm-M-x-requires-pattern nil
@@ -66,9 +70,6 @@
           helm-split-window-default-side 'below
           helm-split-window-in-side-p t
           helm-buffer-max-length nil)
-    (setq helm-grep-ignored-files (append helm-grep-ignored-files (list "*.pyc" "*.exe" "GTAGS"  "GPATH" "GSYMS" "GRTAGS")))
-    (setq helm-grep-ignored-directories (append helm-grep-ignored-directories
-                                                (list ".git" "elpa" "data")))
     (define-key isearch-mode-map (kbd "M-y") 'helm-show-kill-ring)
     (add-hook 'eshell-mode-hook
               #'(lambda ()
