@@ -87,6 +87,14 @@
    ("C-x C-r" . helm-recentf)
    ))
 
+(use-package helm-ag
+  :ensure t
+  :config
+  (require 'helm-ag))
+(use-package helm-ack
+  :ensure t
+  :config
+  (require 'helm-ack))
 (use-package helm-descbinds
   :defer t)
 

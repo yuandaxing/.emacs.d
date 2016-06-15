@@ -110,10 +110,7 @@
 ;; Handy key bindings
 
 (progn
- ; (global-set-key (kbd "C-x C-m") 'helm-M-x)
- ; (global-set-key (kbd "C-c C-m") 'helm-M-x)
   (global-set-key (kbd "C-.") 'set-mark-command)
-                                        ;(global-set-key (kbd "C-x C-.") 'pop-global-mark)
   )
 
 
@@ -144,17 +141,12 @@
 
 (global-set-key (kbd "C-M-<backspace>") 'kill-back-to-indentation)
 
-
-
-
-
 (require-package 'page-break-lines)
 (global-page-break-lines-mode)
 (diminish 'page-break-lines-mode)
 
 
 ;; Fill column indicator
-
 (when (eval-when-compile (> emacs-major-version 23))
   (require-package 'fill-column-indicator)
   (defun hh-prog-mode-fci-settings ()
@@ -431,10 +423,6 @@ With a prefix ARG open line above the current line."
         (kill-new text)
         (message "Copied buffer file name '%s' to the clipboard." text)))))
 
-(defun hh-yank-pop-forwards (arg)
-  (interactive "p")
-  (yank-pop (- arg)))
-(global-set-key (kbd "M-Y") 'hh-yank-pop-forwards) ; M-Y (Meta-Shift-Y)
 (defun hh-indent-buffer ()
   (interactive)
   (indent-region (point-min) (point-max)))
@@ -456,5 +444,4 @@ With a prefix ARG open line above the current line."
     (error (message "Invalid expression")
            (insert (current-kill 0)))))
 (global-set-key (kbd "C-c e") 'hh-eval-and-replace)
-
 (provide 'init-editing-utils)
