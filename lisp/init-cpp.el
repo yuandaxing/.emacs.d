@@ -91,10 +91,6 @@
   :ensure t
   :config
   (require 'helm-ag))
-(use-package helm-ack
-  :ensure t
-  :config
-  (require 'helm-ack))
 (use-package helm-descbinds
   :defer t)
 
@@ -170,7 +166,7 @@
                             :fuzzy-match t)
                  :buffer "*helm test*"))))
   (progn
-    (when buffer-file-name (save-buffer))
+    (save-some-buffers)
     (async-shell-command
      (concatenate 'string "source /home/yuandx/rsa_keys/work_shortcut.sh ; commit_syn " project))))
 
