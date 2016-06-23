@@ -176,7 +176,7 @@
     ("test" . "~/Dropbox/code-snippet/C++/test/")
     ("algorithm" . "~/Dropbox/code-snippet/emacs-search/algorithm")
     ("skillset" . "~/code/skillset/")
-    ("snippet" . "~/Dropbox/code-snippet/emacs-search/")
+    ("snippet" . "~/Dropbox/code-snippet/")
     ("ambition" . "~/code/trunk/common/")
     ))
 (defun search-snippet (snippet)
