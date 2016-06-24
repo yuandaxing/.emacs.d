@@ -91,10 +91,6 @@
   :ensure t
   :config
   (require 'helm-ag))
-(use-package helm-ack
-  :ensure t
-  :config
-  (require 'helm-ack))
 (use-package helm-descbinds
   :defer t)
 
@@ -170,7 +166,7 @@
                             :fuzzy-match t)
                  :buffer "*helm test*"))))
   (progn
-    (when buffer-file-name (save-buffer))
+    (save-some-buffers)
     (async-shell-command
      (concatenate 'string "source /home/yuandx/rsa_keys/work_shortcut.sh ; commit_syn " project))))
 
@@ -180,7 +176,7 @@
     ("test" . "~/Dropbox/code-snippet/C++/test/")
     ("algorithm" . "~/Dropbox/code-snippet/emacs-search/algorithm")
     ("skillset" . "~/code/skillset/")
-    ("snippet" . "~/Dropbox/code-snippet/emacs-search/")
+    ("snippet" . "~/Dropbox/code-snippet/")
     ("ambition" . "~/code/trunk/common/")
     ))
 (defun search-snippet (snippet)
