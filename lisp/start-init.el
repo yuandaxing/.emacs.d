@@ -28,6 +28,7 @@
 (require 'init-web)
 (require 'init-python)
 (require 'init-recentf)
+(require 'init-auto-insert)
 (use-package paredit
   :ensure t
   :config

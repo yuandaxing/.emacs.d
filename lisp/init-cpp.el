@@ -86,11 +86,32 @@
    ("C-x C-f" . helm-find-files)
    ("C-x C-r" . helm-recentf)
    ))
-
+(defun helm-kill-ring-transformer (candidates _source)
+  "Display only the `helm-kill-ring-max-lines-number' lines of candidate."
+  (cl-loop for i in candidates
+           do (set-text-properties 0 (length i) '(read-only nil) i)
+           for nlines = (with-temp-buffer (insert i) (count-lines (point-min) (point-max)))
+           if (and helm-kill-ring-max-lines-number
+                   (> nlines helm-kill-ring-max-lines-number))
+           collect (cons
+                    (with-temp-buffer
+                      (insert i)
+                      (goto-char (point-min))
+                      (concat
+                       (buffer-substring
+                        (point-min)
+                        (save-excursion
+                          (forward-line helm-kill-ring-max-lines-number)
+                          (point)))
+                       "[...]")) i)
+           else collect i))
 (use-package helm-ag
   :ensure t
   :config
-  (require 'helm-ag))
+  (require 'helm-ag)
+  (define-key helm-ag-edit-map (kbd "C-x C-s") 'helm-ag--edit-commit)
+  (setq  helm-ag-insert-at-point 'symbol)
+)
 (use-package helm-descbinds
   :defer t)
 
