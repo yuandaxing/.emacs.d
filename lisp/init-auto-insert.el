@@ -20,9 +20,9 @@
   (setq
    auto-insert 'other
    auto-insert-alist
-   '((("\\.\\([Hh]\\|hh\\|hpp\\)\\'" . "C / C++ header") . [
+   '((("\\.\\([Hh]\\|hh\\|hpp\\)" . "C / C++ header") . [
                                                             (lambda () (my/autoinsert-yas-expand "head"))])
-     (("\\.\\([C]\\|cc\\|cpp\\)\\'" . "C++ source") . [
+     (("\\.\\([C]\\|cc\\|cpp\\)" . "C++ source") . [
                                                        (lambda () (my/autoinsert-yas-expand "aut"))]))
    auto-insert-query nil)
   )
