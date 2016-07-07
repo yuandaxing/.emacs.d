@@ -31,7 +31,9 @@
                    ac-source-yasnippet
                    ac-source-words-in-buffer
                    ac-source-words-in-same-mode-buffers
-                   ac-source-words-in-all-buffer))
+                   ac-source-words-in-all-buffer
+                   ac-source-filename
+                   ac-source-abbrev))
     (dolist (mode '(magit-log-edit-mode
                     log-edit-mode org-mode text-mode haml-mode
                     git-commit-mode
@@ -57,15 +59,11 @@
   (setq completion-at-point-functions
         (cons 'hh-auto-complete-at-point
               (remove 'hh-auto-complete-at-point completion-at-point-functions))))
-
 (add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
-
 ;; Exclude very large buffers from dabbrev
 (defun hh-dabbrev-friend-buffer (other-buffer)
   (< (buffer-size other-buffer) (* 1 1024 1024)))
-
 (setq dabbrev-friend-buffer-function 'hh-dabbrev-friend-buffer)
-
 (setq abbrev-file-name  (expand-file-name "abbrev/defs.el" user-emacs-directory))
 (setq-default abbrev-mode t)
 (setq save-abbrevs t)
