@@ -1,5 +1,4 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-
 (require 'better-defaults)
 (require 'init-utils)
 (require 'init-elpa)
@@ -107,6 +106,10 @@
                       " - enjoy!!!\n\n"))
 
 (diminish 'keys-bind-minor-mode)
+(add-to-list 'load-path "~/Dropbox/emacs/settings")
+(use-package mysql
+  :no-require t
+  )
 (provide 'start-init)
 ;;;start-init.el ends here
 

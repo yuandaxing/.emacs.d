@@ -21,6 +21,7 @@
 #include <sstream>
 #include <unordered_map>
 #include <unordered_set>
+#include <queue>
 
 using std::unordered_map;
 using std::unordered_set;
@@ -37,6 +38,8 @@ using std::pair;
 using std::sort;
 using std::string;
 using std::for_each;
+using std::deque;
+
 class Solution
 {
 public:
