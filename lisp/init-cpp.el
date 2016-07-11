@@ -82,6 +82,7 @@
    ("M-y" . helm-show-kill-ring)
    ("C-c h r" . helm-register)
    ("C-c h k" . helm-all-mark-rings)
+   ("C-c h i" . hh-indent-buffer)
    ("C-x b" . helm-buffers-list)
    ("C-x C-f" . helm-find-files)
    ("C-x C-r" . helm-recentf)
