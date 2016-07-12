@@ -52,9 +52,9 @@
     (helm-mode)
     (eval-after-load "helm-grep"
       '(progn
-        (setq helm-grep-ignored-files (append helm-grep-ignored-files (list "*.pyc" "*.exe" "GTAGS"  "GPATH" "GSYMS" "GRTAGS")))
-        (setq helm-grep-ignored-directories (append helm-grep-ignored-directories
-                                                    (list ".git" "elpa" "data")))))
+         (setq helm-grep-ignored-files (append helm-grep-ignored-files (list "*.pyc" "*.exe" "GTAGS"  "GPATH" "GSYMS" "GRTAGS")))
+         (setq helm-grep-ignored-directories (append helm-grep-ignored-directories
+                                                     (list ".git" "elpa" "data")))))
     (setq helm-candidate-number-limit 100)
     (setq helm-input-idle-delay 0.01
           helm-M-x-requires-pattern nil
@@ -112,7 +112,7 @@
   (require 'helm-ag)
   (define-key helm-ag-edit-map (kbd "C-x C-s") 'helm-ag--edit-commit)
   (setq  helm-ag-insert-at-point 'symbol)
-)
+  )
 (use-package helm-descbinds
   :defer t)
 
