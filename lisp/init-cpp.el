@@ -188,7 +188,7 @@
                             :fuzzy-match t)
                  :buffer "*helm test*"))))
   (progn
-    (save-some-buffers)
+    (save-some-buffers t nil)
     (async-shell-command
      (concatenate 'string "source /home/yuandx/rsa_keys/work_shortcut.sh ; commit_syn " project))))
 
