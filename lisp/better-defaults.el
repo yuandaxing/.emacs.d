@@ -87,6 +87,7 @@
 (progn
   (setq kill-ring-max 1000)
   (setq extended-command-history-max 10000)
+  (setq history-length 10000)
   (setq query-replace-history-max 100)
   (setq replace-string-history-max 1000)
   (setq file-name-history-max 100)
