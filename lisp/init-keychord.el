@@ -10,7 +10,7 @@
     (setq projectile-globally-ignored-files (append projectile-globally-ignored-files
                                                     '("GTAGS" "GPATH" "GSYMS" "GRTAGS" "makefile" "*\\.pyc"))))
   :bind (
-         ("C-c h g" . helm-projectile-grep)
+         ("C-c h g" . helm-projectile-ag)
          ("C-c h a" . ff-get-other-file)
          ("C-c h b" . helm-projectile-ag)
      ))
