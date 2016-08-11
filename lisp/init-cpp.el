@@ -235,6 +235,17 @@
         (system-time-locale "zh_CN"))
     (insert (format-time-string format))))
 (global-set-key (kbd "C-c h d") 'hh-insert-date)
+
+(defun hh-golden-search (prefix)
+  (interactive "p")
+  (cond
+   ((equal prefix 1) (helm-find-1 "/home/yuandx/code/trunk"))
+   ((equal prefix 4) (helm-multi-files))
+   ((equal prefix 16) (helm-locate-1))
+   (t (helm-find ""))))
+
+(global-set-key (kbd "C-x c /") 'hh-golden-search)
+
 (require 'find-dired)
 (setq find-ls-option '("-print0 | xargs -0 ls -ldh" . "-ldh"))
 (provide 'init-cpp)
