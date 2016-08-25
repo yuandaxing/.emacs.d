@@ -182,7 +182,7 @@
    (let ((projects
           '("all_others" "ileaf" "ileafnew" "adselector" "all_others clean"
             "ileaf clean" "ileafnew clean" "ileafnew test" "adselector clean" "adselector test"
-            "clean" "dsp")))
+            "clean" "dsp" "isearch_root")))
      (list (helm :sources (helm-build-sync-source "test"
                             :candidates projects
                             :fuzzy-match t)
