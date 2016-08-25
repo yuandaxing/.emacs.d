@@ -7,4 +7,8 @@
                                     (setq flycheck-clang-language-standard "c++11" ))))
   (diminish 'flycheck-mode)
   (set-default 'flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
+(defun disable-flycheck-mode ()
+  (interactive)
+  (global-flycheck-mode -1))
+(add-hook 'python-mode-hook 'disable-flycheck-mode)
 (provide 'init-fly)
