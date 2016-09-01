@@ -13,7 +13,7 @@
          ("C-c h g" . helm-projectile-ag)
          ("C-c h a" . ff-get-other-file)
          ("C-c h b" . helm-projectile-ag)
-     ))
+           ))
 (use-package hydra
   :ensure t)
 
