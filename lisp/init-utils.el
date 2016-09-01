@@ -15,6 +15,8 @@
   (dolist (pattern patterns)
     (add-to-list 'auto-mode-alist (cons pattern mode))))
 
+(defun try-to-save-all ()
+  (save-some-buffers t nil))
 
 ;;----------------------------------------------------------------------------
 ;; String utilities missing from core emacs
