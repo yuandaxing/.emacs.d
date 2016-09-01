@@ -5,7 +5,7 @@
     (add-hook 'python-mode-hook 'jedi:setup)
     (setq jedi:complete-on-dot t)))
 (defun try-to-save ()
-  (save-some-buffers nil))
+  (save-some-buffers t))
 (use-package python-mode
   :ensure t
   :config
