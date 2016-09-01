@@ -10,6 +10,7 @@
   (progn
     (require 'python-mode)
     (setq py-split-windows-on-execute-p t)
+    (advice-add 'py-execute-buffer :before #'save-some-buffers)
     (add-to-list 'auto-mode-alist '("\\.py$" . python-mode))))
 (defun disable-flycheck-mode ()
   (interactive)
