@@ -5,10 +5,6 @@
   :ensure t
   :init
   (require 'helm-projectile)
-  :config
-  (progn
-    (setq projectile-globally-ignored-files (append projectile-globally-ignored-files
-                                                    '("GTAGS" "GPATH" "GSYMS" "GRTAGS" "makefile" "*\\.pyc"))))
   :bind (
          ("C-c h g" . helm-projectile-ag)
          ("C-c h a" . ff-get-other-file)
