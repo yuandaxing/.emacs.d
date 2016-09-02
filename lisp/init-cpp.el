@@ -68,7 +68,8 @@
           helm-completion-in-region-fuzzy-match t
           helm-split-window-default-side 'below
           helm-split-window-in-side-p t
-          helm-buffer-max-length nil)
+          helm-buffer-max-length nil
+          helm-move-to-line-cycle-in-source t)
     (define-key isearch-mode-map (kbd "M-y") 'helm-show-kill-ring)
     (add-hook 'eshell-mode-hook
               #'(lambda ()
