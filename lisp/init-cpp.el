@@ -69,7 +69,8 @@
           helm-split-window-default-side 'below
           helm-split-window-in-side-p t
           helm-buffer-max-length nil
-          helm-move-to-line-cycle-in-source t)
+          helm-move-to-line-cycle-in-source t
+          )
     (define-key isearch-mode-map (kbd "M-y") 'helm-show-kill-ring)
     (add-hook 'eshell-mode-hook
               #'(lambda ()
@@ -112,11 +113,11 @@
   :config
   (require 'helm-ag)
   (define-key helm-ag-edit-map (kbd "C-x C-s") 'helm-ag--edit-commit)
-  (setq  helm-ag-insert-at-point 'symbol)
+  (setq  helm-ag-insert-at-point 'symbol
+         )
   )
 (use-package helm-descbinds
   :defer t)
-
 (use-package helm-gtags
   :ensure t
   :config
