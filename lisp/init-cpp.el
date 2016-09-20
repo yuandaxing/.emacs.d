@@ -79,16 +79,18 @@
     (define-key helm-map (kbd "C-w") 'backward-kill-word)
     (define-key helm-grep-map (kbd "C-w") 'backward-kill-word)
     (define-key helm-generic-files-map (kbd "C-w") 'backward-kill-word))
-  :bind
-  (("C-c h y" . helm-yas-complete)
-   ("M-y" . helm-show-kill-ring)
-   ("C-c h r" . helm-register)
-   ("C-c h k" . helm-all-mark-rings)
-   ("C-c h i" . hh-indent-buffer)
-   ("C-x b" . helm-buffers-list)
-   ("C-x C-f" . helm-find-files)
-   ("C-x C-r" . helm-recentf)
-   ))
+     :bind
+  (
+    ("C-c h i" . hh-indent-buffer)
+    ("C-x b" . helm-buffers-list)
+    ("C-x C-f" . helm-find-files)
+    ("C-x C-r" . helm-recentf)
+    ("C-c h y" . helm-yas-complete)
+    ("M-y" . helm-show-kill-ring)
+    ("C-c h r" . helm-register)
+    ("C-c h k" . helm-all-mark-rings)
+    ))
+
 (defun helm-kill-ring-transformer (candidates _source)
   "Display only the `helm-kill-ring-max-lines-number' lines of candidate."
   (cl-loop for i in candidates

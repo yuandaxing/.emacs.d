@@ -15,7 +15,6 @@
     (defengine stackoverflow
       "http://stackoverflow.com/search?q=%s"
       :keybinding "s")
-    (setq engine/browser-function 'helm-browse-url-chromium)
     )
   )
 (provide 'init-engine)
