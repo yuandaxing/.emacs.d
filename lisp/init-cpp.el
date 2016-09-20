@@ -29,7 +29,7 @@
   (c-set-offset 'substatement-open 0)
   (c-set-offset 'innamespace 0)
   (c-set-offset 'case-label '+)
-  (set-default 'c-basic-offset 2)
+  (set-default 'c-basic-offset 4)
   (setq ff-search-directories '("../include/*" "../src" "." "../../src" "../../include/*"))
   (setq helm-zgrep-file-extension-regexp ".*\\(\\.h\\|\\.cpp\\|\\.cc\\|\\.hpp\\)$"))
 
