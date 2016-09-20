@@ -9,7 +9,7 @@
                              "g++"
                              (file-name-sans-extension file)
                              file
-                             "-std=c++11 -fdiagnostics-color=auto -lpthread"
+                             "-lpthread"
                              ))))))
 
 (add-hook 'c-mode-hook
@@ -29,9 +29,29 @@
   (c-set-offset 'substatement-open 0)
   (c-set-offset 'innamespace 0)
   (c-set-offset 'case-label '+)
-  (set-default 'c-basic-offset 4)
+  (setq c-basic-offset 4)
   (setq ff-search-directories '("../include/*" "../src" "." "../../src" "../../include/*"))
   (setq helm-zgrep-file-extension-regexp ".*\\(\\.h\\|\\.cpp\\|\\.cc\\|\\.hpp\\)$"))
+
+(defun execute-below-eshell-return ()
+  (interactive)
+  (progn
+    (dolist (w (window-list nil nil nil))
+      (if (string= (buffer-name (window-buffer w))
+                   "*eshell*")
+          (delete-window w)))
+    (while (window-in-direction 'below)
+      (delete-window (window-in-direction 'below)))
+    (while (window-in-direction 'above)
+      (delete-window (window-in-direction 'above)))
+    (let ((buf-name (buffer-name)))
+      (split-window nil nil 'above)
+      (eshell)
+      (helm-eshell-history)
+      (eshell-send-input)
+      (switch-to-buffer-other-window buf-name))))
+(global-set-key (kbd "C-c h e") 'execute-below-eshell-return)
+
 
 (add-hook 'c++-mode-hook 'c++-mode-hook-setting)
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
@@ -205,7 +225,8 @@
     ("snippet" . "~/Dropbox/code-snippet/")
     ("ambition" . "~/code/trunk/common/")
     ))
-(defun search-snippet (snippet)
+
+(defun search-code-snippet (snippet)
   (interactive
    (let ((snippets
           '("trunk" "effective" "test" "algorithm" "skillset"
@@ -217,16 +238,12 @@
   (helm-do-grep-1 (list (cdr (assoc snippet key-path-alist))) t nil
                   '("*.org" "*.cpp" "*.cc" "*.h" "makefile" "Makefile" "*.py" "*.hpp" "*.scratch" "*.el" ".c")))
 
-(defun run-exe ()
-  (interactive
-   (let ((exe (format "%s.exe" (file-name-sans-extension buffer-file-name))))
-     (shell-command
-      exe)
-     )))
-
+(defun search-snippet (arg)
+  (interactive "P")
+  (if arg (call-interactively 'search-code-snippet)
+    (search-code-snippet "skillset")))
 (global-set-key (kbd "C-c h p") 'search-snippet)
 (global-set-key (kbd "C-c h m") 'async-make)
-(global-set-key (kbd "C-c h u") 'run-exe)
 
 (defun hh-insert-date (prefix)
   "Insert the current date. With prefix-argument, use ISO format. With
