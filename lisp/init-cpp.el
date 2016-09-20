@@ -35,6 +35,7 @@
 
 (defun execute-below-eshell-return ()
   (interactive)
+  (save-some-buffers t nil)
   (progn
     (dolist (w (window-list nil nil nil))
       (if (string= (buffer-name (window-buffer w))
