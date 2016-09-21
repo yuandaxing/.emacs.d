@@ -262,9 +262,7 @@
 (defun hh-golden-search (prefix)
   (interactive "p")
   (cond
-   ((equal prefix 1) (helm-find-1 "/home/yuandx/code/trunk"))
-   ((equal prefix 4) (helm-multi-files))
-   ((equal prefix 16) (helm-locate-1))
+   ((equal prefix 1) (helm-find-1 "/home/dxyuan/code/ficus/ficus"))
    (t (helm-find ""))))
 
 (global-set-key (kbd "C-x c /") 'hh-golden-search)

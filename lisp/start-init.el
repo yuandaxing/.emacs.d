@@ -85,12 +85,12 @@
 
 (defun before-magit (&optional directory)
   (save-some-buffers t nil))
-(use-package magit
-  :ensure t
-  :config
-  (require 'magit)
-  (advice-add 'magit-status :before #'before-magit)
-  )
+;; (use-package magit
+;;   :ensure t
+;;   :config
+;;   (require 'magit)
+;;   (advice-add 'magit-status :before #'before-magit)
+;;   )
 
 (add-hook 'erc-mode-hook
 		  '(lambda ()
