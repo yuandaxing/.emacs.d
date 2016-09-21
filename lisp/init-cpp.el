@@ -48,6 +48,7 @@
     (let ((buf-name (buffer-name)))
       (split-window nil nil 'above)
       (eshell)
+      (goto-char (point-max))
       (helm-eshell-history)
       (eshell-send-input)
       (switch-to-buffer-other-window buf-name))))
