@@ -264,7 +264,7 @@
   (cond
    ((equal prefix 1) (helm-find-1 "/home/dxyuan/code/ficus/ficus"))
    (t (helm-find ""))))
-
+(setq history-delete-duplicates t)
 (global-set-key (kbd "C-x c /") 'hh-golden-search)
 (setq x-select-enable-clipboard  nil
       x-select-enable-primary  nil)
