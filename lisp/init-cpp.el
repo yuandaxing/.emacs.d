@@ -100,17 +100,17 @@
     (define-key helm-map (kbd "C-w") 'backward-kill-word)
     (define-key helm-grep-map (kbd "C-w") 'backward-kill-word)
     (define-key helm-generic-files-map (kbd "C-w") 'backward-kill-word))
-     :bind
+  :bind
   (
-    ("C-c h i" . hh-indent-buffer)
-    ("C-x b" . helm-buffers-list)
-    ("C-x C-f" . helm-find-files)
-    ("C-x C-r" . helm-recentf)
-    ("C-c h y" . helm-yas-complete)
-    ("M-y" . helm-show-kill-ring)
-    ("C-c h r" . helm-register)
-    ("C-c h k" . helm-all-mark-rings)
-    ))
+   ("C-c h i" . hh-indent-buffer)
+   ("C-x b" . helm-buffers-list)
+   ("C-x C-f" . helm-find-files)
+   ("C-x C-r" . helm-recentf)
+   ("C-c h y" . helm-yas-complete)
+   ("M-y" . helm-show-kill-ring)
+   ("C-c h r" . helm-register)
+   ("C-c h k" . helm-all-mark-rings)
+   ))
 
 (defun helm-kill-ring-transformer (candidates _source)
   "Display only the `helm-kill-ring-max-lines-number' lines of candidate."
@@ -267,7 +267,8 @@
    (t (helm-find ""))))
 
 (global-set-key (kbd "C-x c /") 'hh-golden-search)
-
+(setq x-select-enable-clipboard  nil
+      x-select-enable-primary  nil)
 (require 'find-dired)
 (setq find-ls-option '("-print0 | xargs -0 ls -ldh" . "-ldh"))
 (provide 'init-cpp)
