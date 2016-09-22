@@ -103,7 +103,7 @@
 (setq inhibit-startup-screen t)
 (setq inhibit-startup-message t)
 (setq user-full-name "yuandaxing"
-      user-email-address "yuandx@mvad.com")
+      user-email-address "daxing.yuan@yitu-inc.com")
 (setq-default initial-scratch-message 
               (concat ";; Happy hacking " (or user-login-name "")
                       " - enjoy!!!\n\n"))
