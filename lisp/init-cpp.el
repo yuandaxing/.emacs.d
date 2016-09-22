@@ -5,11 +5,13 @@
                         (file-exists-p "Makefile"))
               (set (make-local-variable 'compile-command)
                    (let ((file (file-name-nondirectory buffer-file-name)))
-                     (format "%s  -o %s.exe %s %s"
+                     (format "%s -I%s -L%s -o %s.exe %s  %s"
                              "g++"
+                             (substitute-in-file-name "$HOME/Dropbox/3rdparty/cpp/include")
+                             (substitute-in-file-name "$HOME/Dropbox/3rdparty/cpp/lib")
                              (file-name-sans-extension file)
                              file
-                             "-lpthread"
+                             "-lpthread -lgflags"
                              ))))))
 
 (add-hook 'c-mode-hook
@@ -91,6 +93,7 @@
           helm-split-window-default-side 'below
           helm-split-window-in-side-p t
           helm-buffer-max-length nil
+          eshell-history-size  10000
           helm-move-to-line-cycle-in-source t
           )
     (define-key isearch-mode-map (kbd "M-y") 'helm-show-kill-ring)
@@ -206,9 +209,7 @@
 (defun async-make (project)
   (interactive
    (let ((projects
-          '("all_others" "ileaf" "ileafnew" "adselector" "all_others clean"
-            "ileaf clean" "ileafnew clean" "ileafnew test" "adselector clean" "adselector test"
-            "clean" "dsp" "isearch_root")))
+          '("common" "common clean")))
      (list (helm :sources (helm-build-sync-source "test"
                             :candidates projects
                             :fuzzy-match t)
@@ -216,16 +217,15 @@
   (progn
     (save-some-buffers t nil)
     (async-shell-command
-     (concatenate 'string "source /home/yuandx/rsa_keys/work_shortcut.sh ; commit_syn " project))))
+     (format "source %s ; build %s" (substitute-in-file-name "$HOME/Dropbox/secret/work_shortcut.sh") project))))
 
 (defvar key-path-alist
-  '(("trunk" . "~/code/trunk/common/")
+  '(("ficus-common" . "~/code/ficus/ficus/common/")
     ("effective" . "~/Dropbox/code-snippet/C++/modern-effective-c++/")
     ("test" . "~/Dropbox/code-snippet/C++/test/")
     ("algorithm" . "~/Dropbox/code-snippet/emacs-search/algorithm")
     ("skillset" . "~/code/skillset/")
     ("snippet" . "~/Dropbox/code-snippet/")
-    ("ambition" . "~/code/trunk/common/")
     ))
 
 (defun search-code-snippet (snippet)
