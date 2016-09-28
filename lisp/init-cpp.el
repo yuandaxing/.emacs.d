@@ -209,7 +209,7 @@
 (defun async-make (project)
   (interactive
    (let ((projects
-          '("common" "common clean")))
+          '("common" "reset compile" "facesaas")))
      (list (helm :sources (helm-build-sync-source "test"
                             :candidates projects
                             :fuzzy-match t)
@@ -262,7 +262,7 @@
 (defun hh-golden-search (prefix)
   (interactive "p")
   (cond
-   ((equal prefix 1) (helm-find-1 "/home/dxyuan/code/ficus/ficus"))
+   ((equal prefix 1) (helm-find-1 "/home/dxyuan/code/ficus_write/ficus"))
    (t (helm-find ""))))
 (setq history-delete-duplicates t)
 (global-set-key (kbd "C-x c /") 'hh-golden-search)
