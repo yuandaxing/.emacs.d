@@ -23,7 +23,9 @@
    '((("\\.\\([Hh]\\|hh\\|hpp\\)" . "C / C++ header") . [
                                                             (lambda () (my/autoinsert-yas-expand "head"))])
      (("\\.\\([C]\\|cc\\|cpp\\)" . "C++ source") . [
-                                                       (lambda () (my/autoinsert-yas-expand "aut"))]))
+                                                    (lambda () (my/autoinsert-yas-expand "aut"))])
+     (("\\.py" . "pthon source") .
+      [  (lambda () (my/autoinsert-yas-expand "head"))]))
    auto-insert-query nil)
   )
 (provide 'init-auto-insert)

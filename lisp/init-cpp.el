@@ -5,7 +5,7 @@
                         (file-exists-p "Makefile"))
               (set (make-local-variable 'compile-command)
                    (let ((file (file-name-nondirectory buffer-file-name)))
-                     (format "%s -I%s -L%s -o %s.exe %s  %s"
+                     (format "%s -I%s -L%s -std=c++11 -o %s.exe %s  %s"
                              "g++"
                              (substitute-in-file-name "$HOME/Dropbox/3rdparty/cpp/include")
                              (substitute-in-file-name "$HOME/Dropbox/3rdparty/cpp/lib")
