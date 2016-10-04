@@ -70,6 +70,7 @@
           helm-split-window-in-side-p t
           helm-buffer-max-length nil
           helm-move-to-line-cycle-in-source t
+          helm-eshell-hist-ignoredups t
           )
     (define-key isearch-mode-map (kbd "M-y") 'helm-show-kill-ring)
     (add-hook 'eshell-mode-hook
