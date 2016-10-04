@@ -5,11 +5,13 @@
                         (file-exists-p "Makefile"))
               (set (make-local-variable 'compile-command)
                    (let ((file (file-name-nondirectory buffer-file-name)))
-                     (format "%s  -o %s.exe %s %s"
+                     (format "%s -I%s -L%s -std=c++11 -o %s.exe %s  %s"
                              "g++"
+                             (substitute-in-file-name "$HOME/Dropbox/3rdparty/cpp/include")
+                             (substitute-in-file-name "$HOME/Dropbox/3rdparty/cpp/lib")
                              (file-name-sans-extension file)
                              file
-                             "-std=c++11 -fdiagnostics-color=auto -lpthread"
+                             "-lpthread -lgflags"
                              ))))))
 
 (add-hook 'c-mode-hook
@@ -29,9 +31,31 @@
   (c-set-offset 'substatement-open 0)
   (c-set-offset 'innamespace 0)
   (c-set-offset 'case-label '+)
-  (set-default 'c-basic-offset 2)
+  (setq c-basic-offset 4)
   (setq ff-search-directories '("../include/*" "../src" "." "../../src" "../../include/*"))
   (setq helm-zgrep-file-extension-regexp ".*\\(\\.h\\|\\.cpp\\|\\.cc\\|\\.hpp\\)$"))
+
+(defun execute-below-eshell-return ()
+  (interactive)
+  (save-some-buffers t nil)
+  (progn
+    (dolist (w (window-list nil nil nil))
+      (if (string= (buffer-name (window-buffer w))
+                   "*eshell*")
+          (delete-window w)))
+    (while (window-in-direction 'below)
+      (delete-window (window-in-direction 'below)))
+    (while (window-in-direction 'above)
+      (delete-window (window-in-direction 'above)))
+    (let ((buf-name (buffer-name)))
+      (split-window nil nil 'above)
+      (eshell)
+      (goto-char (point-max))
+      (helm-eshell-history)
+      (eshell-send-input)
+      (switch-to-buffer-other-window buf-name))))
+(global-set-key (kbd "C-c h e") 'execute-below-eshell-return)
+
 
 (add-hook 'c++-mode-hook 'c++-mode-hook-setting)
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
@@ -69,6 +93,7 @@
           helm-split-window-default-side 'below
           helm-split-window-in-side-p t
           helm-buffer-max-length nil
+          eshell-history-size  10000
           helm-move-to-line-cycle-in-source t
           helm-eshell-hist-ignoredups t
           )
@@ -81,15 +106,17 @@
     (define-key helm-grep-map (kbd "C-w") 'backward-kill-word)
     (define-key helm-generic-files-map (kbd "C-w") 'backward-kill-word))
   :bind
-  (("C-c h y" . helm-yas-complete)
-   ("M-y" . helm-show-kill-ring)
-   ("C-c h r" . helm-register)
-   ("C-c h k" . helm-all-mark-rings)
+  (
    ("C-c h i" . hh-indent-buffer)
    ("C-x b" . helm-buffers-list)
    ("C-x C-f" . helm-find-files)
    ("C-x C-r" . helm-recentf)
+   ("C-c h y" . helm-yas-complete)
+   ("M-y" . helm-show-kill-ring)
+   ("C-c h r" . helm-register)
+   ("C-c h k" . helm-all-mark-rings)
    ))
+
 (defun helm-kill-ring-transformer (candidates _source)
   "Display only the `helm-kill-ring-max-lines-number' lines of candidate."
   (cl-loop for i in candidates
@@ -183,9 +210,7 @@
 (defun async-make (project)
   (interactive
    (let ((projects
-          '("all_others" "ileaf" "ileafnew" "adselector" "all_others clean"
-            "ileaf clean" "ileafnew clean" "ileafnew test" "adselector clean" "adselector test"
-            "clean" "dsp" "isearch_root")))
+          '("common" "reset compile" "facesaas")))
      (list (helm :sources (helm-build-sync-source "test"
                             :candidates projects
                             :fuzzy-match t)
@@ -193,18 +218,18 @@
   (progn
     (save-some-buffers t nil)
     (async-shell-command
-     (concatenate 'string "source /home/yuandx/rsa_keys/work_shortcut.sh ; commit_syn " project))))
+     (format "source %s ; build %s" (substitute-in-file-name "$HOME/Dropbox/secret/work_shortcut.sh") project))))
 
 (defvar key-path-alist
-  '(("trunk" . "~/code/trunk/common/")
+  '(("ficus-common" . "~/code/ficus/ficus/common/")
     ("effective" . "~/Dropbox/code-snippet/C++/modern-effective-c++/")
     ("test" . "~/Dropbox/code-snippet/C++/test/")
     ("algorithm" . "~/Dropbox/code-snippet/emacs-search/algorithm")
     ("skillset" . "~/code/skillset/")
     ("snippet" . "~/Dropbox/code-snippet/")
-    ("ambition" . "~/code/trunk/common/")
     ))
-(defun search-snippet (snippet)
+
+(defun search-code-snippet (snippet)
   (interactive
    (let ((snippets
           '("trunk" "effective" "test" "algorithm" "skillset"
@@ -216,16 +241,12 @@
   (helm-do-grep-1 (list (cdr (assoc snippet key-path-alist))) t nil
                   '("*.org" "*.cpp" "*.cc" "*.h" "makefile" "Makefile" "*.py" "*.hpp" "*.scratch" "*.el" ".c")))
 
-(defun run-exe ()
-  (interactive
-   (let ((exe (format "%s.exe" (file-name-sans-extension buffer-file-name))))
-     (shell-command
-      exe)
-     )))
-
+(defun search-snippet (arg)
+  (interactive "P")
+  (if arg (call-interactively 'search-code-snippet)
+    (search-code-snippet "skillset")))
 (global-set-key (kbd "C-c h p") 'search-snippet)
 (global-set-key (kbd "C-c h m") 'async-make)
-(global-set-key (kbd "C-c h u") 'run-exe)
 
 (defun hh-insert-date (prefix)
   "Insert the current date. With prefix-argument, use ISO format. With
@@ -242,13 +263,12 @@
 (defun hh-golden-search (prefix)
   (interactive "p")
   (cond
-   ((equal prefix 1) (helm-find-1 "/home/yuandx/code/trunk"))
-   ((equal prefix 4) (helm-multi-files))
-   ((equal prefix 16) (helm-locate-1))
+   ((equal prefix 1) (helm-find-1 "/home/dxyuan/code/ficus_write/ficus"))
    (t (helm-find ""))))
-
+(setq history-delete-duplicates t)
 (global-set-key (kbd "C-x c /") 'hh-golden-search)
-
+(setq x-select-enable-clipboard  nil
+      x-select-enable-primary  nil)
 (require 'find-dired)
 (setq find-ls-option '("-print0 | xargs -0 ls -ldh" . "-ldh"))
 (provide 'init-cpp)

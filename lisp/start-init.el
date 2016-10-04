@@ -36,7 +36,7 @@
               (lambda ()
                 (paredit-mode 1)
                 (diminish 'paredit-mode)))))
-(cua-selection-mode t)                  ; for rectangles, CUA is nice
+;(cua-selection-mode t)                  ; for rectangles, CUA is nice
 (require 'init-calendar)
 (use-package multiple-cursors
   :ensure t
@@ -85,12 +85,12 @@
 
 (defun before-magit (&optional directory)
   (save-some-buffers t nil))
-(use-package magit
-  :ensure t
-  :config
-  (require 'magit)
-  (advice-add 'magit-status :before #'before-magit)
-  )
+;; (use-package magit
+;;   :ensure t
+;;   :config
+;;   (require 'magit)
+;;   (advice-add 'magit-status :before #'before-magit)
+;;   )
 
 (autoload 'markdown-mode "markdown-mode"
     "Major mode for editing Markdown files" t)
@@ -98,7 +98,7 @@
 (setq inhibit-startup-screen t)
 (setq inhibit-startup-message t)
 (setq user-full-name "yuandaxing"
-      user-email-address "yuandx@mvad.com")
+      user-email-address "daxing.yuan@yitu-inc.com")
 (setq-default initial-scratch-message 
               (concat ";; Happy hacking " (or user-login-name "")
                       " - enjoy!!!\n\n"))

@@ -4,7 +4,7 @@
   (progn
     (setq projectile-mode-line " Projectile")
     (set-default 'tramp-default-method "sshx")
-    (set-default 'tramp-default-user "yuandx")
+    (set-default 'tramp-default-user "daxing.yuan")
     (set-default 'tramp-verbose 3) ;default settings
     (setq tramp-auto-save-directory "/tmp/tramp/")
     (setq tramp-chunksize 2000)
