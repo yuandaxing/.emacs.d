@@ -94,6 +94,7 @@
           helm-split-window-in-side-p t
           helm-buffer-max-length nil
           eshell-history-size  10000
+          helm-eshell-hist-ignoredups t
           helm-move-to-line-cycle-in-source t
           )
     (define-key isearch-mode-map (kbd "M-y") 'helm-show-kill-ring)
@@ -209,7 +210,7 @@
 (defun async-make (project)
   (interactive
    (let ((projects
-          '("common" "reset compile" "facesaas")))
+          '("facesaas" "ficus" "common" "reset compile")))
      (list (helm :sources (helm-build-sync-source "test"
                             :candidates projects
                             :fuzzy-match t)
@@ -259,11 +260,22 @@
     (insert (format-time-string format))))
 (global-set-key (kbd "C-c h d") 'hh-insert-date)
 
+;(add-to-list 'helm-sources-using-default-as-input 'helm-source-findutils)
+(defun helm-find-1 (dir)
+  (let ((default-directory (file-name-as-directory dir)))
+    (helm :sources 'helm-source-findutils
+          :buffer "*helm find*"
+          :ff-transformer-show-only-basename nil
+          :default (thing-at-point 'filename)
+          :case-fold-search helm-file-name-case-fold-search)))
 (defun hh-golden-search (prefix)
   (interactive "p")
   (cond
-   ((equal prefix 1) (helm-find-1 "/home/dxyuan/code/ficus_write/ficus"))
+   ((equal prefix 1) (progn
+                       (let ((helm-findutils-search-full-path t))
+                         (helm-find-1 "/home/dxyuan/code/ficus_write/ficus"))))
    (t (helm-find ""))))
+
 (setq history-delete-duplicates t)
 (global-set-key (kbd "C-x c /") 'hh-golden-search)
 (setq x-select-enable-clipboard  nil
