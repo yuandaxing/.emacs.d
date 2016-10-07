@@ -92,11 +92,6 @@
 ;;   (advice-add 'magit-status :before #'before-magit)
 ;;   )
 
-(add-hook 'erc-mode-hook
-		  '(lambda ()
-			 (erc :server "irc.freenode.net" :port 6665 :full-name "Daxing Yuan" :nick "dayua" :password "e215758")
-			 (setq erc-hide-list '("JOIN" "PART" "QUIT"))))
-
 (autoload 'markdown-mode "markdown-mode"
     "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
