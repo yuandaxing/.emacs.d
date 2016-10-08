@@ -222,7 +222,7 @@
      (format "source %s ; build %s" (substitute-in-file-name "$HOME/Dropbox/secret/work_shortcut.sh") project))))
 
 (defvar key-path-alist
-  '(("ficus-common" . "~/code/ficus/ficus/common/")
+  '(("ficus-common" . "~/code/ficus/common/")
     ("effective" . "~/Dropbox/code-snippet/C++/modern-effective-c++/")
     ("test" . "~/Dropbox/code-snippet/C++/test/")
     ("algorithm" . "~/Dropbox/code-snippet/emacs-search/algorithm")
@@ -274,7 +274,7 @@
   (cond
    ((equal prefix 1) (progn
                        (let ((helm-findutils-search-full-path t))
-                         (helm-find-1 "/home/dxyuan/code/ficus_write/ficus"))))
+                         (helm-find-1 "/home/dxyuan/code/ficus_write"))))
    (t (helm-find ""))))
 
 (setq history-delete-duplicates t)
