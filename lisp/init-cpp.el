@@ -261,8 +261,8 @@
     (insert (format-time-string format))))
 (global-set-key (kbd "C-c h d") 'hh-insert-date)
 
-;(add-to-list 'helm-sources-using-default-as-input 'helm-source-findutils)
-(defun helm-find-1 (dir)
+(add-to-list 'helm-sources-using-default-as-input 'helm-source-findutils)
+(defun helm-find-2 (dir)
   (let ((default-directory (file-name-as-directory dir)))
     (helm :sources 'helm-source-findutils
           :buffer "*helm find*"
