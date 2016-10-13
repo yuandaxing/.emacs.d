@@ -41,7 +41,7 @@
   (progn
     (dolist (w (window-list nil nil nil))
       (if (string= (buffer-name (window-buffer w))
-                   "*eshell*")
+                   "\*eshell\*")
           (delete-window w)))
     (while (window-in-direction 'below)
       (delete-window (window-in-direction 'below)))
@@ -54,7 +54,29 @@
       (helm-eshell-history)
       (eshell-send-input)
       (switch-to-buffer-other-window buf-name))))
+(defun execute-below-shell-return ()
+  (interactive)
+  (save-some-buffers t nil)
+  (progn
+    (dolist (w (window-list nil nil nil))
+      (if (string= (buffer-name (window-buffer w))
+                   "\*shell\*")
+          (delete-window w)))
+    (while (window-in-direction 'below)
+      (delete-window (window-in-direction 'below)))
+    (while (window-in-direction 'above)
+      (delete-window (window-in-direction 'above)))
+    (let ((buf-name (buffer-name)))
+      (split-window nil nil 'above)
+      (shell)
+      (goto-char (point-max))
+      (helm-comint-input-ring)
+      (comint-send-input)
+      (switch-to-buffer-other-window buf-name))))
+
 (global-set-key (kbd "C-c h e") 'execute-below-eshell-return)
+(global-set-key (kbd "C-c h s") 'execute-below-shell-return)
+
 
 
 (add-hook 'c++-mode-hook 'c++-mode-hook-setting)
@@ -205,13 +227,12 @@
     (setq helm-swoop-speed-or-color nil)
     (setq helm-swoop-move-to-line-cycle t)
     (setq helm-swoop-use-line-number-face t))
-  :bind
-  (("C-c h s" . helm-multi-swoop-all)))
+  )
 
 (defun async-make (project)
   (interactive
    (let ((projects
-          '("facesaas" "ficus" "common" "reset compile")))
+          '("facesaas" "ficus" "common" "reset compile" "sync")))
      (list (helm :sources (helm-build-sync-source "test"
                             :candidates projects
                             :fuzzy-match t)
