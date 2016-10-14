@@ -117,7 +117,6 @@
           helm-buffer-max-length nil
           eshell-history-size  10000
           helm-eshell-hist-ignoredups t
-          helm-move-to-line-cycle-in-source t
           helm-eshell-hist-ignoredups t
           )
     (define-key isearch-mode-map (kbd "M-y") 'helm-show-kill-ring)
@@ -198,8 +197,8 @@
 (add-hook 'c++-mode-hook 'key-bind-hook )
 (custom-set-faces
  '(ac-candidate-face ((t (:family "DejaVu Sans Mono"))))
- '(helm-selection ((t (:background "tan" :underline (:color "dark orange" :style wave)))))
- '(helm-selection-line ((t (:background "cornsilk" :foreground "dark orange" :underline nil)))))
+ '(helm-selection ((t (:background "white" :underline (:color "dark orange" :style wave)))))
+ '(helm-selection-line ((t (:background "white" :foreground "dark orange" :underline nil)))))
 (eval-after-load 'helm-grep
   '(setq helm-grep-default-command helm-grep-default-recurse-command))
 
@@ -225,7 +224,6 @@
     (setq helm-swoop-split-with-multiple-windows nil)
     (setq helm-swoop-split-direction 'split-window-vertically)
     (setq helm-swoop-speed-or-color nil)
-    (setq helm-swoop-move-to-line-cycle t)
     (setq helm-swoop-use-line-number-face t))
   )
 
@@ -300,8 +298,9 @@
 
 (setq history-delete-duplicates t)
 (global-set-key (kbd "C-x c /") 'hh-golden-search)
-(setq x-select-enable-clipboard  nil
-      x-select-enable-primary  nil)
+;not work in the terminal
+(setq x-select-enable-clipboard  t
+      x-select-enable-primary  t)
 (require 'find-dired)
 (setq find-ls-option '("-print0 | xargs -0 ls -ldh" . "-ldh"))
 (provide 'init-cpp)
