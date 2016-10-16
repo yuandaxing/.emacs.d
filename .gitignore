@@ -27,3 +27,4 @@ xflux64.tgz.1
 .python-environments/
 .session
 inferior-shell-history
+session*
