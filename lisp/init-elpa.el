@@ -15,7 +15,9 @@
 
 ;;; Also use Melpa for most packages
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
-
+(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 
 
 ;; If gpg cannot be found, signature checking will fail, so we

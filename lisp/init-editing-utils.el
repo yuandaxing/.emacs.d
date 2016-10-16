@@ -269,13 +269,13 @@ With arg N, insert N newlines."
   (progn 
     (which-key-mode 1)
     (diminish 'which-key-mode)))
-;bind some key according to effective emacs
+                                        ;bind some key according to effective emacs
 (defun kill-region-or-backward-word ()
-      "If the region is active and non-empty, call `kill-region'.
+  "If the region is active and non-empty, call `kill-region'.
      Otherwise, call `backward-kill-word'."
-    (interactive)
-    (call-interactively
-     (if (use-region-p) 'kill-region 'backward-kill-word)))
+  (interactive)
+  (call-interactively
+   (if (use-region-p) 'kill-region 'backward-kill-word)))
 (global-set-key (kbd "C-w") 'kill-backward-word)
 (setq frame-title-format "Emacs - %f")
 (use-package smex
@@ -325,7 +325,7 @@ With arg N, insert N newlines."
                 inferior-emacs-lisp-mode-hook
                 helm-mode-hook ido-setup-hook minibuffer-setup-hook helm-minibuffer-set-up-hook))
   (add-hook hook 'key-bind-hook))
-;(define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)
+                                        ;(define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)
 
 
 (setq backup-directory-alist
@@ -444,6 +444,14 @@ With a prefix ARG open line above the current line."
     (error (message "Invalid expression")
            (insert (current-kill 0)))))
 (global-set-key (kbd "C-c e") 'hh-eval-and-replace)
+(defun xterm-title-update ()
+  (interactive)
+  (send-string-to-terminal (concat "\033]1; " (buffer-name) "\007"))
+  (if buffer-file-name
+      (send-string-to-terminal (concat "\033]2; " (buffer-file-name) "\007"))
+    (send-string-to-terminal (concat "\033]2; " (buffer-name) "\007"))))
+
+(add-hook 'find-file-hook 'xterm-title-update)
 
 
 ;; (defvar shell-minor-mode-map (make-keymap) "shell-minor-mode keymap.")
