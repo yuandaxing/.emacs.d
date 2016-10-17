@@ -28,3 +28,5 @@ xflux64.tgz.1
 .session
 inferior-shell-history
 session*
+shell
+common-history

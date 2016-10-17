@@ -10,8 +10,9 @@
   (let ((process (get-buffer-process (current-buffer))))
     (when process
       (setq comint-input-ring-file-name
-            (format "~/.emacs.d/inferior-%s-history"
+            (format "~/.emacs.d/common-history/inferior-%s-history"
                     (process-name process)))
+      (make-directory (file-name-directory comint-input-ring-file-name) t)
       (comint-read-input-ring)
       (set-process-sentinel process
                             #'comint-write-history-on-exit))))
