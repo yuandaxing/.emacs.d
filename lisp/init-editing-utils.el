@@ -451,7 +451,7 @@ With a prefix ARG open line above the current line."
       (send-string-to-terminal (concat "\033]2; " (buffer-file-name) "\007"))
     (send-string-to-terminal (concat "\033]2; " (buffer-name) "\007"))))
 
-(add-hook 'find-file-hook 'xterm-title-update)
+(add-hook 'post-command-hook 'xterm-title-update)
 
 
 ;; (defvar shell-minor-mode-map (make-keymap) "shell-minor-mode keymap.")
