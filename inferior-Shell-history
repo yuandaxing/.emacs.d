@@ -1,0 +1,500 @@
+cd functest/
+cd const_memory_functest_data/
+ls
+vi leilongc_binocular.list
+eog //mnt/ficuscolombia/zju/poc_data/data/double_eye/01_data/staff/mliu/rgb/20160223_204413_face_rgb.jpg 
+vi leilongc_binocular.list
+cd ../../
+tail -f  l2_env/log/leaf_node.log 
+ls
+more l2_env/runtime_config/score_normalizer.conf 
+more l2_env/runtime_config/leaf_node_worker_saas.conf 
+diff l2_env/runtime_config/leaf_node_worker_saas.conf saas_config/leaf_node_worker_saas.conf 
+cd ..
+cd module/
+ls
+cd identity_verify/
+kls
+ls
+cd poc_combine_small_task/
+ls
+vi id_flip_combine.poc.json 
+ls
+cd ../../
+ls
+cd face/product/face_saas/
+ls
+scons -u -c
+scons -u -j20
+cat /proc/cpuinfo 
+git log
+git status
+git log
+git log -p .
+scons -u -j3
+top
+ls
+cd test_tool
+ls
+bash full_test
+bash full_test.sh 
+more full_test.sh 
+bash ./tool_upload_user.sh 190857886 sample_images/encrypted.jpg 1 127.0.0.1:9500 1
+bash ./tool_upload_user.sh 190857886 sample_images/encrypted.jpg 1 127.0.0.1:9500 
+more full_test.sh 
+bash full_test.sh 
+./tool_upload_user.sh 5928125 sample_images/encrypted.jpg 1 127.0.0.1:9500 1
+./tool_upload_user.sh 5928125 sample_images/encrypted.jpg 1 127.0.0.1:9500 
+bash full_test.sh 
+more full_test.sh 
+ls
+vim full_test.sh 
+bash full_test.sh 
+fg
+bash full_test.sh 
+fg
+bash ./tool_upload_user.sh 147287683 sample_images/encrypted.jpg 1 127.0.0.1:9500 1
+fg
+bash ./tool_upload_user.sh 147287683 sample_images/encrypted.jpg 1 127.0.0.1:9500 1
+fg
+bash ./tool_upload_user.sh 147287683 sample_images/encrypted.jpg 1 127.0.0.1:9500 1
+bash ./tool_upload_user.sh 147287683 sample_images/encrypted.jpg 1 127.0.0.1:9500 1 &>/dev/null > result
+more result 
+fg
+grep -q ' "rtn": 0' result
+echo $?
+bash full_test.sh 
+fg
+bash full_test.sh 
+fg
+bash full_test.sh 
+git status full_test.sh
+git reset --hard HEAD full_test.sh
+git pull
+git status full_test.sh
+git reset --hard HEAD full_test.sh
+cd ../../../
+cd ../
+git status
+git reset --hard HEAD face/product/face_saas/test_tool/full_test.sh
+git checkout face/product/face_saas/test_tool/full_test.sh
+git status
+git pull
+cd -
+ls
+cd product/face_saas/test_tool
+ls
+bash full_test.sh 
+more result 
+bash full_test.sh 
+ls
+cd ../
+ls
+ps -aux | grep _saas
+htop
+cd functest/
+ls
+./ocr_request_handler_functest 
+./face_saas_compatibility_upload_verify_old_functest 
+ls
+./face_saas_compatibility_upload_verify_functest 
+ln -s /mnt/ficusnas4/engineering_data/face/saas/model/ /disks/disk0/model
+ll /disks/disk0/model
+rm  /disks/disk0/model
+ln -s /mnt/ficusnas4/engineering_data/face/saas/model/ /disks/disk0/model
+ll /disks/disk0/model
+ps -aux | grep _saas
+cd ../
+tail -f  l2_env/log/leaf_node.log 
+tail -100  l2_env/log/leaf_node.log 
+rm  /disks/disk0/model
+ln -s /home/dxyuan/code/ficus_compile/models/face_model/ /disks/disk0/model
+ll /disks/disk0/model
+ls
+ps -aux | grep preprocess
+ls
+bash run_all_unittest.sh 
+ls
+bash run_all_perftest.sh 
+bash stop_saas.sh 
+bash start_saas.sh 
+ls
+bash run_all_perftest.sh 
+kejianguang_name=`basename $kejianguang_face_path .jpg`
+kejianguang_content=`base64 -w0 $kejianguang_face_path`
+ls
+cd perftest/
+ls
+more 2016-10-11_01:08:28_verify_speed_report_0_1.csv
+more 2016-10-10_23:21:49_verify_speed_report_0_0.csv
+more fail.list 
+cd ../
+cp -r perftest/ ~/test-image/
+bash stop_saas.sh 
+bash start_saas.sh 
+tail -f  l2_env/log/leaf_node.log 
+git log
+cd ~/test-image/perftest/
+ls
+cd perftest_output/
+ls
+cd 3_类证件照比证件照-女性
+ls
+vim error_case.list 
+vim score_diff.list 
+cd ../
+ls
+cd ../
+ls
+vim fail.list 
+cd perftest_output/
+ls
+cd 3_类证件照比公安水印-中等-男性
+ls
+vim error_case.list 
+vim score_diff.list 
+cd /mnt/ficusnas4/engineering_data/face/saas/model/
+ls
+cd ../
+ls
+cd model_1.5.f_bg_transformed/
+ls
+cd ../
+mkdir -p model_1.5.d_bg_transformed
+cd 
+cd code/ficus_write/models/
+cd face_model/
+ls
+pwd
+ls -R
+cd ../
+ls
+pwd
+cd /home/dxyuan/code/ficus_compile/models
+ls
+cd face_model/
+ls
+cd ../
+scp -r face_model/ engineering@192.168.2.204:/mnt/ficusnas4/engineering_data/face/saas/model_1.5.d_bg_transformed
+q
+ls /mnt/ficusnas4/engineering_data/face/saas/model_1.5.d_bg_transformed
+cd /mnt/ficusnas4/engineering_data/face/saas/model_1.5.d_bg_transformed
+cd ../
+ls
+mv model_1.5.d_bg_transformed model_1.6.d_bg_transformed
+sudo mv model_1.5.d_bg_transformed model_1.6.d_bg_transformed
+ssh engineering@192.168.2.204
+exit
+cd
+ls
+pwd
+top
+ls
+cd code/ficus_write/
+ls
+grep -R 'verify_feature_version' common/
+grep -R 'verify_feature_version' face/*
+ls
+grep -R 'verify_feature_version' face/product/*
+ls
+cd face/
+ls
+find . -name '*.h' -o -name '*.cpp' | more
+find . -name '*.h' -o -name '*.cpp' | xargs -I {} grep 'saas_verify_feature_version' {}
+cd ../
+ls
+find . -name '*.h' -o -name '*.cpp' | xargs -I {} grep 'saas_verify_feature_version' {}
+git branch 
+git branch -a
+git branch feature/dxyuan/face_saas/1.6.d
+ls
+git branch -D feature/dxyuan/face_saas/1.6.d
+git branch 
+git branch feature/dxyuan/project/face/platform/1.6.d
+git checkout feature/dxyuan/project/face/platform/1.6.d
+git status
+git add -A .
+git commit -m 'all'
+git status
+ls
+cd face/product/face_saas/perftest/
+ls
+git log -p face_pair_verify_perftest.cpp
+cd ../../../
+cd ../
+git log
+git rebase -i f2b240f283cf4584c38d2d5853bd90a41b585d75
+git log
+git rebase -i f2b240f283cf4584c38d2d5853bd90a41b585d75
+git diff HEAD~1 HEAD > ~/patch/leilongb2.diff
+git log
+git rebase -i f2b240f283cf4584c38d2d5853bd90a41b585d75
+git log
+git branch
+git log
+git branch 
+git push origin feature/dxyuan/project/face/platform/1.6.d
+git log
+ls
+git branch 
+pwd
+ls
+cd face/
+ls
+cd module/
+ls
+cd identity_verify/
+ls
+cd ../../../
+ll ./face/module/identity_verify/poc_tasks/task.like_id-s_watermark_gongan.female.list.poc.json
+more ./face/module/identity_verify/poc_tasks/task.like_id-s_watermark_gongan.female.list.poc.json
+cd  ./face/module/
+ls
+cd identity_verify/
+ls
+cd poc_tasks2/
+ls
+cd ../
+ls
+mkdir leilong_tasks
+ls
+cd poc_tasks2/
+ls
+more 类证件照-翻拍_方正证券_20150901.json
+ls
+git log
+git rebase -i e1e9c869271f5e45011ddba5abf688b78c67cf3e
+cd ../
+ls
+pwd
+cd ../../../
+ls
+cd ~/code/ficus_compile/face/product/face_saas/
+ls
+gedit run_all_perftest.sh 
+echo ""
+echo "(8) 雷龙测试"
+pushd ../
+bash stop_saas.sh
+cp ./l2_env/runtime_conf/score_normalizer.conf ./l2_env/runtime_conf/score_normalizer.bak.conf
+cp ./l2_env/runtime_conf/leilong_score_normalizer.conf  ./l2_env/runtime_conf/score_normalizer.conf
+bash start_saas.sh
+sleep 60                                     
+echo "(8) 雷龙测试"
+bash stop_saas.sh
+cp ./l2_env/runtime_conf/score_normalizer.conf ./l2_env/runtime_conf/score_normalizer.bak.conf
+cp ./l2_env/runtime_conf/leilong_score_normalizer.conf  ./l2_env/runtime_conf/score_normalizer.conf
+bash start_saas.sh
+sleep 60                                     
+ls
+cd face_saas/
+ls
+echo "(8) 雷龙测试"
+bash stop_saas.sh
+cp ./l2_env/runtime_conf/score_normalizer.conf ./l2_env/runtime_conf/score_normalizer.bak.conf
+cp ./l2_env/runtime_conf/leilong_score_normalizer.conf  ./l2_env/runtime_conf/score_normalizer.conf
+bash start_saas.sh
+sleep 60                                     
+pushd perftest
+./run_saas_verify_perftest_leilong.sh 0
+./run_saas_verify_perftest_leilong.sh 1
+popd
+bash stop_saas.sh
+mv ./l2_env/runtime_conf/score_normalizer.bak.conf ./l2_env/runtime_conf/score_normalizer.conf
+bash start_saas.sh
+echo "测试结束"
+bash stop_saas.sh 
+echo ""
+echo "(8) 雷龙测试"
+bash stop_saas.sh
+cp ./l2_env/runtime_conf/score_normalizer.conf ./l2_env/runtime_conf/score_normalizer.bak.conf
+cp ./l2_env/runtime_conf/leilong_score_normalizer.conf  ./l2_env/runtime_conf/score_normalizer.conf
+bash start_saas.sh
+sleep 60                                     
+pushd perftest
+./run_saas_verify_perftest_leilong.sh 0
+./run_saas_verify_perftest_leilong.sh 1
+popd
+bash stop_saas.sh
+mv ./l2_env/runtime_conf/score_normalizer.bak.conf ./l2_env/runtime_conf/score_normalizer.conf
+bash start_saas.sh
+echo "测试结束"
+bash stop_saas.sh 
+gedit run_all_functest.sh 
+git status
+git pull
+git diff echo ""
+echo "(8) 雷龙测试"
+bash stop_saas.sh
+cp ./l2_env/runtime_conf/score_normalizer.conf ./l2_env/runtime_conf/score_normalizer.bak.conf
+cp ./l2_env/runtime_conf/leilong_score_normalizer.conf  ./l2_env/runtime_conf/score_normalizer.conf
+bash start_saas.sh
+bash stop_saas.sh 
+git status
+git pull
+git diff face/product/face_saas/perftest/run_saas_verify_perftest_leilong.sh
+git diff face/product/face_saas/perftest/face_pair_verify_perftest.cpp
+cd ../../../
+git diff face/product/face_saas/perftest/face_pair_verify_perftest.cpp
+git diff
+git checkout face/module/identity_verify/leilong_tasks/task_leilong_shuangmu.json face/product/face_saas/client/saas_service_clients.cpp face/product/face_saas/client/saas_service_clients.h
+git clean -df
+cd face/product/
+ls
+cd face_saas/
+ls
+gedit run_all_perftest.sh 
+echo "(8) 雷龙测试"
+bash stop_saas.sh
+cp ./l2_env/runtime_conf/score_normalizer.conf ./l2_env/runtime_conf/score_normalizer.bak.conf
+cp ./l2_env/runtime_conf/leilong_score_normalizer.conf  ./l2_env/runtime_conf/score_normalizer.conf
+bash start_saas.sh
+sleep 60                                     
+pushd perftest
+bash ./run_saas_verify_perftest_leilong.sh 0
+bash ./run_saas_verify_perftest_leilong.sh 1
+popd
+bash stop_saas.sh
+mv ./l2_env/runtime_conf/score_normalizer.bak.conf ./l2_env/runtime_conf/score_normalizer.conf
+bash start_saas.sh
+echo "测试结束"
+ls
+cd perftest/perftest_output/leilong/
+ls
+vim error_case.list 
+cd ../../../
+bash stop_saas.sh 
+bash start_saas.sh 
+ps -aux | grep _saas
+tail -f l2_env/log/preprocess.log 
+tail -100 l2_env/log/preprocess.log 
+ls
+vim face_saas_preprocess_engine_ficus.cpp 
+addr2line -e face_saas_preprocess_engine_ficus
+vim face_saas_preprocess_engine_ficus.cpp 
+addr2line -e face_saas_preprocess_engine_ficus
+ls
+ulimit -ulimit
+man ulimit 
+ssh hkhu@192.168.0.184
+ulimit -c  unlimited
+ls
+bash start_preprocessor.sh 3
+htop
+cd l2_env/
+ls
+cd face_saas_preprocess_log/
+ls
+cd ..
+ls
+vim start_preprocessor.sh 
+ls
+htop
+cd l2_env/
+ls
+htop
+ls
+cd face_saas_preprocess_log/
+ls
+cd ..
+ls
+vim log/preprocess.log
+htop
+cd ..
+ls
+bash stop_saas.sh 
+htop
+ls
+clear
+ls
+cd l2_env/
+ls
+vim log/preprocess.log 
+ls
+htop
+gdb binary/face_saas_preprocess_engine_ficus core
+ls
+cd ..
+ls
+vim start_preprocessor.sh 
+htop
+cd l2_env/
+ls
+rm core 
+cd ..
+ls
+bash start_preprocessor.sh 
+htop
+
+ls
+cd l2_env/
+ls
+gdb binary/face_saas_preprocess_engine_ficus core
+ls
+clear
+ls
+cd ..
+ls
+vim face_saas_preprocess_engine_ficus.cpp 
+pwd
+cd /home/dxyuan/code/ficus_write/face/product/face_saas
+git pull
+git merge origin/feature/dxyuan/project/face/platform/1.6.d
+cd 
+/mnt/ficuscolombia/zju/ToSomeone/to_dxyuan
+netstat -ap | grep 9600
+ls
+ssh dxyuan@192.168.2.103
+ssh-copy-id -i ~/.ssh/id_rsa.pub dxyuan@192.168.2.103
+exit
+ssh dxyuan@192.168.2.103
+ssh-copy-id -i ~/.ssh/id_rsa.pub dxyuan@192.168.2.10104
+ssh-copy-id -i ~/.ssh/id_rsa.pub dxyuan@192.168.2.104
+ssh-copy-id -i ~/.ssh/id_rsa.pub dxyuan@192.168.2.105
+ssh-copy-id -i ~/.ssh/id_rsa.pub dxyuan@192.168.2.106
+ssh-copy-id -i ~/.ssh/id_rsa.pub dxyuan@192.168.2.107
+ssh-copy-id -i ~/.ssh/id_rsa.pub dxyuan@192.168.2.108
+ssh-copy-id -i ~/.ssh/id_rsa.pub dxyuan@192.168.2.110
+ssh dxyuan@192.168.2.110
+ls
+emacs
+exit
+15336
+cd ~/code/ficus_compile/face/product/face_saas/
+pwd
+cd /home/dxyuan/code/ficus_compile/face/product/face_saas; bash stop_saas.sh; bash start_saas.sh;
+more ~/.bash_history 
+ls
+15336
+cd /home/dxyuan/code/ficus_compile/face/product/face_saas; bash stop_saas.sh; bash start_saas.sh;
+cd /home/dxyuan/code/ficus_compile/face/product/face_saas; bash run_all_functest.sh
+git status
+git diff
+git clean -df
+git status
+git checkout test_tool/tool_test_leilong.sh
+rm test_tool/tool_test_leilong.sh
+git log
+git reset --hard HEAD~10
+git pull
+cd /home/dxyuan/code/ficus_compile/face/product/face_saas; bash run_all_functest.sh
+ls
+cd /home/dxyuan/code/ficus_compile/face/product/face_saas; bash stop_saas.sh; bash start_saas.sh;
+cd functest/
+./face_verification_by_user_id_request_handler_functest
+./face_verification_by_user_id_request_handler_functest --gtest_filter=FaceSaasHandlerTester.CASE_PACKAGE_MRI_ANTISCREEN_03
+cd /home/dxyuan/code/ficus_compile/face/product/face_saas; bash stop_saas.sh; bash start_saas.sh;
+cd functest/
+pwd
+cd /home/dxyuan/code/ficus_compile/face/product/face_saas/functest; ./face_verification_by_user_id_request_handler_functest; 
+cd /home/dxyuan/code/ficus_compile/face/product/face_saas; bash run_all_functest.sh
+ls
+cd functest/
+pwd
+pushd /home/dxyuan/code/ficus_compile/face/product/face_saas/functest; bash ./face_pair_verify_request_handler_functest; popd; 
+pushd /home/dxyuan/code/ficus_compile/face/product/face_saas/functest; ./face_pair_verify_request_handler_functest; popd; 
+pushd /home/dxyuan/code/ficus_compile/face/product/face_saas/functest; ./face_pair_verify_request_handler_functest; popd; 
+echo "hello";
+15336
+echo "world is ok"
+echo "world is ok"

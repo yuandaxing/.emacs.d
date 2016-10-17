@@ -68,7 +68,7 @@
       (delete-window (window-in-direction 'above)))
     (let ((buf-name (buffer-name)))
       (split-window nil nil 'above)
-      (shell)
+      (shell "*shell*")
       (goto-char (point-max))
       (helm-comint-input-ring)
       (comint-send-input)
@@ -293,7 +293,7 @@
   (cond
    ((equal prefix 1) (progn
                        (let ((helm-findutils-search-full-path t))
-                         (helm-find-1 "/home/dxyuan/code/ficus_write"))))
+                         (helm-find-2 "/home/dxyuan/code/ficus_write"))))
    (t (helm-find ""))))
 
 (setq history-delete-duplicates t)
