@@ -197,8 +197,8 @@
 (add-hook 'c++-mode-hook 'key-bind-hook )
 (custom-set-faces
  '(ac-candidate-face ((t (:family "DejaVu Sans Mono"))))
- '(helm-selection ((t (:background "white" :underline (:color "dark orange" :style wave)))))
- '(helm-selection-line ((t (:background "white" :foreground "dark orange" :underline nil)))))
+ '(helm-selection ((t (:background "cyan" :foreground "black" :underline t))))
+ '(helm-selection-line ((t (:background "cyan" :foreground "black" :underline t)))))
 (eval-after-load 'helm-grep
   '(setq helm-grep-default-command helm-grep-default-recurse-command))
 
