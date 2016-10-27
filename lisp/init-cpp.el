@@ -67,7 +67,7 @@
     (while (window-in-direction 'above)
       (delete-window (window-in-direction 'above)))
     (let ((buf-name (buffer-name)))
-      (split-window nil nil 'above)
+      ;(split-window nil nil 'above)
       (shell "*shell*")
       (goto-char (point-max))
       (helm-comint-input-ring)
