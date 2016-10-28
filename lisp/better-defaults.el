@@ -83,7 +83,6 @@
         save-place-file (concat user-emacs-directory "places")
         backup-directory-alist `(("." . ,(concat user-emacs-directory
                                                  "backups")))))
-
 (progn
   (setq kill-ring-max 1000)
   (setq extended-command-history-max 10000)

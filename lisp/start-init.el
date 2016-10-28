@@ -36,7 +36,7 @@
               (lambda ()
                 (paredit-mode 1)
                 (diminish 'paredit-mode)))))
-;(cua-selection-mode t)                  ; for rectangles, CUA is nice
+                                        ;(cua-selection-mode t)                  ; for rectangles, CUA is nice
 (require 'init-calendar)
 (require 'init-shell)
 (use-package multiple-cursors
@@ -94,7 +94,7 @@
 ;;   )
 
 (autoload 'markdown-mode "markdown-mode"
-    "Major mode for editing Markdown files" t)
+  "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (setq inhibit-startup-screen t)
 (setq inhibit-startup-message t)
@@ -109,6 +109,32 @@
 (use-package mysql
   :no-require t
   )
+(use-package xclip
+  :ensure t
+  :config
+  (progn
+    (require 'xclip)
+    (xclip-mode 1)))
+
+(use-package linum-relative
+  :ensure t
+  :config
+  (progn
+    (linum-on)
+    (setq line-move-visual nil)))
+(dolist (hook '(magit-log-edit-mode-hook
+                log-edit-mode-hook org-mode-hook text-mode-hook haml-mode-hook
+                git-commit-mode-hook
+                ido-minibuffer-setup-hook sass-mode-hook yaml-mode-hook csv-mode-hook espresso-mode-hook haskell-mode-hook
+                html-mode-hook nxml-mode-hook sh-mode-hook smarty-mode-hook clojure-mode-hook
+                lisp-mode-hook textile-mode-hook markdown-mode-hook tuareg-mode-hook
+                js3-mode-hook css-mode-hook less-css-mode-hook sql-mode-hook
+                sql-interactive-mode-hook c++-mode-hook org-mode-hook
+                inferior-emacs-lisp-mode-hook
+                helm-mode-hook ido-setup-hook minibuffer-setup-hook helm-minibuffer-set-up-hook)
+              )
+  (add-hook hook #'(lambda () (linum-on))))
+
 (provide 'start-init)
 ;;;start-init.el ends here
 
