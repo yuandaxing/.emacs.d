@@ -35,50 +35,6 @@
   (setq ff-search-directories '("../include/*" "../src" "." "../../src" "../../include/*"))
   (setq helm-zgrep-file-extension-regexp ".*\\(\\.h\\|\\.cpp\\|\\.cc\\|\\.hpp\\)$"))
 
-(defun execute-below-eshell-return ()
-  (interactive)
-  (save-some-buffers t nil)
-  (progn
-    (dolist (w (window-list nil nil nil))
-      (if (string= (buffer-name (window-buffer w))
-                   "\*eshell\*")
-          (delete-window w)))
-    (while (window-in-direction 'below)
-      (delete-window (window-in-direction 'below)))
-    (while (window-in-direction 'above)
-      (delete-window (window-in-direction 'above)))
-    (let ((buf-name (buffer-name)))
-      (split-window nil nil 'above)
-      (eshell)
-      (goto-char (point-max))
-      (helm-eshell-history)
-      (eshell-send-input)
-      (switch-to-buffer-other-window buf-name))))
-(defun execute-below-shell-return ()
-  (interactive)
-  (save-some-buffers t nil)
-  (progn
-    (dolist (w (window-list nil nil nil))
-      (if (string= (buffer-name (window-buffer w))
-                   "\*shell\*")
-          (delete-window w)))
-    (while (window-in-direction 'below)
-      (delete-window (window-in-direction 'below)))
-    (while (window-in-direction 'above)
-      (delete-window (window-in-direction 'above)))
-    (let ((buf-name (buffer-name)))
-      ;(split-window nil nil 'above)
-      (shell "*shell*")
-      (goto-char (point-max))
-      (helm-comint-input-ring)
-      (comint-send-input)
-      (switch-to-buffer-other-window buf-name))))
-
-(global-set-key (kbd "C-c h e") 'execute-below-eshell-return)
-(global-set-key (kbd "C-c h s") 'execute-below-shell-return)
-
-
-
 (add-hook 'c++-mode-hook 'c++-mode-hook-setting)
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (setq-default scroll-margin 1
@@ -241,7 +197,7 @@
      (format "source %s ; build %s" (substitute-in-file-name "$HOME/Dropbox/secret/work_shortcut.sh") project))))
 
 (defvar key-path-alist
-  '(("ficus-common" . "~/code/ficus/common/")
+  '(("ficus-common" . "~/code/ficus_write/common/")
     ("effective" . "~/Dropbox/code-snippet/C++/modern-effective-c++/")
     ("test" . "~/Dropbox/code-snippet/C++/test/")
     ("algorithm" . "~/Dropbox/code-snippet/emacs-search/algorithm")
@@ -252,8 +208,8 @@
 (defun search-code-snippet (snippet)
   (interactive
    (let ((snippets
-          '("trunk" "effective" "test" "algorithm" "skillset"
-            "snippet" "ambition")))
+          '("ficus-common" "effective" "test" "algorithm" "skillset"
+            "snippet")))
      (list (helm :sources (helm-build-sync-source "snippet"
                             :candidates snippets
                             :fuzzy-match t)

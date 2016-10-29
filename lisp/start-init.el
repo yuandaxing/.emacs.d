@@ -1,4 +1,5 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(defalias 'display-buffer-in-major-side-window 'window--make-major-side-window)
 (require 'better-defaults)
 (require 'init-utils)
 (require 'init-elpa)
