@@ -69,7 +69,7 @@ Otherwise, one argument `-i' is passed to the shell.
                           (if (and (eq major-mode 'shell-mode)
                                    (null (get-buffer-process (current-buffer))))
                               (buffer-name)
-                            (generate-new-buffer-name "*shell*")))
+                            (get-buffer-create "*shell*")))
            (if (file-remote-p default-directory)
                ;; It must be possible to declare a local default-directory.
                ;; FIXME: This can't be right: it changes the default-directory
@@ -149,7 +149,7 @@ Otherwise, one argument `-i' is passed to the shell.
     (while (window-in-direction 'above)
       (delete-window (window-in-direction 'above)))
     (let ((buf-name (buffer-name)))
-      ;(split-window nil nil 'above)
+      (split-window nil nil 'above)
       (shell1 "*shell*")
       (goto-char (point-max))
       (helm-comint-input-ring)
