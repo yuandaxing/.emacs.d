@@ -1,42 +1,3 @@
-(require 'compile)
-(add-hook 'c++-mode-hook
-          (lambda ()
-            (unless (or (file-exists-p "makefile")
-                        (file-exists-p "Makefile"))
-              (set (make-local-variable 'compile-command)
-                   (let ((file (file-name-nondirectory buffer-file-name)))
-                     (format "%s -I%s -L%s -std=c++11 -o %s.exe %s  %s"
-                             "g++"
-                             (substitute-in-file-name "$HOME/Dropbox/3rdparty/cpp/include")
-                             (substitute-in-file-name "$HOME/Dropbox/3rdparty/cpp/lib")
-                             (file-name-sans-extension file)
-                             file
-                             "-lpthread -lgflags"
-                             ))))))
-
-(add-hook 'c-mode-hook
-          (lambda ()
-            (unless (or (file-exists-p "makefile")
-                        (file-exists-p "Makefile"))
-              (set (make-local-variable 'compile-command)
-                   (let ((file (file-name-nondirectory buffer-file-name)))
-                     (format "%s  -o %s.exe %s %s"
-                             "gcc"
-                             (file-name-sans-extension file)
-                             file
-                             "-fdiagnostics-color=auto -lpthread"
-                             ))))))
-
-(defun c++-mode-hook-setting()
-  (c-set-offset 'substatement-open 0)
-  (c-set-offset 'innamespace 0)
-  (c-set-offset 'case-label '+)
-  (setq c-basic-offset 4)
-  (setq ff-search-directories '("../include/*" "../src" "." "../../src" "../../include/*"))
-  (setq helm-zgrep-file-extension-regexp ".*\\(\\.h\\|\\.cpp\\|\\.cc\\|\\.hpp\\)$"))
-
-(add-hook 'c++-mode-hook 'c++-mode-hook-setting)
-(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (setq-default scroll-margin 1
               scroll-conservatively 100000
               scroll-up-aggressively 0.01
@@ -95,25 +56,25 @@
    ("C-c h k" . helm-all-mark-rings)
    ))
 
-(defun helm-kill-ring-transformer (candidates _source)
-  "Display only the `helm-kill-ring-max-lines-number' lines of candidate."
-  (cl-loop for i in candidates
-           do (set-text-properties 0 (length i) '(read-only nil) i)
-           for nlines = (with-temp-buffer (insert i) (count-lines (point-min) (point-max)))
-           if (and helm-kill-ring-max-lines-number
-                   (> nlines helm-kill-ring-max-lines-number))
-           collect (cons
-                    (with-temp-buffer
-                      (insert i)
-                      (goto-char (point-min))
-                      (concat
-                       (buffer-substring
-                        (point-min)
-                        (save-excursion
-                          (forward-line helm-kill-ring-max-lines-number)
-                          (point)))
-                       "[...]")) i)
-           else collect i))
+;; (defun helm-kill-ring-transformer (candidates _source)
+;;   "Display only the `helm-kill-ring-max-lines-number' lines of candidate."
+;;   (cl-loop for i in candidates
+;;            do (set-text-properties 0 (length i) '(read-only nil) i)
+;;            for nlines = (with-temp-buffer (insert i) (count-lines (point-min) (point-max)))
+;;            if (and helm-kill-ring-max-lines-number
+;;                    (> nlines helm-kill-ring-max-lines-number))
+;;            collect (cons
+;;                     (with-temp-buffer
+;;                       (insert i)
+;;                       (goto-char (point-min))
+;;                       (concat
+;;                        (buffer-substring
+;;                         (point-min)
+;;                         (save-excursion
+;;                           (forward-line helm-kill-ring-max-lines-number)
+;;                           (point)))
+;;                        "[...]")) i)
+;;            else collect i))
 (use-package helm-ag
   :ensure t
   :config
