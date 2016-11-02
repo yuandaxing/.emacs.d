@@ -444,14 +444,14 @@ With a prefix ARG open line above the current line."
     (error (message "Invalid expression")
            (insert (current-kill 0)))))
 (global-set-key (kbd "C-c e") 'hh-eval-and-replace)
-(defun xterm-title-update ()
-  (interactive)
-  (send-string-to-terminal (concat "\033]1; " (buffer-name) "\007"))
-  (if buffer-file-name
-      (send-string-to-terminal (concat "\033]2; " (buffer-file-name) "\007"))
-    (send-string-to-terminal (concat "\033]2; " (buffer-name) "\007"))))
 
-(add-hook 'post-command-hook 'xterm-title-update)
+;; (defun xterm-title-update ()
+;;   (interactive)
+;;   (send-string-to-terminal (concat "\033]1; " (buffer-name) "\007"))
+;;   (if buffer-file-name
+;;       (send-string-to-terminal (concat "\033]2; " (buffer-file-name) "\007"))
+;;     (send-string-to-terminal (concat "\033]2; " (buffer-name) "\007"))))
+;; (add-hook 'post-command-hook 'xterm-title-update)
 
 
 ;; (defvar shell-minor-mode-map (make-keymap) "shell-minor-mode keymap.")

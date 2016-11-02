@@ -158,6 +158,6 @@ Otherwise, one argument `-i' is passed to the shell.
 
 (global-set-key (kbd "C-c h e") 'execute-below-eshell-return)
 (global-set-key (kbd "C-c h s") 'execute-below-shell-return)
-
+(setq  comint-input-ring-size 2000)
 
 (provide 'init-shell)
