@@ -111,12 +111,12 @@
 (use-package mysql
   :no-require t
   )
-(use-package xclip
-  :ensure t
-  :config
-  (progn
-    (require 'xclip)
-    (xclip-mode 1)))
+;; (use-package xclip
+;;   :ensure t
+;;   :config
+;;   (progn
+;;     (require 'xclip)
+;;     (xclip-mode 1)))
 
 ;; (use-package linum-relative
 ;;   :ensure t
