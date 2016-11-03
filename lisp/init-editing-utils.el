@@ -263,12 +263,12 @@ With arg N, insert N newlines."
 (hes-mode)
 
 
-(use-package which-key
-  :ensure t
-  :config
-  (progn 
-    (which-key-mode 1)
-    (diminish 'which-key-mode)))
+;; (use-package which-key
+;;   :ensure t
+;;   :config
+;;   (progn 
+;;     (which-key-mode 1)
+;;     (diminish 'which-key-mode)))
                                         ;bind some key according to effective emacs
 (defun kill-region-or-backward-word ()
   "If the region is active and non-empty, call `kill-region'.
