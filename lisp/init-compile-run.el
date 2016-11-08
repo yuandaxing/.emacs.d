@@ -41,4 +41,23 @@
 (add-hook 'c++-mode-hook 'c++-mode-hook-setting)
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
+(defun async-make (project)
+  (interactive
+   (let ((projects
+          '("facesaas" "ficus" "common" "reset compile" "sync")))
+     (list (helm :sources (helm-build-sync-source "test"
+                            :candidates projects
+                            :fuzzy-match t)
+                 :buffer "*helm test*"))))
+  (progn
+    (save-some-buffers t nil)
+    (async-shell-command
+     (format "source %s ; build %s" (substitute-in-file-name "$HOME/Dropbox/secret/work_shortcut.sh") project))))
+(defun project-make (prefix)
+  (interactive "p")
+  (if (= prefix 1)
+      (async-make "facesaas")
+    (call-interactively 'async-make)))
+(global-set-key (kbd "C-c h m") 'project-make)
+
 (provide 'init-compile-run)

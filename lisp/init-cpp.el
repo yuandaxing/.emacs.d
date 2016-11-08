@@ -144,18 +144,6 @@
     (setq helm-swoop-use-line-number-face t))
   )
 
-(defun async-make (project)
-  (interactive
-   (let ((projects
-          '("facesaas" "ficus" "common" "reset compile" "sync")))
-     (list (helm :sources (helm-build-sync-source "test"
-                            :candidates projects
-                            :fuzzy-match t)
-                 :buffer "*helm test*"))))
-  (progn
-    (save-some-buffers t nil)
-    (async-shell-command
-     (format "source %s ; build %s" (substitute-in-file-name "$HOME/Dropbox/secret/work_shortcut.sh") project))))
 
 (defvar key-path-alist
   '(("ficus-common" . "~/code/ficus_write/common/")
@@ -183,7 +171,6 @@
   (if arg (call-interactively 'search-code-snippet)
     (search-code-snippet "skillset")))
 (global-set-key (kbd "C-c h p") 'search-snippet)
-(global-set-key (kbd "C-c h m") 'async-make)
 
 (defun hh-insert-date (prefix)
   "Insert the current date. With prefix-argument, use ISO format. With
