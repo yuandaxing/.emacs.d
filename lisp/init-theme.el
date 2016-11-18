@@ -21,5 +21,4 @@
                                         '(("\\<\\(OK\\|PASSED\\|pass\\)" 1 font-lock-keyword-face t)))
                 ))
 
-
 (provide 'init-theme)

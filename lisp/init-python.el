@@ -11,6 +11,8 @@
     (require 'python-mode)
     (setq py-split-windows-on-execute-p t)
     (advice-add 'py-execute-buffer :before #'try-to-save-all)
+    (add-to-list 'auto-mode-alist '("SConscript" . python-mode))
+    (add-to-list 'auto-mode-alist '("SConstruct" . python-mode))
     (add-to-list 'auto-mode-alist '("\\.py$" . python-mode))))
 (defun disable-flycheck-mode ()
   (interactive)
