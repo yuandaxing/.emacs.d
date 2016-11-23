@@ -4,8 +4,6 @@
                                         ;(global-set-key (kbd "<return>") 'electric-indent-just-newline)
 (global-set-key (kbd "C-j") 'newline-and-indent)
 
-;; Some basic preferences
-
 (setq-default
  blink-cursor-interval 0.4
  bookmark-default-file (expand-file-name ".bookmarks.el" user-emacs-directory)
