@@ -462,4 +462,8 @@ With a prefix ARG open line above the current line."
 (add-hook 'shell-mode-hook #'(lambda ()
                                (local-set-key (kbd "C-c C-l") 'helm-comint-input-ring)))
 
+(global-hl-line-mode)
+(use-package beacon
+  :ensure t
+  :config (beacon-mode 1))
 (provide 'init-editing-utils)
