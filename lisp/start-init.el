@@ -25,7 +25,7 @@
 (require 'init-history)
 (require 'init-engine)
 (require 'init-ido)
-(require 'init-web)
+;(require 'init-web)
 (require 'init-python)
 (require 'init-recentf)
 (require 'init-auto-insert)
@@ -88,12 +88,12 @@
 
 (defun before-magit (&optional directory)
   (save-some-buffers t nil))
-;; (use-package magit
-;;   :ensure t
-;;   :config
-;;   (require 'magit)
-;;   (advice-add 'magit-status :before #'before-magit)
-;;   )
+(use-package magit
+  :ensure t
+  :config
+  (require 'magit)
+  (advice-add 'magit-status :before #'before-magit)
+  )
 
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)

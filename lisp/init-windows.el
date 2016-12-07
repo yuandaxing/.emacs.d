@@ -15,6 +15,7 @@
 ;;----------------------------------------------------------------------------
 ;; When splitting window, show (other-buffer) in the new window
 ;;----------------------------------------------------------------------------
+(require 'cl)
 (defun split-window-func-with-other-buffer (split-function)
   (lexical-let ((s-f split-function))
     (lambda ()
