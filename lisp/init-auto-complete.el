@@ -70,5 +70,4 @@
 (setq abbrev-file-name  (expand-file-name "abbrev/defs.el" user-emacs-directory))
 (setq-default abbrev-mode t)
 (setq save-abbrevs t)
-(quietly-read-abbrev-file)
 (provide 'init-auto-complete)
