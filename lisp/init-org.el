@@ -69,7 +69,7 @@
   (define-key org-clock-mode-line-map [header-line mouse-1] 'org-clock-menu))
 
 
-(require-package 'org-pomodoro)
+(require 'org-pomodoro)
 (after-load 'org-agenda
   (define-key org-agenda-mode-map (kbd "P") 'org-pomodoro))
 

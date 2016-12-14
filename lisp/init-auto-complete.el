@@ -9,6 +9,7 @@
     (setq yas-wrap-around-region t)
     (diminish 'yas-minor-mode)))
 
+(require 'cc-vars)
 (use-package auto-complete
   :ensure t
   :config
@@ -63,6 +64,8 @@
 ;; Exclude very large buffers from dabbrev
 (defun hh-dabbrev-friend-buffer (other-buffer)
   (< (buffer-size other-buffer) (* 1 1024 1024)))
+
+(defvar dabbrev-friend-buffer-function)
 (setq dabbrev-friend-buffer-function 'hh-dabbrev-friend-buffer)
 (setq abbrev-file-name  (expand-file-name "abbrev/defs.el" user-emacs-directory))
 (setq-default abbrev-mode t)

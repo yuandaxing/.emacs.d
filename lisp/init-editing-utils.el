@@ -1,4 +1,4 @@
-(require-package 'unfill)
+(require 'unfill)
 (when (fboundp 'electric-pair-mode)
   (electric-pair-mode))
                                         ;(global-set-key (kbd "<return>") 'electric-indent-just-newline)
@@ -82,7 +82,7 @@
 (global-set-key (kbd "C-t") 'transpose-chars)
 
 
-(require-package 'browse-kill-ring)
+(require 'browse-kill-ring)
 
 
 
@@ -139,14 +139,14 @@
 
 (global-set-key (kbd "C-M-<backspace>") 'kill-back-to-indentation)
 
-(require-package 'page-break-lines)
+(require 'page-break-lines)
 (global-page-break-lines-mode)
 (diminish 'page-break-lines-mode)
 
 
 ;; Fill column indicator
 (when (eval-when-compile (> emacs-major-version 23))
-  (require-package 'fill-column-indicator)
+  (require 'fill-column-indicator)
   (defun hh-prog-mode-fci-settings ()
     (turn-on-fci-mode)
     (when show-trailing-whitespace
@@ -185,7 +185,7 @@
 ;; it will use those keybindings. For this reason, you might prefer to
 ;; use M-S-up and M-S-down, which will work even in lisp modes.
 
-(require-package 'move-dup)
+(require 'move-dup)
 (global-set-key [M-up] 'md/move-lines-up)
 (global-set-key [M-down] 'md/move-lines-down)
 (global-set-key [M-S-up] 'md/move-lines-up)
@@ -257,16 +257,17 @@ With arg N, insert N newlines."
         (sort-subr nil 'forward-line 'end-of-line nil nil
                    (lambda (s1 s2) (eq (random 2) 0)))))))
 
-(require-package 'highlight-escape-sequences)
+(require 'highlight-escape-sequences)
 (hes-mode)
 
 
-;; (use-package which-key
-;;   :ensure t
-;;   :config
-;;   (progn 
-;;     (which-key-mode 1)
-;;     (diminish 'which-key-mode)))
+(use-package which-key
+  :ensure t
+  :config
+  (progn 
+    (which-key-mode 1)
+    (diminish 'which-key-mode)))
+
                                         ;bind some key according to effective emacs
 (defun kill-region-or-backward-word ()
   "If the region is active and non-empty, call `kill-region'.
