@@ -1,7 +1,6 @@
 (require 'unfill)
 (when (fboundp 'electric-pair-mode)
   (electric-pair-mode))
-                                        ;(global-set-key (kbd "<return>") 'electric-indent-just-newline)
 (global-set-key (kbd "C-j") 'newline-and-indent)
 
 (setq-default

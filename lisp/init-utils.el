@@ -89,4 +89,9 @@
         (error "Cannot open tramp file")
       (browse-url (concat "file://" file-name)))))
 
+(use-package diminish
+  :ensure t
+  :config
+  (require 'diminish))
+
 (provide 'init-utils)
