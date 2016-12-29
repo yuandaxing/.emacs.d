@@ -207,9 +207,7 @@
 
 (setq history-delete-duplicates t)
 (global-set-key (kbd "C-x c /") 'hh-golden-search)
-;not work in the terminal
-(setq x-select-enable-clipboard  t
-      x-select-enable-primary  t)
 (require 'find-dired)
 (setq find-ls-option '("-print0 | xargs -0 ls -ldh" . "-ldh"))
+
 (provide 'init-cpp)
