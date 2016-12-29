@@ -148,17 +148,18 @@
 (defvar key-path-alist
   '(("ficus-common" . "~/code/ficus_write/common/")
     ("effective" . "~/Dropbox/code-snippet/C++/modern-effective-c++/")
-    ("test" . "~/Dropbox/code-snippet/C++/test/")
+    ("cpp" . "~/Dropbox/code-snippet/C++/")
     ("algorithm" . "~/Dropbox/code-snippet/emacs-search/algorithm")
     ("skillset" . "~/code/skillset/")
     ("snippet" . "~/Dropbox/code-snippet/")
+    ("shell" . "~/Dropbox/code-snippet/shell/")
     ))
 
 (defun search-code-snippet (snippet)
   (interactive
    (let ((snippets
-          '("ficus-common" "effective" "test" "algorithm" "skillset"
-            "snippet")))
+          '("ficus-common" "effective" "cpp" "algorithm" "skillset"
+            "snippet" "shell" )))
      (list (helm :sources (helm-build-sync-source "snippet"
                             :candidates snippets
                             :fuzzy-match t)
