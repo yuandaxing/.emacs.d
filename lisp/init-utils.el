@@ -15,6 +15,8 @@
   (dolist (pattern patterns)
     (add-to-list 'auto-mode-alist (cons pattern mode))))
 
+(add-auto-mode 'js-mode ".conf" ".json")
+
 (defun try-to-save-all ()
   (save-some-buffers t nil))
 
@@ -87,5 +89,9 @@
         (error "Cannot open tramp file")
       (browse-url (concat "file://" file-name)))))
 
+(use-package diminish
+  :ensure t
+  :config
+  (require 'diminish))
 
 (provide 'init-utils)

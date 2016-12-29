@@ -3,7 +3,6 @@
 (require 'init-utils)
 (require 'init-elpa)
 (require 'init-auto-complete)
-(require-package 'diminish)
 (require 'init-editing-utils)
 (require 'init-hippie)
 (require 'init-grep)
