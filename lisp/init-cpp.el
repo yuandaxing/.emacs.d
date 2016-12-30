@@ -129,17 +129,18 @@
 (defvar key-path-alist
   '(("ficus-common" . "~/code/ficus_write/common/")
     ("effective" . "~/Dropbox/code-snippet/C++/modern-effective-c++/")
-    ("test" . "~/Dropbox/code-snippet/C++/test/")
+    ("cpp" . "~/Dropbox/code-snippet/C++/")
     ("algorithm" . "~/Dropbox/code-snippet/emacs-search/algorithm")
     ("skillset" . "~/code/skillset/")
     ("snippet" . "~/Dropbox/code-snippet/")
+    ("shell" . "~/Dropbox/code-snippet/shell/")
     ))
 
 (defun search-code-snippet (snippet)
   (interactive
    (let ((snippets
-          '("ficus-common" "effective" "test" "algorithm" "skillset"
-            "snippet")))
+          '("ficus-common" "effective" "cpp" "algorithm" "skillset"
+            "snippet" "shell" )))
      (list (helm :sources (helm-build-sync-source "snippet"
                             :candidates snippets
                             :fuzzy-match t)
@@ -187,9 +188,7 @@
 
 (setq history-delete-duplicates t)
 (global-set-key (kbd "C-x c /") 'hh-golden-search)
-;not work in the terminal
-(setq x-select-enable-clipboard  t
-      x-select-enable-primary  t)
 (require 'find-dired)
 (setq find-ls-option '("-print0 | xargs -0 ls -ldh" . "-ldh"))
+
 (provide 'init-cpp)
