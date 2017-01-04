@@ -1,4 +1,9 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(set-frame-font "DejaVu Sans Mono-14" nil t)
+;; (set-frame-font "Fantasque Sans Mono-16" nil t)
+;; (set-frame-font "Source Code Pro-14" nil t)
+;; (set-frame-font "Monaco-14" nil t)
+;; (set-frame-font "Cousine-14" nil t)
 (require 'better-defaults)
 (require 'init-utils)
 (require 'init-elpa)
@@ -23,7 +28,7 @@
 (require 'init-history)
 (require 'init-engine)
 (require 'init-ido)
-;(require 'init-web)
+                                        ;(require 'init-web)
 (require 'init-python)
 (require 'init-recentf)
 (require 'init-auto-insert)
@@ -115,25 +120,6 @@
 ;;   (progn
 ;;     (require 'xclip)
 ;;     (xclip-mode 1)))
-
-;; (use-package linum-relative
-;;   :ensure t
-;;   :config
-;;   (progn
-;;     (linum-on)
-;;     (setq line-move-visual nil)))
-;; (dolist (hook '(magit-log-edit-mode-hook
-;;                 log-edit-mode-hook org-mode-hook text-mode-hook haml-mode-hook
-;;                 git-commit-mode-hook
-;;                 ido-minibuffer-setup-hook sass-mode-hook yaml-mode-hook csv-mode-hook espresso-mode-hook haskell-mode-hook
-;;                 html-mode-hook nxml-mode-hook sh-mode-hook smarty-mode-hook clojure-mode-hook
-;;                 lisp-mode-hook textile-mode-hook markdown-mode-hook tuareg-mode-hook
-;;                 js3-mode-hook css-mode-hook less-css-mode-hook sql-mode-hook
-;;                 sql-interactive-mode-hook c++-mode-hook org-mode-hook
-;;                 inferior-emacs-lisp-mode-hook
-;;                 helm-mode-hook ido-setup-hook minibuffer-setup-hook helm-minibuffer-set-up-hook)
-;;               )
-;;   (add-hook hook #'(lambda () (linum-on))))
 
 (provide 'start-init)
 ;;;start-init.el ends here

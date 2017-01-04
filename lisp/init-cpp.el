@@ -47,6 +47,7 @@
   :bind
   (
    ("C-c h i" . hh-indent-buffer)
+   ("C-c h u ". magit-status)
    ("C-x b" . helm-buffers-list)
    ("C-x C-f" . helm-find-files)
    ("C-x C-r" . helm-recentf)
