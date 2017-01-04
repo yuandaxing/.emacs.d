@@ -53,13 +53,28 @@
     (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
     (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)))
 
+
+
 (use-package visual-regexp
   :ensure t
-  :config
-  (progn 
-    (define-key global-map (kbd "C-c r") 'vr/replace)
-    (define-key global-map (kbd "C-c q") 'vr/query-replace)
-    (define-key global-map (kbd "C-c m") 'vr/mc-mark)))
+  :config 
+  )
+;(defvar vr-current-thing-at-point)
+;(defun vr-thing-at-point-minibuffer-setup ()
+;  (when (and vr-current-thing-at-point
+;             (equal vr--in-minibuffer 'vr--minibuffer-regexp))
+;    (insert vr-current-thing-at-point)))
+;(add-hook 'minibuffer-setup-hook 'vr-thing-at-point-minibuffer-setup)
+
+;(defun vr-thing-at-point ()
+;  (interactive)
+;  (let ((vr-current-thing-at-point (thing-at-point 'symbol t)))
+;    (call-interactively 'vr/replace)))
+(progn 
+  (define-key global-map (kbd "C-c r") 'vr/replace)
+ ; (define-key global-map (kbd "C-c q") 'vr-thing-at-point)
+  (define-key global-map (kbd "C-c q") 'vr/query-replace)
+  (define-key global-map (kbd "C-c m") 'vr/mc-mark))
 
 (progn
   (defadvice switch-to-buffer (before save-buffer-now activate)
