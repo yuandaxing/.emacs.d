@@ -44,7 +44,7 @@
 (defun async-make (project)
   (interactive
    (let ((projects
-          '("facesaas" "ficus" "common" "reset compile" "sync")))
+          '("facesaas" "ficus" "common" "reset compile" "sync" "misc")))
      (list (helm :sources (helm-build-sync-source "test"
                             :candidates projects
                             :fuzzy-match t)
@@ -56,7 +56,7 @@
 (defun project-make (prefix)
   (interactive "p")
   (if (= prefix 1)
-      (async-make "facesaas")
+      (async-make "misc")
     (call-interactively 'async-make)))
 (global-set-key (kbd "C-c h m") 'project-make)
 
