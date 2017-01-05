@@ -65,8 +65,8 @@
   (setq  helm-ag-insert-at-point 'symbol
          )
   )
-(use-package helm-descbinds
-  :ensure t)
+;; (use-package helm-descbinds
+;;   :ensure t)
 (use-package helm-gtags
   :ensure t
   :config
@@ -148,7 +148,6 @@
                  :buffer "*helm snippets*"))))
   (helm-do-grep-1 (list (cdr (assoc snippet key-path-alist))) t nil
                   '("*.org" "*.cpp" "*.cc" "*.h" "makefile" "Makefile" "*.py" "*.hpp" "*.scratch" "*.el" ".c")))
-
 (defun search-snippet (arg)
   (interactive "P")
   (if arg (call-interactively 'search-code-snippet)
