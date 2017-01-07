@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: for
+# key: for
+# --
+for ${1:i} in ${list}
+do
+    $0
+done

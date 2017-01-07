@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: shell_head
+# key: shell_head
+# --
+#!/bin/bash
