@@ -177,6 +177,7 @@
           :ff-transformer-show-only-basename nil
           :default (thing-at-point 'filename)
           :case-fold-search helm-file-name-case-fold-search)))
+
 (defun hh-golden-search (prefix)
   (interactive "p")
   (cond
@@ -187,6 +188,7 @@
 
 (setq history-delete-duplicates t)
 (global-set-key (kbd "C-x c /") 'hh-golden-search)
+
 (require 'find-dired)
 (setq find-ls-option '("-print0 | xargs -0 ls -ldh" . "-ldh"))
 
