@@ -128,25 +128,24 @@
 
 
 (defvar key-path-alist
-  '(("ficus-common" . "~/code/ficus_write/common/")
-    ("effective" . "~/Dropbox/code-snippet/C++/modern-effective-c++/")
-    ("cpp" . "~/Dropbox/code-snippet/C++/")
-    ("algorithm" . "~/Dropbox/code-snippet/emacs-search/algorithm")
-    ("skillset" . "~/code/skillset/")
-    ("snippet" . "~/Dropbox/code-snippet/")
-    ("shell" . "~/Dropbox/code-snippet/shell/")
-    ))
+  '(("ficus-common" . '( "~/code/ficus_write/common/" ))
+    ("effective" . '( "~/Dropbox/code-snippet/C++/modern-effective-c++/"))
+    ("cpp" . '( "~/Dropbox/code-snippet/C++/"))
+    ("algorithm" . '("~/Dropbox/code-snippet/emacs-search/algorithm"))
+    ("skillset" . '("~/code/skillset/"))
+    ("snippet" . '("~/Dropbox/code-snippet/"))
+    ("shell" . '("~/Dropbox/code-snippet/shell/"))))
 
 (defun search-code-snippet (snippet)
   (interactive
    (let ((snippets
-          '("ficus-common" "effective" "cpp" "algorithm" "skillset"
-            "snippet" "shell" )))
+          (mapcar #'car key-path-alist)
+          ))
      (list (helm :sources (helm-build-sync-source "snippet"
                             :candidates snippets
                             :fuzzy-match t)
                  :buffer "*helm snippets*"))))
-  (helm-do-grep-1 (list (cdr (assoc snippet key-path-alist))) t nil
+  (helm-do-grep-1 (cdr (assoc snippet key-path-alist)) t nil
                   '("*.org" "*.cpp" "*.cc" "*.h" "makefile" "Makefile" "*.py" "*.hpp" "*.scratch" "*.el" ".c")))
 (defun search-snippet (arg)
   (interactive "P")
