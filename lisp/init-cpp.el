@@ -125,8 +125,12 @@
     (setq helm-swoop-speed-or-color nil)
     (setq helm-swoop-use-line-number-face t))
   )
-
-(defvar snippet-search-memorize-choice-enable nil)
+(defgroup happy-hacking-customize nil
+  " custmizing utility"
+  :group 'happy-hacking)
+(defcustom snippet-search-memorize-choice-enable nil
+  "enable memorize snippet search "
+  :type 'boolean)
 (defvar snippet-search-memorize-choice nil)
 (require 'savehist)
 (add-to-list 'savehist-additional-variables 'snippet-search-memorize-choice)
@@ -135,7 +139,8 @@
   '(("ficus-common"  "~/code/ficus_write/common/" )
     ("effective"  "~/Dropbox/code-snippet/C++/modern-effective-c++/")
     ("cpp"   "~/Dropbox/code-snippet/C++/")
-    ("algorithm"   "~/Dropbox/code-snippet/emacs-search/algorithm")
+    ("algorithm"   "~/Dropbox/code-snippet/C++/algorithm/" "~/Dropbox/code-snippet/better_base/algorithm/"
+     "~/Dropbox/Algorithm")
     ("skillset"  "~/code/skillset/")
     ("snippet"  "~/Dropbox/code-snippet/")
     ("shell"  "~/Dropbox/code-snippet/shell/")))
