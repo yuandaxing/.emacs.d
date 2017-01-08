@@ -126,15 +126,16 @@
     (setq helm-swoop-use-line-number-face t))
   )
 
-
+(defvar snippet-search-memorize-choice-enable nil
+  snippet-search-memorize-choice nil)
 (defvar key-path-alist
-  '(("ficus-common" . '( "~/code/ficus_write/common/" ))
-    ("effective" . '( "~/Dropbox/code-snippet/C++/modern-effective-c++/"))
-    ("cpp" . '( "~/Dropbox/code-snippet/C++/"))
-    ("algorithm" . '("~/Dropbox/code-snippet/emacs-search/algorithm"))
-    ("skillset" . '("~/code/skillset/"))
-    ("snippet" . '("~/Dropbox/code-snippet/"))
-    ("shell" . '("~/Dropbox/code-snippet/shell/"))))
+  '(("ficus-common"  "~/code/ficus_write/common/" )
+    ("effective"  "~/Dropbox/code-snippet/C++/modern-effective-c++/")
+    ("cpp"   "~/Dropbox/code-snippet/C++/")
+    ("algorithm"   "~/Dropbox/code-snippet/emacs-search/algorithm")
+    ("skillset"  "~/code/skillset/")
+    ("snippet"  "~/Dropbox/code-snippet/")
+    ("shell"  "~/Dropbox/code-snippet/shell/")))
 
 (defun search-code-snippet (snippet)
   (interactive
