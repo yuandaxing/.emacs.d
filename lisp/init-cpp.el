@@ -126,8 +126,11 @@
     (setq helm-swoop-use-line-number-face t))
   )
 
-(defvar snippet-search-memorize-choice-enable nil
-  snippet-search-memorize-choice nil)
+(defvar snippet-search-memorize-choice-enable nil)
+(defvar snippet-search-memorize-choice nil)
+(require 'savehist)
+(add-to-list 'savehist-additional-variables 'snippet-search-memorize-choice)
+(add-to-list 'savehist-additional-variables 'snippet-search-memorize-choice-enable)
 (defvar key-path-alist
   '(("ficus-common"  "~/code/ficus_write/common/" )
     ("effective"  "~/Dropbox/code-snippet/C++/modern-effective-c++/")
@@ -146,12 +149,15 @@
                             :candidates snippets
                             :fuzzy-match t)
                  :buffer "*helm snippets*"))))
+  (setq snippet-search-memorize-choice snippet)
   (helm-do-grep-1 (cdr (assoc snippet key-path-alist)) t nil
                   '("*.org" "*.cpp" "*.cc" "*.h" "makefile" "Makefile" "*.py" "*.hpp" "*.scratch" "*.el" ".c")))
 (defun search-snippet (arg)
   (interactive "P")
   (if arg (call-interactively 'search-code-snippet)
-    (search-code-snippet "skillset")))
+    (search-code-snippet (if (and snippet-search-memorize-choice-enable snippet-search-memorize-choice)
+                             snippet-search-memorize-choice
+                           "skillset"))))
 (global-set-key (kbd "C-c h p") 'search-snippet)
 (require 'recentf)
 (defun search-recentf (arg)
