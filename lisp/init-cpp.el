@@ -125,33 +125,44 @@
     (setq helm-swoop-speed-or-color nil)
     (setq helm-swoop-use-line-number-face t))
   )
-
-
+(defgroup happy-hacking-customize nil
+  " custmizing utility"
+  :group 'happy-hacking)
+(defcustom snippet-search-memorize-choice-enable nil
+  "enable memorize snippet search "
+  :type 'boolean)
+(defvar snippet-search-memorize-choice nil)
+(require 'savehist)
+(add-to-list 'savehist-additional-variables 'snippet-search-memorize-choice)
+(add-to-list 'savehist-additional-variables 'snippet-search-memorize-choice-enable)
 (defvar key-path-alist
-  '(("ficus-common" . "~/code/ficus_write/common/")
-    ("effective" . "~/Dropbox/code-snippet/C++/modern-effective-c++/")
-    ("cpp" . "~/Dropbox/code-snippet/C++/")
-    ("algorithm" . "~/Dropbox/code-snippet/emacs-search/algorithm")
-    ("skillset" . "~/code/skillset/")
-    ("snippet" . "~/Dropbox/code-snippet/")
-    ("shell" . "~/Dropbox/code-snippet/shell/")
-    ))
+  '(("ficus-common"  "~/code/ficus_write/common/" )
+    ("effective"  "~/Dropbox/code-snippet/C++/modern-effective-c++/")
+    ("cpp"   "~/Dropbox/code-snippet/C++/")
+    ("algorithm"   "~/Dropbox/code-snippet/C++/algorithm/" "~/Dropbox/code-snippet/better_base/algorithm/"
+     "~/Dropbox/Algorithm")
+    ("skillset"  "~/code/skillset/")
+    ("snippet"  "~/Dropbox/code-snippet/")
+    ("shell"  "~/Dropbox/code-snippet/shell/")))
 
 (defun search-code-snippet (snippet)
   (interactive
    (let ((snippets
-          '("ficus-common" "effective" "cpp" "algorithm" "skillset"
-            "snippet" "shell" )))
+          (mapcar #'car key-path-alist)
+          ))
      (list (helm :sources (helm-build-sync-source "snippet"
                             :candidates snippets
                             :fuzzy-match t)
                  :buffer "*helm snippets*"))))
-  (helm-do-grep-1 (list (cdr (assoc snippet key-path-alist))) t nil
+  (setq snippet-search-memorize-choice snippet)
+  (helm-do-grep-1 (cdr (assoc snippet key-path-alist)) t nil
                   '("*.org" "*.cpp" "*.cc" "*.h" "makefile" "Makefile" "*.py" "*.hpp" "*.scratch" "*.el" ".c")))
 (defun search-snippet (arg)
   (interactive "P")
   (if arg (call-interactively 'search-code-snippet)
-    (search-code-snippet "skillset")))
+    (search-code-snippet (if (and snippet-search-memorize-choice-enable snippet-search-memorize-choice)
+                             snippet-search-memorize-choice
+                           "skillset"))))
 (global-set-key (kbd "C-c h p") 'search-snippet)
 (require 'recentf)
 (defun search-recentf (arg)
