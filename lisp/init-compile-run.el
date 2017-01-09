@@ -44,10 +44,10 @@
 
 ; -----------------------------------------------------------------------------
 ;------------------------------------------------------------------------------
-(defvar project-name nil)
+(defvar project-name nil) ;保存编译的project name
 (require 'savehist)
-(add-to-list 'savehist-additional-variables 'project-name)
-(defun async-make (project)
+(add-to-list 'savehist-additional-variables 'project-name) ;添加到savehist列表中， 重启恢复该变量
+(defun async-make (project) ; 使用helm 选择make的project
   (interactive
    (let ((projects
           '("facesaas" "ficus" "common"  "sync" "misc")))
@@ -58,15 +58,15 @@
   (progn
     (save-some-buffers t nil)
     (if project
-        (setq project-name project))
+        (setq project-name project)) ; 记录当前的选择，后面就不用输入了
     (async-shell-command
      (format "source %s ; build %s" (substitute-in-file-name "$HOME/Dropbox/secret/work_shortcut.sh") project))))
-(defun project-make (prefix)
+(defun project-make (prefix) ; prefix argument
   (interactive "p")
   (if (= prefix 1)
       (async-make (if project-name
                       project-name
-                    "misc"))
+                    "misc")) ; 默认使用project-name参数
     (call-interactively 'async-make)))
 (global-set-key (kbd "C-c h m") 'project-make)
 
