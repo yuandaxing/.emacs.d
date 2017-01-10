@@ -67,6 +67,7 @@
   )
 ;; (use-package helm-descbinds
 ;;   :ensure t)
+
 (use-package helm-gtags
   :ensure t
   :config
@@ -77,8 +78,6 @@
     (define-key helm-gtags-mode-map (kbd "C-c g s") 'helm-gtags-find-symbol)
     (define-key helm-gtags-mode-map (kbd "C-c g p") 'helm-gtags-parse-file)
     (define-key helm-gtags-mode-map (kbd "C-c g n") 'helm-gtags-next-history)
-    (define-key helm-gtags-mode-map (kbd "C-c g u") 'helm-gtags-update-tags)
-    (define-key helm-gtags-mode-map (kbd "C-c g c") 'helm-gtags-create-tags)
     (define-key helm-gtags-mode-map (kbd "C-c g p") 'helm-gtags-parse-file)
     (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
     (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
@@ -123,7 +122,8 @@
     (setq helm-swoop-split-with-multiple-windows nil)
     (setq helm-swoop-split-direction 'split-window-vertically)
     (setq helm-swoop-speed-or-color nil)
-    (setq helm-swoop-use-line-number-face t))
+;    (setq helm-swoop-use-line-number-face t)
+    )
   )
 (defgroup happy-hacking-customize nil
   " custmizing utility"

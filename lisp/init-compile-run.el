@@ -50,7 +50,7 @@
 (defun async-make (project) ; 使用helm 选择make的project
   (interactive
    (let ((projects
-          '("facesaas" "ficus" "common"  "sync" "misc")))
+          '("facesaas" "ficus" "common"  "sync" "misc" "buildtags")))
      (list (helm :sources (helm-build-sync-source "test"
                             :candidates projects
                             :fuzzy-match t)
@@ -61,12 +61,21 @@
         (setq project-name project)) ; 记录当前的选择，后面就不用输入了
     (async-shell-command
      (format "source %s ; build %s" (substitute-in-file-name "$HOME/Dropbox/secret/work_shortcut.sh") project))))
-(defun project-make (prefix) ; prefix argument
+
+(defun build-tag ()
+  (interactive)
+  (async-make "buildtags"))
+(require 'helm-gtags)
+(define-key helm-gtags-mode-map (kbd "C-c g u") 'build-tag)
+
+
+
+(defun project-make (prefix)            ; prefix argument
   (interactive "p")
   (if (= prefix 1)
       (async-make (if project-name
                       project-name
-                    "misc")) ; 默认使用project-name参数
+                    "misc"))            ; 默认使用project-name参数
     (call-interactively 'async-make)))
 (global-set-key (kbd "C-c h m") 'project-make)
 
