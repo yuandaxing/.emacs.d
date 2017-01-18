@@ -155,8 +155,10 @@
                             :fuzzy-match t)
                  :buffer "*helm snippets*"))))
   (setq snippet-search-memorize-choice snippet)
-  (helm-do-grep-1 (cdr (assoc snippet key-path-alist)) t nil
-                  '("*.org" "*.cpp" "*.cc" "*.h" "makefile" "Makefile" "*.py" "*.hpp" "*.scratch" "*.el" ".c")))
+  (let* ((directory-list (cdr (assoc snippet key-path-alist)))
+         (helm-ff-default-directory (cadr (assoc snippet key-path-alist))))
+    (helm-do-grep-1  directory-list t nil
+                  '("*.org" "*.cpp" "*.cc" "*.h" "makefile" "Makefile" "*.py" "*.hpp" "*.scratch" "*.el" ".c"))))
 (defun search-snippet (arg)
   (interactive "P")
   (if arg (call-interactively 'search-code-snippet)
