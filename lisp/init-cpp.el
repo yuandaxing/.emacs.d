@@ -143,6 +143,7 @@
      "~/Dropbox/Algorithm")
     ("skillset"  "~/code/skillset/")
     ("snippet"  "~/Dropbox/code-snippet/")
+    ("python"  "~/Dropbox/code-snippet/python/")
     ("shell"  "~/Dropbox/code-snippet/shell/")))
 
 (defun search-code-snippet (snippet)
