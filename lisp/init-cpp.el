@@ -168,9 +168,6 @@
                            "skillset"))))
 (global-set-key (kbd "C-c h p") 'search-snippet)
 (require 'recentf)
-(defun search-recentf (arg)
-  (interactive "P")
-  (helm-do-ag "/" recentf-list))
 (defun hh-insert-date (prefix)
   "Insert the current date. With prefix-argument, use ISO format. With
    two prefix arguments, write out the day and month name."
@@ -182,7 +179,6 @@
         (system-time-locale "zh_CN"))
     (insert (format-time-string format))))
 (global-set-key (kbd "C-c h d") 'hh-insert-date)
-(global-set-key (kbd "C-c h f") 'search-recentf)
 
 (add-to-list 'helm-sources-using-default-as-input 'helm-source-findutils)
 (defun helm-find-2 (dir)
