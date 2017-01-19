@@ -142,6 +142,7 @@
     ("algorithm"   "~/Dropbox/code-snippet/C++/algorithm/" "~/Dropbox/code-snippet/better_base/algorithm/"
      "~/Dropbox/Algorithm")
     ("skillset"  "~/code/skillset/")
+    ("python" "/home/ydx/Dropbox/code-snippet/python/")
     ("snippet"  "~/Dropbox/code-snippet/")
     ("shell"  "~/Dropbox/code-snippet/shell/")))
 
