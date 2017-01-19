@@ -144,6 +144,7 @@
     ("skillset"  "~/code/skillset/")
     ("python" "/home/ydx/Dropbox/code-snippet/python/")
     ("snippet"  "~/Dropbox/code-snippet/")
+    ("python"  "~/Dropbox/code-snippet/python/")
     ("shell"  "~/Dropbox/code-snippet/shell/")))
 
 (defun search-code-snippet (snippet)
@@ -156,8 +157,10 @@
                             :fuzzy-match t)
                  :buffer "*helm snippets*"))))
   (setq snippet-search-memorize-choice snippet)
-  (helm-do-grep-1 (cdr (assoc snippet key-path-alist)) t nil
-                  '("*.org" "*.cpp" "*.cc" "*.h" "makefile" "Makefile" "*.py" "*.hpp" "*.scratch" "*.el" ".c")))
+  (let* ((directory-list (cdr (assoc snippet key-path-alist)))
+         (helm-ff-default-directory (cadr (assoc snippet key-path-alist))))
+    (helm-do-grep-1  directory-list t nil
+                  '("*.org" "*.cpp" "*.cc" "*.h" "makefile" "Makefile" "*.py" "*.hpp" "*.scratch" "*.el" ".c"))))
 (defun search-snippet (arg)
   (interactive "P")
   (if arg (call-interactively 'search-code-snippet)
@@ -166,9 +169,6 @@
                            "skillset"))))
 (global-set-key (kbd "C-c h p") 'search-snippet)
 (require 'recentf)
-(defun search-recentf (arg)
-  (interactive "P")
-  (helm-do-ag "/" recentf-list))
 (defun hh-insert-date (prefix)
   "Insert the current date. With prefix-argument, use ISO format. With
    two prefix arguments, write out the day and month name."
@@ -180,7 +180,6 @@
         (system-time-locale "zh_CN"))
     (insert (format-time-string format))))
 (global-set-key (kbd "C-c h d") 'hh-insert-date)
-(global-set-key (kbd "C-c h f") 'search-recentf)
 
 (add-to-list 'helm-sources-using-default-as-input 'helm-source-findutils)
 (defun helm-find-2 (dir)
