@@ -145,6 +145,7 @@
     ("python" "~/Dropbox/code-snippet/python/")
     ("snippet"  "~/Dropbox/code-snippet/")
     ("python"  "~/Dropbox/code-snippet/python/")
+    ("php"  "~/Dropbox/code-snippet/php/")
     ("shell"  "~/Dropbox/code-snippet/shell/")))
 
 (defun search-code-snippet (snippet)
