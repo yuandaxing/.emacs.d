@@ -68,8 +68,6 @@
 (require 'helm-gtags)
 (define-key helm-gtags-mode-map (kbd "C-c g u") 'build-tag)
 
-
-
 (defun project-make (prefix)            ; prefix argument
   (interactive "p")
   (if (= prefix 1)
