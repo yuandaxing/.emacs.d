@@ -41,35 +41,42 @@
 (add-hook 'c++-mode-hook 'c++-mode-hook-setting)
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
+(defun shell-async-build (project)
+  (async-shell-command
+   (format "source %s ; build %s"
+           (substitute-in-file-name "$HOME/Dropbox/secret/work_shortcut.sh")
+           project)))
+(defun simple_cpp (not_use)
+  (compile compile-command))
 
-; -----------------------------------------------------------------------------
-;------------------------------------------------------------------------------
-(defvar project-name nil) ;保存编译的project name
+(defvar project-mapping
+  '(("facesaas" shell-async-build)
+    ("ficus"  shell-async-build)
+    ("common" shell-async-build)
+    ("misc"  shell-async-build)
+    ("buildtags" shell-async-build)
+    ("simple_cpp" simple_cpp)))
+
+(defvar project-name nil)               ;保存编译的project name
 (require 'savehist)
 (add-to-list 'savehist-additional-variables 'project-name) ;添加到savehist列表中， 重启恢复该变量
 (defun async-make (project) ; 使用helm 选择make的project
   (interactive
-   (let ((projects
-          '("facesaas" "ficus" "common"  "sync" "misc" "buildtags")))
+   (let (
+         (projects (mapcar #'car project-mapping))
+         )
      (list (helm :sources (helm-build-sync-source "test"
                             :candidates projects
                             :fuzzy-match t)
                  :buffer "*helm test*"))))
   (progn
     (save-some-buffers t nil)
-    (if project
-        (setq project-name project)) ; 记录当前的选择，后面就不用输入了
-    (async-shell-command
-     (format "source %s ; build %s" (substitute-in-file-name "$HOME/Dropbox/secret/work_shortcut.sh") project))))
-
-(defun build-tag ()
-  (interactive)
-  (async-make "buildtags"))
+    (setq project-name project)
+    (funcall
+     (cadr (assoc project project-mapping))
+                                        ; 记录当前的选择，后面就不用输入了
+     project)))
 (require 'helm-gtags)
-(define-key helm-gtags-mode-map (kbd "C-c g u") 'build-tag)
-
-
-
 (defun project-make (prefix)            ; prefix argument
   (interactive "p")
   (if (= prefix 1)
@@ -78,5 +85,4 @@
                     "misc"))            ; 默认使用project-name参数
     (call-interactively 'async-make)))
 (global-set-key (kbd "C-c h m") 'project-make)
-
 (provide 'init-compile-run)
