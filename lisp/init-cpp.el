@@ -161,7 +161,7 @@
   (let* ((directory-list (cdr (assoc snippet key-path-alist)))
          (helm-ff-default-directory (cadr (assoc snippet key-path-alist))))
     (helm-do-grep-1  directory-list t nil
-                  '("*.org" "*.cpp" "*.cc" "*.h" "makefile" "Makefile" "*.py" "*.hpp" "*.scratch" "*.el" ".c"))))
+                  '("*.org" "*.cpp" "*.cc" "*.h" "makefile" "Makefile" "*.py" "*.hpp" "*.scratch" "*.el" "*.c" "*.php" "*.html" "*.js" "*.sh"))))
 (defun search-snippet (arg)
   (interactive "P")
   (if arg (call-interactively 'search-code-snippet)
