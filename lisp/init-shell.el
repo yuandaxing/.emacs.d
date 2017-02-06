@@ -156,9 +156,7 @@ Otherwise, one argument `-i' is passed to the shell.
       (helm-comint-input-ring)
       (comint-send-input)
       (switch-to-buffer-other-window buf-name))))
-
 (global-set-key (kbd "C-c h e") 'execute-below-eshell-return)
 (global-set-key (kbd "C-c h s") 'execute-below-shell-return)
 (setq  comint-input-ring-size 2000)
-
 (provide 'init-shell)
