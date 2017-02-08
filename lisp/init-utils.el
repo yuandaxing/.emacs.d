@@ -15,7 +15,7 @@
   (dolist (pattern patterns)
     (add-to-list 'auto-mode-alist (cons pattern mode))))
 
-(add-auto-mode 'js-mode ".conf" ".json")
+(add-auto-mode 'js-mode "\\.conf$" "\\.json$")
 
 (defun try-to-save-all ()
   (save-some-buffers t nil))

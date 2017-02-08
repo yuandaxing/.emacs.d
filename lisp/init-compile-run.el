@@ -14,7 +14,7 @@
                              (substitute-in-file-name "$HOME/Dropbox/3rdparty/cpp/lib")
                              (file-name-sans-extension file)
                              file
-                             "-lgflags -lmysqlclient -lmysqlcppconn-static -ldl -lhiredis -levent -lpthread "
+                             "-lgflags -lmysqlclient -lmysqlcppconn-static -ldl -lhiredis -levent -lpthread  -ljsoncpp"
                              ))))))
 
 (add-hook 'c-mode-hook
@@ -46,20 +46,32 @@
    (format "source %s ; build %s"
            (substitute-in-file-name "$HOME/Dropbox/secret/work_shortcut.sh")
            project)))
+
+(defvar remote-machine "ficusfinland")
+(defun shell-async-build-remote (project)
+  (async-shell-command
+   (format "source %s ; build_remote %s %s"
+           (substitute-in-file-name "$HOME/Dropbox/secret/work_shortcut.sh")
+           project remote-machine)))
 (defun simple_cpp (not_use)
   (compile compile-command))
 
-(defvar project-mapping
-  '(("facesaas" shell-async-build)
-    ("ficus"  shell-async-build)
-    ("common" shell-async-build)
-    ("misc"  shell-async-build)
-    ("buildtags" shell-async-build)
-    ("simple_cpp" simple_cpp)))
+(defvar project-mapping nil)
+(setq project-mapping
+      '(("facesaas" shell-async-build)
+        ("ficus"  shell-async-build)
+        ("common" shell-async-build)
+        ("misc"  shell-async-build)
+        ("buildtags" shell-async-build)
+        ("simple_cpp" simple_cpp)
+        ("remote_misc" shell-async-build-remote)
+        ("remote_face" shell-async-build-remote)
+        ("remote_common" shell-async-build-remote)))
 
 (defvar project-name nil)               ;保存编译的project name
 (require 'savehist)
 (add-to-list 'savehist-additional-variables 'project-name) ;添加到savehist列表中， 重启恢复该变量
+(add-to-list 'savehist-additional-variables 'remote-machine) ;添加到savehist列表中， 重启恢复该变量
 (defun async-make (project) ; 使用helm 选择make的project
   (interactive
    (let (
