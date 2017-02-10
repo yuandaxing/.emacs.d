@@ -135,18 +135,20 @@
 (require 'savehist)
 (add-to-list 'savehist-additional-variables 'snippet-search-memorize-choice)
 (add-to-list 'savehist-additional-variables 'snippet-search-memorize-choice-enable)
-(defvar key-path-alist
-  '(("ficus-common"  "~/code/ficus_write/common/" )
-    ("effective"  "~/Dropbox/code-snippet/C++/modern-effective-c++/")
-    ("cpp"   "~/Dropbox/code-snippet/C++/")
-    ("algorithm"   "~/Dropbox/code-snippet/C++/algorithm/" "~/Dropbox/code-snippet/better_base/algorithm/"
-     "~/Dropbox/Algorithm")
-    ("skillset"  "~/code/skillset/")
-    ("python" "~/Dropbox/code-snippet/python/")
-    ("snippet"  "~/Dropbox/code-snippet/")
-    ("python"  "~/Dropbox/code-snippet/python/")
-    ("php"  "~/Dropbox/code-snipfpet/php/")
-    ("shell"  "~/Dropbox/code-snippet/shell/")))
+(defvar key-path-alist nil)
+(setq key-path-alist
+      '(("ficus-common"  "~/code/ficus_write/common/" )
+        ("effective"  "~/Dropbox/code-snippet/C++/modern-effective-c++/")
+        ("cpp"   "~/Dropbox/code-snippet/C++/")
+        ("algorithm"   "~/Dropbox/code-snippet/C++/algorithm/" "~/Dropbox/code-snippet/better_base/algorithm/"
+         "~/Dropbox/Algorithm")
+        ("skillset"  "~/code/skillset/")
+        ("python" "~/Dropbox/code-snippet/python/")
+        ("snippet"  "~/Dropbox/code-snippet/")
+        ("python"  "~/Dropbox/code-snippet/python/")
+        ("php"  "~/Dropbox/code-snipfpet/php/")
+        ("shell"  "~/Dropbox/code-snippet/shell/")
+        ("web"  "~/Dropbox/code-snippet/web/")))
 
 (defun search-code-snippet (snippet)
   (interactive
@@ -157,7 +159,8 @@
                             :candidates snippets
                             :fuzzy-match t)
                  :buffer "*helm snippets*"))))
-  (setq snippet-search-memorize-choice snippet)
+  (if snippet
+      (setq snippet-search-memorize-choice snippet))
   (let* ((directory-list (cdr (assoc snippet key-path-alist)))
          (helm-ff-default-directory (cadr (assoc snippet key-path-alist))))
     (helm-do-grep-1  directory-list t nil
@@ -204,5 +207,6 @@
 
 (require 'find-dired)
 (setq find-ls-option '("-print0 | xargs -0 ls -ldh" . "-ldh"))
+(setq browse-url-browser-function 'browse-url-chromium)
 
 (provide 'init-cpp)

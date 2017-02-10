@@ -46,8 +46,9 @@
    (format "source %s ; build %s"
            (substitute-in-file-name "$HOME/Dropbox/secret/work_shortcut.sh")
            project)))
-
-(defvar remote-machine "ficusfinland")
+(defcustom remote-machine nil
+  "enable memorize snippet search "
+  :type 'string)
 (defun shell-async-build-remote (project)
   (async-shell-command
    (format "source %s ; build_remote %s %s"
@@ -66,7 +67,8 @@
         ("simple_cpp" simple_cpp)
         ("remote_misc" shell-async-build-remote)
         ("remote_face" shell-async-build-remote)
-        ("remote_common" shell-async-build-remote)))
+        ("remote_common" shell-async-build-remote)
+        ("remote_reset" shell-async-build-remote)))
 
 (defvar project-name nil)               ;保存编译的project name
 (require 'savehist)
@@ -83,7 +85,8 @@
                  :buffer "*helm test*"))))
   (progn
     (save-some-buffers t nil)
-    (setq project-name project)
+    (if project
+        (setq project-name project))
     (funcall
      (cadr (assoc project project-mapping))
                                         ; 记录当前的选择，后面就不用输入了
