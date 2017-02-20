@@ -126,9 +126,7 @@
 
 (diminish 'keys-bind-minor-mode)
 (add-to-list 'load-path "~/Dropbox/emacs/settings")
-(use-package mysql
-  :no-require t
-  )
+(require 'mysql)
 ;; (use-package xclip
 ;;   :ensure t
 ;;   :config
