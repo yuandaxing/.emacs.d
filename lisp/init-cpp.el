@@ -146,7 +146,7 @@
         ("python" "~/Dropbox/code-snippet/python/")
         ("snippet"  "~/Dropbox/code-snippet/")
         ("python"  "~/Dropbox/code-snippet/python/")
-        ("php"  "~/Dropbox/code-snipfpet/php/")
+        ("php"  "~/Dropbox/code-snippet/php/")
         ("shell"  "~/Dropbox/code-snippet/shell/")
         ("web"  "~/Dropbox/code-snippet/web/")))
 
