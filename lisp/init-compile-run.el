@@ -39,7 +39,7 @@
   (setq helm-zgrep-file-extension-regexp ".*\\(\\.h\\|\\.cpp\\|\\.cc\\|\\.hpp\\)$"))
 
 (add-hook 'c++-mode-hook 'c++-mode-hook-setting)
-(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.\\(h\\|cu\\|cuh\\)\\'" . c++-mode))
 
 (defun shell-async-build (project)
   (async-shell-command

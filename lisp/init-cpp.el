@@ -122,7 +122,6 @@
     (setq helm-swoop-split-with-multiple-windows nil)
     (setq helm-swoop-split-direction 'split-window-vertically)
     (setq helm-swoop-speed-or-color nil)
-;    (setq helm-swoop-use-line-number-face t)
     )
   )
 (defgroup happy-hacking-customize nil
