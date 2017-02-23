@@ -187,7 +187,7 @@
 (add-to-list 'helm-sources-using-default-as-input 'helm-source-findutils)
 (defun helm-find-2 (dir)
   (let ((default-directory (file-name-as-directory dir)))
-    (helm :sources 'helm-source-findutils
+    (helm :sources helm-source-findutils
           :buffer "*helm find*"
           :ff-transformer-show-only-basename nil
           :default (thing-at-point 'filename)

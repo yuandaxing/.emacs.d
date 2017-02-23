@@ -155,8 +155,7 @@ Otherwise, one argument `-i' is passed to the shell.
 
 (defun hh-history-ring ()
   (interactive)
-  (let ((helm-source-comint-input-ring '(hh-history-source
-                                         hh-input-source)))
+  (let ((helm-source-comint-input-ring '(hh-history-source  hh-input-source)))
     (call-interactively 'helm-comint-input-ring)))
 (defun helm-comint-input-ring2 ()
   "Preconfigured `helm' that provide completion of `comint' history."
@@ -166,8 +165,6 @@ Otherwise, one argument `-i' is passed to the shell.
           :input (buffer-substring-no-properties (comint-line-beginning-position)
                                                  (point-at-eol))
           :buffer "*helm comint history*")))
-
-
 (defun execute-below-shell-return ()
   (interactive)
   (save-some-buffers t nil)
