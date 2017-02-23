@@ -53,7 +53,7 @@
     (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
     (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)))
 
-(require 'init-php)
+;(require 'init-php)
 
 (use-package visual-regexp
   :ensure t
