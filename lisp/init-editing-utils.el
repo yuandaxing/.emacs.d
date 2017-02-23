@@ -453,13 +453,10 @@ With a prefix ARG open line above the current line."
 
 
 ;; (defvar shell-minor-mode-map (make-keymap) "shell-minor-mode keymap.")
-;; (define-key keys-bind-minor-mode-map (kbd "C-c C-l") 'helm-comint-input-ring)
-
 ;; (define-minor-mode shell-minor-mode
 ;;   "A minor mode so that my key settings override annoying major modes."
 ;;   t "minor shell mode" 'keys-bind-minor-mode-map)
-(add-hook 'shell-mode-hook #'(lambda ()
-                               (local-set-key (kbd "C-c C-l") 'helm-comint-input-ring)))
+
 
 (global-hl-line-mode)
 (use-package beacon

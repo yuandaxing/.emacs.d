@@ -137,6 +137,37 @@ Otherwise, one argument `-i' is passed to the shell.
       (helm-eshell-history)
       (eshell-send-input)
       (switch-to-buffer-other-window buf-name))))
+
+(defvar hh-history-source
+  (helm-build-sync-source "Comint history"
+    :candidates (lambda ()
+                  (with-helm-current-buffer
+                    (ring-elements comint-input-ring)))
+    :action 'helm-comint-input-ring-action))
+(defvar hh-input-source
+  (helm-build-dummy-source "dummy history"
+    :action 'helm-comint-input-ring-action
+    ))
+(defvar hh-perfect-source nil)
+(setq hh-perfect-source '(hh-history-source
+                          hh-input-source))
+(require 'helm-misc)
+
+(defun hh-history-ring ()
+  (interactive)
+  (let ((helm-source-comint-input-ring '(hh-history-source
+                                         hh-input-source)))
+    (call-interactively 'helm-comint-input-ring)))
+(defun helm-comint-input-ring2 ()
+  "Preconfigured `helm' that provide completion of `comint' history."
+  (interactive)
+  (when (derived-mode-p 'comint-mode)
+    (helm :sources hh-perfect-source
+          :input (buffer-substring-no-properties (comint-line-beginning-position)
+                                                 (point-at-eol))
+          :buffer "*helm comint history*")))
+
+
 (defun execute-below-shell-return ()
   (interactive)
   (save-some-buffers t nil)
@@ -153,10 +184,12 @@ Otherwise, one argument `-i' is passed to the shell.
       (split-window nil nil 'above)
       (shell1 "*shell*")
       (goto-char (point-max))
-      (helm-comint-input-ring)
+      (helm-comint-input-ring2)
       (comint-send-input)
       (switch-to-buffer-other-window buf-name))))
 (global-set-key (kbd "C-c h e") 'execute-below-eshell-return)
 (global-set-key (kbd "C-c h s") 'execute-below-shell-return)
-(setq  comint-input-ring-size 2000)
+(add-hook 'shell-mode-hook #'(lambda ()
+                               (local-set-key (kbd "C-c C-l") 'helm-comint-input-ring2)))
+(setq  comint-input-ring-size 20000)
 (provide 'init-shell)

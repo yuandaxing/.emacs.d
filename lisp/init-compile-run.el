@@ -5,17 +5,22 @@
                         (file-exists-p "Makefile"))
               (set (make-local-variable 'compile-command)
                    (let ((file (file-name-nondirectory buffer-file-name)))
-                     (format "%s -I%s -I%s -I%s -I%s -L%s -std=c++11 -o %s.exe %s  %s"
-                             "g++"
-                             (substitute-in-file-name "$HOME/Dropbox/3rdparty/cpp/include")
-                             (substitute-in-file-name "$HOME/Dropbox/3rdparty/cpp/include/mysql")
-                             (substitute-in-file-name "$HOME/Dropbox/3rdparty/cpp/include/hiredis")
-                             (substitute-in-file-name "$HOME/Dropbox/3rdparty/cpp/include/libevent")
-                             (substitute-in-file-name "$HOME/Dropbox/3rdparty/cpp/lib")
-                             (file-name-sans-extension file)
-                             file
-                             "-lgflags -lmysqlclient -lmysqlcppconn-static -ldl -lhiredis -levent -lpthread  -ljsoncpp"
-                             ))))))
+                     (if (string-equal (file-name-extension file) "cu")
+                         (format "nvcc -o %s.exe %s"
+                                 (file-name-sans-extension file)
+                                 file)
+
+                       (format "%s -I%s -I%s -I%s -I%s -L%s -std=c++11 -o %s.exe %s  %s"
+                               "g++"
+                               (substitute-in-file-name "$HOME/Dropbox/3rdparty/cpp/include")
+                               (substitute-in-file-name "$HOME/Dropbox/3rdparty/cpp/include/mysql")
+                               (substitute-in-file-name "$HOME/Dropbox/3rdparty/cpp/include/hiredis")
+                               (substitute-in-file-name "$HOME/Dropbox/3rdparty/cpp/include/libevent")
+                               (substitute-in-file-name "$HOME/Dropbox/3rdparty/cpp/lib")
+                               (file-name-sans-extension file)
+                               file
+                               "-lgflags -lmysqlclient -lmysqlcppconn-static -ldl -lhiredis -levent -lpthread  -ljsoncpp"
+                               )))))))
 
 (add-hook 'c-mode-hook
           (lambda ()
