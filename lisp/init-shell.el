@@ -11,8 +11,10 @@
   (let ((process (get-buffer-process (current-buffer))))
     (when process
       (setq comint-input-ring-file-name
-            (format "~/.emacs.d/common-history/inferior-%s-history"
-                    (process-name process)))
+            (format "~/Dropbox/emacs/history/inferior-%s-%s--history"
+                    (system-name)
+                    (process-name process)
+                    ))
       (make-directory (file-name-directory comint-input-ring-file-name) t)
       (comint-read-input-ring)
       (set-process-sentinel process
@@ -23,11 +25,11 @@
             (funcall fn)))
         (buffer-list)))
 
-(defun comint-write-input-ring-all-buffers ()
-  (mapc-buffers 'comint-write-input-ring))
-(add-hook 'kill-emacs-hook 'comint-write-input-ring-all-buffers)
-(add-hook 'shell-mode-hook #'(lambda ()
-                               (add-hook 'kill-buffer-hook 'comint-write-input-ring :local t)))
+;; (defun comint-write-input-ring-all-buffers ()
+;;   (mapc-buffers 'comint-write-input-ring))
+;; (add-hook 'kill-emacs-hook 'comint-write-input-ring-all-buffers)
+;; (add-hook 'shell-mode-hook #'(lambda ()
+;;                                (add-hook 'kill-buffer-hook 'comint-write-input-ring :local t)))
 (add-hook 'shell-mode-hook 'turn-on-comint-history)
 (defun shell1 (&optional buffer)
   "Run an inferior shell, with I/O through BUFFER (which defaults to `*shell*').
