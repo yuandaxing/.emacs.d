@@ -14,6 +14,7 @@
            "-o ControlPath=/tmp/ssh-controlPath-%%r@%%h:%%p"
            " -o ControlMaster=auto -o ControlPersist=yes"
            ))
+    (setq tramp-verbose 6)
     ))
 (defun hh-find-alternative-file-with-sudo ()
   (interactive)
