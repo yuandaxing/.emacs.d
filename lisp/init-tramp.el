@@ -4,16 +4,16 @@
   (progn
     (setq projectile-mode-line " Projectile")
     (set-default 'tramp-default-method "sshx")
-    (set-default 'tramp-default-user "daxing.yuan")
+    (set-default 'tramp-default-user "dxyuan")
     (set-default 'tramp-verbose 3) ;default settings
     (setq tramp-auto-save-directory "/tmp/tramp/")
     (setq tramp-chunksize 2000)
-    (set-default 'tramp-shell-prompt-pattern "\\(?:^\\|\r\\)[^]#$%>\n]*#?[]#$%>].* *\\(^[\\[[0-9;]*[a-zA-Z] *\\)*")
-    (setq tramp-ssh-controlmaster-options
-          (concat
-           "-o ControlPath=/tmp/ssh-controlPath-%%r@%%h:%%p"
-           " -o ControlMaster=auto -o ControlPersist=yes"
-           ))
+    ;; (set-default 'tramp-shell-prompt-pattern "\\(?:^\\|\r\\)[^]#$%>\n]*#?[]#$%>].* *\\(^[\\[[0-9;]*[a-zA-Z] *\\)*")
+    ;; (setq tramp-ssh-controlmaster-options
+          ;; (concat
+          ;;  "-o ControlPath=/tmp/ssh-controlPath-%%r@%%h:%%p"
+          ;;  " -o ControlMaster=auto -o ControlPersist=yes"
+          ;;  ))
     ))
 (defun hh-find-alternative-file-with-sudo ()
   (interactive)
