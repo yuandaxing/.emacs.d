@@ -25,11 +25,11 @@
             (funcall fn)))
         (buffer-list)))
 
-;; (defun comint-write-input-ring-all-buffers ()
-;;   (mapc-buffers 'comint-write-input-ring))
-;; (add-hook 'kill-emacs-hook 'comint-write-input-ring-all-buffers)
-;; (add-hook 'shell-mode-hook #'(lambda ()
-;;                                (add-hook 'kill-buffer-hook 'comint-write-input-ring :local t)))
+(defun comint-write-input-ring-all-buffers ()
+  (mapc-buffers 'comint-write-input-ring))
+(add-hook 'kill-emacs-hook 'comint-write-input-ring-all-buffers)
+(add-hook 'shell-mode-hook #'(lambda ()
+                               (add-hook 'kill-buffer-hook 'comint-write-input-ring :local t)))
 (add-hook 'shell-mode-hook 'turn-on-comint-history)
 (defun shell1 (&optional buffer)
   "Run an inferior shell, with I/O through BUFFER (which defaults to `*shell*').

@@ -22,9 +22,11 @@
  truncate-partial-width-windows nil
  visible-bell t)
 
+(require 'autorevert)
 (global-auto-revert-mode)
-(setq global-auto-revert-non-file-buffers t
-      auto-revert-verbose nil)
+(setq global-auto-revert-non-file-buffers nil
+      auto-revert-verbose nil
+      auto-revert-remote-files nil)
 (transient-mark-mode t)
 
 

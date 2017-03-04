@@ -76,7 +76,8 @@
         ("remote_reset" shell-async-build-remote)
         ("remote_video_service" shell-async-build-remote)
         ("remote_face_video" shell-async-build-remote)
-        ("remote_alignment" shell-async-build-remote)))
+        ("remote_alignment" shell-async-build-remote)
+        ("remote_gpu" shell-async-build-remote)))
 
 (defvar project-name nil)               ;保存编译的project name
 (require 'savehist)
