@@ -1,4 +1,5 @@
 (require 'shell)
+(require 'extend-shell)
 (set-default 'shell-file-name "/bin/bash")
 (defun comint-write-history-on-exit (process event)
   (comint-write-input-ring)
