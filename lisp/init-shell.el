@@ -136,6 +136,7 @@
 (defun execute-below-shell-return ()
   (interactive)
   (save-some-buffers t nil)
+  (hh-setting-env)
   (progn
     (dolist (w (window-list nil nil nil))
       (if (string= (buffer-name (window-buffer w))
