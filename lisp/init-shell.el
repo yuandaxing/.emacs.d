@@ -107,6 +107,8 @@
 (defvar hh-perfect-source nil)
 (setq hh-perfect-source '(helm-source-comint-input-ring
                           hh-input-source))
+(defvar helm-comint-input-ring2-history nil)
+
 (defun helm-comint-input-ring2 ()
   "Preconfigured `helm' that provide completion of `comint' history."
   (interactive)
@@ -114,8 +116,9 @@
     (helm :sources hh-perfect-source
           :input (buffer-substring-no-properties (comint-line-beginning-position)
                                                  (point-at-eol))
-          :buffer "*helm comint history*")))
-
+          :buffer "*helm comint history*"
+          :history 'helm-comint-input-ring2-history)))
+(add-to-list 'savehist-additional-variables 'helm-comint-input-ring2-history)
 (defun create-or-get-shell-below (name)
   (save-some-buffers t nil)
   (progn
