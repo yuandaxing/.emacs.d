@@ -6,7 +6,8 @@
   :init
   (require 'helm-projectile)
   :bind (
-         ("C-c h g" . helm-projectile-ag)
+         ("C-c h g" . helm-projectile-grep)
+         ("C-c h f" . helm-projectile-ag)
          ("C-c h a" . ff-get-other-file)
          ("C-c h c" . hh-copy-file-name-to-clipboard)
            ))
@@ -44,5 +45,4 @@
                                ("-" text-scale-decrease "decrease text size")
                                ("q" nil "quit")))
     ))
-
 (provide 'init-keychord)
