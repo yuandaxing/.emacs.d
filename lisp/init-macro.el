@@ -27,3 +27,6 @@
 
 (fset 'hh-format-sql
    (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("()," 0 "%d")) arg)))
+
+(fset 'avg-3
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([40 C-right C-right C-right 43 32 1 40 47 C-right 134217734 32 51 5 21 24 5 10] 0 "%d")) arg)))

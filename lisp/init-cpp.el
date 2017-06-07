@@ -147,7 +147,9 @@
         ("python"  "~/Dropbox/code-snippet/python/")
         ("php"  "~/Dropbox/code-snippet/php/")
         ("shell"  "~/Dropbox/code-snippet/shell/")
-        ("web"  "~/Dropbox/code-snippet/web/")))
+        ("web"  "~/Dropbox/code-snippet/web/")
+        ("dl"  "~/Dropbox/dl/")
+        ("emacs"  "~/Dropbox/code-snippet/emacs/")))
 
 (defun search-code-snippet (snippet)
   (interactive
