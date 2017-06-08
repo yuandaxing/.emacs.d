@@ -210,4 +210,21 @@
 (setq find-ls-option '("-print0 | xargs -0 ls -ldh" . "-ldh"))
 (setq browse-url-browser-function 'browse-url-chromium)
 
+(defun my-minibuffer-insert-word-at-point ()
+  "Get word at point in original buffer and insert it to minibuffer."
+  (interactive)
+  (let (word beg)
+    (with-current-buffer (window-buffer (minibuffer-selected-window))
+      (save-excursion
+        (skip-syntax-backward "w_")
+        (setq beg (point))
+        (skip-syntax-forward "w_")
+        (setq word (buffer-substring-no-properties beg (point)))))
+    (when word
+      (insert word))))
+
+(defun my-minibuffer-setup-hook ()
+  (local-set-key (kbd "C-.") 'my-minibuffer-insert-word-at-point))
+
+(add-hook 'minibuffer-setup-hook 'my-minibuffer-setup-hook)
 (provide 'init-cpp)
