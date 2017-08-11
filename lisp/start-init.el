@@ -18,7 +18,7 @@
 (require 'init-windows)
 (require 'init-tramp)
 (require 'init-email)
-(require 'init-docview)
+;(require 'init-docview)
 (require 'init-desktop)
 ;(require 'init-term)
 (require 'init-keychord)

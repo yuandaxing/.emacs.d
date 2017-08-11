@@ -19,7 +19,7 @@
                                (substitute-in-file-name "$HOME/Dropbox/3rdparty/cpp/lib")
                                (file-name-sans-extension file)
                                file
-                               "-lgflags -lmysqlclient -lmysqlcppconn-static -ldl -lhiredis -levent -lgtest -lpthread  -ljsoncpp"
+                               "-lgflags -lmysqlclient -lmysqlcppconn-static -ldl -lhiredis -levent -lpthread  -ljsoncpp"
                                )))))))
 
 (add-hook 'c-mode-hook
