@@ -4,10 +4,10 @@
 ;; (set-frame-font "Source Code Pro-14" nil t)
 ;; (set-frame-font "Monaco-14" nil t)
 ;; (set-frame-font "Cousine-14" nil t)
+(require 'init-elpa)
 (require 'better-defaults)
 (require 'init-history)
 (require 'init-utils)
-(require 'init-elpa)
 (require 'init-auto-complete)
 (require 'init-editing-utils)
 (require 'init-hippie)
@@ -104,7 +104,7 @@
 ;;     (add-hook 'after-init-hook 'session-initialize)))
 
 
-(defun before-magit (&optional directory)
+(defun before-magit (&optional directory cache)
   (save-some-buffers t nil))
 (use-package magit
   :ensure t
@@ -125,8 +125,8 @@
                       " - enjoy!!!\n\n"))
 
 (diminish 'keys-bind-minor-mode)
-(add-to-list 'load-path "~/Dropbox/emacs/settings")
-(require 'mysql)
+;(add-to-list 'load-path "~/Dropbox/emacs/settings")
+;(require 'mysql)
 ;; (use-package xclip
 ;;   :ensure t
 ;;   :config

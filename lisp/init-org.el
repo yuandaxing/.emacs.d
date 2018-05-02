@@ -1,5 +1,5 @@
-(use-package org-fstree
-  :ensure t)
+;; (use-package org-fstree
+;;   :ensure t)
 
 (define-key global-map (kbd "C-c l") 'org-store-link)
 (define-key global-map (kbd "C-c a") 'org-agenda)
@@ -67,7 +67,7 @@
   (define-key org-clock-mode-line-map [header-line mouse-1] 'org-clock-menu))
 
 
-(require 'org-pomodoro)
+;(require 'org-pomodoro)
 (after-load 'org-agenda
   (define-key org-agenda-mode-map (kbd "P") 'org-pomodoro))
 

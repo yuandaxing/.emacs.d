@@ -1,4 +1,4 @@
-(require 'unfill)
+;(require 'unfill)
 (when (fboundp 'electric-pair-mode)
   (electric-pair-mode))
 (global-set-key (kbd "C-j") 'newline-and-indent)
@@ -83,7 +83,7 @@
 (global-set-key (kbd "C-t") 'transpose-chars)
 
 
-(require 'browse-kill-ring)
+;(require 'browse-kill-ring)
 
 
 
@@ -140,60 +140,22 @@
 
 (global-set-key (kbd "C-M-<backspace>") 'kill-back-to-indentation)
 
-(require 'page-break-lines)
-(global-page-break-lines-mode)
-(diminish 'page-break-lines-mode)
-
-
-;; Fill column indicator
-(when (eval-when-compile (> emacs-major-version 23))
-  (require 'fill-column-indicator)
-  (defun hh-prog-mode-fci-settings ()
-    (turn-on-fci-mode)
-    (when show-trailing-whitespace
-      (set (make-local-variable 'whitespace-style) '(face trailing))
-      (whitespace-mode 1)))
-
-  ;;(add-hook 'prog-mode-hook 'hh-prog-mode-fci-settings)
-
-  (defun hh-fci-enabled-p ()
-    (and (boundp 'fci-mode) fci-mode))
-
-  (defvar hh-fci-mode-suppressed nil)
-  (defadvice popup-create (before suppress-fci-mode activate)
-    "Suspend fci-mode while popups are visible"
-    (let ((fci-enabled (hh-fci-enabled-p)))
-      (when fci-enabled
-        (set (make-local-variable 'hh-fci-mode-suppressed) fci-enabled)
-        (turn-off-fci-mode))))
-  (defadvice popup-delete (after restore-fci-mode activate)
-    "Restore fci-mode when all popups have closed"
-    (when (and hh-fci-mode-suppressed
-               (null popup-instances))
-      (setq hh-fci-mode-suppressed nil)
-      (turn-on-fci-mode)))
-
-  ;; Regenerate fci-mode line images after switching themes
-  (defadvice enable-theme (after recompute-fci-face activate)
-    (dolist (buffer (buffer-list))
-      (with-current-buffer buffer
-        (when (hh-fci-enabled-p)
-          (turn-on-fci-mode))))))
-
-
+;(require 'page-break-lines)
+;(global-page-break-lines-mode)
+;(diminish 'page-break-lines-mode)
 
 ;; Shift lines up and down with M-up and M-down. When paredit is enabled,
 ;; it will use those keybindings. For this reason, you might prefer to
 ;; use M-S-up and M-S-down, which will work even in lisp modes.
 
-(require 'move-dup)
-(global-set-key [M-up] 'md/move-lines-up)
-(global-set-key [M-down] 'md/move-lines-down)
-(global-set-key [M-S-up] 'md/move-lines-up)
-(global-set-key [M-S-down] 'md/move-lines-down)
+;; (require 'move-dup)
+;; (global-set-key [M-up] 'md/move-lines-up)
+;; (global-set-key [M-down] 'md/move-lines-down)
+;; (global-set-key [M-S-up] 'md/move-lines-up)
+;; (global-set-key [M-S-down] 'md/move-lines-down)
 
-(global-set-key (kbd "C-c p") 'md/duplicate-down)
-(global-set-key (kbd "C-c P") 'md/duplicate-up)
+;; (global-set-key (kbd "C-c p") 'md/duplicate-down)
+;; (global-set-key (kbd "C-c P") 'md/duplicate-up)
 
 
 ;; Fix backward-up-list to understand quotes, see http://bit.ly/h7mdIL
@@ -258,9 +220,8 @@ With arg N, insert N newlines."
         (sort-subr nil 'forward-line 'end-of-line nil nil
                    (lambda (s1 s2) (eq (random 2) 0)))))))
 
-(require 'highlight-escape-sequences)
-(hes-mode)
-
+;(require 'highlight-escape-sequences)
+;(hes-mode)
 
 (use-package which-key
   :ensure t

@@ -6,8 +6,8 @@
 (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
-
-(require 'fullframe)
+
+;(require 'fullframe)
 (require 'cl-lib)
 
 (unless (package-installed-p 'use-package)

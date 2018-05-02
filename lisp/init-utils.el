@@ -88,7 +88,6 @@
     (if (tramp-tramp-file-p file-name)
         (error "Cannot open tramp file")
       (browse-url (concat "file://" file-name)))))
-
 (use-package diminish
   :ensure t
   :config
