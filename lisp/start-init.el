@@ -1,3 +1,4 @@
+(setq enable-local-variables :safe)
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (set-frame-font "DejaVu Sans Mono-14" nil t)
 ;; (set-frame-font "Fantasque Sans Mono-16" nil t)

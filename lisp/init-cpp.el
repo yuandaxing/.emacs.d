@@ -136,12 +136,10 @@
 (add-to-list 'savehist-additional-variables 'snippet-search-memorize-choice-enable)
 (defvar key-path-alist nil)
 (setq key-path-alist
-      '(("ficus-common"  "~/code/ficus_write/common/" )
-        ("effective"  "~/Dropbox/code-snippet/C++/modern-effective-c++/")
+      '(("effective"  "~/Dropbox/code-snippet/C++/modern-effective-c++/")
         ("cpp"   "~/Dropbox/code-snippet/C++/")
         ("algorithm"   "~/Dropbox/code-snippet/C++/algorithm/" "~/Dropbox/code-snippet/better_base/algorithm/"
          "~/Dropbox/Algorithm")
-        ("skillset"  "~/code/skillset/")
         ("python" "~/Dropbox/code-snippet/python/")
         ("snippet"  "~/Dropbox/code-snippet/")
         ("python"  "~/Dropbox/code-snippet/python/")
@@ -171,7 +169,7 @@
   (if arg (call-interactively 'search-code-snippet)
     (search-code-snippet (if (and snippet-search-memorize-choice-enable snippet-search-memorize-choice)
                              snippet-search-memorize-choice
-                           "skillset"))))
+                           "python"))))
 (global-set-key (kbd "C-c h p") 'search-snippet)
 (require 'recentf)
 (defun hh-insert-date (prefix)
