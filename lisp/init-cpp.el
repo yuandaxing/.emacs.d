@@ -127,9 +127,9 @@
 (defgroup happy-hacking-customize nil
   " custmizing utility"
   :group 'happy-hacking)
-(defcustom snippet-search-memorize-choice-enable nil
-  "enable memorize snippet search "
-  :type 'boolean)
+;; (defcustom snippet-search-memorize-choice-enable t
+;;   "enable memorize snippet search "
+;;   :type 'boolean)
 (defvar snippet-search-memorize-choice nil)
 (require 'savehist)
 (add-to-list 'savehist-additional-variables 'snippet-search-memorize-choice)
@@ -140,7 +140,6 @@
         ("cpp"   "~/Dropbox/code-snippet/C++/")
         ("algorithm"   "~/Dropbox/code-snippet/C++/algorithm/" "~/Dropbox/code-snippet/better_base/algorithm/"
          "~/Dropbox/Algorithm")
-        ("python" "~/Dropbox/code-snippet/python/")
         ("snippet"  "~/Dropbox/code-snippet/")
         ("python"  "~/Dropbox/code-snippet/python/")
         ("php"  "~/Dropbox/code-snippet/php/")
@@ -167,9 +166,7 @@
 (defun search-snippet (arg)
   (interactive "P")
   (if arg (call-interactively 'search-code-snippet)
-    (search-code-snippet (if (and snippet-search-memorize-choice-enable snippet-search-memorize-choice)
-                             snippet-search-memorize-choice
-                           "python"))))
+    (search-code-snippet snippet-search-memorize-choice)))
 (global-set-key (kbd "C-c h p") 'search-snippet)
 (require 'recentf)
 (defun hh-insert-date (prefix)
