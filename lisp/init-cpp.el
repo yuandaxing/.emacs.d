@@ -136,8 +136,7 @@
 (add-to-list 'savehist-additional-variables 'snippet-search-memorize-choice-enable)
 (defvar key-path-alist nil)
 (setq key-path-alist
-      '(("ficus-common"  "~/code/ficus_write/common/" )
-        ("effective"  "~/Dropbox/code-snippet/C++/modern-effective-c++/")
+      '(
         ("cpp"   "~/Dropbox/code-snippet/C++/")
         ("algorithm"   "~/Dropbox/code-snippet/C++/algorithm/" "~/Dropbox/code-snippet/better_base/algorithm/"
          "~/Dropbox/Algorithm")
@@ -198,7 +197,7 @@
   (cond
    ((equal prefix 1) (progn
                        (let ((helm-findutils-search-full-path t))
-                         (helm-find-2 "/home/dxyuan/code/ficus_write"))))
+                         (helm-find-2 "~/Dropbox/"))))
    (t (helm-find ""))))
 
 (setq history-delete-duplicates t)
