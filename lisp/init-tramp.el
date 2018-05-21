@@ -7,6 +7,7 @@
     (set-default 'tramp-default-user "dxyuan")
     (setq tramp-auto-save-directory "/tmp/tramp/")
     (setq tramp-chunksize 2000)
+    (setq password-cache-expiry nil)
     ;(set-default 'tramp-shell-prompt-pattern "\\(?:^\\|\r\\)[^]#$%>\n]*#?[]#$%>].* *\\(^[\\[[0-9;]*[a-zA-Z] *\\)*")
     ;; (setq tramp-ssh-controlmaster-options
     ;;       (concat
