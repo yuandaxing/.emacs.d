@@ -132,10 +132,9 @@
 (defvar snippet-search-memorize-choice nil)
 (require 'savehist)
 (add-to-list 'savehist-additional-variables 'snippet-search-memorize-choice)
-(add-to-list 'savehist-additional-variables 'snippet-search-memorize-choice-enable)
 (defvar key-path-alist nil)
 (setq key-path-alist
-      '(("effective"  "~/Dropbox/code-snippet/C++/modern-effective-c++/")
+      '(
         ("cpp"   "~/Dropbox/code-snippet/C++/")
         ("algorithm"   "~/Dropbox/code-snippet/C++/algorithm/" "~/Dropbox/code-snippet/better_base/algorithm/"
          "~/Dropbox/Algorithm")
@@ -165,7 +164,7 @@
 (defun search-snippet (arg)
   (interactive "P")
   (if arg (call-interactively 'search-code-snippet)
-    (search-code-snippet snippet-search-memorize-choice)))
+    (search-code-snippet (or snippet-search-memorize-choice "python"))))
 (global-set-key (kbd "C-c h p") 'search-snippet)
 (require 'recentf)
 (defun hh-insert-date (prefix)
@@ -194,7 +193,7 @@
   (cond
    ((equal prefix 1) (progn
                        (let ((helm-findutils-search-full-path t))
-                         (helm-find-2 "/home/dxyuan/code/ficus_write"))))
+                         (helm-find-2 "~/Dropbox/"))))
    (t (helm-find ""))))
 
 (setq history-delete-duplicates t)
