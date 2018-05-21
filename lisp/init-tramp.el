@@ -17,6 +17,8 @@
     (setq tramp-verbose 6)
     ))
 
+
+
 (defun hh-find-alternative-file-with-sudo ()
   (interactive)
   (let ((fname (or buffer-file-name
