@@ -27,7 +27,7 @@
     (setq c-tab-always-indent nil
           c-insert-tab-function 'indent-for-tab-command)
     (set-default 'ac-sources
-                 '(ac-source-imenu
+                 '(;ac-source-imenu
                    ac-source-dictionary
                    ac-source-yasnippet
                    ac-source-words-in-buffer

@@ -30,4 +30,7 @@
                        fname))
         (setq fname (concat "/sudo:root@localhost:" fname)))
       (find-alternate-file fname))))
+(require 'auth-source)
+(setq auth-sources '("~/.authinfo"))
+(setq auth-source-debug t)
 (provide 'init-tramp)

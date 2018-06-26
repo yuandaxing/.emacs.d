@@ -28,7 +28,7 @@
 (require 'init-fly)
 (require 'init-easy)
 (require 'init-engine)
-(cua-mode t)
+;(cua-mode t)
 ;(require 'init-ido)
 (require 'init-web)
 (require 'init-python)
