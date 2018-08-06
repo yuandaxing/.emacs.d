@@ -26,12 +26,12 @@
           '(
             ("default"
              ("pop-server"           . "pop.mvad.com")
-             ("name"                 . "daxing.yuan@yitu-inc.com")
-             ("user"                 . "daxing.yuan@yitu-inc.com")
+             ("name"                 . "yuandaxing1@360.cn")
+             ("user"                 . "yuandaxing1@360.cn")
              ("mail-domain"          . "mvad.com")
-             ("pop-user"             . "daxing.yuan@yitu-inc.com")
+             ("pop-user"             . "yuandaxing1@360.cn")
              ("pop-port"     .  "995")
-             ("smtp-user"            . "daxing.yuan@yitu-inc.com")
+             ("smtp-user"            . "yuandaxing1@360.cn")
              ("smtp-server"          . "smtp.mvad.com")
              ("smtp-port"    .  "994")
              ("mailbox-type" .  pop)

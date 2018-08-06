@@ -4,9 +4,9 @@
 # --
 
 /*
- * author: daxing.yuan
+ * author: yuandaxing
  * create: `(format-time-string "%Y-%m-%d")`
- * email: daxing.yuan@yitu-inc.com
+ * email: yuandaxing1@360.cn
  */
 
 #ifndef ${1:`(upcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name))))`_H_}
