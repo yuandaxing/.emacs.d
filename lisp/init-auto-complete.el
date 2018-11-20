@@ -28,6 +28,7 @@
           c-insert-tab-function 'indent-for-tab-command)
     (set-default 'ac-sources
                  '(;ac-source-imenu
+                   ac-source-semantic
                    ac-source-dictionary
                    ac-source-yasnippet
                    ac-source-words-in-buffer

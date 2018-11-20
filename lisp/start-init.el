@@ -1,10 +1,6 @@
 (setq enable-local-variables :safe)
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (set-frame-font "DejaVu Sans Mono-14" nil t)
-;; (set-frame-font "Fantasque Sans Mono-16" nil t)
-;; (set-frame-font "Source Code Pro-14" nil t)
-;; (set-frame-font "Monaco-14" nil t)
-;; (set-frame-font "Cousine-14" nil t)
 (require 'init-elpa)
 (require 'better-defaults)
 (require 'init-history)
@@ -135,7 +131,7 @@
 ;;   (progn
 ;;     (require 'xclip)
 ;;     (xclip-mode 1)))
-
+(require 'init-java)
 (provide 'start-init)
 ;;;start-init.el ends here
 
