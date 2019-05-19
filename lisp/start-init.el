@@ -131,7 +131,7 @@
 ;;   (progn
 ;;     (require 'xclip)
 ;;     (xclip-mode 1)))
-(require 'init-java)
+;(require 'init-java)
 (provide 'start-init)
 ;;;start-init.el ends here
 

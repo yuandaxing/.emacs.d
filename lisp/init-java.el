@@ -3,7 +3,6 @@
   :config
   (progn
     (require 'auto-complete-config)
-    (ac-config-default)
     (set-default 'eclim-eclipse-dirs '("/home/ydx/install/eclipse/eclipse/"))
     (set-default 'eclim-executable "/home/ydx/.p2/pool/plugins/org.eclim_2.8.0/bin/eclim")
     (set-default 'eclimd-executable "/home/ydx/.p2/pool/plugins/org.eclim_2.8.0/bin/eclimd")
