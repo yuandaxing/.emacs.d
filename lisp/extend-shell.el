@@ -20,7 +20,7 @@
           (value (symbol-value (cdr item))))
       (setq string (replace-regexp-in-string name value string))
       ))
-  (message '%s' string)
+  (message "%s" string)
   (funcall simle-function proc string)
   )
 (require 'tramp)
