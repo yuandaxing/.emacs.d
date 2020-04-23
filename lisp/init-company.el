@@ -5,7 +5,7 @@
     (require 'yasnippet)
     (yas-global-mode 1)
     (add-to-list 'yas-snippet-dirs
-                 (expand-file-name "snippets" user-emacs-directory))
+                  (expand-file-name "snippets" user-emacs-directory))
     (setq yas-wrap-around-region t)
     (diminish 'yas-minor-mode)))
 (defun check-expansion ()
@@ -24,17 +24,19 @@
   (progn
     (add-to-list 'company-c-headers-path-system "/usr/include/c++/4.9/")
     ))
-(use-package company-irony
-  :ensure t)
-(use-package company-irony-c-headers
-  :ensure t)
+;; (use-package company-irony
+;;   :ensure t)
+;; (use-package company-irony-c-headers
+;;   :ensure t)
 (use-package company
   :ensure t
   :config
   (progn
-    (add-to-list 'company-backends 'company-c-headers)
+    ;(add-to-list 'company-backends 'company-c-headers)
     (add-to-list 'company-backends 'company-abbrev)
-    (add-to-list 'company-backends '(company-irony-c-headers company-irony))
+    (add-to-list 'company-backends 'company-yasnippet)
+    (add-to-list 'company-backends 'company-files)
+                                        ;(add-to-list 'company-backends '(company-irony-c-headers company-irony))
     (define-key company-active-map (kbd "C-o") 'company-show-doc-buffer)
     (define-key company-active-map (kbd "C-l") 'company-show-location)
     (define-key company-active-map (kbd "M-o") 'company-show-doc-buffer)
@@ -42,6 +44,12 @@
     (define-key company-active-map (kbd "M-m") 'company-complete-selection)
     (define-key company-active-map (kbd "C-w") nil)
     (define-key company-active-map (kbd "C-h") nil)
+      (setq company-idle-delay              0.1
+        company-minimum-prefix-length   2
+        company-show-numbers            t
+        company-tooltip-limit           20
+        company-dabbrev-downcase        nil
+      )
     (require 'cc-mode)
     (add-hook 'after-init-hook 'global-company-mode))
   (global-set-key (kbd  "C-:")  'company-complete))
@@ -64,4 +72,5 @@
 (setq save-abbrevs t)
 (abbrev-mode t)
 (quietly-read-abbrev-file)
-(provide 'init-auto-complete)
+
+(provide 'init-company)

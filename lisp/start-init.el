@@ -5,7 +5,8 @@
 (require 'better-defaults)
 (require 'init-history)
 (require 'init-utils)
-(require 'init-auto-complete)
+                                        ;(require 'init-auto-complete)
+(require 'init-company)
 (require 'init-editing-utils)
 (require 'init-hippie)
 (require 'init-grep)
@@ -131,7 +132,7 @@
 ;;   (progn
 ;;     (require 'xclip)
 ;;     (xclip-mode 1)))
-;(require 'init-java)
+(require 'init-java)
 (provide 'start-init)
 ;;;start-init.el ends here
 

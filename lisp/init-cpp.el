@@ -35,6 +35,7 @@
           helm-eshell-hist-ignoredups t
           helm-eshell-hist-ignoredups t
           )
+    (require 'helm-comint)
     (define-key isearch-mode-map (kbd "M-y") 'helm-show-kill-ring)
     (add-hook 'eshell-mode-hook
               #'(lambda ()
@@ -67,29 +68,29 @@
 ;; (use-package helm-descbinds
 ;;   :ensure t)
 
-(use-package helm-gtags
-  :ensure t
-  :config
-  (progn
-    (add-hook 'c++-mode-hook 'helm-gtags-mode)
-    (define-key helm-gtags-mode-map (kbd "C-c g t") 'helm-gtags-find-tag)
-    (define-key helm-gtags-mode-map (kbd "C-c g r") 'helm-gtags-find-rtag)
-    (define-key helm-gtags-mode-map (kbd "C-c g s") 'helm-gtags-find-symbol)
-    (define-key helm-gtags-mode-map (kbd "C-c g p") 'helm-gtags-parse-file)
-    (define-key helm-gtags-mode-map (kbd "C-c g n") 'helm-gtags-next-history)
-    (define-key helm-gtags-mode-map (kbd "C-c g p") 'helm-gtags-parse-file)
-    (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
-    (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
-    (define-key helm-map (kbd "C-h") 'helm-ff-delete-char-backward)
-    (define-key helm-find-files-map (kbd "C-h") 'helm-ff-delete-char-backward)
-    (setq
-     helm-gtags-ignore-case t
-     helm-gtags-auto-update t
-     helm-gtags-use-input-at-cursor t
-     helm-gtags-pulse-at-cursor t
-     helm-gtags-path-style 'relative
-     )
-    ))
+;; (use-package helm-gtags
+;;   :ensure t
+;;   :config
+;;   (progn
+;;     (add-hook 'c++-mode-hook 'helm-gtags-mode)
+;;     (define-key helm-gtags-mode-map (kbd "C-c g t") 'helm-gtags-find-tag)
+;;     (define-key helm-gtags-mode-map (kbd "C-c g r") 'helm-gtags-find-rtag)
+;;     (define-key helm-gtags-mode-map (kbd "C-c g s") 'helm-gtags-find-symbol)
+;;     (define-key helm-gtags-mode-map (kbd "C-c g p") 'helm-gtags-parse-file)
+;;     (define-key helm-gtags-mode-map (kbd "C-c g n") 'helm-gtags-next-history)
+;;     (define-key helm-gtags-mode-map (kbd "C-c g p") 'helm-gtags-parse-file)
+;;     (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
+;;     (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
+;;     (define-key helm-map (kbd "C-h") 'helm-ff-delete-char-backward)
+;;     (define-key helm-find-files-map (kbd "C-h") 'helm-ff-delete-char-backward)
+;;     (setq
+;;      helm-gtags-ignore-case t
+;;      helm-gtags-auto-update t
+;;      helm-gtags-use-input-at-cursor t
+;;      helm-gtags-pulse-at-cursor t
+;;      helm-gtags-path-style 'relative
+;;      )
+;;     ))
 
 (add-hook 'c++-mode-hook 'key-bind-hook )
 (custom-set-faces
