@@ -133,6 +133,7 @@
 ;;     (require 'xclip)
 ;;     (xclip-mode 1)))
 (require 'init-java)
+(require '360-aicomplete)
 (provide 'start-init)
 ;;;start-init.el ends here
 

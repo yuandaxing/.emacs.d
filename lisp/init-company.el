@@ -18,12 +18,6 @@
 (defun do-yas-expand ()
   (let ((yas-expand 'return-nil))
     (yas-expand)))
-(use-package company-c-headers
-  :ensure t
-  :config
-  (progn
-    (add-to-list 'company-c-headers-path-system "/usr/include/c++/4.9/")
-    ))
 ;; (use-package company-irony
 ;;   :ensure t)
 ;; (use-package company-irony-c-headers
@@ -32,11 +26,7 @@
   :ensure t
   :config
   (progn
-    ;(add-to-list 'company-backends 'company-c-headers)
-    (add-to-list 'company-backends 'company-abbrev)
-    (add-to-list 'company-backends 'company-yasnippet)
-    (add-to-list 'company-backends 'company-files)
-                                        ;(add-to-list 'company-backends '(company-irony-c-headers company-irony))
+    (add-to-list 'company-backends '(company-abbrev company-yasnippet company-files))
     (define-key company-active-map (kbd "C-o") 'company-show-doc-buffer)
     (define-key company-active-map (kbd "C-l") 'company-show-location)
     (define-key company-active-map (kbd "M-o") 'company-show-doc-buffer)
