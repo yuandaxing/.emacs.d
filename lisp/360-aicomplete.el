@@ -367,9 +367,8 @@ See documentation of `company-backends' for details."
 
 (add-hook 'c++-mode-hook (lambda ()
                            (progn (add-to-list (make-local-variable 'company-backends) '360-aicomplete)
-                                  (set (make-local-variable 'company-idle-delay)  2
-                                        (make-local-variable 'company-minimum-prefix-length)   0
-                                        ))))
+                                  (set (make-local-variable 'company-idle-delay)  2)
+                                  (set (make-local-variable 'company-minimum-prefix-length)   0))))
 (message "360 ai init")
 (provide '360-aicomplete)
 

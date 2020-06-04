@@ -26,6 +26,7 @@
   :ensure t
   :config
   (progn
+    (setq company-backends '())
     (add-to-list 'company-backends '(company-abbrev company-yasnippet company-files))
     (define-key company-active-map (kbd "C-o") 'company-show-doc-buffer)
     (define-key company-active-map (kbd "C-l") 'company-show-location)
@@ -39,6 +40,7 @@
         company-show-numbers            t
         company-tooltip-limit           20
         company-dabbrev-downcase        nil
+        company-require-match           nil
       )
     (require 'cc-mode)
     (add-hook 'after-init-hook 'global-company-mode))

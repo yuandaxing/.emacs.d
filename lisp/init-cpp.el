@@ -67,7 +67,8 @@
   )
 ;; (use-package helm-descbinds
 ;;   :ensure t)
-
+(use-package helm-gtags
+  :ensure t)
 ;; (use-package helm-gtags
 ;;   :ensure t
 ;;   :config
