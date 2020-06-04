@@ -40,7 +40,6 @@
         company-show-numbers            t
         company-tooltip-limit           20
         company-dabbrev-downcase        nil
-        company-require-match           nil
       )
     (require 'cc-mode)
     (add-hook 'after-init-hook 'global-company-mode))
