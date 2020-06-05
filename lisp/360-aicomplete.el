@@ -10,7 +10,7 @@
   (progn
     (require 'request)))
 
-(defconst ai-complete-url "http://gp2ss.jx.shbt2.qihoo.net:60010/code-complete")
+(defconst ai-complete-url "http://gpu4ss.jx.shbt.qihoo.net:60010/code-complete")
 (defconst 360-aicomplete--buffer-name "*360-aicomplete-log*")
 (defconst 360-aicomplete--hooks-alist nil)
 (defconst 360-aicomplete--protocol-version "1.0.14")
@@ -371,6 +371,7 @@ See documentation of `company-backends' for details."
                                   (set (make-local-variable 'company-minimum-prefix-length)   0)
                                   )))
 (message "360 ai init")
+
 (provide '360-aicomplete)
 
 ;;; 360-aicomplete.el ends here
