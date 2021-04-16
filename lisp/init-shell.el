@@ -41,7 +41,7 @@
                           (if (and (eq major-mode 'shell-mode)
                                    (null (get-buffer-process (current-buffer))))
                               (buffer-name)
-                            (get-buffer-create "*shell*")))
+                            (get-buffer-create "\\*shell\\*")))
            (if (file-remote-p default-directory)
                (setq default-directory
                      (expand-file-name
@@ -50,7 +50,7 @@
                        t nil))))))))
   (setq buffer (if (or buffer (not (derived-mode-p 'shell-mode))
                        (comint-check-proc (current-buffer)))
-                   (get-buffer-create (or buffer "*shell*"))
+                   (get-buffer-create (or buffer "\\*shell\\*"))
                  (current-buffer)))
   (if (and (called-interactively-p 'any)
            (file-remote-p default-directory)
@@ -86,7 +86,7 @@
   (progn
     (dolist (w (window-list nil nil nil))
       (if (string= (buffer-name (window-buffer w))
-                   "\*eshell\*")
+                   "\\*eshell\\*")
           (delete-window w)))
     (while (window-in-direction 'below)
       (delete-window (window-in-direction 'below)))
@@ -164,11 +164,19 @@
   (if (= prefix 1)
       (execute-below-shell-return (if current-shell-name
                                       current-shell-name
-                                    "*shell"))
+                                    "*shell*"))
     (call-interactively 'execute-below-shell-return)))
 (global-set-key (kbd "C-c h e") 'execute-below-eshell-return)
 (global-set-key (kbd "C-c h s") 'hh-execute-below-shell-return)
+;;(require 'init-bash-shell)
 (add-hook 'shell-mode-hook #'(lambda ()
-                               (local-set-key (kbd "C-c C-l") 'helm-comint-input-ring2)))
+                               (local-set-key (kbd "C-c C-l") 'helm-comint-input-ring2)
+                                        ;;(local-set-key (kbd "C-c C-k") 'helm-comint-input-ring2)
+                               ))
 (setq  comint-input-ring-size 20000)
-(provide 'init-shell)
+(add-hook 'shell-mode-hook
+          #'(lambda ()
+              (set (make-local-variable 'company-backends)
+            '((company-files company-abbrev company-yasnippet)))))
+
+              (provide 'init-shell)
